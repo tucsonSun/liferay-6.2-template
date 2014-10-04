@@ -1,4 +1,4 @@
 project1
 ========
 
-Colab effort on project1
+Collaborative effort on project1
