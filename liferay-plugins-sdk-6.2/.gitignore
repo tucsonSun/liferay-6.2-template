@@ -2,10 +2,6 @@
 .classpath
 .settings
 
-/**/.project
-/**/.classpath
-/**/.settings
-
 *~
 *.bak
 *.iml
