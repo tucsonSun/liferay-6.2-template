@@ -4,11 +4,13 @@
 ivy.xml.MD5
 
 
+/webs/resources-importer-web/docroot/WEB-INF/lib*
 /webs/resources-importer-web/docroot/WEB-INF/classes
 /webs/resources-importer-web/docroot/META-INF/*
 /webs/resources-importer-web/.project
 /webs/resources-importer-web/.classpath
 /webs/resources-importer-web/.settings
+
 
 /.ivy*
 /dist
