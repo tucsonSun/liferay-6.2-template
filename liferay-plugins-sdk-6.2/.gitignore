@@ -1,7 +1,6 @@
 .project
 .classpath
 .settings
-ivy.xml.MD5
 
 
 /webs/resources-importer-web/docroot/WEB-INF/lib*
@@ -30,5 +29,6 @@ ivy.xml.MD5
 
 
 /.ivy*
+ivy.xml.MD5
 /dist
 /lib/
