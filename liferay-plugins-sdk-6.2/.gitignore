@@ -18,12 +18,7 @@
 /tools/theme_tmpl/docroot/WEB-INF/lib*
 /tools/web_tmpl/docroot/WEB-INF/lib*
 
-/themes/*/docroot/META-INF*
-/themes/*/docroot/css*
-/themes/*/docroot/images*
-/themes/*/docroot/js*
-/themes/*/docroot/templates*
-/themes/*/docroot/WEB-INF/classes*
+/themes/*/docroot/css/.sass-cache*
 
 
 
