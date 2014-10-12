@@ -4,10 +4,24 @@ AUI().ready(
 	This function gets loaded when all the HTML, not including the portlets, is
 	loaded.
 	*/
+	'liferay-hudcrumbs', 'liferay-navigation-interaction', 'liferay-sign-in-modal',
+	function(A) {
+		var navigation = A.one('#navigation');
 
-	function() {
+		if (navigation) {
+			navigation.plug(Liferay.NavigationInteraction);
+		}
+
+		var siteBreadcrumbs = A.one('#breadcrumbs');
+
+		if (siteBreadcrumbs) {
+			siteBreadcrumbs.plug(A.Hudcrumbs);
+		}
+
+
 	}
 );
+
 
 Liferay.Portlet.ready(
 
