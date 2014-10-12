@@ -71,12 +71,7 @@ body.portlet {
 }
 
 .portlet-title-text {
-	display: inline-block;
-	max-width: 95%;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	vertical-align: top;
-	white-space: nowrap;
+	/** removed styles **/
 }
 
 .panel-page-content, .panel-page-body {
@@ -86,7 +81,7 @@ body.portlet {
 }
 
 .portlet-content, .portlet-minimized .portlet-content-container {
-	padding: 12px 10px 10px;
+	/** removed styles **/
 }
 
 .portlet-minimized .portlet-content {
