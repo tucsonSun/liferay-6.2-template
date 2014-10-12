@@ -1,0 +1,78 @@
+
+<div id="mobile-nav">
+ 	<div id="mobile-nav-bar">
+
+	  <a class="touche" id="nav-pop">
+	    <span class="icon-bar"></span>
+	    <span class="icon-bar"></span>
+	    <span class="icon-bar"></span>
+	  </a>
+	</div>
+	<div id="mobile-nav-menu">
+		<ul aria-label="#language ("site-pages")" class="nav" role="menubar">
+				
+			
+			#foreach ($nav_item in $nav_items)
+
+				#set ($nav_item_attr_selected="")
+				#set ($nav_item_attr_has_popup="")
+				#set ($nav_item_caret="")
+				#set ($nav_item_css_class="")
+				#set ($nav_item_link_css_class="")
+
+				#if ($nav_item.isSelected())
+					#set ($nav_item_attr_selected="aria-selected='true'")
+					#set ($nav_item_css_class="$nav_item_css_class act")
+				#end
+
+				#if ($nav_item.hasChildren())
+					#set ($nav_item_attr_has_popup="aria-haspopup='true'")
+					#set ($nav_item_caret='<b class="icon-caret-down"></b>')
+					#set ($nav_item_css_class="drop $nav_item_css_class")
+					#set ($nav_item_link_css_class="drop-toggle")
+				#end
+				
+
+				<li class="$nav_item_css_class touche" id="layout_$nav_item.getLayoutId()" $nav_item_attr_selected role="presentation">
+					<a aria-labelledby="layout_$nav_item.getLayoutId()" $nav_item_attr_has_popup class="$nav_item_link_css_class" href="javascript:void(0)" $nav_item.getTarget() role="menuitem">
+						<span>$nav_item.icon() $nav_item.getName() $nav_item_caret</span>
+					</a>
+
+					#if ($nav_item.hasChildren())
+						<ul class="drop-menu child-menu" role="menu">
+							#foreach ($nav_child in $nav_item.getChildren())
+								#set ($nav_child_attr_selected="")
+								#set ($nav_child_css_class="lfr-nav-item")
+
+								#if ($nav_child.isSelected())
+									#set ($nav_child_attr_selected="aria-selected='true'")
+									#set ($nav_child_css_class="act")
+								#end
+
+								<li class="$nav_child_css_class" id="layout_$nav_child.getLayoutId()" $nav_child_attr_selected role="presentation">
+									<a aria-labelledby="layout_$nav_child.getLayoutId()" href="$nav_child.getURL()" $nav_child.getTarget() role="menuitem"><span>$nav_child.getName()</span></a>
+								</li>
+							#end
+						</ul>
+					#end
+				</li>
+			#end
+			<li>
+				<a>
+					<span>Contact <b class="icon-caret-down"></b></span>
+				</a>
+
+				<ul class="drop-menu child-menu" role="menu">
+					<li><a href="tel:1-888=706-4070"><span><strong>Quote:</strong> 888.706.4070</span></a></li>
+					<li><a href="tel:1-800-231-1363"><span><strong>Customer Service:</strong> 800.231.1363</span></a></li>
+					<li><a href="mailto:ask@copperpoint.com"><span><strong>Email:</strong> ask@copperpoint.com</span></a></li>
+				</ul>
+			</li>
+		</ul>
+		#if ($is_signed_in && $permissionChecker.isOmniadmin())
+			<ul aria-label="#language ("site-pages")" class="pull-right nav nav-collapse">
+		    	<li class="pull-right"><a href="/web/guest/internal-registration"><span>Internal Registration</span></a></li>   
+		    </ul>
+		#end
+	</div>
+</div>
