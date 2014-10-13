@@ -1,23 +1,21 @@
 
 	<div id="authRow" class="row">
-
 		#if ($is_signed_in)
 			<p>
 
 				<a href="/c/portal/logout"><span>Sign Out</span></a>&nbsp;&nbsp; | &nbsp;&nbsp;
 
-				<a class="acct" href="/web/guest/my-account" title="My Account"><span>My Account</span></a> 
+				<a class="acct" href="/web/guest/my-account" title="Admin Home"><span>Admin Home</span></a> 
 		    	
 		    </p>
 	
 		#else	
 			<p>
-
 				<a href="/web/guest/registration"><span>Register</span></a>&nbsp;&nbsp; | &nbsp;&nbsp;
 	  		
 				<a href="/web/guest/resetpassword"><span>Forgot Password</span></a>&nbsp;&nbsp;
 
-				<a class="acct" href="/c/portal/login?redirect=/web/guest/my-account"><span>Customer<br>Login</span></a>			
+				<a class="acct" href="/c/portal/login?redirect=/web/guest/my-account"><span>Sign In</span></a>			
 				
 			</p>
 		#end

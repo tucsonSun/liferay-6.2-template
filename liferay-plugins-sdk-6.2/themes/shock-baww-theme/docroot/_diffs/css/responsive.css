@@ -1,7 +1,6 @@
 
-$orange: #c05017;
-$blue: #00325b;
-$yellow: #b5bf00;
+$orange: 	#c05017;
+$yellow: 	#FF9900;
 
 @mixin box-shadow {
 	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
@@ -67,9 +66,9 @@ $yellow: #b5bf00;
 	#mobile-nav-bar {
 		display:block;
 		height:55px;
-		@include image-gradient(url("../images/noise.png"),lighten($blue,10%),$blue);
-		border-bottom:1px solid darken($blue,10%);
-		border-top:1px solid $blue;
+		@include image-gradient(url("../images/noise.png"),lighten($yellow,10%),$yellow);
+		border-bottom:1px solid darken($yellow,10%);
+		border-top:1px solid $yellow;
 		#nav-pop {
 			margin-bottom: 0;
 			font-size: 14px;
@@ -112,7 +111,7 @@ $yellow: #b5bf00;
 	#mobile-nav-menu {
 		display:none;
 		background:#fff;
-		border-bottom:1px solid darken($blue,10%);
+		border-bottom:1px solid darken($yellow,10%);
 		ul {
 			padding:0;
 			margin:0;
@@ -122,10 +121,10 @@ $yellow: #b5bf00;
 				a {
 					display:block;
 					width:100%;
-					background:$blue;
+					background:$yellow;
 					color:#fff;
-					border-top:1px solid lighten($blue,10%);
-					border-bottom:1px solid darken($blue,10%);
+					border-top:1px solid lighten($yellow,10%);
+					border-bottom:1px solid darken($yellow,10%);
 					span {
 						display:block;
 						padding:0.25rem;
@@ -139,9 +138,9 @@ $yellow: #b5bf00;
 						list-style-type: none;
 						padding:0;
 						a {
-							background:lighten($blue,5%);
-							border-top:1px solid lighten($blue,15%);
-							border-bottom:1px solid darken($blue,15%);
+							background:lighten($yellow,5%);
+							border-top:1px solid lighten($yellow,15%);
+							border-bottom:1px solid darken($yellow,15%);
 							display:block;							
 							margin:0;
 							span {
@@ -365,7 +364,7 @@ $yellow: #b5bf00;
 	 	text-align: right;
 	 	display:block;
 	 	a {
-	 		color:$blue;
+	 		color:$yellow;
 	 		display:inline-block;
 	 	}
 	 	a.acct {

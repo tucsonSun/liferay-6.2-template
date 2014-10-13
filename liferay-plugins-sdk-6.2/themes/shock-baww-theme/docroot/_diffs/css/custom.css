@@ -29,9 +29,8 @@
 // 	1.1 Variables
 // --------------------------------------------------------------------------------
 
-$orange: #c05017;
-$blue: #00325b;
-$yellow: #b5bf00;
+$orange: 	#3F3F3F;
+$yellow: 	#FF9900;
 
 // --------------------------------------------------------------------------------
 // 	1.2 Mixins
@@ -108,7 +107,7 @@ $yellow: #b5bf00;
 }
 
 a {
-	color:$blue;
+	color:$yellow;
 	@include color-fade;
 }
 a:hover {
@@ -189,12 +188,12 @@ a:hover {
 			-webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 			-moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 			box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-			@include image-gradient(url("../images/noise.png"),lighten($blue,10%),$blue);
+			@include image-gradient(url("../images/noise.png"),lighten($yellow,10%),$yellow);
 			display:block;
 			@extend .clearfix;
 			width:100%;
-			border-bottom: 1px solid lighten($blue,15%);
-			border-top: 1px solid darken($blue,15%);
+			border-bottom: 1px solid lighten($yellow,15%);
+			border-top: 1px solid darken($yellow,15%);
 			#navigation {
 				margin:0 auto;	
 				.navbar-inner {
@@ -210,38 +209,38 @@ a:hover {
 							margin:0;
 							padding:0;
 							& > li:first-child {						
-								border-left:1px solid darken($blue,10%);
+								border-left:1px solid darken($yellow,10%);
 							}
 							& > li:last-child {
-								border-right:1px solid lighten($blue,10%);
+								border-right:1px solid lighten($yellow,10%);
 							}
 							& > li {
 								& > a {
-									@include image-gradient(url("../images/noise.png"),lighten($blue,5%),$blue);	
+									@include image-gradient(url("../images/noise.png"),lighten($yellow,5%),$yellow);	
 									text-shadow: 0 1px 3px rgba(0,0,0,.4), 0 0 30px rgba(0,0,0,.075);
 									text-decoration: none;
 									color: #fff;														
 									background:none;
-									border-right:1px solid darken($blue,15%);
-									border-left:1px solid lighten($blue,15%);
+									border-right:1px solid darken($yellow,15%);
+									border-left:1px solid lighten($yellow,15%);
 									padding:0.75rem 1rem 0.75rem 1rem;
 									@include background-fade;		
 								}
 								a:hover {
 									color:#fff;
-									@include image-gradient(url("../images/noise.png"),$blue,darken($blue,2%));
+									@include image-gradient(url("../images/noise.png"),$yellow,darken($yellow,2%));
 								}
 							}
 							li.open, li.selected.open  {
 								& > a {
 									color:#fff;
-									@include image-gradient(url("../images/noise.png"),$blue,darken($blue,2%));
+									@include image-gradient(url("../images/noise.png"),$yellow,darken($yellow,2%));
 								}
 							}	
 							li.selected {
 								& > a {
 									color:#fff;
-									@include image-gradient(url("../images/noise.png"),$blue,darken($blue,2%));
+									@include image-gradient(url("../images/noise.png"),$yellow,darken($yellow,2%));
 								}
 							}
 							.child-menu {
@@ -251,10 +250,10 @@ a:hover {
 								border:none;
 								padding:0;
 								margin:0;
-								border-left:1px solid darken($blue, 10%);
-								border-right:1px solid darken($blue, 10%);
-								border-bottom:1px solid darken($blue, 10%);
-								@include image-gradient(url("../images/noise.png"),darken($blue,2%),darken($blue,4%));
+								border-left:1px solid darken($yellow, 10%);
+								border-right:1px solid darken($yellow, 10%);
+								border-bottom:1px solid darken($yellow, 10%);
+								@include image-gradient(url("../images/noise.png"),darken($yellow,2%),darken($yellow,4%));
 								& > li {
 									
 									a {
@@ -315,7 +314,7 @@ a:hover {
 		@extend .clearfix;
 
 		.portlet-topper {
-			@include gradient(lighten($blue,5%), $blue);
+			@include gradient(lighten($yellow,5%), $yellow);
 			text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
 		}
 
@@ -337,7 +336,7 @@ a:hover {
 	#sub-footer {			
 			
 		
-		color:$blue;
+		color:$yellow;
 		
 		h2 {
 								
@@ -350,7 +349,7 @@ a:hover {
 
 		}
 		a {
-			color:$blue;
+			color:$yellow;
 			text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
 			@include color-fade;	
 							
@@ -383,10 +382,10 @@ a:hover {
 .aui {
 	#footer-wrapper {
 		width:100%;
-		background-color: $blue;
+		background-color: $yellow;
 			
 		border-top:0.5rem solid $orange;
-		@include image-gradient(url("../images/noise.png"),lighten($blue,5%),$blue);		
+		@include image-gradient(url("../images/noise.png"),lighten($yellow,5%),$yellow);		
 		padding-top:3rem;
 		footer {
 			@extend .clearfix;		
@@ -407,8 +406,8 @@ a:hover {
 					padding: 0 4.25rem 0 2rem;
 					width:16.5%;
 					
-					border-left:1px solid lighten($blue,15%);
-					border-right:1px solid darken($blue,15%);	
+					border-left:1px solid lighten($yellow,15%);
+					border-right:1px solid darken($yellow,15%);	
 					li.list-header {
 						font-weight: bold;	
 						a {
@@ -519,16 +518,16 @@ a:hover {
 		padding:0.5rem 0.75rem 0.5rem 0.75rem;
 		margin:0 !important;
 		font-weight: bold;
-		color:$blue;
+		color:$yellow;
 		cursor: default;
 		a {
 			margin:0 !important;
 			font-weight: bold;
-			color:$blue;
+			color:$yellow;
 		}
 		a:hover {
 			@include color-fade;
-			color:lighten($blue,15%);
+			color:lighten($yellow,15%);
 			background:none !important;
 		}
 	}
@@ -536,7 +535,7 @@ a:hover {
 		padding: 0.5rem 0.5rem;
 		margin: 0px !important;
 		font-weight: bold;
-		color: #00325B;
+		color: $yellow;
 	}
 }
 
@@ -572,7 +571,7 @@ a:hover {
 				}
 				a {
 					float:left;
-					color:$blue;
+					color:$yellow;
 					@include color-fade;
 					text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
 				}
@@ -611,11 +610,11 @@ a:hover {
 	#content {
 		.portlet-navigation {
 		 	a {
-		 		color:$blue;
+		 		color:$yellow;
 		 	}
 			a.selected {
 				color:#fff;
-				background:lighten($blue,10%);	
+				background:lighten($yellow,10%);	
 			}
 		}
 	}
@@ -627,10 +626,10 @@ a:hover {
 	}
 
 	.accordion-toggle {
-		color:$blue;
+		color:$yellow;
 	}
 	.accordion-toggle:hover {
-		color:$blue;
+		color:$yellow;
 		background:#e5e5e5;
 	}
 }
@@ -654,7 +653,7 @@ a:hover {
   margin: -15px -15px 15px;
   font-size: 17.5px;
   font-weight: 500;      
-  @include image-gradient(url("../images/noise.png"),lighten($blue,5%),$blue);
+  @include image-gradient(url("../images/noise.png"),lighten($yellow,5%),$yellow);
   border-bottom: 0.25rem solid $orange;
   border-top-right-radius: 3px;
   border-top-left-radius: 3px;
@@ -663,7 +662,7 @@ a:hover {
 
 .panel-heading.admin {
 	@include image-gradient(url("../images/noise.png"),lighten($orange,5%),$orange);
-	border-bottom: 0.25rem solid lighten($blue,10%);
+	border-bottom: 0.25rem solid lighten($yellow,10%);
 }
 
 .panel-footer {
@@ -726,7 +725,7 @@ a:hover {
 }
 
  .aui .nav-tabs.nav-stacked > li > a {
-	color:$blue;
+	color:$yellow;
 }
 
 /** -------------------------------------------------------------------------------- **/
@@ -834,7 +833,7 @@ img.documentThumb {
 			li, li.active {
 				font-size:12px;
 				a {
-					color:$blue;
+					color:$yellow;
 					@include color-fade;
 				}
 				a:hover {

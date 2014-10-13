@@ -4,8 +4,8 @@
 				<div class="span12">
 					#if ($is_signed_in)
 						<ul class="nav nav-account-controls"> 
-						<li class="auth"> 
-								<a href="/web/guest/my-account" title="Sign In">Sign In</a> 
+							<li class="auth"> 
+								<a href="/web/guest/my-account" title="Admin Home">Admin Home</a> 
 							</li> 
 							
 							<li class="user-item">

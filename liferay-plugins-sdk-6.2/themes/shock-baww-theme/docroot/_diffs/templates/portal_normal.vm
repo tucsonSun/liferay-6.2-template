@@ -80,15 +80,9 @@ $theme.include($body_top_include)
 	        
 		    <div class="row-fluid">
 	        	<div class="span12">
-	        		<p>&copy; CopperPoint Mutual Insurance Company 2014</p>
+	        		<p>&copy; Shock and Baww 2015</p>
 	        	</div>
 	        </div>
-
-	        <div class="row-fluid">
-		        <div class="span12">
-		        	<p id="cpmVersion" style="text-align:center;">$cpm_version</p>
-		        </div>
-		    </div>
 	              
 	     </footer>
 	</div>
