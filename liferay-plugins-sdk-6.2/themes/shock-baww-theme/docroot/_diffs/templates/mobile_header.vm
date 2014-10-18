@@ -16,7 +16,7 @@
 		#end
 	</div>
 
-	<a id="mobile-logo" href="/web/guest/home">
+	<a id="mobile-logo" href="/web/guest/home-page">
 	     <img alt="$logo_description" src="$images_folder/shockandbaww.png"  />
 	</a>
 
