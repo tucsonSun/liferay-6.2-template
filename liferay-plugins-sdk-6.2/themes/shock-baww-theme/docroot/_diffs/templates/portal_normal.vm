@@ -33,16 +33,6 @@ $theme.include($body_top_include)
 </div>
 
 <div class="page-wrap">
-	<div class="container hidden-tablet hidden-phone visible-desktop">
-		<div class="row-flud">
-			<div class="span12">
-				#if ($is_signed_in && $permissionChecker.isOmniadmin())
-				     #dockbar()   
-				#end
-			</div>
-		</div>
-	</div>
-
 	<div class="visible-desktop hidden-tablet hidden-phone">
 		   #parse ("$full_templates_path/desktop_header.vm")
 	</div>

@@ -51,7 +51,7 @@
 					</ul>
 					#if ($is_signed_in && $permissionChecker.isOmniadmin())
 						<ul aria-label="#language ("site-pages")" class="pull-right nav nav-collapse">
-					    	<li class="pull-right"><a href="/web/guest/internal-registration">Internal Registration</a></li>   
+					    	<li class="pull-right"><a href="/web/guest/sign-up">Sign Up</a></li>   
 					    </ul>
 					#end
 				</div>

@@ -23,11 +23,11 @@
 							</li> 
 
 							<li class="user-item">
-								<a href="/web/guest/resetpassword">Forgot Password</a>
+								<a href="/web/guest/forgot-password">Forgot Password</a>
 							</li>
 							<li class="user-item divider">|</li>
 							<li class="user-item">
-								<a href="/web/guest/registration">Register</a>
+								<a href="/web/guest/sign-up">Sign Up</a>
 							</li>
 						</ul>
 					#end

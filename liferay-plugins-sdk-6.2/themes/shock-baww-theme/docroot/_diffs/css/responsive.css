@@ -1,6 +1,7 @@
 
-$orange: 	#c05017;
 $yellow: 	#FF9900;
+$darkGray: 	#3F3F3F;
+
 
 @mixin box-shadow {
 	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
@@ -66,9 +67,9 @@ $yellow: 	#FF9900;
 	#mobile-nav-bar {
 		display:block;
 		height:55px;
-		@include image-gradient(url("../images/noise.png"),lighten($yellow,10%),$yellow);
-		border-bottom:1px solid darken($yellow,10%);
-		border-top:1px solid $yellow;
+		@include image-gradient(url("../images/noise.png"),lighten($darkGray,10%),$darkGray);
+		border-bottom:1px solid darken($darkGray,10%);
+		border-top:1px solid $darkGray;
 		#nav-pop {
 			margin-bottom: 0;
 			font-size: 14px;
@@ -77,7 +78,7 @@ $yellow: 	#FF9900;
 			vertical-align: middle;
 			cursor: pointer;
 			border-radius: 4px;
-			background: $orange;
+			background: $yellow;
 			float: right;
 			padding: 7px 10px 9px 10px;
 			margin: 10px 10px 0 10px;		
@@ -111,7 +112,7 @@ $yellow: 	#FF9900;
 	#mobile-nav-menu {
 		display:none;
 		background:#fff;
-		border-bottom:1px solid darken($yellow,10%);
+		border-bottom:1px solid darken($darkGray,10%);
 		ul {
 			padding:0;
 			margin:0;
@@ -121,10 +122,10 @@ $yellow: 	#FF9900;
 				a {
 					display:block;
 					width:100%;
-					background:$yellow;
+					background:$darkGray;
 					color:#fff;
-					border-top:1px solid lighten($yellow,10%);
-					border-bottom:1px solid darken($yellow,10%);
+					border-top:1px solid lighten($darkGray,10%);
+					border-bottom:1px solid darken($darkGray,10%);
 					span {
 						display:block;
 						padding:0.25rem;
@@ -138,9 +139,9 @@ $yellow: 	#FF9900;
 						list-style-type: none;
 						padding:0;
 						a {
-							background:lighten($yellow,5%);
-							border-top:1px solid lighten($yellow,15%);
-							border-bottom:1px solid darken($yellow,15%);
+							background:lighten($darkGray,5%);
+							border-top:1px solid lighten($darkGray,15%);
+							border-bottom:1px solid darken($darkGray,15%);
 							display:block;							
 							margin:0;
 							span {
@@ -364,11 +365,11 @@ $yellow: 	#FF9900;
 	 	text-align: right;
 	 	display:block;
 	 	a {
-	 		color:$yellow;
+	 		color:$darkGray;
 	 		display:inline-block;
 	 	}
 	 	a.acct {
-	 		@include image-gradient(url("../images/noise.png"),$orange,darken($orange,5%));	
+	 		@include image-gradient(url("../images/noise.png"),$yellow,darken($yellow,5%));	
 	 		display: inline-block;
 			text-align: center;
 			height:auto;
@@ -377,9 +378,9 @@ $yellow: 	#FF9900;
 			margin:-10px 0 0 0 !important;
 			font-weight: bold;
 
-			border-right:1px solid lighten($orange,5%);
-			border-left:1px solid lighten($orange,5%);
-			border-bottom:1px solid lighten($orange,5%);
+			border-right:1px solid lighten($yellow,5%);
+			border-left:1px solid lighten($yellow,5%);
+			border-bottom:1px solid lighten($yellow,5%);
 			border-top:none !important;
 
 
