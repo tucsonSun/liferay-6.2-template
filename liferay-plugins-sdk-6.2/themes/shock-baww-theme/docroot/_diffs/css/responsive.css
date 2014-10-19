@@ -64,7 +64,9 @@ $darkGray: 	#3F3F3F;
 
 
 #mobile-nav {
-
+	-webkit-box-shadow: 0px 10px 15px 0px rgba(255,153,0,0.60);
+	-moz-box-shadow: 0px 10px 15px 0px rgba(255,153,0,0.60);
+	box-shadow: 0px 10px 15px 0px rgba(255,153,0,0.60);
 	ul {
 		clear:both;
 	}

@@ -73,7 +73,13 @@
 			<div id="footer-wrapper">
 			     <footer class="container" id="footer" role="contentinfo">
 			     	<div class="row-fluid">
-			          	#parse ("$full_templates_path/footer_navigation.vm")   
+			          	<div class="hidden-phone hidden-tablet">
+							#parse ("$full_templates_path/desktop_footer.vm")
+						</div>
+						
+						<div id="mobileFooterSocial" class="visible-phone visible-tablet hidden-desktop">
+							#parse ("$full_templates_path/mobile_footer.vm")
+						</div>
 			        </div>
 			        
 				    <div class="row-fluid">
