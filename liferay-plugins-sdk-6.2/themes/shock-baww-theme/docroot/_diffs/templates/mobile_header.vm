@@ -1,5 +1,5 @@
 
-	<div id="authRow" class="row">
+	<div id="mobile-top-controls" class="row">
 		#if ($is_signed_in)
 			<p>
 				<a href="/c/portal/logout"><span>Sign Out</span></a>&nbsp;&nbsp; | &nbsp;&nbsp;
@@ -15,10 +15,11 @@
 			</p>
 		#end
 	</div>
-
-	<a id="mobile-logo" href="/web/guest/home-page">
-	     <img alt="$logo_description" src="$images_folder/shockandbaww.png"  />
-	</a>
+	<div id="mobile-logo-wrapper">
+		<a id="mobile-logo" href="/web/guest/home-page">
+		     <img alt="$logo_description" src="$images_folder/shockandbaww.png"  />
+		</a>
+	</div>
 
 	#if ($has_navigation || $is_signed_in)
 	   #parse ("$full_templates_path/mobile_navigation.vm")

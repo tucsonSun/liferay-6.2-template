@@ -1,4 +1,4 @@
-
+$lightGray: #1b1b1b;
 $yellow: 	#FF9900;
 $darkGray: 	#3F3F3F;
 
@@ -46,6 +46,11 @@ $darkGray: 	#3F3F3F;
 	-webkit-transition: color .3s ease;
 	-o-transition: color .3s ease;
 	transition: color .3s ease;
+}
+
+#mobile-top-controls,
+#mobile-logo-wrapper {
+	background-color: $lightGray;
 }
 
 #mobile-logo {
@@ -360,7 +365,7 @@ $darkGray: 	#3F3F3F;
 		 	}
 		 }
 	 }
-	 #authRow {
+	 #mobile-top-controls {
 	 	padding:0 0.5rem 0.5rem 0;
 	 	text-align: right;
 	 	display:block;
@@ -396,7 +401,6 @@ $darkGray: 	#3F3F3F;
 			border-bottom-left-radius: 4px !important;
 
 			margin-top:-1px;
-
 			margin-left:1rem;
 	 	}
 	 }

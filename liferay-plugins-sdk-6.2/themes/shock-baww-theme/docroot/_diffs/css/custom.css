@@ -40,6 +40,7 @@
 // 	1.1 Variables
 // --------------------------------------------------------------------------------
 
+$lightGray: #1b1b1b;
 $yellow: 	#FF9900;
 $darkGray: 	#3F3F3F;
 
@@ -183,7 +184,7 @@ a:hover {
 .aui {
 	#header-wrapper {
 		width:100%;
-		background-color:#1b1b1b;
+		background-color: $lightGray;
 		margin-bottom:1em;
 		header {	
 			@extend .clearfix;		
