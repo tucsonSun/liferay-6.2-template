@@ -18,7 +18,8 @@ jQuery(document).ready(function() {
 	});
 
 	/**
-	 *  Method modifies Navigation Bar to be responsive for mobile
+	 *  Method for mobile responsive when the #nav-pop button is clicked 
+	 *  the #moble-nav-menu is clicked with the slideUp/slideDown effect
 	**/
 	$(document).on('click', '#mobile-nav #nav-pop', function(event) {
 		event.preventDefault();
@@ -29,7 +30,7 @@ jQuery(document).ready(function() {
         }			
 	});
 	/**
-	 *  Method modifies Liferay Navigation menu to be click-able
+	 *  Method modifies #mobile-nav-menu to indicate which menu link was clicked
 	**/
 	$(document).on('click', '#mobile-nav-menu > ul > li', function(event) {
         if ($(this).has('ul')) {
