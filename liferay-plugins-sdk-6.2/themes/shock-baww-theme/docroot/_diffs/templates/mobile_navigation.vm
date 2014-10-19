@@ -34,7 +34,7 @@
 				
 
 				<li class="$nav_item_css_class touche" id="layout_$nav_item.getLayoutId()" $nav_item_attr_selected role="presentation">
-					<a aria-labelledby="layout_$nav_item.getLayoutId()" $nav_item_attr_has_popup class="$nav_item_link_css_class" href="javascript:void(0)" $nav_item.getTarget() role="menuitem">
+					<a aria-labelledby="layout_$nav_item.getLayoutId()" $nav_item_attr_has_popup class="$nav_item_link_css_class" href="$nav_item.getURL()" $nav_item.getTarget() role="menuitem">
 						<span>$nav_item.icon() $nav_item.getName() $nav_item_caret</span>
 					</a>
 
@@ -59,13 +59,11 @@
 			#end
 			<li>
 				<a>
-					<span>Contact <b class="icon-caret-down"></b></span>
+					<span>Contact Info<b class="icon-caret-down"></b></span>
 				</a>
-
 				<ul class="drop-menu child-menu" role="menu">
-					<li><a href="tel:1-888=706-4070"><span><strong>Quote:</strong> 888.706.4070</span></a></li>
-					<li><a href="tel:1-800-231-1363"><span><strong>Customer Service:</strong> 800.231.1363</span></a></li>
-					<li><a href="mailto:ask@copperpoint.com"><span><strong>Email:</strong> ask@copperpoint.com</span></a></li>
+					<li><a href="tel:1-555-555-5555"><span><strong>Customer Service:</strong> 555.555.5555</span></a></li>
+					<li><a href="mailto:ask@shockandbaww.com"><span><strong>Email:</strong> ask@shockandbaww.com</span></a></li>
 				</ul>
 			</li>
 		</ul>
