@@ -5,7 +5,7 @@
 				#if ($is_signed_in)
 					<ul class="nav nav-account-controls">
 						<li class="auth"> 
-							<a href="/web/guest/my-account" title="Admin Home">Admin Home</a> 
+							<a href="/web/guest/video" title="Admin Home">Admin Home</a> 
 						</li>
 						<li class="user-item">
 							<a href="/c/portal/logout">Sign Out</a>
@@ -18,7 +18,7 @@
 				#else
 					<ul class="nav nav-account-controls">
 						<li class="auth"> 
-							<a href="/c/portal/login?redirect=/web/guest/my-account" title="Sign In">Sign In</a> 
+							<a href="/c/portal/login?redirect=/web/guest/video" title="Sign In">Sign In</a> 
 						</li>
 						<li class="user-item">
 							<a href="/web/guest/forgot-password">Forgot Password</a>

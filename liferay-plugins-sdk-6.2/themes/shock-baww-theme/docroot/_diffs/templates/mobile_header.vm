@@ -2,14 +2,14 @@
 	#if ($is_signed_in)
 		<p>
 			<a href="/c/portal/logout"><span>Sign Out</span></a>&nbsp;&nbsp; | &nbsp;&nbsp;
-			<a class="acct" href="/web/guest/my-account" title="Admin Home"><span>Admin Home</span></a> 	    	
+			<a class="acct" href="/web/guest/video" title="Admin Home"><span>Admin Home</span></a> 	    	
 	    </p>
 
 	#else	
 		<p>
 			<a href="/web/guest/sign-up"><span>Sign Up</span></a>&nbsp;&nbsp; | &nbsp;&nbsp;
 			<a href="/web/guest/forgot-password"><span>Forgot Password</span></a>&nbsp;&nbsp;
-			<a class="acct" href="/c/portal/login?redirect=/web/guest/my-account"><span>Sign In</span></a>			
+			<a class="acct" href="/c/portal/login?redirect=/web/guest/video"><span>Sign In</span></a>			
 			
 		</p>
 	#end
