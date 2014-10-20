@@ -394,7 +394,7 @@
 			}
 
 			.icon-bar {
-				background: #656565;
+				background: $lightestGray;
 			}
 		}
 

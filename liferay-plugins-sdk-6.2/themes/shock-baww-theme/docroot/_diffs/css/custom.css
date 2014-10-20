@@ -40,9 +40,10 @@
 // 	1.1 Variables
 // --------------------------------------------------------------------------------
 
+$lightestGray: #656565;
 $lightGray: #1b1b1b;
-$yellow: 	#FF9900;
 $darkGray: 	#3F3F3F;
+$yellow: 	#FF9900;
 
 // --------------------------------------------------------------------------------
 // 	1.2 Mixins
@@ -386,15 +387,11 @@ a:hover {
 					clear:both;
 				}
 			.row-fluid {
-
-
 				ul {
 					margin-left:0;
 					padding: 0 4.25rem 0 2rem;
 					width:16.5%;
-					
-					border-left:1px solid lighten($darkGray,15%);
-					border-right:1px solid darken($darkGray,15%);	
+					border-right: 1px solid $lightestGray;
 					li.list-header {
 						font-weight: bold;	
 						a {

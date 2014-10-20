@@ -1,30 +1,27 @@
+<div id="mobile-top-controls">
+	#if ($is_signed_in)
+		<p>
+			<a href="/c/portal/logout"><span>Sign Out</span></a>&nbsp;&nbsp; | &nbsp;&nbsp;
+			<a class="acct" href="/web/guest/my-account" title="Admin Home"><span>Admin Home</span></a> 	    	
+	    </p>
 
-	<div id="mobile-top-controls" class="row">
-		#if ($is_signed_in)
-			<p>
-				<a href="/c/portal/logout"><span>Sign Out</span></a>&nbsp;&nbsp; | &nbsp;&nbsp;
-				<a class="acct" href="/web/guest/my-account" title="Admin Home"><span>Admin Home</span></a> 	    	
-		    </p>
-	
-		#else	
-			<p>
-				<a href="/web/guest/sign-up"><span>Sign Up</span></a>&nbsp;&nbsp; | &nbsp;&nbsp;
-				<a href="/web/guest/forgot-password"><span>Forgot Password</span></a>&nbsp;&nbsp;
-				<a class="acct" href="/c/portal/login?redirect=/web/guest/my-account"><span>Sign In</span></a>			
-				
-			</p>
-		#end
-	</div>
-	<div id="mobile-logo-wrapper">
-		<a id="mobile-logo" href="/web/guest/home-page">
-		     <img alt="$logo_description" src="$images_folder/shockandbaww.png"  />
-		</a>
-	</div>
-
-	#if ($has_navigation || $is_signed_in)
-	   #parse ("$full_templates_path/mobile_navigation.vm")
+	#else	
+		<p>
+			<a href="/web/guest/sign-up"><span>Sign Up</span></a>&nbsp;&nbsp; | &nbsp;&nbsp;
+			<a href="/web/guest/forgot-password"><span>Forgot Password</span></a>&nbsp;&nbsp;
+			<a class="acct" href="/c/portal/login?redirect=/web/guest/my-account"><span>Sign In</span></a>			
+			
+		</p>
 	#end
-
-
-	
 </div>
+<div id="mobile-logo-wrapper">
+	<a id="mobile-logo" href="/web/guest/home-page">
+	     <img alt="$logo_description" src="$images_folder/shockandbaww.png"  />
+	</a>
+</div>
+
+#if ($has_navigation || $is_signed_in)
+   #parse ("$full_templates_path/mobile_navigation.vm")
+#end
+
+

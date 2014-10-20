@@ -1,4 +1,3 @@
-
 <div id="mobile-nav">
  	<div id="mobile-nav-bar">
 
@@ -62,7 +61,7 @@
 					<span>Contact Info<b class="icon-caret-down"></b></span>
 				</a>
 				<ul class="drop-menu child-menu" role="menu">
-					<!-- <li><a href="tel:1-555-555-5555"><span><strong>Call:</strong> 555.555.5555</span></a></li> -->
+					<!-- <li><a href="tel:1-555-555-5555"><span><strong>Tel:</strong> 555.555.5555</span></a></li> -->
 					<li><a href="mailto:support@shockandbaww.com"><span><strong>Email:</strong> support@shockandbaww.com</span></a></li>
 				</ul>
 			</li>

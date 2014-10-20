@@ -1,7 +1,7 @@
+$lightestGray: #656565;
 $lightGray: #1b1b1b;
-$yellow: 	#FF9900;
 $darkGray: 	#3F3F3F;
-
+$yellow: 	#FF9900;
 
 @mixin box-shadow {
 	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
@@ -344,20 +344,15 @@ $darkGray: 	#3F3F3F;
 		 #mobileFooterSocial {
 		 	display:block !important;
 		 	width:100% !important;
-		 
 		 	text-align: center !important;
-
-		 	ul {
-		 		
+		 	ul {		
 				display: block !important;
 				text-align: center !important;
 				width: 100% !important;
-		 		
+		 		border-bottom: 1px solid $lightestGray;
 		 		li {
 		 			list-style-type: none;
-		 			display:inline-block;
 		 			padding:1rem !important;
-		 		
 		 			a {
 		 				display: block;
 		 				color: #fff;
