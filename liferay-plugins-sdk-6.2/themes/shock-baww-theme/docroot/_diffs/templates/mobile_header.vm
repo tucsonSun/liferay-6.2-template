@@ -7,8 +7,8 @@
 
 	#else	
 		<p>
-			<a href="/web/guest/sign-up"><span>Sign Up</span></a>&nbsp;&nbsp; | &nbsp;&nbsp;
-			<a href="/web/guest/forgot-password"><span>Forgot Password</span></a>&nbsp;&nbsp;
+			<!-- <a href="/web/guest/sign-up"><span>Sign Up</span></a>&nbsp;&nbsp; | &nbsp;&nbsp; -->
+			<a href="/web/guest/home-page?p_p_id=58&p_p_lifecycle=0&p_p_state=maximized&p_p_mode=view&_58_struts_action=%2Flogin%2Fforgot_password"><span>Forgot Password</span></a>&nbsp;&nbsp;
 			<a class="acct" href="/c/portal/login?redirect=/web/guest/video"><span>Sign In</span></a>			
 			
 		</p>

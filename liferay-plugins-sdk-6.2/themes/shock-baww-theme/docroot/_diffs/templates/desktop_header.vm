@@ -11,9 +11,7 @@
 							<a href="/c/portal/logout">Sign Out</a>
 						</li>
 						<li class="user-item divider">|</li>
-						<li class="user-item">
-							Welcome, $user_first_name $user_last_name!
-						</li>
+						<li class="user-item">Welcome, $user_first_name $user_last_name!</li>
 					</ul>
 				#else
 					<ul class="nav nav-account-controls">
@@ -21,12 +19,9 @@
 							<a href="/c/portal/login?redirect=/web/guest/video" title="Sign In">Sign In</a> 
 						</li>
 						<li class="user-item">
-							<a href="/web/guest/forgot-password">Forgot Password</a>
+							<a href="/web/guest/home-page?p_p_id=58&p_p_lifecycle=0&p_p_state=maximized&p_p_mode=view&_58_struts_action=%2Flogin%2Fforgot_password">Forgot Password</a>
 						</li>
-						<li class="user-item divider">|</li>
-						<li class="user-item">
-							<a href="/web/guest/sign-up">Sign Up</a>
-						</li>
+						<!-- <li class="user-item divider">|</li><li class="user-item"><a href="/web/guest/sign-up">Sign Up</a></li> -->
 					</ul>
 				#end
 			</div>
