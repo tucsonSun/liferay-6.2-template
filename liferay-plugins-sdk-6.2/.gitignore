@@ -2,8 +2,6 @@
 .classpath
 .settings
 
-build.ernesto.properties
-
 
 /webs/resources-importer-web/docroot/WEB-INF/lib*
 /webs/resources-importer-web/docroot/WEB-INF/classes
