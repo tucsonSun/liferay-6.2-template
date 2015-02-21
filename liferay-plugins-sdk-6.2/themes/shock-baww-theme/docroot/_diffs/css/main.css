@@ -11,17 +11,7 @@
 @import url(portlet.css);
 
 @import url(extras.css);
-/**
- *
- * ----------------Import Custom CSS Files Below -----------------
- *
-**/
-/** JQuery 1.10.4 CSS **/
-@import url(jquery-ui-1.10.4.custom.min.css);
-/** Data Table CSS **/
-@import url(dt.css);
-/** Data Table CSS **/
-@import url(dt_theme.css);
+
 /** Web Application Custom CSS **/
 @import url(custom.css);
 /** Responsive CSS **/
