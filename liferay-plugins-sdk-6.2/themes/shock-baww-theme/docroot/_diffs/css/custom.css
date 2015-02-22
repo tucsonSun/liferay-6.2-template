@@ -51,9 +51,9 @@ $yellow: #FF9900;
     box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 @mixin gradient($from-color, $to-color) {
+	/* Fallback */
     background-color: mix($from-color, $to-color);
-    /* Fallback */
-    
+   
     background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($from-color), to($to-color));
     background-image: -webkit-linear-gradient(top, $from-color, $to-color);
     background-image: -moz-linear-gradient(top, $from-color, $to-color);
@@ -62,11 +62,10 @@ $yellow: #FF9900;
     -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$from-color}', EndColorStr='#{$to-color}')";
 }
 @mixin image-gradient($background-image, $from-color, $to-color) {
+    /* Fallback */
     background-color: mix($from-color, $to-color);
     /* Fallback */
-    
     background-image: mix($from-color, $to-color);
-    /* Fallback */
     
     background: $background-image center center, -webkit-gradient(linear, 0% 0%, 0% 100%, from($from-color), to($to-color));
     background: $background-image center center, -webkit-linear-gradient(top, $from-color, $to-color);
@@ -333,7 +332,7 @@ a:hover {
                 -webkit-margin-after: 0 !important;
                 clear: both;
             }
-            .row-fluid {
+            .row {
                 ul {
                     margin-left: 0;
                     padding: 0 4.25rem 0 2rem;
@@ -550,21 +549,7 @@ a:hover {
         }
     }
 }
-.aui {
-    .accordion-group {
-        border: 1px solid #e5e5e5;
-    }
-    .accordion-toggle {
-        color: $darkGray;
-    }
-    .accordion-toggle:hover {
-        color: $darkGray;
-        background: #e5e5e5;
-    }
-}
-.aui .control-group, .aui .form-actions {
-    clear: both;
-}
+
 .aui .input-append {
     padding-right: 0 !important;
 }

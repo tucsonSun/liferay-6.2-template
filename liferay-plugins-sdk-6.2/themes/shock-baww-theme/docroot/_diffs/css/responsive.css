@@ -214,52 +214,37 @@ $yellow: #FF9900;
             }
         }
     }
-    @media screen and (max-width: 320px) {// iPhone portrait and under
+    
+    /** iPhone portrait and under **/
+    @media screen and (max-width: 320px) {
         .aui {
             .table {
                 display: block;
             }
-            .row-fluid {
-                .span6 {
-                    width: 100% !important;
-                    margin-left: 0 !important;
-                }
-            }
         }
     }
-    @media screen and (max-width: 640px) {// iPhone landscape and under
-        .aui [class*="span"], .aui .uneditable-input[class*="span"], .aui .row-fluid [class*="span"] {
-            width: auto;
-        }
+    /** iPhone iPhone landscape and under **/
+    @media screen and (max-width: 640px) {
         .aui {
-            .row-fluid {
-                .span6 {
-                    width: 48.93617%;
-                    margin-left: 2.12766%;
-                    display: block;
-                    min-height: 30px;
-                    -webkit-box-sizing: border-box;
-                    -moz-box-sizing: border-box;
-                    box-sizing: border-box;
-                    float: left;
-                }
-            }
             .table {
                 margin: 0 0 1rem 0;
                 width: 100%;
             }
         }
     }
-    @media screen and (max-width: 768px) {// iPad portrait and under
+    /** iPad portrait and under **/
+    @media screen and (max-width: 768px) {
         .aui {}
     }
-    @media screen and (max-width: 850px) {// iPad landscape and under
+    /** iPad landscape and under **/
+    @media screen and (max-width: 850px) {
         #header-wrapper .container-fluid {
             padding-right: 0px;
             padding-left: 0px;
         }
     }
-    @media screen and (max-width: 1024px) {// iPad landscape and under
+    /** iPad landscape and under **/
+    @media screen and (max-width: 1024px) {
         .aui body {
             padding: 0;
         }
@@ -268,10 +253,5 @@ $yellow: #FF9900;
             -moz-box-sizing: border-box !important;
             -webkit-box-sizing: border-box !important;
             margin-bottom: 0.5rem !important;
-        }
-        .aui {
-            input, select {
-                font-size: 14px;
-            }
         }
     }

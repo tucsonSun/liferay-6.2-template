@@ -1,5 +1,5 @@
 <header class="container" id="banner" role="banner">
-	<div class="row-fluid">
+	<div class="row">
 		<div class="span12">
 			#if ($is_signed_in)
 				<ul class="nav nav-account-controls">
@@ -25,7 +25,7 @@
 			#end
 		</div>
 	</div>
-	<div class="row-fluid">
+	<div class="row">
 		<div class="span2">
 			<a class="$logo_css_class" href="/web/guest/home-page" title="#language_format ("go-to-x", [$site_name])">
 				<img alt="$logo_description" src="$images_folder/shockandbaww.png"  />
