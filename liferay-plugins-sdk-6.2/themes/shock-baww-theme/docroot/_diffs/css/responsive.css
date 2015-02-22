@@ -13,6 +13,25 @@ $yellow: #FF9900;
 @mixin inset-box-shadow {
     box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
+
+@mixin rounded-border-top($brd-top-radius) {
+	-webkit-border-top-right-radius: $brd-top-radius;
+	-webkit-border-top-left-radius: $brd-top-radius;
+	-moz-border-radius-topright: $brd-top-radius;
+	-moz-border-radius-topleft: $brd-top-radius;
+	border-top-right-radius: $brd-top-radius;
+	border-top-left-radius: $brd-top-radius;
+}
+
+@mixin rounded-border-bottom($brd-btm-radius) {
+    -webkit-border-bottom-right-radius: $brd-btm-radius;
+    -webkit-border-bottom-left-radius: $brd-btm-radius;
+    -moz-border-radius-bottomright: $brd-btm-radius;
+    -moz-border-radius-bottomleft: $brd-btm-radius;
+    border-bottom-right-radius: $brd-btm-radius;
+    border-bottom-left-radius: $brd-btm-radius;
+}
+
 @mixin gradient($from-color, $to-color) {
     /* Fallback */
     background-color: mix($from-color, $to-color);
@@ -70,12 +89,7 @@ $yellow: #FF9900;
         border-bottom: 1px solid lighten($yellow, 5%);
         border-top: none !important;
         @include box-shadow-general(0, 5px, 10px, rgba(0, 0, 0, 0.2));
-        -webkit-border-bottom-right-radius: 4px !important;
-        -webkit-border-bottom-left-radius: 4px !important;
-        -moz-border-radius-bottomright: 4px !important;
-        -moz-border-radius-bottomleft: 4px !important;
-        border-bottom-right-radius: 4px !important;
-        border-bottom-left-radius: 4px !important;
+    	@include rounded-border-bottom(4px);
         margin-top: -1px;
         margin-left: 1rem;
     }
@@ -106,7 +120,8 @@ $yellow: #FF9900;
             text-align: center;
             vertical-align: middle;
             cursor: pointer;
-            border-radius: 4px;
+			@include rounded-border-top(4px);
+   			@include rounded-border-bottom(4px);
             background: $yellow;
             float: right;
             padding: 7px 10px 9px 10px;
@@ -121,9 +136,8 @@ $yellow: #FF9900;
                 width: 18px;
                 height: 2px;
                 background-color: #f5f5f5;
-                -webkit-border-radius: 1px;
-                -moz-border-radius: 1px;
-                border-radius: 1px;
+                @include rounded-border-top(1px);
+    			@include rounded-border-bottom(1px);
                 @include box-shadow-general(0px, 1px, 0px, rgba(0, 0, 0, 0.25));
                 line-height: 14px;
                 vertical-align: text-top;
