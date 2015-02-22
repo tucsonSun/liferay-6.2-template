@@ -48,12 +48,12 @@ $yellow: 	#FF9900;
 	transition: color .3s ease;
 }
 
-#mobile-top-controls,
-#mobile-logo-wrapper {
+#header-wrapper #mobile-top-controls,
+#header-wrapper #mobile-logo-wrapper {
 	background-color: $lightGray;
 }
 
-#mobile-logo {
+#header-wrapper #mobile-logo-wrapper #mobile-logo {
 	display:block;
 	text-align:center;
 	img {
@@ -63,7 +63,7 @@ $yellow: 	#FF9900;
 }
 
 
-#mobile-nav {
+#header-wrapper #mobile-nav {
 	-webkit-box-shadow: 0px 10px 15px 0px rgba(255,153,0,0.60);
 	-moz-box-shadow: 0px 10px 15px 0px rgba(255,153,0,0.60);
 	box-shadow: 0px 10px 15px 0px rgba(255,153,0,0.60);

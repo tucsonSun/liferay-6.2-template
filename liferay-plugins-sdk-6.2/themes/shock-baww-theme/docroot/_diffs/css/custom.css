@@ -184,7 +184,6 @@ a:hover {
 
 .aui {
 	#header-wrapper {
-		width:100%;
 		background-color: $lightGray;
 		margin-bottom:1em;
 		header {	
