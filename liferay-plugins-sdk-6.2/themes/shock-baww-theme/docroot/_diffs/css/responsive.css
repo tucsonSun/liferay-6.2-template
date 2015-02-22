@@ -167,11 +167,6 @@ $yellow: 	#FF9900;
 }
  
 @media screen and (max-width: 320px) { // iPhone portrait and under
-	
-	.dataTables_paginate {
-		margin-right:1.5rem;
-	}
-
 	.aui {
 		.table {
 			display:block;
@@ -185,20 +180,6 @@ $yellow: 	#FF9900;
 		}
 	}
 
-	.policyPeriodSelect {
-		select {
-				margin-top:0.75rem !important;
-		}
-	}
-	.reportPremium {
-		float:none;
-		width:100%;
-		margin-bottom:1rem;
-		.btn {
-			width:100%;
-			
-		}
-	}
 
 	.aui {
 		button, .btn, #save {
@@ -212,19 +193,6 @@ $yellow: 	#FF9900;
 @media screen and (max-width: 640px) { // iPhone landscape and under
 	.aui [class*="span"], .aui .uneditable-input[class*="span"], .aui .row-fluid [class*="span"] {
 		width:auto;
-	}
-	#delete-download {
-		margin-top:1rem !important;
-		position:relative;
-		padding-left:0.25rem;
-	}
-	
-	#policySelector {
-		width: 100%;
-	}
-	#reportPremiumBtnArea {
-		width: 100%;
-		margin-bottom: 10px;
 	}
 	
 	.aui {
@@ -246,77 +214,22 @@ $yellow: 	#FF9900;
 		}
 	}
 	
-	
-	.reportPremium {
-		.btn {
-			margin-top:1rem;
-		}
-	}
-
-	.viewNav {
-		form {
-			margin: 0.75rem 0 1rem 0;
-		}
-	}
-
 	.aui {
 		button, .btn, #save {
 			width:100%;
 			margin-top: 0.5rem;
 		}
 	}
-
-	#save {
-		width:100%;
-	}
-
-	#delete-download {
-		margin-top: -40px;
-	}
-	
-	#asp-table-container {
-		margin-top: 40px;
-	}
 }
  
 @media screen and (max-width: 768px) { // iPad portrait and under
 	.aui {
-		.policyPeriodSelect, .policySelect {
-			width:100%;
-			margin-left:0;
-			float:left;
-			strong {
-				 width: 23.92818%;
-				 display: inline-block;
-				 float:left;
-				 margin-top: 0.5rem;
-			}
 
-			select {
-				width: 74.30939%;
-				display: inline-block;
-				float:left;
-				margin-left: 1.12766%;
-			}
-		}
-
-		.policySelect {
-			select {
-				margin-top:0.25rem;
-			}
-		}
-
-		.policyPeriodSelect {
-			select {
-					margin-top:0.25rem;
-			}
-		}	
 	}
 }
  
 @media screen and (max-width: 1024px) { // iPad landscape and under
 	 .aui body {padding:0;}
-	 .page-wrap {padding:1rem;}
 	 .aui input[type="text"], select{
 	    box-sizing: border-box !important;
 	    -moz-box-sizing: border-box !important;

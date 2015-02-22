@@ -1,4 +1,6 @@
-
+/** Bootstrap **/
+@import url(bootstrap/3.3.2/css/bootstrap-theme.min.css);
+@import url(bootstrap/3.3.2/css/bootstrap.min.css);
 
 /** Liferay stock CSS **/
 @import url(base.css);
