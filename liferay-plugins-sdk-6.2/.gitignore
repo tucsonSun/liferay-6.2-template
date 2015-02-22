@@ -18,6 +18,9 @@
 /tools/theme_tmpl/docroot/WEB-INF/lib*
 /tools/web_tmpl/docroot/WEB-INF/lib*
 
+/themes/*/docroot/WEB-INF/lib/util-bridges.jar
+/themes/*/docroot/WEB-INF/lib/util-java.jar
+/themes/*/docroot/WEB-INF/lib/util-taglib.jar
 /themes/*/docroot/css/.sass-cache*
 /themes/*/docroot/css*
 /themes/*/docroot/images*
