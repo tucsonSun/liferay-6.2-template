@@ -179,15 +179,6 @@ $yellow: 	#FF9900;
 			}
 		}
 	}
-
-
-	.aui {
-		button, .btn, #save {
-			margin-top:0.5rem !important;
-			width:100% !important;
-		}
-	}
-
 }
  
 @media screen and (max-width: 640px) { // iPhone landscape and under
@@ -213,18 +204,18 @@ $yellow: 	#FF9900;
 			width: 100%;
 		}
 	}
-	
-	.aui {
-		button, .btn, #save {
-			width:100%;
-			margin-top: 0.5rem;
-		}
-	}
 }
  
 @media screen and (max-width: 768px) { // iPad portrait and under
 	.aui {
 
+	}
+}
+
+@media screen and (max-width: 850px) { // iPad landscape and under
+	#header-wrapper .container-fluid {
+	  padding-right: 0px;
+	  padding-left: 0px;
 	}
 }
  
