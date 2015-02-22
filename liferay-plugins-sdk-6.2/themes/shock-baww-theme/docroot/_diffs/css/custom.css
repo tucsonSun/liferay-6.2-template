@@ -27,7 +27,6 @@
 // 
 //
 // ********************************************************************************
-
 // ********************************************************************************
 //
 //	1. SCSS Pieces
@@ -35,65 +34,60 @@
 //		1.2 Mixins
 // 
 // ********************************************************************************
-
 // --------------------------------------------------------------------------------
 // 	1.1 Variables
 // --------------------------------------------------------------------------------
-
 $lightestGray: #656565;
 $lightGray: #1b1b1b;
-$darkGray: 	#3F3F3F;
-$yellow: 	#FF9900;
-
+$darkGray: #3F3F3F;
+$yellow: #FF9900;
 // --------------------------------------------------------------------------------
 // 	1.2 Mixins
 // --------------------------------------------------------------------------------
-
 @mixin box-shadow {
-	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
-
 @mixin inset-box-shadow {
-	box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.3);
+    box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
-
 @mixin gradient($from-color, $to-color) {
-	background-color: mix($from-color, $to-color); /* Fallback */
-	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($from-color), to($to-color));
-	background-image: -webkit-linear-gradient(top, $from-color, $to-color); 
-	background-image:    -moz-linear-gradient(top, $from-color, $to-color);
-	background-image:     -ms-linear-gradient(top, $from-color, $to-color);
-	background-image:      -o-linear-gradient(top, $from-color, $to-color);
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$from-color}', EndColorStr='#{$to-color}')";
+    background-color: mix($from-color, $to-color);
+    /* Fallback */
+    
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($from-color), to($to-color));
+    background-image: -webkit-linear-gradient(top, $from-color, $to-color);
+    background-image: -moz-linear-gradient(top, $from-color, $to-color);
+    background-image: -ms-linear-gradient(top, $from-color, $to-color);
+    background-image: -o-linear-gradient(top, $from-color, $to-color);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$from-color}', EndColorStr='#{$to-color}')";
 }
-
 @mixin image-gradient($background-image, $from-color, $to-color) {
-	background-color: mix($from-color, $to-color); /* Fallback */
-	background-image: mix($from-color, $to-color); /* Fallback */
-	background: $background-image center center, -webkit-gradient(linear, 0% 0%, 0% 100%, from($from-color), to($to-color));
-	background: $background-image center center, -webkit-linear-gradient(top, $from-color, $to-color); 
-	background: $background-image center center,    -moz-linear-gradient(top, $from-color, $to-color);
-	background: $background-image center center,     -ms-linear-gradient(top, $from-color, $to-color);
-	background: $background-image center center,      -o-linear-gradient(top, $from-color, $to-color);
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$from-color}', EndColorStr='#{$to-color}')";
+    background-color: mix($from-color, $to-color);
+    /* Fallback */
+    
+    background-image: mix($from-color, $to-color);
+    /* Fallback */
+    
+    background: $background-image center center, -webkit-gradient(linear, 0% 0%, 0% 100%, from($from-color), to($to-color));
+    background: $background-image center center, -webkit-linear-gradient(top, $from-color, $to-color);
+    background: $background-image center center, -moz-linear-gradient(top, $from-color, $to-color);
+    background: $background-image center center, -ms-linear-gradient(top, $from-color, $to-color);
+    background: $background-image center center, -o-linear-gradient(top, $from-color, $to-color);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$from-color}', EndColorStr='#{$to-color}')";
 }
-
 @mixin text-shadow($color) {
-	text-shadow: 0 1px 0 $color;
+    text-shadow: 0 1px 0 $color;
 }
-
 @mixin background-fade {
-	-webkit-transition: background-color .3s ease;
-	-o-transition: background-color .3s ease;
-	transition: background-color .3s ease;
+    -webkit-transition: background-color .3s ease;
+    -o-transition: background-color .3s ease;
+    transition: background-color .3s ease;
 }
-
 @mixin color-fade {
-	-webkit-transition: color .3s ease;
-	-o-transition: color .3s ease;
-	transition: color .3s ease;
+    -webkit-transition: color .3s ease;
+    -o-transition: color .3s ease;
+    transition: color .3s ease;
 }
-
 // ********************************************************************************
 //
 //	2. Generic Styling
@@ -103,37 +97,26 @@ $yellow: 	#FF9900;
 //		
 // 
 // ********************************************************************************
-
-* {
-
+* {} .aui {
+    h2.page-header {
+        margin: 0 0 30px 0;
+    }
+    select {
+        width: auto;
+    }
 }
-
-.aui {
-	h2.page-header {
-		margin:0 0 30px 0;
-	}
-
-	
-	select {
-		width:auto;
-	}
-}
-
 a {
-	color:$darkGray;
-	@include color-fade;
+    color: $darkGray;
+    @include color-fade;
 }
 a:hover {
-	color:$yellow;
+    color: $yellow;
 }
-
-
 // --------------------------------------------------------------------------------
 // 	2.1 Utility Classes
 // --------------------------------------------------------------------------------
-
 .clearfix {
-    zoom:1;
+    zoom: 1;
     &:before, &:after {
         content: "\0020";
         display: block;
@@ -144,7 +127,6 @@ a:hover {
         clear: both;
     }
 }
-
 // ********************************************************************************
 //
 //	3. Generic Theme-Specific Styling
@@ -155,284 +137,246 @@ a:hover {
 //			3.1.4 Footer
 // 
 // ********************************************************************************
-
 .aui {
-	body.site {
-		@include image-gradient(url("../images/noise.png"),#fcfcfc,darken(#fcfcfc,5%));	
-	}
-	html, html a {
-    	-webkit-font-smoothing: antialiased;
-    	text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
-	}
+    body.site {
+        @include image-gradient(url("../images/noise.png"), #fcfcfc, darken(#fcfcfc, 5%));
+    }
+    html, html a {
+        -webkit-font-smoothing: antialiased;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+    }
 }
-
-.aui .portlet-journal-content .journal-content-article,
-.aui .portlet-content-container .journal-content-article {
+.aui .portlet-journal-content .journal-content-article, .aui .portlet-content-container .journal-content-article {
     word-break: normal;
     -moz-hyphens: none;
 }
-
-
 .nav-menu ul {
-	padding-left:0;
+    padding-left: 0;
 }
-
-
 // --------------------------------------------------------------------------------
 // 	3.1.1 Navigation
 // --------------------------------------------------------------------------------
-
 .aui {
-	#header-wrapper {
-		background-color: $lightGray;
-		margin-bottom:1em;
-		header {	
-			@extend .clearfix;		
-			.logo {
-				width:13rem;
-				float:left;
-				
-				margin-top:1.25em;
-				margin-bottom:1em;
-			}		
-			
-		}
-		#nav-wrapper {
-			-webkit-box-shadow: 0px 10px 15px 0px rgba(255,153,0,0.60);
-			-moz-box-shadow: 0px 10px 15px 0px rgba(255,153,0,0.60);
-			box-shadow: 0px 10px 15px 0px rgba(255,153,0,0.60);
-			@include image-gradient(url("../images/noise.png"),lighten($darkGray,10%),$darkGray);
-			display:block;
-			@extend .clearfix;
-			width:100%;
-			border-bottom: 1px solid lighten($darkGray,15%);
-			border-top: 1px solid darken($darkGray,15%);
-			#navigation {
-				margin:0 auto;	
-				.navbar-inner {
-					background: none;
-					padding-left:0 !important;
-					padding-right:0 !important;
-					@extend .clearfix;					
-					.nav-collapse {
-						@extend .clearfix;
-						.nav {
-							background-color: none;
-							display:inline-block;
-							margin:0;
-							padding:0;
-							& > li:first-child {						
-								border-left:1px solid darken($darkGray,10%);
-							}
-							& > li:last-child {
-								border-right:1px solid lighten($darkGray,10%);
-							}
-							& > li {
-								& > a {
-									@include image-gradient(url("../images/noise.png"),lighten($darkGray,5%),$darkGray);	
-									text-shadow: 0 1px 3px rgba(0,0,0,.4), 0 0 30px rgba(0,0,0,.075);
-									text-decoration: none;
-									color: #fff;														
-									background:none;
-									border-right:1px solid darken($darkGray,15%);
-									border-left:1px solid lighten($darkGray,15%);
-									padding:0.75rem 1rem 0.75rem 1rem;
-									@include background-fade;		
-								}
-								a:hover {
-									color:#fff;
-									@include image-gradient(url("../images/noise.png"),$darkGray,darken($darkGray,2%));
-								}
-							}
-							li.open, li.selected.open  {
-								& > a {
-									color:#fff;
-									@include image-gradient(url("../images/noise.png"),$darkGray,darken($darkGray,2%));
-								}
-							}	
-							li.selected {
-								& > a {
-									color:#fff;
-									@include image-gradient(url("../images/noise.png"),$darkGray,darken($darkGray,2%));
-								}
-							}
-							.child-menu {
-								-webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-								-moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-								box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-								border:none;
-								padding:0;
-								margin:0;
-								border-left:1px solid darken($darkGray, 10%);
-								border-right:1px solid darken($darkGray, 10%);
-								border-bottom:1px solid darken($darkGray, 10%);
-								@include image-gradient(url("../images/noise.png"),darken($darkGray,2%),darken($darkGray,4%));
-								& > li {
-									
-									a {
-										color:#fff;
-										@include color-fade;
-										background:none;
-										padding:0.75rem 1rem 0.75rem 1rem;
-										
-									}
-
-									a:hover {
-										text-decoration:none;
-										color:$yellow !important;
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
+    #header-wrapper {
+        background-color: $lightGray;
+        margin-bottom: 1em;
+        header {
+            @extend .clearfix;
+            .logo {
+                width: 13rem;
+                float: left;
+                margin-top: 1.25em;
+                margin-bottom: 1em;
+            }
+        }
+        #nav-wrapper {
+            -webkit-box-shadow: 0px 10px 15px 0px rgba(255, 153, 0, 0.60);
+            -moz-box-shadow: 0px 10px 15px 0px rgba(255, 153, 0, 0.60);
+            box-shadow: 0px 10px 15px 0px rgba(255, 153, 0, 0.60);
+            @include image-gradient(url("../images/noise.png"), lighten($darkGray, 10%), $darkGray);
+            display: block;
+            @extend .clearfix;
+            width: 100%;
+            border-bottom: 1px solid lighten($darkGray, 15%);
+            border-top: 1px solid darken($darkGray, 15%);
+            #navigation {
+                margin: 0 auto;
+                .navbar-inner {
+                    background: none;
+                    padding-left: 0 !important;
+                    padding-right: 0 !important;
+                    @extend .clearfix;
+                    .nav-collapse {
+                        @extend .clearfix;
+                        .nav {
+                            background-color: none;
+                            display: inline-block;
+                            margin: 0;
+                            padding: 0;
+                            & > li:first-child {
+                                border-left: 1px solid darken($darkGray, 10%);
+                            }
+                            & > li:last-child {
+                                border-right: 1px solid lighten($darkGray, 10%);
+                            }
+                            & > li {
+                                & > a {
+                                    @include image-gradient(url("../images/noise.png"), lighten($darkGray, 5%), $darkGray);
+                                    text-shadow: 0 1px 3px rgba(0, 0, 0, .4), 0 0 30px rgba(0, 0, 0, .075);
+                                    text-decoration: none;
+                                    color: #fff;
+                                    background: none;
+                                    border-right: 1px solid darken($darkGray, 15%);
+                                    border-left: 1px solid lighten($darkGray, 15%);
+                                    padding: 0.75rem 1rem 0.75rem 1rem;
+                                    @include background-fade;
+                                }
+                                a:hover {
+                                    color: #fff;
+                                    @include image-gradient(url("../images/noise.png"), $darkGray, darken($darkGray, 2%));
+                                }
+                            }
+                            li.open, li.selected.open {
+                                & > a {
+                                    color: #fff;
+                                    @include image-gradient(url("../images/noise.png"), $darkGray, darken($darkGray, 2%));
+                                }
+                            }
+                            li.selected {
+                                & > a {
+                                    color: #fff;
+                                    @include image-gradient(url("../images/noise.png"), $darkGray, darken($darkGray, 2%));
+                                }
+                            }
+                            .child-menu {
+                                -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+                                -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+                                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+                                border: none;
+                                padding: 0;
+                                margin: 0;
+                                border-left: 1px solid darken($darkGray, 10%);
+                                border-right: 1px solid darken($darkGray, 10%);
+                                border-bottom: 1px solid darken($darkGray, 10%);
+                                @include image-gradient(url("../images/noise.png"), darken($darkGray, 2%), darken($darkGray, 4%));
+                                & > li {
+                                    a {
+                                        color: #fff;
+                                        @include color-fade;
+                                        background: none;
+                                        padding: 0.75rem 1rem 0.75rem 1rem;
+                                    }
+                                    a:hover {
+                                        text-decoration: none;
+                                        color: $yellow !important;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
-
-
 // --------------------------------------------------------------------------------
 // 	 3.1.2 Portlet
 // --------------------------------------------------------------------------------
-
 .aui {
-	.portlet, .portlet-borderless-container {	
-		
-		@extend .clearfix;
-
-		.portlet-topper {
-			@include gradient(lighten($darkGray,5%), $darkGray);
-			text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
-		}
-
-		.portlet-content {
-			@extend .clearfix;
-		}
-	}
-
-	.portlet-borderless-container {	
-		background:none;
-	}
+    .portlet, .portlet-borderless-container {
+        @extend .clearfix;
+        .portlet-topper {
+            @include gradient(lighten($darkGray, 5%), $darkGray);
+            text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+        }
+        .portlet-content {
+            @extend .clearfix;
+        }
+    }
+    .portlet-borderless-container {
+        background: none;
+    }
 }
-
 // --------------------------------------------------------------------------------
 // 	3.1.3 SubFooter
 // --------------------------------------------------------------------------------
-
 .aui {
-	#sub-footer {			
-			
-		
-		color:$darkGray;
-		
-		h2 {
-								
-		}
-		i {
-			float: left;
-			font-size: 3rem;
-			margin-top: 0.65rem;
-			margin-right: 1rem;
-
-		}
-		a {
-			color:$darkGray;
-			text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
-			@include color-fade;	
-							
-		}
-		a:hover {
-			color:$yellow;
-		}
-		
-		p {
-			padding-left:4rem;
-								
-		}
-		#email {
-			p {
-				padding-left:4.25rem;
-			}
-		}
-		#mumbo { 
-			p {
-				padding-right:3rem;
-			}
-		}
-	}
+    #sub-footer {
+        color: $darkGray;
+        h2 i {
+            float: left;
+            font-size: 3rem;
+            margin-top: 0.65rem;
+            margin-right: 1rem;
+        }
+        a {
+            color: $darkGray;
+            text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+            @include color-fade;
+        }
+        a:hover {
+            color: $yellow;
+        }
+        p {
+            padding-left: 4rem;
+        }
+        #email {
+            p {
+                padding-left: 4.25rem;
+            }
+        }
+        #mumbo {
+            p {
+                padding-right: 3rem;
+            }
+        }
+    }
 }
-
 // --------------------------------------------------------------------------------
 // 	3.1.4 Footer
 // --------------------------------------------------------------------------------
-
 .aui {
-	#footer-wrapper {
-		width:100%;
-		background-color: $darkGray;
-		border-top:0.5rem solid $yellow;
-		@include image-gradient(url("../images/noise.png"),lighten($darkGray,5%),$darkGray);		
-		padding-top:3rem;
-		footer {
-			@extend .clearfix;		
-			clear:both;
-				p {
-					color:#ccc;
-					padding:1rem;
-					margin:0 !important;
-					-webkit-margin-before: 0 !important;
-					-webkit-margin-after: 0 !important;
-					clear:both;
-				}
-			.row-fluid {
-				ul {
-					margin-left:0;
-					padding: 0 4.25rem 0 2rem;
-					width:16.5%;
-					border-right: 1px solid $lightestGray;
-					li.list-header {
-						font-weight: bold;	
-						a {
-							font-weight: bold;
-						}	
-					}
-					li {
-						list-style-type: none;
-						margin:0;
-						padding:0;
-						
-						a {
-							color:#fff;
-							@include color-fade;
-							text-shadow: 0 1px 3px rgba(0,0,0,.4), 0 0 30px rgba(0,0,0,.075);
-						}
-						a:hover {
-							text-decoration:none;
-							color:$yellow;
-						}
-					}
-
-					li.selected {
-						a {
-							color:$yellow;
-						}
-					}
-				}
-				ul:first-child {
-					border-left:none;
-					padding-left:0;
-				}
-				ul:last-child {
-					border-right:none;
-					padding-right:0 !important;
-				}
-			}
-		}
-	}
+    #footer-wrapper {
+        width: 100%;
+        background-color: $darkGray;
+        border-top: 0.5rem solid $yellow;
+        @include image-gradient(url("../images/noise.png"), lighten($darkGray, 5%), $darkGray);
+        padding-top: 3rem;
+        footer {
+            @extend .clearfix;
+            clear: both;
+            p {
+                color: #ccc;
+                padding: 1rem;
+                margin: 0 !important;
+                -webkit-margin-before: 0 !important;
+                -webkit-margin-after: 0 !important;
+                clear: both;
+            }
+            .row-fluid {
+                ul {
+                    margin-left: 0;
+                    padding: 0 4.25rem 0 2rem;
+                    width: 16.5%;
+                    border-right: 1px solid $lightestGray;
+                    li.list-header {
+                        font-weight: bold;
+                        a {
+                            font-weight: bold;
+                        }
+                    }
+                    li {
+                        list-style-type: none;
+                        margin: 0;
+                        padding: 0;
+                        a {
+                            color: #fff;
+                            @include color-fade;
+                            text-shadow: 0 1px 3px rgba(0, 0, 0, .4), 0 0 30px rgba(0, 0, 0, .075);
+                        }
+                        a:hover {
+                            text-decoration: none;
+                            color: $yellow;
+                        }
+                    }
+                    li.selected {
+                        a {
+                            color: $yellow;
+                        }
+                    }
+                }
+                ul:first-child {
+                    border-left: none;
+                    padding-left: 0;
+                }
+                ul:last-child {
+                    border-right: none;
+                    padding-right: 0 !important;
+                }
+            }
+        }
+    }
 }
-
-
 // ********************************************************************************
 //
 //	4. Liferay Styling
@@ -444,404 +388,358 @@ a:hover {
 //		4.6 Breadcrumbs
 // 
 // ********************************************************************************
-
 // --------------------------------------------------------------------------------
 // 	4.1 Main Content
 // --------------------------------------------------------------------------------
 .aui {
-	#content-wrapper {
-		clear:both;
-		min-height:600px;
-		@extend .clearfix;
-		display:block;
-		width:100%;
-		
-	}
+    #content-wrapper {
+        clear: both;
+        min-height: 600px;
+        @extend .clearfix;
+        display: block;
+        width: 100%;
+    }
 }
-
 // --------------------------------------------------------------------------------
 // 	4.2 Sign-In Dockbar
 // --------------------------------------------------------------------------------
-
 .auth {
-	background:none !important;
-
-	border-top:0 !important;
-	
-	float:right;
-	-webkit-border-bottom-right-radius: 4px !important;
-	-webkit-border-bottom-left-radius: 4px !important;
-	-moz-border-radius-bottomright: 4px !important;
-	-moz-border-radius-bottomleft: 4px !important;
-	border-bottom-right-radius: 4px !important;
-	border-bottom-left-radius: 4px !important;
-
-	margin-top:-1px;
-
-	margin-left:1rem;
-
-
-	a {
-		@include image-gradient(url("../images/noise.png"),$yellow,darken($yellow,5%));	
-		color:#fff;
-		padding:0.5rem 0.75rem 0.5rem 0.75rem;
-		margin:0 !important;
-		font-weight: bold;
-
-		border-right:1px solid lighten($yellow,5%);
-		border-left:1px solid lighten($yellow,5%);
-		border-bottom:1px solid lighten($yellow,5%);
-		border-top:none !important;
-
-
-		-webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-		-moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-		box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-		
-	}
-	a:hover {
-		color: #fff;
-		@include image-gradient(url("../images/noise.png"),darken($yellow,5%),darken($yellow,10%));	
-		
-	}
+    background: none !important;
+    border-top: 0 !important;
+    float: right;
+    -webkit-border-bottom-right-radius: 4px !important;
+    -webkit-border-bottom-left-radius: 4px !important;
+    -moz-border-radius-bottomright: 4px !important;
+    -moz-border-radius-bottomleft: 4px !important;
+    border-bottom-right-radius: 4px !important;
+    border-bottom-left-radius: 4px !important;
+    margin-top: -1px;
+    margin-left: 1rem;
+    a {
+        @include image-gradient(url("../images/noise.png"), $yellow, darken($yellow, 5%));
+        color: #fff;
+        padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+        margin: 0 !important;
+        font-weight: bold;
+        border-right: 1px solid lighten($yellow, 5%);
+        border-left: 1px solid lighten($yellow, 5%);
+        border-bottom: 1px solid lighten($yellow, 5%);
+        border-top: none !important;
+        -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+    a:hover {
+        color: #fff;
+        @include image-gradient(url("../images/noise.png"), darken($yellow, 5%), darken($yellow, 10%));
+    }
 }
-
 .aui {
-	.user-item {
-		float:right;
-		display:inline-block;
-		padding:0.5rem 0.75rem 0.5rem 0.75rem;
-		margin:0 !important;
-		font-weight: bold;
-		color:$darkGray;
-		cursor: default;
-		a {
-			margin:0 !important;
-			font-weight: bold;
-			color:$darkGray;
-		}
-		a:hover {
-			@include color-fade;
-			color:lighten($darkGray,15%);
-			background:none !important;
-		}
-	}
-	.user-item.divider {
-		padding: 0.5rem 0.5rem;
-		margin: 0px !important;
-		font-weight: bold;
-		color: $darkGray;
-	}
+    .user-item {
+        float: right;
+        display: inline-block;
+        padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+        margin: 0 !important;
+        font-weight: bold;
+        color: $darkGray;
+        cursor: default;
+        a {
+            margin: 0 !important;
+            font-weight: bold;
+            color: $darkGray;
+        }
+        a:hover {
+            @include color-fade;
+            color: lighten($darkGray, 15%);
+            background: none !important;
+        }
+    }
+    .user-item.divider {
+        padding: 0.5rem 0.5rem;
+        margin: 0px !important;
+        font-weight: bold;
+        color: $darkGray;
+    }
 }
-
 // --------------------------------------------------------------------------------
 // 	4.3 Search Dockbar
 // --------------------------------------------------------------------------------
-
 .aui {
-	#header-search {
-		padding-top:5em;
-		display:inline-block;
-		float:right;
-		margin-top:17px;
-		@extend .clearfix;
-	
-		form {
-			margin:0;
-			@extend .clearfix;
-			float:right;
-
-		}
-		ul {
-			float:left;
-			display:block;
-			margin-right:1rem;
-			li {
-				float:left;
-				display:inline-block;
-				margin-right:1rem;
-				strong {
-					float:left;
-					margin-right:0.5rem;
-				}
-				a {
-					float:left;
-					color:$darkGray;
-					@include color-fade;
-					text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
-				}
-				a:hover {
-					color:$yellow;
-					background: none;
-				}
-			}
-		}
-		input[type="image"] {
-			
-		}
-		select {
-			display:none;
-		}
-		button, input[type="text"] {
-			float:left;
-		}
-		input[type="text"] {
-			margin-top:0 !important;
-		}	
-		button {
-			@include image-gradient(url("../images/noise.png"),$yellow,darken($yellow,5%));	
-			color:#fff;
-			margin-left:0.25em;
-			font-weight: bold;
-			border-right:1px solid lighten($yellow,5%);
-			border-left:1px solid lighten($yellow,5%);
-			border-bottom:1px solid lighten($yellow,5%);
-			border-top:none !important;
-			-webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-			-moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-			box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-			text-shadow: none;	
-		}
-		button:hover {
-			color: #fff;
-			@include image-gradient(url("../images/noise.png"),darken($yellow,5%),darken($yellow,10%));	
-		}
-	}
+    #header-search {
+        padding-top: 5em;
+        display: inline-block;
+        float: right;
+        margin-top: 17px;
+        @extend .clearfix;
+        form {
+            margin: 0;
+            @extend .clearfix;
+            float: right;
+        }
+        ul {
+            float: left;
+            display: block;
+            margin-right: 1rem;
+            li {
+                float: left;
+                display: inline-block;
+                margin-right: 1rem;
+                strong {
+                    float: left;
+                    margin-right: 0.5rem;
+                }
+                a {
+                    float: left;
+                    color: $darkGray;
+                    @include color-fade;
+                    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+                }
+                a:hover {
+                    color: $yellow;
+                    background: none;
+                }
+            }
+        }
+        input[type="image"] {} select {
+            display: none;
+        }
+        button, input[type="text"] {
+            float: left;
+        }
+        input[type="text"] {
+            margin-top: 0 !important;
+        }
+        button {
+            @include image-gradient(url("../images/noise.png"), $yellow, darken($yellow, 5%));
+            color: #fff;
+            margin-left: 0.25em;
+            font-weight: bold;
+            border-right: 1px solid lighten($yellow, 5%);
+            border-left: 1px solid lighten($yellow, 5%);
+            border-bottom: 1px solid lighten($yellow, 5%);
+            border-top: none !important;
+            -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            text-shadow: none;
+        }
+        button:hover {
+            color: #fff;
+            @include image-gradient(url("../images/noise.png"), darken($yellow, 5%), darken($yellow, 10%));
+        }
+    }
 }
-
 .aui {
-	#hidden-search {
-		display:none;
-	}
+    #hidden-search {
+        display: none;
+    }
 }
-
 // --------------------------------------------------------------------------------
 // 	4.4 Portlet Navigation
 // --------------------------------------------------------------------------------
 .aui {
-	#content {
-		.portlet-navigation {
-		 	a {
-		 		color:$darkGray;
-		 	}
-			a.selected {
-				color:#fff;
-				background:lighten($darkGray,10%);	
-			}
-		}
-	}
+    #content {
+        .portlet-navigation {
+            a {
+                color: $darkGray;
+            }
+            a.selected {
+                color: #fff;
+                background: lighten($darkGray, 10%);
+            }
+        }
+    }
 }
-
 .aui {
-	.accordion-group {
-		border:1px solid #e5e5e5;
-	}
-
-	.accordion-toggle {
-		color:$darkGray;
-	}
-	.accordion-toggle:hover {
-		color:$darkGray;
-		background:#e5e5e5;
-	}
+    .accordion-group {
+        border: 1px solid #e5e5e5;
+    }
+    .accordion-toggle {
+        color: $darkGray;
+    }
+    .accordion-toggle:hover {
+        color: $darkGray;
+        background: #e5e5e5;
+    }
 }
-
-.aui .control-group, .aui .form-actions {clear:both;}
-
-.aui .input-append {padding-right:0 !important;}
-
+.aui .control-group, .aui .form-actions {
+    clear: both;
+}
+.aui .input-append {
+    padding-right: 0 !important;
+}
 .panel {
-  padding: 15px !important;
-  margin-bottom: 20px;
-  background-color: #ffffff;
-  border: 1px solid #dddddd;
-  border-radius: 4px;
-  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    padding: 15px !important;
+    margin-bottom: 20px;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
-
 .panel-heading {
-  padding: 5px 10px;
-  margin: -15px -15px 15px;
-  font-size: 17.5px;
-  font-weight: 500;      
-  @include image-gradient(url("../images/noise.png"),lighten($darkGray,5%),$darkGray);
-  border-bottom: 0.25rem solid $yellow;
-  border-top-right-radius: 3px;
-  border-top-left-radius: 3px;
-  color:#fff;
+    padding: 5px 10px;
+    margin: -15px -15px 15px;
+    font-size: 17.5px;
+    font-weight: 500;
+    @include image-gradient(url("../images/noise.png"), lighten($darkGray, 5%), $darkGray);
+    border-bottom: 0.25rem solid $yellow;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+    color: #fff;
 }
-
 .panel-heading.admin {
-	@include image-gradient(url("../images/noise.png"),lighten($yellow,5%),$yellow);
-	border-bottom: 0.25rem solid lighten($darkGray,10%);
+    @include image-gradient(url("../images/noise.png"), lighten($yellow, 5%), $yellow);
+    border-bottom: 0.25rem solid lighten($darkGray, 10%);
 }
-
 .panel-footer {
-  padding: 10px 15px;
-  margin: 15px -15px -15px;
-  background-color: #f5f5f5;
-  border-top: 1px solid #dddddd;
-  border-bottom-right-radius: 3px;
-  border-bottom-left-radius: 3px;
+    padding: 10px 15px;
+    margin: 15px -15px -15px;
+    background-color: #f5f5f5;
+    border-top: 1px solid #dddddd;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
 }
-
 .panel-primary {
-  border-color: #428bca;
+    border-color: #428bca;
 }
-
 .panel-primary .panel-heading {
-  color: #ffffff;
-  background-color: #428bca;
-  border-color: #428bca;
+    color: #ffffff;
+    background-color: #428bca;
+    border-color: #428bca;
 }
-
 .panel-success {
-  border-color: #d6e9c6;
+    border-color: #d6e9c6;
 }
-
 .panel-success .panel-heading {
-  color: #468847;
-  background-color: #dff0d8;
-  border-color: #d6e9c6;
+    color: #468847;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
 }
-
 .panel-warning {
-  border-color: #fbeed5;
+    border-color: #fbeed5;
 }
-
 .panel-warning .panel-heading {
-  color: #c09853;
-  background-color: #fcf8e3;
-  border-color: #fbeed5;
+    color: #c09853;
+    background-color: #fcf8e3;
+    border-color: #fbeed5;
 }
-
 .panel-danger {
-  border-color: #eed3d7;
+    border-color: #eed3d7;
 }
-
 .panel-danger .panel-heading {
-  color: #b94a48;
-  background-color: #f2dede;
-  border-color: #eed3d7;
+    color: #b94a48;
+    background-color: #f2dede;
+    border-color: #eed3d7;
 }
-
 .panel-info {
-  border-color: #bce8f1;
+    border-color: #bce8f1;
 }
-
 .panel-info .panel-heading {
-  color: #3a87ad;
-  background-color: #d9edf7;
-  border-color: #bce8f1;
+    color: #3a87ad;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
 }
-
- .aui .nav-tabs.nav-stacked > li > a {
-	color:$darkGray;
+.aui .nav-tabs.nav-stacked > li > a {
+    color: $darkGray;
 }
-
 // --------------------------------------------------------------------------------
 // 	4.5 Navigation Menu
 // --------------------------------------------------------------------------------
 .aui {
-	div.nav-menu {
-		ul {
-			*zoom: 1;			
-			margin-bottom: 20px;
-			margin-left: 0;
-			list-style: none;
-			&:before,&:after {
-				display: table;
-				line-height: 0;
-				content: "";
-			}
-			&:after {
-				clear: both;
-			}
-			li {
-				 margin-bottom: -1px;
-				a {
-					border: 1px solid #ddd;
-			
-					display: block;
-					padding-right: 12px;
-					padding-left: 12px;
-					padding-top: 8px;
-					padding-bottom: 8px;
-					line-height: 20px;
-					
-					background-color: #fff;
-				}
-				a:hover {
-					z-index: 2;
-					border-color: #ddd;
-					text-decoration: none;
-					background-color:#ddd;
-				}
-				&:first-child {
-					a {
-						-webkit-border-top-right-radius: 4px;
-						border-top-right-radius: 4px;
-						-webkit-border-top-left-radius: 4px;
-						border-top-left-radius: 4px;
-						-moz-border-radius-topright: 4px;
-						-moz-border-radius-topleft: 4px;
-					}
-				}
-				&:last-child {
-					a {
-						-webkit-border-bottom-right-radius: 4px;
-						border-bottom-right-radius: 4px;
-						-webkit-border-bottom-left-radius: 4px;
-						border-bottom-left-radius: 4px;
-						-moz-border-radius-bottomright: 4px;
-						-moz-border-radius-bottomleft: 4px;
-					}
-				}
-			}
-			li.selected {
-				a, a:hover, a:focus {
-					color: #555555;
-					cursor: default;
-					background-color: #ffffff;
-					border: 1px solid #ddd;
-					border-bottom-color: transparent;
-				}
-			}
-		}
-	}
+    div.nav-menu {
+        ul {
+            *zoom: 1;
+            margin-bottom: 20px;
+            margin-left: 0;
+            list-style: none;
+            &:before, &:after {
+                display: table;
+                line-height: 0;
+                content: "";
+            }
+            &:after {
+                clear: both;
+            }
+            li {
+                margin-bottom: -1px;
+                a {
+                    border: 1px solid #ddd;
+                    display: block;
+                    padding-right: 12px;
+                    padding-left: 12px;
+                    padding-top: 8px;
+                    padding-bottom: 8px;
+                    line-height: 20px;
+                    background-color: #fff;
+                }
+                a:hover {
+                    z-index: 2;
+                    border-color: #ddd;
+                    text-decoration: none;
+                    background-color: #ddd;
+                }
+                &:first-child {
+                    a {
+                        -webkit-border-top-right-radius: 4px;
+                        border-top-right-radius: 4px;
+                        -webkit-border-top-left-radius: 4px;
+                        border-top-left-radius: 4px;
+                        -moz-border-radius-topright: 4px;
+                        -moz-border-radius-topleft: 4px;
+                    }
+                }
+                &:last-child {
+                    a {
+                        -webkit-border-bottom-right-radius: 4px;
+                        border-bottom-right-radius: 4px;
+                        -webkit-border-bottom-left-radius: 4px;
+                        border-bottom-left-radius: 4px;
+                        -moz-border-radius-bottomright: 4px;
+                        -moz-border-radius-bottomleft: 4px;
+                    }
+                }
+            }
+            li.selected {
+                a, a:hover, a:focus {
+                    color: #555555;
+                    cursor: default;
+                    background-color: #ffffff;
+                    border: 1px solid #ddd;
+                    border-bottom-color: transparent;
+                }
+            }
+        }
+    }
 }
-
 // --------------------------------------------------------------------------------
 // 	4.6 Breadcrumbs
 // --------------------------------------------------------------------------------
 .aui {
-	.lfr-hudcrumbs {
-		display:none !important;
-	}
-	#breadcrumbs {
-		margin-bottom:0;
-		.breadcrumb {
-			border-radius: 0;
-			background:none;
-			padding:0;						
-			
-			li, li.active {
-				font-size:12px;
-				a {
-					color:$darkGray;
-					@include color-fade;
-				}
-				a:hover {
-					color:$yellow;
-					text-decoration: none;
-				}
-			}
-			border-bottom:1px solid #eee;
-		}
-	}
+    .lfr-hudcrumbs {
+        display: none !important;
+    }
+    #breadcrumbs {
+        margin-bottom: 0;
+        .breadcrumb {
+            border-radius: 0;
+            background: none;
+            padding: 0;
+            li, li.active {
+                font-size: 12px;
+                a {
+                    color: $darkGray;
+                    @include color-fade;
+                }
+                a:hover {
+                    color: $yellow;
+                    text-decoration: none;
+                }
+            }
+            border-bottom:1px solid #eee;
+        }
+    }
 }
-
 // ********************************************************************************
 //
 //	5. Misc Styling
@@ -849,7 +747,6 @@ a:hover {
 //		5.2 Images
 // 
 // ********************************************************************************
-
 // --------------------------------------------------------------------------------
 // 	5.1 Generic
 // --------------------------------------------------------------------------------
@@ -857,17 +754,15 @@ a:hover {
 .left { text-align: left; }
 .right { text-align: right; }
 .center { text-align: center; }
-
 // --------------------------------------------------------------------------------
 // 	5.2 Images
 // --------------------------------------------------------------------------------
 .imageCenter { display: block; margin: 0 auto; }
 img.documentThumb {
-	padding: 0px;
-	margin: 0 10px 0 0;
-	float: left;
-	
-	-moz-box-shadow:    3px 3px 5px 6px #BCBCBC;
-  	-webkit-box-shadow: 3px 3px 5px 6px #BCBCBC;
-  	box-shadow:         3px 3px 5px 6px #BCBCBC;
+    padding: 0px;
+    margin: 0 10px 0 0;
+    float: left;
+    -moz-box-shadow: 3px 3px 5px 6px #BCBCBC;
+    -webkit-box-shadow: 3px 3px 5px 6px #BCBCBC;
+    box-shadow: 3px 3px 5px 6px #BCBCBC;
 }
