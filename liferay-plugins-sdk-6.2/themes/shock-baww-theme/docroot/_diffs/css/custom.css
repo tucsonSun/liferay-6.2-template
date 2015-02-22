@@ -108,6 +108,13 @@ $yellow: #FF9900;
     -o-transition: color .3s ease;
     transition: color .3s ease;
 }
+@mixin border-fade($bd-color, $percent-fade) {
+    border-right: 1px solid lighten($bd-color, $percent-fade);
+    border-left: 1px solid lighten($bd-color, $percent-fade);
+    border-bottom: 1px solid lighten($bd-color, $percent-fade);
+    border-bottom: 1px solid lighten($bd-color, $percent-fade);
+}
+
 // ********************************************************************************
 //
 //	2. Generic Styling
@@ -251,9 +258,7 @@ a:hover {
                                 border: none;
                                 padding: 0;
                                 margin: 0;
-                                border-left: 1px solid darken($darkGray, 10%);
-                                border-right: 1px solid darken($darkGray, 10%);
-                                border-bottom: 1px solid darken($darkGray, 10%);
+                                @include border-fade($darkGray, 10%);
                                 @include image-gradient(url("../images/noise.png"), darken($darkGray, 2%), darken($darkGray, 4%));
                                 & > li {
                                     a {
@@ -431,10 +436,8 @@ a:hover {
         padding: 0.5rem 0.75rem 0.5rem 0.75rem;
         margin: 0 !important;
         font-weight: bold;
-        border-right: 1px solid lighten($yellow, 5%);
-        border-left: 1px solid lighten($yellow, 5%);
-        border-bottom: 1px solid lighten($yellow, 5%);
-        border-top: none !important;
+        @include border-fade($yellow, 5%);
+        border-top: none;
         @include box-shadow-general(0, 5px, 10px, rgba(0, 0, 0, 0.2));
         @include rounded-border-bottom(4px);
     }
@@ -525,10 +528,8 @@ a:hover {
             color: #fff;
             margin-left: 0.25em;
             font-weight: bold;
-            border-right: 1px solid lighten($yellow, 5%);
-            border-left: 1px solid lighten($yellow, 5%);
-            border-bottom: 1px solid lighten($yellow, 5%);
-            border-top: none !important;
+            @include border-fade($yellow, 5%);
+            border-top:none;
             @include box-shadow-general(0, 5px, 10px, rgba(0, 0, 0, 0.2));
             @include rounded-border-top(4px);
     		@include rounded-border-bottom(4px);
