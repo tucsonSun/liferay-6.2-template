@@ -23,7 +23,6 @@
 //		4.6 Breadcrumbs
 //	5. Misc Styling
 //		5.1 Generic
-//		5.2 Images
 // 
 //
 // ********************************************************************************
@@ -41,6 +40,7 @@ $lightestGray: #656565;
 $lightGray: #1b1b1b;
 $darkGray: #3F3F3F;
 $yellow: #FF9900;
+$white: #fff;
 // --------------------------------------------------------------------------------
 // 	1.2 Mixins
 // --------------------------------------------------------------------------------
@@ -48,9 +48,6 @@ $yellow: #FF9900;
 	-webkit-box-shadow: $horizontal $vertical $blur $box_color;
     -moz-box-shadow: $horizontal $vertical $blur r$box_color;
     box-shadow: $horizontal $vertical $blur $box_color;
-}
-@mixin inset-box-shadow {
-    box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 @mixin rounded-border-top($brd-top-radius) {
@@ -115,6 +112,78 @@ $yellow: #FF9900;
     border-bottom: 1px solid lighten($bd-color, $percent-fade);
 }
 
+
+/********************************************************************************/
+/* Global Link 		styles  			  										*/
+/********************************************************************************/
+a {	
+	color:$yellow; 
+	outline: 0;	
+	text-decoration: none;
+}
+a:hover { 
+	text-decoration: underline; 
+	@include image-gradient(url("../images/noise.png"), darken($yellow, 5%), darken($yellow, 10%));
+}
+
+#header-wrapper {
+	.nav { 
+		a {	
+			color:$lightestGray; 
+			@include rounded-border-bottom(4px);
+		}
+		a:hover { 
+			@include image-gradient(url("../images/noise.png"), darken($yellow, 5%), darken($yellow, 10%));
+		}
+	}
+	#header-search {
+
+	}
+}
+
+#footer-wrapper { 
+	a {	
+		color:$white; 
+		@include color-fade;
+		text-shadow: 0 1px 3px rgba(0, 0, 0, .4), 0 0 30px rgba(0, 0, 0, .075);
+	}
+	a:hover { 
+		@include image-gradient(url("../images/noise.png"), darken($yellow, 5%), darken($yellow, 10%));
+	}
+}
+
+
+/********************************************************************************/
+/* Global Image 	styles  				  									*/
+/********************************************************************************/
+img {
+	border: 0;
+}
+.imageCenter { display: block; margin: 0 auto; }
+img.documentThumb {
+    padding: 0px;
+    margin: 0 10px 0 0;
+    float: left;
+    @include box-shadow-general(3px, 3px, 5px, #BCBCBC);
+}
+/********************************************************************************/
+/* Global TextFields/TextAreas Highlight Styles									*/
+/********************************************************************************/
+/** CSS3 the :not() selector styles for everything but the submit and file buttons **/
+input:not([type=submit]):not([type=file]):not([type=button]) {
+    color: #696969;
+}
+
+textarea {
+    color: #696969;
+    font-size: 14px;
+}
+
+/** TextAreas on Focus **/
+input:not([type=submit]):not([type=file]):not([type=button]):focus, 
+textarea:focus {
+	background-color: #BCF5A9;
+}
 // ********************************************************************************
 //
 //	2. Generic Styling
@@ -131,13 +200,6 @@ $yellow: #FF9900;
     select {
         width: auto;
     }
-}
-a {
-    color: $darkGray;
-    @include color-fade;
-}
-a:hover {
-    color: $yellow;
 }
 // --------------------------------------------------------------------------------
 // 	2.1 Utility Classes
@@ -229,27 +291,15 @@ a:hover {
                                     @include image-gradient(url("../images/noise.png"), lighten($darkGray, 5%), $darkGray);
                                     text-shadow: 0 1px 3px rgba(0, 0, 0, .4), 0 0 30px rgba(0, 0, 0, .075);
                                     text-decoration: none;
-                                    color: #fff;
                                     background: none;
                                     border-right: 1px solid darken($darkGray, 15%);
                                     border-left: 1px solid lighten($darkGray, 15%);
                                     padding: 0.75rem 1rem 0.75rem 1rem;
                                     @include background-fade;
                                 }
-                                a:hover {
-                                    color: #fff;
-                                    @include image-gradient(url("../images/noise.png"), $darkGray, darken($darkGray, 2%));
-                                }
                             }
-                            li.open, li.selected.open {
+                            li.open, li.selected.open, li.selected {
                                 & > a {
-                                    color: #fff;
-                                    @include image-gradient(url("../images/noise.png"), $darkGray, darken($darkGray, 2%));
-                                }
-                            }
-                            li.selected {
-                                & > a {
-                                    color: #fff;
                                     @include image-gradient(url("../images/noise.png"), $darkGray, darken($darkGray, 2%));
                                 }
                             }
@@ -262,14 +312,7 @@ a:hover {
                                 @include image-gradient(url("../images/noise.png"), darken($darkGray, 2%), darken($darkGray, 4%));
                                 & > li {
                                     a {
-                                        color: #fff;
-                                        @include color-fade;
-                                        background: none;
                                         padding: 0.75rem 1rem 0.75rem 1rem;
-                                    }
-                                    a:hover {
-                                        text-decoration: none;
-                                        color: $yellow !important;
                                     }
                                 }
                             }
@@ -336,68 +379,48 @@ a:hover {
 // --------------------------------------------------------------------------------
 // 	3.1.4 Footer
 // --------------------------------------------------------------------------------
-.aui {
-    #footer-wrapper {
-        width: 100%;
-        background-color: $darkGray;
-        border-top: 0.5rem solid $yellow;
-        @include image-gradient(url("../images/noise.png"), lighten($darkGray, 5%), $darkGray);
-        padding-top: 3rem;
-        footer {
-            @extend .clearfix;
-            clear: both;
-            p {
-                color: #ccc;
-                padding: 1rem;
-                margin: 0 !important;
-                -webkit-margin-before: 0 !important;
-                -webkit-margin-after: 0 !important;
-                clear: both;
+
+#footer-wrapper {
+    width: 100%;
+    background-color: $darkGray;
+    border-top: 0.5rem solid $yellow;
+    @include image-gradient(url("../images/noise.png"), lighten($darkGray, 5%), $darkGray);
+    padding-top: 3rem;
+    footer {
+        @extend .clearfix;
+        clear: both;
+        #desktopFooter {
+            ul {
+                margin-left: 0;
+                padding: 0 4.25rem 0 2rem;
+                width: 16.5%;
+                border-right: 1px solid $lightestGray;
+                li.list-header {
+                    font-weight: bold;
+                }
+                li {
+                    list-style-type: none;
+                    margin: 0;
+                    padding: 0;
+                }
+                li.selected {
+                    a {
+                        color: $yellow;
+                    }
+                }
             }
-            .row {
-                ul {
-                    margin-left: 0;
-                    padding: 0 4.25rem 0 2rem;
-                    width: 16.5%;
-                    border-right: 1px solid $lightestGray;
-                    li.list-header {
-                        font-weight: bold;
-                        a {
-                            font-weight: bold;
-                        }
-                    }
-                    li {
-                        list-style-type: none;
-                        margin: 0;
-                        padding: 0;
-                        a {
-                            color: #fff;
-                            @include color-fade;
-                            text-shadow: 0 1px 3px rgba(0, 0, 0, .4), 0 0 30px rgba(0, 0, 0, .075);
-                        }
-                        a:hover {
-                            text-decoration: none;
-                            color: $yellow;
-                        }
-                    }
-                    li.selected {
-                        a {
-                            color: $yellow;
-                        }
-                    }
-                }
-                ul:first-child {
-                    border-left: none;
-                    padding-left: 0;
-                }
-                ul:last-child {
-                    border-right: none;
-                    padding-right: 0 !important;
-                }
+            ul:first-child {
+                border-left: none;
+                padding-left: 0;
+            }
+            ul:last-child {
+                border-right: none;
+                padding-right: 0;
             }
         }
     }
 }
+
 // ********************************************************************************
 //
 //	4. Liferay Styling
@@ -431,15 +454,13 @@ a:hover {
     margin-top: -1px;
     margin-left: 1rem;
     a {
-        @include image-gradient(url("../images/noise.png"), $yellow, darken($yellow, 5%));
-        color: #fff;
         padding: 0.5rem 0.75rem 0.5rem 0.75rem;
         margin: 0 !important;
         font-weight: bold;
         @include border-fade($yellow, 5%);
         border-top: none;
         @include box-shadow-general(0, 5px, 10px, rgba(0, 0, 0, 0.2));
-        @include rounded-border-bottom(4px);
+        @include image-gradient(url("../images/noise.png"), $yellow, darken($yellow, 5%));
     }
     a:hover {
         color: #fff;
@@ -713,14 +734,6 @@ a:hover {
             padding: 0;
             li, li.active {
                 font-size: 12px;
-                a {
-                    color: $darkGray;
-                    @include color-fade;
-                }
-                a:hover {
-                    color: $yellow;
-                    text-decoration: none;
-                }
             }
             border-bottom:1px solid #eee;
         }
@@ -740,13 +753,4 @@ a:hover {
 .left { text-align: left; }
 .right { text-align: right; }
 .center { text-align: center; }
-// --------------------------------------------------------------------------------
-// 	5.2 Images
-// --------------------------------------------------------------------------------
-.imageCenter { display: block; margin: 0 auto; }
-img.documentThumb {
-    padding: 0px;
-    margin: 0 10px 0 0;
-    float: left;
-    @include box-shadow-general(3px, 3px, 5px, #BCBCBC);
-}
+.clear { clear:both; }

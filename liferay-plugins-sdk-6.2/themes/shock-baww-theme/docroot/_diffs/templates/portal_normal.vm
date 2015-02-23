@@ -78,22 +78,19 @@
 		<footer>
 			<div id="footer-wrapper">
 			     <footer class="container" id="footer" role="contentinfo">
-			     	<div class="row">
-			          	<div class="hidden-phone hidden-tablet">
-							#parse ("$full_templates_path/desktop_footer.vm")
-						</div>
-						
-						<div id="mobileFooterSocial" class="visible-phone visible-tablet hidden-desktop">
-							#parse ("$full_templates_path/mobile_footer.vm")
-						</div>
-			        </div>
-			        
-				    <div class="row">
-			        	<div class="span12">
-			        		<p>&copy; Shock and Baww 2015</p>
-			        	</div>
-			        </div>
-			              
+		          	<div id="desktopFooter" class="visible-desktop">
+						#parse ("$full_templates_path/desktop_footer.vm")
+					</div>
+					
+					<div id="mobileFooter" class="hidden-desktop">
+						#parse ("$full_templates_path/mobile_footer.vm")
+					</div>
+		        
+		        	<div id="copyRightFooter" class="clear">
+		        		<p>
+		        		&copy; Shock and Baww <script>document.write(new Date().getFullYear())</script>
+		        		</p>
+		        	</div>
 			     </footer>
 			</div>
 		</footer>

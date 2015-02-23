@@ -10,10 +10,6 @@ $yellow: #FF9900;
     box-shadow: $horizontal $vertical $blur $box_color;
 }
 
-@mixin inset-box-shadow {
-    box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.3);
-}
-
 @mixin rounded-border-top($brd-top-radius) {
 	-webkit-border-top-right-radius: $brd-top-radius;
 	-webkit-border-top-left-radius: $brd-top-radius;
@@ -201,31 +197,27 @@ $yellow: #FF9900;
         }
     }
 }
-footer {
-    text-align: center !important;
-    a {
-        color: #fff !important;
-    }
-    #mobileFooterSocial {
-        display: block !important;
-        width: 100% !important;
-        text-align: center !important;
-        ul {
-            display: block !important;
-            text-align: center !important;
-            width: 100% !important;
-            border-bottom: 1px solid $lightestGray;
-            li {
-                list-style-type: none;
-                padding: 1rem !important;
-                a {
-                    display: block;
-                    color: #fff;
-                    font-size: 2.5rem;
-                }
-            }
-        }
-    }
+
+#footer-wrapper {
+	footer {
+	    #mobileFooter {
+	        ul {
+	            display: block;
+	            text-align: center;
+	            width: 100%;
+	            border-bottom: 1px solid $lightestGray;
+	            li {
+	                list-style-type: none;
+	                padding: 1rem;
+	                a {
+	                    display: block;
+	                    color: #fff;
+	                    font-size: 2.5rem;
+	                }
+	            }
+	        }
+	    }
+	}
 }
 /** iPhone portrait and under **/
 
@@ -264,11 +256,5 @@ footer {
 @media screen and (max-width: 1024px) {
     .aui body {
         padding: 0;
-    }
-    .aui input[type="text"], select {
-        box-sizing: border-box !important;
-        -moz-box-sizing: border-box !important;
-        -webkit-box-sizing: border-box !important;
-        margin-bottom: 0.5rem !important;
     }
 }
