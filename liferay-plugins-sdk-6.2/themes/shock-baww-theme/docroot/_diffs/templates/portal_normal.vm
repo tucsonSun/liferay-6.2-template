@@ -30,12 +30,10 @@
 			
 		<div class="page-wrap">
 			<div class="container hidden-tablet hidden-phone visible-desktop">
-				<div class="row-flud">
-					<div class="span12">
-						#if ($is_signed_in && $permissionChecker.isOmniadmin())
-						     #dockbar()   
-						#end
-					</div>
+				<div class="row">
+					#if ($is_signed_in && $permissionChecker.isOmniadmin())
+					     #dockbar()   
+					#end
 				</div>
 			</div>
 			
@@ -88,8 +86,9 @@
 		        
 		        	<div id="copyRightFooter" class="clear">
 		        		<p>
-		        		&copy; Shock and Baww <script>document.write(new Date().getFullYear())</script>
+		        		Copyright &copy; Shock and Baww <script>document.write(new Date().getFullYear());</script>
 		        		</p>
+						<div class="container">
 		        	</div>
 			     </footer>
 			</div>

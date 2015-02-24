@@ -38,7 +38,7 @@ $yellow: #FF9900;
     background-image: -o-linear-gradient(top, $from-color, $to-color);
     -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$from-color}', EndColorStr='#{$to-color}')";
 }
-@mixin image-gradient($background-image, $from-color, $to-color) {
+@mixin bg-gradient($background-image, $from-color, $to-color) {
     /* Fallback */
     background-color: mix($from-color, $to-color);
     /* Fallback */
@@ -79,7 +79,7 @@ $yellow: #FF9900;
         display: inline-block;
     }
     a.acct {
-        @include image-gradient(url("../images/noise.png"), $yellow, darken($yellow, 5%));
+        @include bg-gradient(url("../images/noise.png"), $yellow, darken($yellow, 5%));
         display: inline-block;
         text-align: center;
         height: auto;
@@ -111,7 +111,7 @@ $yellow: #FF9900;
     #mobile-nav-bar {
         display: block;
         height: 55px;
-        @include image-gradient(url("../images/noise.png"), lighten($darkGray, 10%), $darkGray);
+        @include bg-gradient(url("../images/noise.png"), lighten($darkGray, 10%), $darkGray);
         border-bottom: 1px solid darken($darkGray, 10%);
         border-top: 1px solid $darkGray;
         #nav-pop {

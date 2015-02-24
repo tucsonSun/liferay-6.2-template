@@ -39,6 +39,7 @@
 $lightestGray: #656565;
 $lightGray: #1b1b1b;
 $darkGray: #3F3F3F;
+$peach: #F5D8A9;
 $yellow: #FF9900;
 $white: #fff;
 // --------------------------------------------------------------------------------
@@ -79,7 +80,7 @@ $white: #fff;
     background-image: -o-linear-gradient(top, $from-color, $to-color);
     -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$from-color}', EndColorStr='#{$to-color}')";
 }
-@mixin image-gradient($background-image, $from-color, $to-color) {
+@mixin bg-gradient($background-image, $from-color, $to-color) {
     /* Fallback */
     background-color: mix($from-color, $to-color);
     /* Fallback */
@@ -94,6 +95,9 @@ $white: #fff;
 }
 @mixin text-shadow($color) {
     text-shadow: 0 1px 0 $color;
+}
+@mixin text-shadow-black {
+	text-shadow: 0 1px 3px rgba(0, 0, 0, .4), 0 0 30px rgba(0, 0, 0, .075);
 }
 @mixin background-fade {
     -webkit-transition: background-color .3s ease;
@@ -123,32 +127,42 @@ a {
 }
 a:hover { 
 	text-decoration: underline; 
-	@include image-gradient(url("../images/noise.png"), darken($yellow, 5%), darken($yellow, 10%));
+	@include text-shadow-black;
 }
 
+
+/********************************************************************************/
+/* HEADER 		styles  			  											*/
+/********************************************************************************/
 #header-wrapper {
 	.nav { 
 		a {	
 			color:$lightestGray; 
+			@include color-fade;
 			@include rounded-border-bottom(4px);
 		}
 		a:hover { 
-			@include image-gradient(url("../images/noise.png"), darken($yellow, 5%), darken($yellow, 10%));
+			color: $yellow;
 		}
 	}
+}
+#header-wrapper {
 	#header-search {
 
 	}
 }
 
+/********************************************************************************/
+/* Footer 		styles  			  											*/
+/********************************************************************************/
 #footer-wrapper { 
 	a {	
 		color:$white; 
 		@include color-fade;
-		text-shadow: 0 1px 3px rgba(0, 0, 0, .4), 0 0 30px rgba(0, 0, 0, .075);
+		@include text-shadow-black;
 	}
 	a:hover { 
-		@include image-gradient(url("../images/noise.png"), darken($yellow, 5%), darken($yellow, 10%));
+		color: $yellow;
 	}
 }
 
@@ -156,9 +170,7 @@ a:hover {
 /********************************************************************************/
 /* Global Image 	styles  				  									*/
 /********************************************************************************/
-img {
-	border: 0;
-}
+img { border: 0; }
 .imageCenter { display: block; margin: 0 auto; }
 img.documentThumb {
     padding: 0px;
@@ -171,18 +183,12 @@ img.documentThumb {
 /********************************************************************************/
 /** CSS3 the :not() selector styles for everything but the submit and file buttons **/
 input:not([type=submit]):not([type=file]):not([type=button]) {
-    color: #696969;
+    
 }
 
-textarea {
-    color: #696969;
-    font-size: 14px;
-}
-
-/** TextAreas on Focus **/
-input:not([type=submit]):not([type=file]):not([type=button]):focus, 
-textarea:focus {
-	background-color: #BCF5A9;
+/** Input and TextAreas on Focus **/
+input:not([type=submit]):not([type=file]):not([type=button]):focus, textarea:focus {
+	background-color: $peach;
 }
 // ********************************************************************************
 //
@@ -228,11 +234,10 @@ textarea:focus {
 // ********************************************************************************
 .aui {
     body.site {
-        @include image-gradient(url("../images/noise.png"), #fcfcfc, darken(#fcfcfc, 5%));
+        @include bg-gradient(url("../images/noise.png"), #fcfcfc, darken(#fcfcfc, 5%));
     }
     html, html a {
         -webkit-font-smoothing: antialiased;
-        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
     }
 }
 .aui .portlet-journal-content .journal-content-article, .aui .portlet-content-container .journal-content-article {
@@ -260,7 +265,7 @@ textarea:focus {
         }
         #nav-wrapper {
             @include box-shadow-general(0, 10px, 15px, rgba(255, 153, 0, 0.60));
-            @include image-gradient(url("../images/noise.png"), lighten($darkGray, 10%), $darkGray);
+            @include bg-gradient(url("../images/noise.png"), lighten($darkGray, 10%), $darkGray);
             display: block;
             @extend .clearfix;
             width: 100%;
@@ -288,8 +293,8 @@ textarea:focus {
                             }
                             & > li {
                                 & > a {
-                                    @include image-gradient(url("../images/noise.png"), lighten($darkGray, 5%), $darkGray);
-                                    text-shadow: 0 1px 3px rgba(0, 0, 0, .4), 0 0 30px rgba(0, 0, 0, .075);
+                                    @include bg-gradient(url("../images/noise.png"), lighten($darkGray, 5%), $darkGray);
+                                    @include text-shadow-black;
                                     text-decoration: none;
                                     background: none;
                                     border-right: 1px solid darken($darkGray, 15%);
@@ -300,7 +305,7 @@ textarea:focus {
                             }
                             li.open, li.selected.open, li.selected {
                                 & > a {
-                                    @include image-gradient(url("../images/noise.png"), $darkGray, darken($darkGray, 2%));
+                                    @include bg-gradient(url("../images/noise.png"), $darkGray, darken($darkGray, 2%));
                                 }
                             }
                             .child-menu {
@@ -309,7 +314,7 @@ textarea:focus {
                                 padding: 0;
                                 margin: 0;
                                 @include border-fade($darkGray, 10%);
-                                @include image-gradient(url("../images/noise.png"), darken($darkGray, 2%), darken($darkGray, 4%));
+                                @include bg-gradient(url("../images/noise.png"), darken($darkGray, 2%), darken($darkGray, 4%));
                                 & > li {
                                     a {
                                         padding: 0.75rem 1rem 0.75rem 1rem;
@@ -342,83 +347,13 @@ textarea:focus {
     }
 }
 // --------------------------------------------------------------------------------
-// 	3.1.3 SubFooter
-// --------------------------------------------------------------------------------
-.aui {
-    #sub-footer {
-        color: $darkGray;
-        h2 i {
-            float: left;
-            font-size: 3rem;
-            margin-top: 0.65rem;
-            margin-right: 1rem;
-        }
-        a {
-            color: $darkGray;
-            text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
-            @include color-fade;
-        }
-        a:hover {
-            color: $yellow;
-        }
-        p {
-            padding-left: 4rem;
-        }
-        #email {
-            p {
-                padding-left: 4.25rem;
-            }
-        }
-        #mumbo {
-            p {
-                padding-right: 3rem;
-            }
-        }
-    }
-}
-// --------------------------------------------------------------------------------
 // 	3.1.4 Footer
 // --------------------------------------------------------------------------------
 
 #footer-wrapper {
-    width: 100%;
-    background-color: $darkGray;
     border-top: 0.5rem solid $yellow;
-    @include image-gradient(url("../images/noise.png"), lighten($darkGray, 5%), $darkGray);
     padding-top: 3rem;
-    footer {
-        @extend .clearfix;
-        clear: both;
-        #desktopFooter {
-            ul {
-                margin-left: 0;
-                padding: 0 4.25rem 0 2rem;
-                width: 16.5%;
-                border-right: 1px solid $lightestGray;
-                li.list-header {
-                    font-weight: bold;
-                }
-                li {
-                    list-style-type: none;
-                    margin: 0;
-                    padding: 0;
-                }
-                li.selected {
-                    a {
-                        color: $yellow;
-                    }
-                }
-            }
-            ul:first-child {
-                border-left: none;
-                padding-left: 0;
-            }
-            ul:last-child {
-                border-right: none;
-                padding-right: 0;
-            }
-        }
-    }
+    @include bg-gradient(url("../images/noise.png"), lighten($darkGray, 5%), $darkGray);
 }
 
 // ********************************************************************************
@@ -443,61 +378,139 @@ textarea:focus {
         display: block;
         width: 100%;
     }
+
+    #content-wrapper {
+		.panel {
+		    padding: 15px !important;
+		    margin-bottom: 20px;
+		    background-color: #ffffff;
+		    border: 1px solid #dddddd;
+		    @include rounded-border-top(3px);
+		    @include rounded-border-bottom(3px);
+		    @include box-shadow-general(0, 1px, 1px, rgba(0, 0, 0, 0.5));
+		}
+		.panel-heading {
+		    padding: 5px 10px;
+		    margin: -15px -15px 15px;
+		    font-size: 17.5px;
+		    font-weight: 500;
+		    @include bg-gradient(url("../images/noise.png"), lighten($darkGray, 5%), $darkGray);
+		    border-bottom: 0.25rem solid $yellow;
+		    @include rounded-border-top(3px);
+		    color: #fff;
+		}
+		.panel-heading.admin {
+		    @include bg-gradient(url("../images/noise.png"), lighten($yellow, 5%), $yellow);
+		    border-bottom: 0.25rem solid lighten($darkGray, 10%);
+		}
+		.panel-footer {
+		    padding: 10px 15px;
+		    margin: 15px -15px -15px;
+		    background-color: #f5f5f5;
+		    border-top: 1px solid #dddddd;
+		    @include rounded-border-bottom(4px);
+		}
+		.panel-primary {
+		    border-color: #428bca;
+		}
+		.panel-primary .panel-heading {
+		    color: #ffffff;
+		    background-color: #428bca;
+		    border-color: #428bca;
+		}
+		.panel-success {
+		    border-color: #d6e9c6;
+		}
+		.panel-success .panel-heading {
+		    color: #468847;
+		    background-color: #dff0d8;
+		    border-color: #d6e9c6;
+		}
+		.panel-warning {
+		    border-color: #fbeed5;
+		}
+		.panel-warning .panel-heading {
+		    color: #c09853;
+		    background-color: #fcf8e3;
+		    border-color: #fbeed5;
+		}
+		.panel-danger {
+		    border-color: #eed3d7;
+		}
+		.panel-danger .panel-heading {
+		    color: #b94a48;
+		    background-color: #f2dede;
+		    border-color: #eed3d7;
+		}
+		.panel-info {
+		    border-color: #bce8f1;
+		}
+		.panel-info .panel-heading {
+		    color: #3a87ad;
+		    background-color: #d9edf7;
+		    border-color: #bce8f1;
+		}
+	}
+
 }
 // --------------------------------------------------------------------------------
 // 	4.2 Sign-In Dockbar
 // --------------------------------------------------------------------------------
-.auth {
-    background: none !important;
-    border-top: 0 !important;
-    float: right;
-    margin-top: -1px;
-    margin-left: 1rem;
-    a {
-        padding: 0.5rem 0.75rem 0.5rem 0.75rem;
-        margin: 0 !important;
-        font-weight: bold;
-        @include border-fade($yellow, 5%);
-        border-top: none;
-        @include box-shadow-general(0, 5px, 10px, rgba(0, 0, 0, 0.2));
-        @include image-gradient(url("../images/noise.png"), $yellow, darken($yellow, 5%));
-    }
-    a:hover {
-        color: #fff;
-        @include image-gradient(url("../images/noise.png"), darken($yellow, 5%), darken($yellow, 10%));
-    }
-}
-.aui {
-    .user-item {
-        float: right;
-        display: inline-block;
-        padding: 0.5rem 0.75rem 0.5rem 0.75rem;
-        margin: 0 !important;
-        font-weight: bold;
-        color: $darkGray;
-        cursor: default;
-        a {
-            margin: 0 !important;
-            font-weight: bold;
-            color: $darkGray;
-        }
-        a:hover {
-            @include color-fade;
-            color: lighten($darkGray, 15%);
-            background: none !important;
-        }
-    }
-    .user-item.divider {
-        padding: 0.5rem 0.5rem;
-        margin: 0px !important;
-        font-weight: bold;
-        color: $darkGray;
-    }
+#header-wrapper {
+	.auth {
+	    background: none !important;
+	    border-top: 0 !important;
+	    float: right;
+	    margin-top: -1px;
+	    margin-left: 1rem;
+	    a {
+	        padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+	        margin: 0 !important;
+	        font-weight: bold;
+	        @include border-fade($yellow, 5%);
+	        border-top: none;
+	        @include box-shadow-general(0, 5px, 10px, rgba(0, 0, 0, 0.2));
+	        @include bg-gradient(url("../images/noise.png"), $yellow, darken($yellow, 5%));
+	    }
+	    a:hover {
+	        color: #fff;
+	        @include bg-gradient(url("../images/noise.png"), darken($yellow, 5%), darken($yellow, 10%));
+	    }
+	}
+}	
+#header-wrapper {	
+	.aui {
+	    .user-item {
+	        float: right;
+	        display: inline-block;
+	        padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+	        margin: 0 !important;
+	        font-weight: bold;
+	        color: $darkGray;
+	        cursor: default;
+	        a {
+	            margin: 0 !important;
+	            font-weight: bold;
+	            color: $darkGray;
+	        }
+	        a:hover {
+	            @include color-fade;
+	            color: lighten($darkGray, 15%);
+	            background: none !important;
+	        }
+	    }
+	    .user-item.divider {
+	        padding: 0.5rem 0.5rem;
+	        margin: 0px !important;
+	        font-weight: bold;
+	        color: $darkGray;
+	    }
+	}
 }
 // --------------------------------------------------------------------------------
 // 	4.3 Search Dockbar
 // --------------------------------------------------------------------------------
-.aui {
+#header-wrapper {
     #header-search {
         padding-top: 5em;
         display: inline-block;
@@ -545,7 +558,7 @@ textarea:focus {
     		@include rounded-border-bottom(8px);
         }
         button {
-            @include image-gradient(url("../images/noise.png"), $yellow, darken($yellow, 5%));
+            @include bg-gradient(url("../images/noise.png"), $yellow, darken($yellow, 5%));
             color: #fff;
             margin-left: 0.25em;
             font-weight: bold;
@@ -558,13 +571,8 @@ textarea:focus {
         }
         button:hover {
             color: #fff;
-            @include image-gradient(url("../images/noise.png"), darken($yellow, 5%), darken($yellow, 10%));
+            @include bg-gradient(url("../images/noise.png"), darken($yellow, 5%), darken($yellow, 10%));
         }
-    }
-}
-.aui {
-    #hidden-search {
-        display: none;
     }
 }
 // --------------------------------------------------------------------------------
@@ -584,79 +592,7 @@ textarea:focus {
     }
 }
 
-.aui .input-append {
-    padding-right: 0 !important;
-}
-.panel {
-    padding: 15px !important;
-    margin-bottom: 20px;
-    background-color: #ffffff;
-    border: 1px solid #dddddd;
-    @include rounded-border-top(3px);
-    @include rounded-border-bottom(3px);
-    @include box-shadow-general(0, 1px, 1px, rgba(0, 0, 0, 0.5));
-}
-.panel-heading {
-    padding: 5px 10px;
-    margin: -15px -15px 15px;
-    font-size: 17.5px;
-    font-weight: 500;
-    @include image-gradient(url("../images/noise.png"), lighten($darkGray, 5%), $darkGray);
-    border-bottom: 0.25rem solid $yellow;
-    @include rounded-border-top(3px);
-    color: #fff;
-}
-.panel-heading.admin {
-    @include image-gradient(url("../images/noise.png"), lighten($yellow, 5%), $yellow);
-    border-bottom: 0.25rem solid lighten($darkGray, 10%);
-}
-.panel-footer {
-    padding: 10px 15px;
-    margin: 15px -15px -15px;
-    background-color: #f5f5f5;
-    border-top: 1px solid #dddddd;
-    @include rounded-border-bottom(4px);
-}
-.panel-primary {
-    border-color: #428bca;
-}
-.panel-primary .panel-heading {
-    color: #ffffff;
-    background-color: #428bca;
-    border-color: #428bca;
-}
-.panel-success {
-    border-color: #d6e9c6;
-}
-.panel-success .panel-heading {
-    color: #468847;
-    background-color: #dff0d8;
-    border-color: #d6e9c6;
-}
-.panel-warning {
-    border-color: #fbeed5;
-}
-.panel-warning .panel-heading {
-    color: #c09853;
-    background-color: #fcf8e3;
-    border-color: #fbeed5;
-}
-.panel-danger {
-    border-color: #eed3d7;
-}
-.panel-danger .panel-heading {
-    color: #b94a48;
-    background-color: #f2dede;
-    border-color: #eed3d7;
-}
-.panel-info {
-    border-color: #bce8f1;
-}
-.panel-info .panel-heading {
-    color: #3a87ad;
-    background-color: #d9edf7;
-    border-color: #bce8f1;
-}
+
 .aui .nav-tabs.nav-stacked > li > a {
     color: $darkGray;
 }
