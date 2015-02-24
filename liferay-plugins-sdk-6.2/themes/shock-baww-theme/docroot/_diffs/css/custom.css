@@ -179,11 +179,25 @@ img.documentThumb {
     @include box-shadow-general(3px, 3px, 5px, #BCBCBC);
 }
 /********************************************************************************/
+/* Image     styles                                                             */
+/********************************************************************************/
+header {
+    @extend .clearfix;
+    .logo {
+        width: 13rem;
+        float: left;
+        margin-top: 1.25em;
+        margin-bottom: 1em;
+    }
+}
+
+
+/********************************************************************************/
 /* Global TextFields/TextAreas Highlight Styles									*/
 /********************************************************************************/
 /** CSS3 the :not() selector styles for everything but the submit and file buttons **/
 input:not([type=submit]):not([type=file]):not([type=button]) {
-    
+
 }
 
 /** Input and TextAreas on Focus **/
@@ -254,21 +268,11 @@ input:not([type=submit]):not([type=file]):not([type=button]):focus, textarea:foc
     #header-wrapper {
         background-color: $lightGray;
         margin-bottom: 1em;
-        header {
-            @extend .clearfix;
-            .logo {
-                width: 13rem;
-                float: left;
-                margin-top: 1.25em;
-                margin-bottom: 1em;
-            }
-        }
         #nav-wrapper {
             @include box-shadow-general(0, 10px, 15px, rgba(255, 153, 0, 0.60));
             @include bg-gradient(url("../images/noise.png"), lighten($darkGray, 10%), $darkGray);
             display: block;
             @extend .clearfix;
-            width: 100%;
             border-bottom: 1px solid lighten($darkGray, 15%);
             border-top: 1px solid darken($darkGray, 15%);
             #navigation {
@@ -329,24 +333,6 @@ input:not([type=submit]):not([type=file]):not([type=button]):focus, textarea:foc
     }
 }
 // --------------------------------------------------------------------------------
-// 	 3.1.2 Portlet
-// --------------------------------------------------------------------------------
-.aui {
-    .portlet, .portlet-borderless-container {
-        @extend .clearfix;
-        .portlet-topper {
-            @include gradient(lighten($darkGray, 5%), $darkGray);
-            text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
-        }
-        .portlet-content {
-            @extend .clearfix;
-        }
-    }
-    .portlet-borderless-container {
-        background: none;
-    }
-}
-// --------------------------------------------------------------------------------
 // 	3.1.4 Footer
 // --------------------------------------------------------------------------------
 
@@ -380,6 +366,17 @@ input:not([type=submit]):not([type=file]):not([type=button]):focus, textarea:foc
     }
 
     #content-wrapper {
+        .portlet, .portlet-borderless-container {
+            @extend .clearfix;
+            .portlet-topper {
+                @include gradient(lighten($darkGray, 5%), $darkGray);
+                text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+            }
+            .portlet-content {
+                @extend .clearfix;
+            }
+        }
+
 		.panel {
 		    padding: 15px !important;
 		    margin-bottom: 20px;
@@ -575,86 +572,8 @@ input:not([type=submit]):not([type=file]):not([type=button]):focus, textarea:foc
         }
     }
 }
-// --------------------------------------------------------------------------------
-// 	4.4 Portlet Navigation
-// --------------------------------------------------------------------------------
-.aui {
-    #content {
-        .portlet-navigation {
-            a {
-                color: $darkGray;
-            }
-            a.selected {
-                color: #fff;
-                background: lighten($darkGray, 10%);
-            }
-        }
-    }
-}
 
 
-.aui .nav-tabs.nav-stacked > li > a {
-    color: $darkGray;
-}
-// --------------------------------------------------------------------------------
-// 	4.5 Navigation Menu
-// --------------------------------------------------------------------------------
-.aui {
-    div.nav-menu {
-        ul {
-            *zoom: 1;
-            margin-bottom: 20px;
-            margin-left: 0;
-            list-style: none;
-            &:before, &:after {
-                display: table;
-                line-height: 0;
-                content: "";
-            }
-            &:after {
-                clear: both;
-            }
-            li {
-                margin-bottom: -1px;
-                a {
-                    border: 1px solid #ddd;
-                    display: block;
-                    padding-right: 12px;
-                    padding-left: 12px;
-                    padding-top: 8px;
-                    padding-bottom: 8px;
-                    line-height: 20px;
-                    background-color: #fff;
-                }
-                a:hover {
-                    z-index: 2;
-                    border-color: #ddd;
-                    text-decoration: none;
-                    background-color: #ddd;
-                }
-                &:first-child {
-                    a {
-                        @include rounded-border-top(4px);
-                    }
-                }
-                &:last-child {
-                    a {
-                        @include rounded-border-bottom(4px);
-                    }
-                }
-            }
-            li.selected {
-                a, a:hover, a:focus {
-                    color: #555555;
-                    cursor: default;
-                    background-color: #ffffff;
-                    border: 1px solid #ddd;
-                    border-bottom-color: transparent;
-                }
-            }
-        }
-    }
-}
 // --------------------------------------------------------------------------------
 // 	4.6 Breadcrumbs
 // --------------------------------------------------------------------------------
