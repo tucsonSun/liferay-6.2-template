@@ -380,7 +380,7 @@ input:not([type=submit]):not([type=file]):not([type=button]):focus, textarea:foc
 		.panel {
 		    padding: 15px !important;
 		    margin-bottom: 20px;
-		    background-color: #ffffff;
+		    background-color: $white;
 		    border: 1px solid #dddddd;
 		    @include rounded-border-top(3px);
 		    @include rounded-border-bottom(3px);
@@ -394,7 +394,7 @@ input:not([type=submit]):not([type=file]):not([type=button]):focus, textarea:foc
 		    @include bg-gradient(url("../images/noise.png"), lighten($darkGray, 5%), $darkGray);
 		    border-bottom: 0.25rem solid $yellow;
 		    @include rounded-border-top(3px);
-		    color: #fff;
+		    color: $white;
 		}
 		.panel-heading.admin {
 		    @include bg-gradient(url("../images/noise.png"), lighten($yellow, 5%), $yellow);
@@ -411,7 +411,7 @@ input:not([type=submit]):not([type=file]):not([type=button]):focus, textarea:foc
 		    border-color: #428bca;
 		}
 		.panel-primary .panel-heading {
-		    color: #ffffff;
+		    color: $white;
 		    background-color: #428bca;
 		    border-color: #428bca;
 		}
@@ -462,16 +462,16 @@ input:not([type=submit]):not([type=file]):not([type=button]):focus, textarea:foc
 	    margin-left: 1rem;
 	    a {
 	        padding: 0.5rem 0.75rem 0.5rem 0.75rem;
-	        margin: 0 !important;
+	        margin: 0;
 	        font-weight: bold;
+            text-align: right;
 	        @include border-fade($yellow, 5%);
 	        border-top: none;
 	        @include box-shadow-general(0, 5px, 10px, rgba(0, 0, 0, 0.2));
 	        @include bg-gradient(url("../images/noise.png"), $yellow, darken($yellow, 5%));
 	    }
 	    a:hover {
-	        color: #fff;
-	        @include bg-gradient(url("../images/noise.png"), darken($yellow, 5%), darken($yellow, 10%));
+	        color: $white;
 	    }
 	}
 }	
@@ -556,7 +556,7 @@ input:not([type=submit]):not([type=file]):not([type=button]):focus, textarea:foc
         }
         button {
             @include bg-gradient(url("../images/noise.png"), $yellow, darken($yellow, 5%));
-            color: #fff;
+            color: $white;
             margin-left: 0.25em;
             font-weight: bold;
             @include border-fade($yellow, 5%);
@@ -567,7 +567,7 @@ input:not([type=submit]):not([type=file]):not([type=button]):focus, textarea:foc
             text-shadow: none;
         }
         button:hover {
-            color: #fff;
+            color: $white;
             @include bg-gradient(url("../images/noise.png"), darken($yellow, 5%), darken($yellow, 10%));
         }
     }
