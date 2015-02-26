@@ -135,11 +135,9 @@ a:hover {
 /* HEADER 		styles  			  											*/
 /********************************************************************************/
 #header-wrapper {
-	.nav { 
+	#navigation { 
 		a {	
-			color:$lightestGray; 
-			@include color-fade;
-			@include rounded-border-bottom(4px);
+			color:$white; 
 		}
 		a:hover { 
 			color: $yellow;
@@ -486,14 +484,12 @@ input:not([type=submit]):not([type=file]):not([type=button]):focus, textarea:foc
 	        color: $darkGray;
 	        cursor: default;
 	        a {
-	            margin: 0 !important;
+	            margin-top: 10px;
 	            font-weight: bold;
 	            color: $darkGray;
 	        }
 	        a:hover {
-	            @include color-fade;
 	            color: lighten($darkGray, 15%);
-	            background: none !important;
 	        }
 	    }
 	    .user-item.divider {
