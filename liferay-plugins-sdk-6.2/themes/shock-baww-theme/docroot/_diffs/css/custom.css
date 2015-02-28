@@ -1,63 +1,39 @@
-// ********************************************************************************
-//
-//	TABLE OF CONTENTS
-//
-//	1. SCSS Pieces
-//		1.1 Variables
-//		1.2 Mixins
-//	2. General Styling
-//		2.1 Utility Classes
-//		2.2 Fonts
-//	3. Generic Theme-Specific Styling
-//		3.1 Heading
-//			3.1.1 Navigation
-//			3.1.2 Portlet
-//			3.1.3 SubFooter
-//			3.1.4 Footer
-//	4. Liferay Styling
-//		4.1 Main Content
-//		4.2 Sign-In Dockbar
-//		4.3 Search Dockbar
-//		4.4 Portlet Navigation
-//		4.5 Navigation Menu
-//		4.6 Breadcrumbs
-//	5. Misc Styling
-//		5.1 Generic
-// 
-//
-// ********************************************************************************
-// ********************************************************************************
-//
-//	1. SCSS Pieces
-//		1.1 Variables
-//		1.2 Mixins
-// 
-// ********************************************************************************
-// --------------------------------------------------------------------------------
-// 	1.1 Variables
-// --------------------------------------------------------------------------------
-$lightestGray: #656565;
-$lightGray: #1b1b1b;
+/********************************************************************************/
+/* Variables                                                                   */
+/********************************************************************************/
+$lightestGray: #cccccc;
+$lightGray: #4F4F4F;
 $darkGray: #3F3F3F;
 $peach: #F5D8A9;
 $yellow: #FF9900;
-$white: #fff;
-// --------------------------------------------------------------------------------
-// 	1.2 Mixins
-// --------------------------------------------------------------------------------
+$white: #ffffff;
+
+/********************************************************************************/
+/* Mixins                                                                       */
+/********************************************************************************/
 @mixin box-shadow-general($horizontal, $vertical, $blur, $box_color) {
-	-webkit-box-shadow: $horizontal $vertical $blur $box_color;
+    -webkit-box-shadow: $horizontal $vertical $blur $box_color;
     -moz-box-shadow: $horizontal $vertical $blur r$box_color;
     box-shadow: $horizontal $vertical $blur $box_color;
 }
-
+@mixin gradient($from-color, $to-color) {
+    /* Fallback */
+    background-color: mix($from-color, $to-color);
+   
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($from-color), to($to-color));
+    background-image: -webkit-linear-gradient(top, $from-color, $to-color);
+    background-image: -moz-linear-gradient(top, $from-color, $to-color);
+    background-image: -ms-linear-gradient(top, $from-color, $to-color);
+    background-image: -o-linear-gradient(top, $from-color, $to-color);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$from-color}', EndColorStr='#{$to-color}')";
+}
 @mixin rounded-border-top($brd-top-radius) {
-	-webkit-border-top-right-radius: $brd-top-radius;
-	-webkit-border-top-left-radius: $brd-top-radius;
-	-moz-border-radius-topright: $brd-top-radius;
-	-moz-border-radius-topleft: $brd-top-radius;
-	border-top-right-radius: $brd-top-radius;
-	border-top-left-radius: $brd-top-radius;
+    -webkit-border-top-right-radius: $brd-top-radius;
+    -webkit-border-top-left-radius: $brd-top-radius;
+    -moz-border-radius-topright: $brd-top-radius;
+    -moz-border-radius-topleft: $brd-top-radius;
+    border-top-right-radius: $brd-top-radius;
+    border-top-left-radius: $brd-top-radius;
 }
 
 @mixin rounded-border-bottom($brd-btm-radius) {
@@ -67,18 +43,6 @@ $white: #fff;
     -moz-border-radius-bottomleft: $brd-btm-radius;
     border-bottom-right-radius: $brd-btm-radius;
     border-bottom-left-radius: $brd-btm-radius;
-}
-
-@mixin gradient($from-color, $to-color) {
-	/* Fallback */
-    background-color: mix($from-color, $to-color);
-   
-    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($from-color), to($to-color));
-    background-image: -webkit-linear-gradient(top, $from-color, $to-color);
-    background-image: -moz-linear-gradient(top, $from-color, $to-color);
-    background-image: -ms-linear-gradient(top, $from-color, $to-color);
-    background-image: -o-linear-gradient(top, $from-color, $to-color);
-    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$from-color}', EndColorStr='#{$to-color}')";
 }
 @mixin bg-gradient($background-image, $from-color, $to-color) {
     /* Fallback */
@@ -93,21 +57,13 @@ $white: #fff;
     background: $background-image center center, -o-linear-gradient(top, $from-color, $to-color);
     -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$from-color}', EndColorStr='#{$to-color}')";
 }
-@mixin text-shadow($color) {
-    text-shadow: 0 1px 0 $color;
-}
 @mixin text-shadow-black {
-	text-shadow: 0 1px 3px rgba(0, 0, 0, .4), 0 0 30px rgba(0, 0, 0, .075);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, .4), 0 0 30px rgba(0, 0, 0, .075);
 }
 @mixin background-fade {
     -webkit-transition: background-color .3s ease;
     -o-transition: background-color .3s ease;
     transition: background-color .3s ease;
-}
-@mixin color-fade {
-    -webkit-transition: color .3s ease;
-    -o-transition: color .3s ease;
-    transition: color .3s ease;
 }
 @mixin border-fade($bd-color, $percent-fade) {
     border-right: 1px solid lighten($bd-color, $percent-fade);
@@ -116,66 +72,21 @@ $white: #fff;
     border-bottom: 1px solid lighten($bd-color, $percent-fade);
 }
 
-
 /********************************************************************************/
-/* Global Link 		styles  			  										*/
+/* Global Link      styles                                                      */
 /********************************************************************************/
-a {	
-	color:$yellow; 
-	outline: 0;	
-	text-decoration: none;
+.aui a {    
+    
 }
-a:hover { 
-	text-decoration: underline; 
-	@include text-shadow-black;
-}
+.aui a:hover { 
 
-
-/********************************************************************************/
-/* HEADER 		styles  			  											*/
-/********************************************************************************/
-#header-wrapper {
-	#navigation { 
-		a {	
-			color:$white; 
-		}
-		a:hover { 
-			color: $yellow;
-		}
-	}
-}
-#header-wrapper {
-	#header-search {
-
-	}
 }
 
 /********************************************************************************/
-/* Footer 		styles  			  											*/
-/********************************************************************************/
-#footer-wrapper { 
-	a {	
-		color:$white; 
-		@include color-fade;
-		@include text-shadow-black;
-	}
-	a:hover { 
-		color: $yellow;
-	}
-}
-
-
-/********************************************************************************/
-/* Global Image 	styles  				  									*/
+/* Global Image     styles                                                      */
 /********************************************************************************/
 img { border: 0; }
 .imageCenter { display: block; margin: 0 auto; }
-img.documentThumb {
-    padding: 0px;
-    margin: 0 10px 0 0;
-    float: left;
-    @include box-shadow-general(3px, 3px, 5px, #BCBCBC);
-}
 /********************************************************************************/
 /* Image     styles                                                             */
 /********************************************************************************/
@@ -189,9 +100,8 @@ header {
     }
 }
 
-
 /********************************************************************************/
-/* Global TextFields/TextAreas Highlight Styles									*/
+/* Global TextFields/TextAreas Highlight Styles                                 */
 /********************************************************************************/
 /** CSS3 the :not() selector styles for everything but the submit and file buttons **/
 input:not([type=submit]):not([type=file]):not([type=button]) {
@@ -200,159 +110,231 @@ input:not([type=submit]):not([type=file]):not([type=button]) {
 
 /** Input and TextAreas on Focus **/
 input:not([type=submit]):not([type=file]):not([type=button]):focus, textarea:focus {
-	background-color: $peach;
+    background-color: $peach;
 }
-// ********************************************************************************
-//
-//	2. Generic Styling
-//		2.1 Utility Classes
-//		2.2 General Styling
-//		2.2.1 Fonts
-//		
-// 
-// ********************************************************************************
-* {} .aui {
-    h2.page-header {
-        margin: 0 0 30px 0;
-    }
-    select {
-        width: auto;
-    }
+
+/********************************************************************************/
+/* HEADER       styles                                                          */
+/********************************************************************************/
+
+#header-wrapper {
+    @extend .clearfix;
+    background-color: $lightGray;
 }
-// --------------------------------------------------------------------------------
-// 	2.1 Utility Classes
-// --------------------------------------------------------------------------------
-.clearfix {
-    zoom: 1;
-    &:before, &:after {
-        content: "\0020";
-        display: block;
-        height: 0;
-        overflow: hidden;
-    }
-    &:after {
-        clear: both;
-    }
+
+
+#header-wrapper #desktop-top-controls  {
+    background-color: red;
+    margin-bottom: 1em;
 }
-// ********************************************************************************
-//
-//	3. Generic Theme-Specific Styling
-//		3.1 Heading
-//			3.1.1 Navigation
-//			3.1.2 Portlet
-//			3.1.3 SubFooter
-//			3.1.4 Footer
-// 
-// ********************************************************************************
+
+
+
+/********************************************************************************/
+/********************************************************************************/
+/* Liferay 6.2 Bootstrap 3 FIXES 			                                   	*/
+/* NOTE: Because Liferay 6.2 uses Boostrap 2 these are css fixes 				*/
+/* that are needed in order to override Boostrap with Bootstrap3				*/
+/********************************************************************************/
+/********************************************************************************/
+div.dockbar div.navbar-inner div.container .nav-collapse {
+	visibility: visible;
+	display: block;
+}
+div.dockbar {
+	position: unset !important;
+}
+
+
+/********************************************************************************/
+/* Footer       styles                                                          */
+/********************************************************************************/
+
+
+
+
+/********************************************************************************/
+/* Breakcrumbs                                                                  */
+/********************************************************************************/
 .aui {
-    body.site {
-        @include bg-gradient(url("../images/noise.png"), #fcfcfc, darken(#fcfcfc, 5%));
+    .hgroup {
+        border-bottom: 1px solid $lightestGray;
+        margin-bottom: 26px;
+        margin-top: 26px;
+        padding-bottom: 17px;
+        padding-top: 17px;
+        position: relative;
     }
-    html, html a {
-        -webkit-font-smoothing: antialiased;
+    .hgroup h1 {
+        font-size: 30px;
+        font-weight: 300;
+        line-height: 1em;
+        margin: 0 0 0.3em;
+        padding: 0;
+    }
+    .hgroup h2 {
+        color: #555555;
+        font-size: 14px;
+        font-weight: 300;
+        line-height: 1.5em;
+        margin: 0 20% 0 0;
+        padding: 0;
+    }
+    .hgroup .breadcrumb {
+        background-color: $darkGray;
+        border: 1px solid $lightestGray;
+        bottom: -15px;
+        font-size: 12px;
+        margin: 0;
+        position: absolute;
+        right: 0;
     }
 }
-.aui .portlet-journal-content .journal-content-article, .aui .portlet-content-container .journal-content-article {
-    word-break: normal;
-    -moz-hyphens: none;
+
+.aui {
+    .breadcrumb {
+        @include rounded-border-top(4px);
+        @include rounded-border-bottom(4px);
+        list-style: outside none none;
+        margin-bottom: 20px;
+        padding: 8px 15px;
+    }
+    .breadcrumb > li {
+        display: inline-block;
+    }
+    .breadcrumb > li + li.active:before {
+        display: none;
+    }
+    .breadcrumb > .active {
+        color: $lightGray;
+    }
+    
+    .breadcrumb > li a {
+    	text-shadow:none;
+    }
 }
-.nav-menu ul {
-    padding-left: 0;
+.aui {
+    /** Hide the footer bread crumbs **/
+    .lfr-hudcrumbs {
+        display: none !important;
+    }
 }
-// --------------------------------------------------------------------------------
-// 	3.1.1 Navigation
-// --------------------------------------------------------------------------------
+
+
+
+/********************************************************************************/
+/* Authorization Section                                                        */
+/********************************************************************************/
+.aui {
+	#auth-wrapper {
+		color:$white;	
+	}
+	
+/*	#auth-wrapper a {
+		color:$white;	
+		font-weight: bold;
+		text-decoration:none;
+	}
+	#auth-wrapper a:hover {
+		color:$yellow;	
+	}*/
+	
+	#auth-wrapper #auth-name-wrapper {
+		background: none repeat scroll 0 0 $darkGray;
+		display: inline-block;
+		padding: 10px;
+		right: 15px;
+		top: 0;
+        @include border-fade($yellow, 5%);
+        @include box-shadow-general(0, 5px, 10px, rgba(0, 0, 0, 0.2));
+        @include bg-gradient(url("../images/noise.png"), $darkGray, darken($darkGray, 5%));
+        @include rounded-border-bottom(4px);
+	}
+
+    #auth-wrapper  a {
+        color:$white;  
+        text-decoration:none; 
+        padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+        margin: 12px 0px 0px 0px;
+        font-weight: bold;
+        border-top: none;
+        @include border-fade($yellow, 5%);
+        @include box-shadow-general(0, 5px, 10px, rgba(0, 0, 0, 0.2));
+        @include bg-gradient(url("../images/noise.png"), $darkGray, darken($darkGray, 5%));
+        @include rounded-border-bottom(4px);
+    }
+	#auth-wrapper  a:hover {
+        @include bg-gradient(url("../images/noise.png"), $yellow, darken($yellow, 5%));
+    }
+    
+    
+    #auth-wrapper { 
+	    #social_media_wrapper {
+	        background: none repeat scroll 0 0 $darkGray;
+	        @include rounded-border-bottom(4px);
+	        display: inline-block;
+	        padding: 10px;
+	        right: 15px;
+	        top: 0;
+	    }
+	    #social_media_wrapper a {
+	    	background-color: $white;
+	        border-radius: 50%;
+	        display: block;
+	        float: left;
+	        font-size: 18px;
+	        height: 30px;
+	        margin: 0 3px;
+	        padding: 6px;
+	        text-align: center;
+	        transition: all 100ms linear 0s;
+	        width: 30px;
+	    }
+	    #social_media_wrapper a i {
+	        vertical-align: top !important;
+	    }
+	    #social_media_wrapper a:hover, #social_media_wrapper a:active {
+	        background: none repeat scroll 0 0 $yellow;
+	        color: $white;
+	        text-decoration: none;
+	    }
+	}
+}
+
+
+
+/********************************************************************************/
+/* Navigation Section                                                        */
+/********************************************************************************/
 .aui {
     #header-wrapper {
-        background-color: $lightGray;
-        margin-bottom: 1em;
         #nav-wrapper {
             @include box-shadow-general(0, 10px, 15px, rgba(255, 153, 0, 0.60));
-            @include bg-gradient(url("../images/noise.png"), lighten($darkGray, 10%), $darkGray);
             display: block;
             @extend .clearfix;
             border-bottom: 1px solid lighten($darkGray, 15%);
             border-top: 1px solid darken($darkGray, 15%);
             #navigation {
                 margin: 0 auto;
-                .navbar-inner {
-                    background: none;
-                    padding-left: 0 !important;
-                    padding-right: 0 !important;
-                    @extend .clearfix;
-                    .nav-collapse {
-                        @extend .clearfix;
-                        .nav {
-                            background-color: none;
-                            display: inline-block;
-                            margin: 0;
-                            padding: 0;
-                            & > li:first-child {
-                                border-left: 1px solid darken($darkGray, 10%);
-                            }
-                            & > li:last-child {
-                                border-right: 1px solid lighten($darkGray, 10%);
-                            }
-                            & > li {
-                                & > a {
-                                    @include bg-gradient(url("../images/noise.png"), lighten($darkGray, 5%), $darkGray);
-                                    @include text-shadow-black;
-                                    text-decoration: none;
-                                    background: none;
-                                    border-right: 1px solid darken($darkGray, 15%);
-                                    border-left: 1px solid lighten($darkGray, 15%);
-                                    padding: 0.75rem 1rem 0.75rem 1rem;
-                                    @include background-fade;
-                                }
-                            }
-                            li.open, li.selected.open, li.selected {
-                                & > a {
-                                    @include bg-gradient(url("../images/noise.png"), $darkGray, darken($darkGray, 2%));
-                                }
-                            }
-                            .child-menu {
-                                @include box-shadow-general(0, 5px, 10px, rgba(0, 0, 0, 0.2));
-                                border: none;
-                                padding: 0;
-                                margin: 0;
-                                @include border-fade($darkGray, 10%);
-                                @include bg-gradient(url("../images/noise.png"), darken($darkGray, 2%), darken($darkGray, 4%));
-                                & > li {
-                                    a {
-                                        padding: 0.75rem 1rem 0.75rem 1rem;
-                                    }
-                                }
-                            }
-                        }
-                    }
+                min-height: 0px; 
+                #nav-general-site li > a {
+                 	text-shadow:none;
+                	color: $yellow;
                 }
+                #nav-omni-admin li > a {
+                 	text-shadow:none;
+                	color: $yellow;
+                }            
+                #nav-omni-admin {
+	            	margin: 0 25px 0 0 !important;
+	            }
             }
         }
     }
 }
-// --------------------------------------------------------------------------------
-// 	3.1.4 Footer
-// --------------------------------------------------------------------------------
-
-#footer-wrapper {
-    border-top: 0.5rem solid $yellow;
-    padding-top: 3rem;
-    @include bg-gradient(url("../images/noise.png"), lighten($darkGray, 5%), $darkGray);
-}
-
-// ********************************************************************************
-//
-//	4. Liferay Styling
-//		4.1 Main Content
-//		4.2 Sign-In Dockbar
-//		4.3 Search Dockbar
-//		4.4 Portlet Navigation
-//		4.5 Navigation Menu
-//		4.6 Breadcrumbs
-// 
 // ********************************************************************************
 // --------------------------------------------------------------------------------
-// 	4.1 Main Content
+//  4.1 Main Content
 // --------------------------------------------------------------------------------
 .aui {
     #content-wrapper {
@@ -375,231 +357,97 @@ input:not([type=submit]):not([type=file]):not([type=button]):focus, textarea:foc
             }
         }
 
-		.panel {
-		    padding: 15px !important;
-		    margin-bottom: 20px;
-		    background-color: $white;
-		    border: 1px solid #dddddd;
-		    @include rounded-border-top(3px);
-		    @include rounded-border-bottom(3px);
-		    @include box-shadow-general(0, 1px, 1px, rgba(0, 0, 0, 0.5));
-		}
-		.panel-heading {
-		    padding: 5px 10px;
-		    margin: -15px -15px 15px;
-		    font-size: 17.5px;
-		    font-weight: 500;
-		    @include bg-gradient(url("../images/noise.png"), lighten($darkGray, 5%), $darkGray);
-		    border-bottom: 0.25rem solid $yellow;
-		    @include rounded-border-top(3px);
-		    color: $white;
-		}
-		.panel-heading.admin {
-		    @include bg-gradient(url("../images/noise.png"), lighten($yellow, 5%), $yellow);
-		    border-bottom: 0.25rem solid lighten($darkGray, 10%);
-		}
-		.panel-footer {
-		    padding: 10px 15px;
-		    margin: 15px -15px -15px;
-		    background-color: #f5f5f5;
-		    border-top: 1px solid #dddddd;
-		    @include rounded-border-bottom(4px);
-		}
-		.panel-primary {
-		    border-color: #428bca;
-		}
-		.panel-primary .panel-heading {
-		    color: $white;
-		    background-color: #428bca;
-		    border-color: #428bca;
-		}
-		.panel-success {
-		    border-color: #d6e9c6;
-		}
-		.panel-success .panel-heading {
-		    color: #468847;
-		    background-color: #dff0d8;
-		    border-color: #d6e9c6;
-		}
-		.panel-warning {
-		    border-color: #fbeed5;
-		}
-		.panel-warning .panel-heading {
-		    color: #c09853;
-		    background-color: #fcf8e3;
-		    border-color: #fbeed5;
-		}
-		.panel-danger {
-		    border-color: #eed3d7;
-		}
-		.panel-danger .panel-heading {
-		    color: #b94a48;
-		    background-color: #f2dede;
-		    border-color: #eed3d7;
-		}
-		.panel-info {
-		    border-color: #bce8f1;
-		}
-		.panel-info .panel-heading {
-		    color: #3a87ad;
-		    background-color: #d9edf7;
-		    border-color: #bce8f1;
-		}
-	}
-
-}
-// --------------------------------------------------------------------------------
-// 	4.2 Sign-In Dockbar
-// --------------------------------------------------------------------------------
-#header-wrapper {
-	.auth {
-	    background: none !important;
-	    border-top: 0 !important;
-	    float: right;
-	    margin-top: -1px;
-	    margin-left: 1rem;
-	    a {
-	        padding: 0.5rem 0.75rem 0.5rem 0.75rem;
-	        margin: 0;
-	        font-weight: bold;
-            text-align: right;
-	        @include border-fade($yellow, 5%);
-	        border-top: none;
-	        @include box-shadow-general(0, 5px, 10px, rgba(0, 0, 0, 0.2));
-	        @include bg-gradient(url("../images/noise.png"), $yellow, darken($yellow, 5%));
-	    }
-	    a:hover {
-	        color: $white;
-	    }
-	}
-}	
-#header-wrapper {	
-	.aui {
-	    .user-item {
-	        float: right;
-	        display: inline-block;
-	        padding: 0.5rem 0.75rem 0.5rem 0.75rem;
-	        margin: 0 !important;
-	        font-weight: bold;
-	        color: $darkGray;
-	        cursor: default;
-	        a {
-	            margin-top: 10px;
-	            font-weight: bold;
-	            color: $darkGray;
-	        }
-	        a:hover {
-	            color: lighten($darkGray, 15%);
-	        }
-	    }
-	    .user-item.divider {
-	        padding: 0.5rem 0.5rem;
-	        margin: 0px !important;
-	        font-weight: bold;
-	        color: $darkGray;
-	    }
-	}
-}
-// --------------------------------------------------------------------------------
-// 	4.3 Search Dockbar
-// --------------------------------------------------------------------------------
-#header-wrapper {
-    #header-search {
-        padding-top: 5em;
-        display: inline-block;
-        float: right;
-        margin-top: 17px;
-        @extend .clearfix;
-        form {
-            margin: 0;
-            @extend .clearfix;
-            float: right;
+        .panel {
+            padding: 15px !important;
+            margin-bottom: 20px;
+            background-color: $white;
+            border: 1px solid #dddddd;
+            @include rounded-border-top(3px);
+            @include rounded-border-bottom(3px);
+            @include box-shadow-general(0, 1px, 1px, rgba(0, 0, 0, 0.5));
         }
-        ul {
-            float: left;
-            display: block;
-            margin-right: 1rem;
-            li {
-                float: left;
-                display: inline-block;
-                margin-right: 1rem;
-                strong {
-                    float: left;
-                    margin-right: 0.5rem;
-                }
-                a {
-                    float: left;
-                    color: $darkGray;
-                    @include color-fade;
-                    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
-                }
-                a:hover {
-                    color: $yellow;
-                    background: none;
-                }
-            }
-        }
-        input[type="image"] {} select {
-            display: none;
-        }
-        button, input[type="text"] {
-            float: left;
-        }
-        input[type="text"] {
-            margin-top: 0 !important;
-            @include rounded-border-top(8px);
-    		@include rounded-border-bottom(8px);
-        }
-        button {
-            @include bg-gradient(url("../images/noise.png"), $yellow, darken($yellow, 5%));
+        .panel-heading {
+            padding: 5px 10px;
+            margin: -15px -15px 15px;
+            font-size: 17.5px;
+            font-weight: 500;
+            @include bg-gradient(url("../images/noise.png"), lighten($darkGray, 5%), $darkGray);
+            border-bottom: 0.25rem solid $yellow;
+            @include rounded-border-top(3px);
             color: $white;
-            margin-left: 0.25em;
-            font-weight: bold;
-            @include border-fade($yellow, 5%);
-            border-top:none;
-            @include box-shadow-general(0, 5px, 10px, rgba(0, 0, 0, 0.2));
-            @include rounded-border-top(4px);
-    		@include rounded-border-bottom(4px);
-            text-shadow: none;
         }
-        button:hover {
+        .panel-heading.admin {
+            @include bg-gradient(url("../images/noise.png"), lighten($yellow, 5%), $yellow);
+            border-bottom: 0.25rem solid lighten($darkGray, 10%);
+        }
+        .panel-footer {
+            padding: 10px 15px;
+            margin: 15px -15px -15px;
+            background-color: #f5f5f5;
+            border-top: 1px solid #dddddd;
+            @include rounded-border-bottom(4px);
+        }
+        .panel-primary {
+            border-color: #428bca;
+        }
+        .panel-primary .panel-heading {
             color: $white;
-            @include bg-gradient(url("../images/noise.png"), darken($yellow, 5%), darken($yellow, 10%));
+            background-color: #428bca;
+            border-color: #428bca;
+        }
+        .panel-success {
+            border-color: #d6e9c6;
+        }
+        .panel-success .panel-heading {
+            color: #468847;
+            background-color: #dff0d8;
+            border-color: #d6e9c6;
+        }
+        .panel-warning {
+            border-color: #fbeed5;
+        }
+        .panel-warning .panel-heading {
+            color: #c09853;
+            background-color: #fcf8e3;
+            border-color: #fbeed5;
+        }
+        .panel-danger {
+            border-color: #eed3d7;
+        }
+        .panel-danger .panel-heading {
+            color: #b94a48;
+            background-color: #f2dede;
+            border-color: #eed3d7;
+        }
+        .panel-info {
+            border-color: #bce8f1;
+        }
+        .panel-info .panel-heading {
+            color: #3a87ad;
+            background-color: #d9edf7;
+            border-color: #bce8f1;
         }
     }
+
 }
 
 
-// --------------------------------------------------------------------------------
-// 	4.6 Breadcrumbs
-// --------------------------------------------------------------------------------
-.aui {
-    .lfr-hudcrumbs {
-        display: none !important;
+
+/********************************************************************************/
+/* Utility Classes                                                              */
+/********************************************************************************/
+.clearfix {
+    zoom: 1;
+    &:before, &:after {
+        content: "\0020";
+        display: block;
+        height: 0;
+        overflow: hidden;
     }
-    #breadcrumbs {
-        margin-bottom: 0;
-        .breadcrumb {
-            border-radius: 0;
-            background: none;
-            padding: 0;
-            li, li.active {
-                font-size: 12px;
-            }
-            border-bottom:1px solid #eee;
-        }
+    &:after {
+        clear: both;
     }
 }
-// ********************************************************************************
-//
-//	5. Misc Styling
-//		5.1 Generic
-//		5.2 Images
-// 
-// ********************************************************************************
-// --------------------------------------------------------------------------------
-// 	5.1 Generic
-// --------------------------------------------------------------------------------
 .bold { font-weight: bold; }
 .left { text-align: left; }
 .right { text-align: right; }
