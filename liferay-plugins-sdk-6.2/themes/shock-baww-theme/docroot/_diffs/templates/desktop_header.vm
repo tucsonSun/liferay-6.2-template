@@ -2,16 +2,17 @@
 	<div id="auth-wrapper" class="col-md-12">
 		#if ($is_signed_in)
 
-			<div class="col-md-offset-4 col-md-8">
+			<div class="col-md-offset-8 col-md-4">
 				<div class="row">
-					<div id="auth-name-wrapper" class="col-md-4 pull-right text-center">
-						<i class="fa fa-user"><span class="auth-item">&nbsp;Welcome, $user_first_name $user_last_name!</span></i>
+					<div id="auth-name-wrapper" class="col-md-6 pull-right text-center">
+						<i class="fa fa-user fa-2x"></i><span>&nbsp;Welcome, $user_first_name $user_last_name!</span>
 					</div>
 
 					<div id="sign-in" class="col-md-5 pull-right">
-						<a class="auth-button" href="/web/guest/video" title="Admin Home">Admin Home</a> 
-						<span class="auth-divider">|</span>
-						<a class="auth-link" href="/c/portal/logout">Sign Out</a>
+						<!-- <a class="auth-button" href="/web/guest/video" title="Admin Home">Admin Home</a> -->
+						<a class="auth-link" href="/c/portal/logout">
+							<i class="fa fa-sign-out fa-2x"></i><span>&nbsp;Sign Out</span>
+						</a>
 					</div>
 				</div>
 			</div>
@@ -24,9 +25,14 @@
 						<a href="#googleplus"><i class="fa fa-google-plus"></i></a> 
 					</div>
 
-					<div id="sign-in" class="col-md-5 pull-right">
-						<a class="auth-link" href="/web/guest/home-page?p_p_id=58&p_p_lifecycle=0&p_p_state=maximized&p_p_mode=view&_58_struts_action=%2Flogin%2Fforgot_password">Forgot Password</a>
-						<a class="auth-link" href="/c/portal/login?redirect=/web/guest/video"><i class="fa fa-users"></i><span>&nbsp;Sign In</span></a>
+					<div id="sign-in" class="col-md-5.5 pull-right">
+						<a class="auth-link" href="/web/guest/home-page?p_p_id=58&p_p_lifecycle=0&p_p_state=maximized&p_p_mode=view&_58_struts_action=%2Flogin%2Fforgot_password">
+							<i class="fa fa-cogs fa-2x"></i><span>&nbsp;Forgot Password</span>
+						</a>
+						<span class="auth-divider">|</span>
+						<a class="auth-link" href="/c/portal/login?redirect=/web/guest/video">
+							<i class="fa fa-sign-in fa-2x"></i><span>&nbsp;Sign In</span>
+						</a>
 					</div>
 				</div>
 			</div>

@@ -225,57 +225,41 @@ div.dockbar {
 /********************************************************************************/
 /* Authorization Section                                                        */
 /********************************************************************************/
+.generalAuthLink {
+	display: inline-block;
+	padding: 10px;
+	top: 0;
+	@include border-fade($yellow, 5%);
+	@include box-shadow-general(0, 5px, 10px, rgba(0, 0, 0, 0.2));
+	@include bg-gradient(url("../images/noise.png"), $darkGray, darken($darkGray, 5%));
+	@include rounded-border-bottom(4px);
+}
+
 .aui {
 	#auth-wrapper {
 		color:$white;	
 	}
 	
-/*	#auth-wrapper a {
-		color:$white;	
-		font-weight: bold;
-		text-decoration:none;
-	}
-	#auth-wrapper a:hover {
-		color:$yellow;	
-	}*/
-	
-	#auth-wrapper #auth-name-wrapper {
-		background: none repeat scroll 0 0 $darkGray;
-		display: inline-block;
-		padding: 10px;
-		right: 15px;
-		top: 0;
-        @include border-fade($yellow, 5%);
-        @include box-shadow-general(0, 5px, 10px, rgba(0, 0, 0, 0.2));
-        @include bg-gradient(url("../images/noise.png"), $darkGray, darken($darkGray, 5%));
-        @include rounded-border-bottom(4px);
-	}
 
     #auth-wrapper  a {
         color:$white;  
         text-decoration:none; 
         padding: 0.5rem 0.75rem 0.5rem 0.75rem;
-        margin: 12px 0px 0px 0px;
+        margin: 0px 5px 0px 0px;
         font-weight: bold;
         border-top: none;
-        @include border-fade($yellow, 5%);
-        @include box-shadow-general(0, 5px, 10px, rgba(0, 0, 0, 0.2));
-        @include bg-gradient(url("../images/noise.png"), $darkGray, darken($darkGray, 5%));
-        @include rounded-border-bottom(4px);
+        @extend .generalAuthLink;
+
     }
 	#auth-wrapper  a:hover {
         @include bg-gradient(url("../images/noise.png"), $yellow, darken($yellow, 5%));
     }
-    
-    
     #auth-wrapper { 
+	    #auth-name-wrapper {
+	        @extend .generalAuthLink;
+		}  
 	    #social_media_wrapper {
-	        background: none repeat scroll 0 0 $darkGray;
-	        @include rounded-border-bottom(4px);
-	        display: inline-block;
-	        padding: 10px;
-	        right: 15px;
-	        top: 0;
+	        @extend .generalAuthLink;
 	    }
 	    #social_media_wrapper a {
 	    	background-color: $white;
@@ -332,10 +316,10 @@ div.dockbar {
         }
     }
 }
-// ********************************************************************************
-// --------------------------------------------------------------------------------
-//  4.1 Main Content
-// --------------------------------------------------------------------------------
+
+/********************************************************************************/
+/* Main Content				                                                    */
+/********************************************************************************/
 .aui {
     #content-wrapper {
         clear: both;
