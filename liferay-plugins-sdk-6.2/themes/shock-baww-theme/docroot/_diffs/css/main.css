@@ -1,6 +1,7 @@
 /** Bootstrap **/
 @import url(bootstrap-theme-v3.2.2.min.css);
 @import url(bootstrap-v3.2.2.min.css); 
+@import url(font-awesome.min-v4.3.0.css);
 
 /** Liferay stock CSS **/
 @import url(base.css);
