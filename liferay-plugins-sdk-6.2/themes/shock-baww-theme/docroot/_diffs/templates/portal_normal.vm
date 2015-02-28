@@ -15,19 +15,13 @@
 	    <meta content="initial-scale=1.0, width=device-width" name="viewport" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	
-	     $theme.include($top_head_include)
-
-	     <script src="$javascript_folder/jQuery/2.1.3/jquery-2.1.3.min.js"></script>
-	     <script src="$javascript_folder/bootstrap/3.3.2/bootstrap.min.js"></script>
-	     <!--<script src="$javascript_folder/jquery-ui-1.10.4.custom.min.js"></script>-->
-	     <script src="$javascript_folder/custom.js"></script>
-	     <script src="$javascript_folder/main.js"></script>
+		$theme.include($top_head_include)
 	</head>
 	
 	<body class="$css_class">
 	
 		$theme.include($body_top_include)
-			
+		
 		<div class="page-wrap">
 			<div class="container hidden-tablet hidden-phone visible-desktop">
 				<div class="row">
@@ -37,45 +31,43 @@
 				</div>
 			</div>
 			
-			<div id="header-wrapper">
-				<div class="visible-desktop hidden-tablet hidden-phone">
-					   #parse ("$full_templates_path/desktop_header.vm")
-				</div>
-				<div class="container-fluid hidden-desktop visible-tablet visible-phone">
-					   #parse ("$full_templates_path/mobile_header.vm")
-				</div>
+			<div id="header-wrapper" class="container-fluid">
+				<header id="header" class="container" role="banner">
+					<div class="visible-desktop hidden-tablet hidden-phone">
+						   #parse ("$full_templates_path/desktop_header.vm")
+					</div>
+					<div class="hidden-desktop visible-tablet visible-phone">
+						   #parse ("$full_templates_path/mobile_header.vm")
+					</div>
+				</header>
 			</div>
 		
+			<div id="content-wrapper" class="container-fluid">
+			     <div id="content" class="container">    	 
+					#set ($url = $themeDisplay.getURLCurrent())
+	     				
+					#if($page_group.isSite() && !$layout.getName($themeDisplay.getLocale()).equals("Home"))
+						<section class="hgroup">
+			               <h1>$layout.getName($themeDisplay.getLocale())</h1>
+			               <nav id="breadcrumbs">
+			               		#breadcrumbs()
+			               </nav>				               
+				        </section>
+					#end
+	
+					#if ($selectable)
+			         	$theme.include($content_include)
+					#else
+						$portletDisplay.recycle()
 		
-			<div id="content-wrapper">
-			     <div class="container" id="content">
-			     	 
-						#set ($url = $themeDisplay.getURLCurrent())
-		     				
-						#if($page_group.isSite() && !$layout.getName($themeDisplay.getLocale()).equals("Home"))
-							 <nav id="breadcrumbs">#breadcrumbs()</nav>
-						#end
+						$portletDisplay.setTitle($the_title)
 		
-			          #if ($selectable)
-			               $theme.include($content_include)
-			          #else
-			               $portletDisplay.recycle()
-		
-			               $portletDisplay.setTitle($the_title)
-		
-			               $theme.wrapPortlet("portlet.vm", $content_include)
-			          #end
-			          
-			          		<span class="glyphicon glyphicon-comment">c</span>
-			     			<span data-unicode="E050" class="glyphicon glyphicon-text-height">t</span>
-			     			<h1>test</h1>
+			        	$theme.wrapPortlet("portlet.vm", $content_include)
+					#end
 			     </div>
 			</div>
-		
-		</div>
-		<footer>
-			<div id="footer-wrapper">
-			     <footer class="container" id="footer" role="contentinfo">
+			<div id="footer-wrapper" class="container-fluid">
+				<footer id="footer" role="banner" class="container">    	 
 		          	<div id="desktopFooter" class="visible-desktop">
 						#parse ("$full_templates_path/desktop_footer.vm")
 					</div>
@@ -88,16 +80,18 @@
 		        		<p>
 		        		Copyright &copy; Shock and Baww <script>document.write(new Date().getFullYear());</script>
 		        		</p>
-						<div class="container">
 		        	</div>
-			     </footer>
+				</footer>
 			</div>
-		</footer>
 		
 		$theme.include($body_bottom_include)
 		
 		$theme.include($bottom_include)
-	
-	
+		
+		<!-- Last thing we do is load scripts -->
+		<script src="$javascript_folder/jQuery/2.1.3/jquery-2.1.3.min.js"></script>
+	    <script src="$javascript_folder/bootstrap/3.3.2/bootstrap.min.js"></script>
+	    <script src="$javascript_folder/custom.js"></script>
+	    <script src="$javascript_folder/main.js"></script>
 	</body>
 </html>

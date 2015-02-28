@@ -1,53 +1,54 @@
-<header class="container" id="banner" role="banner">
-	<div class="row">
-		<div class="span12">
-			#if ($is_signed_in)
-				<ul class="nav nav-account-controls">
-					<li class="auth"> 
-						<a href="/web/guest/video" title="Admin Home">Admin Home</a> 
-					</li>
-					<li class="user-item">
-						<a href="/c/portal/logout">Sign Out</a>
-					</li>
-					<li class="user-item divider">|</li>
-					<li class="user-item">Welcome, $user_first_name $user_last_name!</li>
-				</ul>
-			#else
-				<ul class="nav nav-account-controls">
-					<li class="auth"> 
-						<a href="/c/portal/login?redirect=/web/guest/video" title="Sign In">Sign In</a> 
-					</li>
-					<li class="user-item">
-						<a href="/web/guest/home-page?p_p_id=58&p_p_lifecycle=0&p_p_state=maximized&p_p_mode=view&_58_struts_action=%2Flogin%2Fforgot_password">Forgot Password</a>
-					</li>
-					<!-- <li class="user-item divider">|</li><li class="user-item"><a href="/web/guest/sign-up">Sign Up</a></li> -->
-				</ul>
-			#end
-		</div>
+<div id="desktop-top-controls" class="container">
+	<div id="auth-wrapper" class="col-md-12">
+		#if ($is_signed_in)
+
+			<div class="col-md-offset-4 col-md-8">
+				<div class="row">
+					<div id="auth-name-wrapper" class="col-md-4 pull-right text-center">
+						<i class="fa fa-user"><span class="auth-item">&nbsp;Welcome, $user_first_name $user_last_name!</span></i>
+					</div>
+
+					<div id="sign-in" class="col-md-5 pull-right">
+						<a class="auth-button" href="/web/guest/video" title="Admin Home">Admin Home</a> 
+						<span class="auth-divider">|</span>
+						<a class="auth-link" href="/c/portal/logout">Sign Out</a>
+					</div>
+				</div>
+			</div>
+		#else
+			<div class="col-md-offset-4 col-md-8">
+				<div class="row">
+					<div id="social_media_wrapper" class="col-md-2.5 pull-right">
+						<a href="https://www.facebook.com"><i class="fa fa-facebook"></i></a> 
+						<a href="https://twitter.com/leonartgr"><i class="fa fa-twitter"></i></a> 
+						<a href="#googleplus"><i class="fa fa-google-plus"></i></a> 
+					</div>
+
+					<div id="sign-in" class="col-md-5 pull-right">
+						<a class="auth-link" href="/web/guest/home-page?p_p_id=58&p_p_lifecycle=0&p_p_state=maximized&p_p_mode=view&_58_struts_action=%2Flogin%2Fforgot_password">Forgot Password</a>
+						<a class="auth-link" href="/c/portal/login?redirect=/web/guest/video"><i class="fa fa-users"></i><span>&nbsp;Sign In</span></a>
+					</div>
+				</div>
+			</div>
+		#end
 	</div>
-	<div class="row">
-		<div class="span2">
+	<div id="desktop-search-controls" class="row">
+		<div class="col-md-4">
 			<a class="$logo_css_class" href="/web/guest/home-page" title="#language_format ("go-to-x", [$site_name])">
 				<img alt="$logo_description" src="$images_folder/shockandbaww.png"  />
 			</a>
 		</div>
-		<div class="span10">
-			<div id="header-search">
-				<form class="form-search">
-					<input type="text" class="input-medium search-query">
-					<button type="submit" class="btn">Search</button id="SearchBtn">
-				</form>
-				<ul class="nav" id="header-contact">
-					<!-- 
-						<li><strong>Tel: </strong><a href="tel:1-555-555-5555">555.555.5555</a></li>
-						<li><span> | </span></li>
-					-->
-					<li><strong>Email: </strong><a href="mailto:support@shockandbaww.com">support@shockandbaww.com</a></li>
-				</ul>
-			</div>
+		<div class="col-md-4">		
+			<strong>Email: </strong><a href="mailto:support@shockandbaww.com">support@shockandbaww.com</a>
+		</div>
+		<div class="col-md-4 text-right">
+			<form class="form-search">
+				<input type="text" class="input-medium search-query">
+				<button type="submit" class="btn">Search</button id="SearchBtn">
+			</form>
 		</div>
 	</div>
-</header>
+</div>	
 #if ($has_navigation || $is_signed_in)
 	#parse ("$full_templates_path/desktop_navigation.vm")
 #end
