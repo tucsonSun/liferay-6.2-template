@@ -60,7 +60,6 @@ $white: #ffffff;
     text-shadow: 0 1px 3px rgba(0, 0, 0, .4), 0 0 30px rgba(0, 0, 0, .075);
 }
 @mixin background-transition {
-
    -webkit-transition: all .4s ease;
       -moz-transition: all .4s ease;
        -ms-transition: all .4s ease;
@@ -266,8 +265,6 @@ div.dockbar {
 	#auth-wrapper {
 		color:$white;	
 	}
-	
-
     #auth-wrapper  a {
         color:$white;  
         text-decoration:none; 
@@ -332,20 +329,27 @@ div.dockbar {
                  	text-shadow:none;
                 	color: $white;
                 	font-weight:bold;
-                	@include bg-gradient(url("../images/noise.png"), $darkGray, darken($darkGray, 5%));
+                	padding: 12px 20px;
+                	
+                }
+              	#nav-general-site li ul li a {
+					@include bg-gradient(url("../images/noise.png"), $darkGray, darken($darkGray, 2%));
+					@include background-transition;
                 }
                 #nav-general-site li a:hover {
-                 	color: $yellow;
-                 	@include background-transition;
+                	color: $white;
+					@include bg-gradient(url("../images/noise.png"), $yellow, darken($yellow, 2%));
+					@include background-transition;
                 }
-                #nav-omni-admin li > a {
-                 	text-shadow:none;
-                	color: $yellow;
-                }            
-                #nav-omni-admin {
-	            	margin: 0 25px 0 0 !important;
-	            }
-	            ul.dropdown-menu {
+                #nav-general-site li.selected {
+                      & > a {
+                          @include bg-gradient(url("../images/noise.png"), $darkGray, darken($darkGray, 2%));
+                          @include background-transition;
+                      }
+                }
+                
+              	/** Fix Liferay Bootstrap3 conflict **/
+                #nav-general-site ul.dropdown-menu {
 					border-radius: 0px;
 					margin: -1px 0px 0px 0px;
 					padding: 0px 0px 0px 0px;
@@ -353,6 +357,13 @@ div.dockbar {
 						padding: 12px 20px;
 					}
 				}
+                #nav-omni-admin li > a {
+                 	text-shadow:none;
+                	color: $yellow;
+                }            
+                #nav-omni-admin {
+	            	margin: 0 25px 0 0 !important;
+	            }
             }
         }
     }
@@ -405,8 +416,8 @@ div.dockbar {
             margin-bottom: 20px;
             background-color: $white;
             border: 1px solid #dddddd;
-            @include rounded-border-top(3px);
-            @include rounded-border-bottom(3px);
+            @include rounded-border-top(4px);
+            @include rounded-border-bottom(4px);
             @include box-shadow-general(0, 1px, 1px, rgba(0, 0, 0, 0.5));
         }
         .panel-heading {
@@ -416,7 +427,7 @@ div.dockbar {
             font-weight: 500;
             @include bg-gradient(url("../images/noise.png"), lighten($darkGray, 5%), $darkGray);
             border-bottom: 0.25rem solid $yellow;
-            @include rounded-border-top(3px);
+            @include rounded-border-top(4px);
             color: $white;
         }
         .panel-heading.admin {
