@@ -73,6 +73,16 @@ $white: #ffffff;
     border-bottom: 1px solid lighten($bd-color, $percent-fade);
 }
 
+@mixin transparent($tranPercent) {
+	/* Netscape */
+	-moz-opacity: 0.5;
+	/* Safari 1.x */
+	-khtml-opacity: 0.5;
+	/* Good browsers */
+	opacity: 0.5;
+}
+
+
 /********************************************************************************/
 /* Global Link      styles                                                      */
 /********************************************************************************/
@@ -102,23 +112,6 @@ input:not([type=submit]):not([type=file]):not([type=button]) {
 input:not([type=submit]):not([type=file]):not([type=button]):focus, textarea:focus {
     background-color: $peach;
 }
-
-/********************************************************************************/
-/* HEADER       styles                                                          */
-/********************************************************************************/
-
-#header-wrapper {
-    @extend .clearfix;
-	/** background-color: $lightGray; **/
-}
-
-
-#header-wrapper #desktop-top-controls  {
-    background-color: red;
-    margin-bottom: 1em;
-}
-
-
 
 /********************************************************************************/
 /********************************************************************************/
@@ -162,12 +155,159 @@ div.dockbar {
 
 
 /********************************************************************************/
-/* Footer       styles                                                          */
+/* HEADER       styles                                                          */
 /********************************************************************************/
 
+#header-wrapper {
+    @extend .clearfix;
+	/** background-color: $lightGray; **/
+	background: url("../images/custom-site/images/Antelope-Canyon2.jpg") repeat-y scroll 0 0 rgba(0, 0, 0, 0);
+}
 
 
+#header-wrapper #desktop-top-controls  {
+    background-color: red;
+    margin-bottom: 1em;
+}
 
+	
+/********************************************************************************/
+/* HEADER - Authorization Section                                               */
+/********************************************************************************/
+.generalAuthLink {
+	display: inline-block;
+	padding: 10px;
+	top: 0;
+	@include border-fade($yellow, 5%);
+	@include box-shadow-general(0, 5px, 10px, rgba(0, 0, 0, 0.2));
+	@include bg-gradient(url("../images/noise.png"), $darkGray, darken($darkGray, 5%));
+	@include rounded-border-bottom(4px);
+}
+
+.aui {
+	#auth-wrapper {
+		color:$white;	
+	}
+    #auth-wrapper  a {
+        color:$white;  
+        text-decoration:none; 
+        margin: 0px 5px 0px 0px;
+        font-weight: bold;
+        border-top: none;
+        @extend .generalAuthLink;
+
+    }
+	#auth-wrapper  a:hover {
+        @include bg-gradient(url("../images/noise.png"), $yellow, darken($yellow, 5%));
+    }
+    #auth-wrapper { 
+	    #auth-name-wrapper {
+	        @extend .generalAuthLink;
+		}  
+	    #social_media_wrapper {
+	        @extend .generalAuthLink;
+	    }
+	    #social_media_wrapper a {
+	    	background-color: $white;
+	        border-radius: 50%;
+	        display: block;
+	        float: left;
+	        font-size: 18px;
+	        height: 30px;
+	        margin: 0 3px;
+	        padding: 6px;
+	        text-align: center;
+	        transition: all 100ms linear 0s;
+	        width: 30px;
+	    }
+	    #social_media_wrapper a i {
+	        vertical-align: top !important;
+	    }
+	    #social_media_wrapper a:hover, #social_media_wrapper a:active {
+	        background: none repeat scroll 0 0 $yellow;
+	        color: $white;
+	        text-decoration: none;
+	    }
+	}
+}
+
+/********************************************************************************/
+/* HEADER - Navigation Section          		                                */
+/********************************************************************************/
+.aui {
+    #header-wrapper {
+        #nav-wrapper {
+            display: block;
+            background-color: $lightGray;
+            border: 1px solid lighten($yellow, 15%);
+			@extend .clearfix;
+			@include rounded-border-top(4px);
+			@include rounded-border-bottom(4px);
+			@include box-shadow-general(0, 1px, 1px, rgba(0, 0, 0, 0.5));
+            #navigation {
+                margin: 0 auto;
+                min-height: 0px; 
+                border: 0 solid transparent;
+                li > a {
+                 	text-shadow:none;
+                	color: $white;
+                	font-weight:bold;
+                	padding: 12px 20px;
+                	
+                }
+              	li ul li a {
+					@include bg-gradient(url("../images/noise.png"), $darkGray, darken($darkGray, 2%));
+					@include background-transition;
+                }
+                li a:hover {
+                	color: $white;
+					@include bg-gradient(url("../images/noise.png"), $yellow, darken($yellow, 2%));
+					@include background-transition;
+                }
+                li.selected {
+                      & > a {
+                          @include bg-gradient(url("../images/noise.png"), $darkGray, darken($darkGray, 2%));
+                          @include background-transition;
+                      }
+                }
+                
+              	/** Fix Liferay Bootstrap3 conflict **/
+                #nav-general-site ul.dropdown-menu {
+					border-radius: 0px;
+					margin: -1px 0px 0px 0px;
+					padding: 0px 0px 0px 0px;
+					li a {
+						padding: 12px 20px;
+					}
+				}                         
+                #nav-omni-admin {
+	            	margin: 0 25px 0 0 !important;
+	            }
+            }
+        }
+    }
+}
+
+/********************************************************************************/
+/* HEADER - Search Section              	                                    */
+/********************************************************************************/
+.aui {
+	#header-wrapper {
+	    #nav-wrapper {
+		    #desktop-search-controls {
+		    	margin-right:25px; 
+		    	@include transparent(0.5);
+		    	#search-control-input {
+		    		margin-top:5px; 
+		    		
+		    	}
+		    	#SearchBtn:hover {
+		    		color: $yellow;
+		    	}
+		    }
+		}
+	}
+}
 /********************************************************************************/
 /* Breakcrumbs                                                                  */
 /********************************************************************************/
@@ -234,148 +374,6 @@ div.dockbar {
         display: none !important;
     }
 }
-
-
-
-/********************************************************************************/
-/* Authorization Section                                                        */
-/********************************************************************************/
-.generalAuthLink {
-	display: inline-block;
-	padding: 10px;
-	top: 0;
-	@include border-fade($yellow, 5%);
-	@include box-shadow-general(0, 5px, 10px, rgba(0, 0, 0, 0.2));
-	@include bg-gradient(url("../images/noise.png"), $darkGray, darken($darkGray, 5%));
-	@include rounded-border-bottom(4px);
-}
-
-.aui {
-	#auth-wrapper {
-		color:$white;	
-	}
-    #auth-wrapper  a {
-        color:$white;  
-        text-decoration:none; 
-        margin: 0px 5px 0px 0px;
-        font-weight: bold;
-        border-top: none;
-        @extend .generalAuthLink;
-
-    }
-	#auth-wrapper  a:hover {
-        @include bg-gradient(url("../images/noise.png"), $yellow, darken($yellow, 5%));
-    }
-    #auth-wrapper { 
-	    #auth-name-wrapper {
-	        @extend .generalAuthLink;
-		}  
-	    #social_media_wrapper {
-	        @extend .generalAuthLink;
-	    }
-	    #social_media_wrapper a {
-	    	background-color: $white;
-	        border-radius: 50%;
-	        display: block;
-	        float: left;
-	        font-size: 18px;
-	        height: 30px;
-	        margin: 0 3px;
-	        padding: 6px;
-	        text-align: center;
-	        transition: all 100ms linear 0s;
-	        width: 30px;
-	    }
-	    #social_media_wrapper a i {
-	        vertical-align: top !important;
-	    }
-	    #social_media_wrapper a:hover, #social_media_wrapper a:active {
-	        background: none repeat scroll 0 0 $yellow;
-	        color: $white;
-	        text-decoration: none;
-	    }
-	}
-}
-
-
-
-/********************************************************************************/
-/* Navigation Section                                                        */
-/********************************************************************************/
-.aui {
-    #header-wrapper {
-        #nav-wrapper {
-            display: block;
-            background-color: $lightGray;
-            border: 1px solid lighten($yellow, 15%);
-			@extend .clearfix;
-			@include rounded-border-top(4px);
-			@include rounded-border-bottom(4px);
-			@include box-shadow-general(0, 1px, 1px, rgba(0, 0, 0, 0.5));
-            #navigation {
-                margin: 0 auto;
-                min-height: 0px; 
-                border: 0 solid transparent;
-                li > a {
-                 	text-shadow:none;
-                	color: $white;
-                	font-weight:bold;
-                	padding: 12px 20px;
-                	
-                }
-              	li ul li a {
-					@include bg-gradient(url("../images/noise.png"), $darkGray, darken($darkGray, 2%));
-					@include background-transition;
-                }
-                li a:hover {
-                	color: $white;
-					@include bg-gradient(url("../images/noise.png"), $yellow, darken($yellow, 2%));
-					@include background-transition;
-                }
-                li.selected {
-                      & > a {
-                          @include bg-gradient(url("../images/noise.png"), $darkGray, darken($darkGray, 2%));
-                          @include background-transition;
-                      }
-                }
-                
-              	/** Fix Liferay Bootstrap3 conflict **/
-                #nav-general-site ul.dropdown-menu {
-					border-radius: 0px;
-					margin: -1px 0px 0px 0px;
-					padding: 0px 0px 0px 0px;
-					li a {
-						padding: 12px 20px;
-					}
-				}                         
-                #nav-omni-admin {
-	            	margin: 0 25px 0 0 !important;
-	            }
-            }
-        }
-    }
-}
-
-/********************************************************************************/
-/* Search Section                                                        */
-/********************************************************************************/
-.aui {
-	#header-wrapper {
-	    #nav-wrapper {
-		    #desktop-search-controls {
-		    	margin-right:25px; 
-		    	#search-control-input {
-		    		margin-top:5px; 
-		    		
-		    	}
-		    	#SearchBtn:hover {
-		    		color: $yellow;
-		    	}
-		    }
-		}
-	}
-}
-
 
 /********************************************************************************/
 /* Main Content				                                                    */
@@ -474,6 +472,9 @@ div.dockbar {
     }
 
 }
+/********************************************************************************/
+/* Footer       styles                                                          */
+/********************************************************************************/
 
 
 
