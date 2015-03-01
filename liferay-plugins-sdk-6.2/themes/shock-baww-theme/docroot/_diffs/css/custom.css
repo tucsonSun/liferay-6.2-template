@@ -316,23 +316,23 @@ div.dockbar {
                 margin: 0 auto;
                 min-height: 0px; 
                 border: 0 solid transparent;
-                #nav-general-site li > a {
+                li > a {
                  	text-shadow:none;
                 	color: $white;
                 	font-weight:bold;
                 	padding: 12px 20px;
                 	
                 }
-              	#nav-general-site li ul li a {
+              	li ul li a {
 					@include bg-gradient(url("../images/noise.png"), $darkGray, darken($darkGray, 2%));
 					@include background-transition;
                 }
-                #nav-general-site li a:hover {
+                li a:hover {
                 	color: $white;
 					@include bg-gradient(url("../images/noise.png"), $yellow, darken($yellow, 2%));
 					@include background-transition;
                 }
-                #nav-general-site li.selected {
+                li.selected {
                       & > a {
                           @include bg-gradient(url("../images/noise.png"), $darkGray, darken($darkGray, 2%));
                           @include background-transition;
@@ -347,11 +347,7 @@ div.dockbar {
 					li a {
 						padding: 12px 20px;
 					}
-				}
-                #nav-omni-admin li > a {
-                 	text-shadow:none;
-                	color: $yellow;
-                }            
+				}                         
                 #nav-omni-admin {
 	            	margin: 0 25px 0 0 !important;
 	            }
