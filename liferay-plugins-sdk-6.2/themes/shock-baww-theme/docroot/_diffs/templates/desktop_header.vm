@@ -42,7 +42,7 @@
 	</div>
 	
 
-	<div id="desktop-search-controls" class="row">
+	<div class="row">
 		<div class="col-md-4">
 			<a class="$logo_css_class" href="/web/guest/home-page" title="#language_format ("go-to-x", [$site_name])">
 				<img alt="$logo_description" src="$images_folder/shockandbaww.png"  />
@@ -51,13 +51,10 @@
 		<div class="col-md-4">		
 			<strong>Email: </strong><a href="mailto:support@shockandbaww.com">support@shockandbaww.com</a>
 		</div>
-		<div class="col-md-4 text-right">
-			<form class="form-search">
-				<input type="text" class="input-medium search-query">
-				<button type="submit" class="btn">Search</button id="SearchBtn">
-			</form>
-		</div>
 	</div>
+	
+	
+	
 </div>	
 #if ($has_navigation || $is_signed_in)
 	#parse ("$full_templates_path/desktop_navigation.vm")
