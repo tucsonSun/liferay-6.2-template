@@ -13,7 +13,7 @@ jQuery(document).ready(function() {
 	**/
 	$(document).on('submit', '#desktop-search-controls form', function(event) {
 		event.preventDefault();
-		var searchValue = $(this).children('input').val();
+		var searchValue = $('#search-control-input').val();
 		window.location = '/web/guest/welcome?p_p_id=3&p_p_lifecycle=0&p_p_state=maximized&p_p_mode=view&_3_struts_action=%2Fsearch%2Fsearch&_3_redirect=%2Fweb%2Fguest%2F&_3_keywords='+searchValue+'&_3_groupId=0&x=15&y=15';
 	});
 
