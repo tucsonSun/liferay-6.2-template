@@ -17,7 +17,7 @@
 	</div>
 	<div id="mobile-logo-wrapper">
 		<a id="mobile-logo" href="/web/guest/home-page">
-		     <img alt="$logo_description" src="$images_folder/shockandbaww.png"  />
+		     <img alt="$logo_description" src="$images_folder/custom-site/images/shockandbaww.png"> 
 		</a>
 	</div>
 </header>

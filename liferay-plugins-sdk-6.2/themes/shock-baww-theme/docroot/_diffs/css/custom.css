@@ -368,6 +368,9 @@ div.dockbar {
 		    		margin-top:5px; 
 		    		
 		    	}
+		    	#SearchBtn:hover {
+		    		color: $yellow;
+		    	}
 		    }
 		}
 	}
