@@ -137,13 +137,17 @@ input:not([type=submit]):not([type=file]):not([type=button]):focus, textarea:foc
 /* that are needed in order to override Boostrap with Bootstrap3				*/
 /********************************************************************************/
 /********************************************************************************/
+/** fix for omni buttons **/
 div.dockbar div.navbar-inner div.container .nav-collapse {
 	visibility: visible;
 	display: block;
 }
+/** fix for omni buttons **/
 div.dockbar {
 	position: unset !important;
 }
+
+/** fix for text fields **/
 .aui {
 	select,
 	textarea,
