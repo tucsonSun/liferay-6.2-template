@@ -16,15 +16,27 @@ $white: #ffffff;
     -moz-box-shadow: $horizontal $vertical $blur r$box_color;
     box-shadow: $horizontal $vertical $blur $box_color;
 }
-@mixin gradient($from-color, $to-color) {
+@mixin color-gradient($from-color, $to-color) {
     /* Fallback */
     background-color: mix($from-color, $to-color);
-   
     background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($from-color), to($to-color));
     background-image: -webkit-linear-gradient(top, $from-color, $to-color);
     background-image: -moz-linear-gradient(top, $from-color, $to-color);
     background-image: -ms-linear-gradient(top, $from-color, $to-color);
     background-image: -o-linear-gradient(top, $from-color, $to-color);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$from-color}', EndColorStr='#{$to-color}')";
+}
+@mixin bg-gradient($background-image, $from-color, $to-color) {
+    /* Fallback */
+    background-color: mix($from-color, $to-color);
+    /* Fallback */
+    background-image: mix($from-color, $to-color);
+    
+    background: $background-image center center, -webkit-gradient(linear, 0% 0%, 0% 100%, from($from-color), to($to-color));
+    background: $background-image center center, -webkit-linear-gradient(top, $from-color, $to-color);
+    background: $background-image center center, -moz-linear-gradient(top, $from-color, $to-color);
+    background: $background-image center center, -ms-linear-gradient(top, $from-color, $to-color);
+    background: $background-image center center, -o-linear-gradient(top, $from-color, $to-color);
     -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$from-color}', EndColorStr='#{$to-color}')";
 }
 @mixin rounded-border-top($brd-top-radius) {
@@ -44,26 +56,16 @@ $white: #ffffff;
     border-bottom-right-radius: $brd-btm-radius;
     border-bottom-left-radius: $brd-btm-radius;
 }
-@mixin bg-gradient($background-image, $from-color, $to-color) {
-    /* Fallback */
-    background-color: mix($from-color, $to-color);
-    /* Fallback */
-    background-image: mix($from-color, $to-color);
-    
-    background: $background-image center center, -webkit-gradient(linear, 0% 0%, 0% 100%, from($from-color), to($to-color));
-    background: $background-image center center, -webkit-linear-gradient(top, $from-color, $to-color);
-    background: $background-image center center, -moz-linear-gradient(top, $from-color, $to-color);
-    background: $background-image center center, -ms-linear-gradient(top, $from-color, $to-color);
-    background: $background-image center center, -o-linear-gradient(top, $from-color, $to-color);
-    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$from-color}', EndColorStr='#{$to-color}')";
-}
 @mixin text-shadow-black {
     text-shadow: 0 1px 3px rgba(0, 0, 0, .4), 0 0 30px rgba(0, 0, 0, .075);
 }
-@mixin background-fade {
-    -webkit-transition: background-color .3s ease;
-    -o-transition: background-color .3s ease;
-    transition: background-color .3s ease;
+@mixin background-transition {
+
+   -webkit-transition: all .4s ease;
+      -moz-transition: all .4s ease;
+       -ms-transition: all .4s ease;
+        -o-transition: all .4s ease;
+           transition: all .4s ease;
 }
 @mixin border-fade($bd-color, $percent-fade) {
     border-right: 1px solid lighten($bd-color, $percent-fade);
@@ -147,7 +149,7 @@ div.dockbar {
 	position: unset !important;
 }
 
-/** fix for text fields **/
+/** fix for textField height **/
 .aui {
 	select,
 	textarea,
@@ -325,9 +327,16 @@ div.dockbar {
             #navigation {
                 margin: 0 auto;
                 min-height: 0px; 
+                border: 0 solid transparent;
                 #nav-general-site li > a {
                  	text-shadow:none;
-                	color: $yellow;
+                	color: $white;
+                	font-weight:bold;
+                	@include bg-gradient(url("../images/noise.png"), $darkGray, darken($darkGray, 5%));
+                }
+                #nav-general-site li a:hover {
+                 	color: $yellow;
+                 	@include background-transition;
                 }
                 #nav-omni-admin li > a {
                  	text-shadow:none;
@@ -336,10 +345,36 @@ div.dockbar {
                 #nav-omni-admin {
 	            	margin: 0 25px 0 0 !important;
 	            }
+	            ul.dropdown-menu {
+					border-radius: 0px;
+					margin: -1px 0px 0px 0px;
+					padding: 0px 0px 0px 0px;
+					li a {
+						padding: 12px 20px;
+					}
+				}
             }
         }
     }
 }
+
+/********************************************************************************/
+/* Search Section                                                        */
+/********************************************************************************/
+.aui {
+	#header-wrapper {
+	    #nav-wrapper {
+		    #desktop-search-controls {
+		    	margin-right:25px; 
+		    	#search-control-input {
+		    		margin-top:5px; 
+		    		
+		    	}
+		    }
+		}
+	}
+}
+
 
 /********************************************************************************/
 /* Main Content				                                                    */
@@ -357,7 +392,7 @@ div.dockbar {
         .portlet, .portlet-borderless-container {
             @extend .clearfix;
             .portlet-topper {
-                @include gradient(lighten($darkGray, 5%), $darkGray);
+                @include color-gradient(lighten($darkGray, 5%), $darkGray);
                 text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
             }
             .portlet-content {
