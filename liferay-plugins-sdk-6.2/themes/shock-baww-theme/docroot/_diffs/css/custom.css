@@ -88,18 +88,7 @@ $white: #ffffff;
 /********************************************************************************/
 img { border: 0; }
 .imageCenter { display: block; margin: 0 auto; }
-/********************************************************************************/
-/* Image     styles                                                             */
-/********************************************************************************/
-header {
-    @extend .clearfix;
-    .logo {
-        width: 13rem;
-        float: left;
-        margin-top: 1.25em;
-        margin-bottom: 1em;
-    }
-}
+
 
 /********************************************************************************/
 /* Global TextFields/TextAreas Highlight Styles                                 */
@@ -120,7 +109,7 @@ input:not([type=submit]):not([type=file]):not([type=button]):focus, textarea:foc
 
 #header-wrapper {
     @extend .clearfix;
-    background-color: $lightGray;
+	/** background-color: $lightGray; **/
 }
 
 
@@ -316,11 +305,13 @@ div.dockbar {
 .aui {
     #header-wrapper {
         #nav-wrapper {
-            @include box-shadow-general(0, 10px, 15px, rgba(255, 153, 0, 0.60));
             display: block;
-            @extend .clearfix;
-            border-bottom: 1px solid lighten($darkGray, 15%);
-            border-top: 1px solid darken($darkGray, 15%);
+            background-color: $lightGray;
+            border: 1px solid lighten($yellow, 15%);
+			@extend .clearfix;
+			@include rounded-border-top(4px);
+			@include rounded-border-bottom(4px);
+			@include box-shadow-general(0, 1px, 1px, rgba(0, 0, 0, 0.5));
             #navigation {
                 margin: 0 auto;
                 min-height: 0px; 

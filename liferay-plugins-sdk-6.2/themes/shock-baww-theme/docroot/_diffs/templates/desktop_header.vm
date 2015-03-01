@@ -24,6 +24,7 @@
 						<a href="https://www.facebook.com"><i class="fa fa-facebook"></i></a> 
 						<a href="https://twitter.com/leonartgr"><i class="fa fa-twitter"></i></a> 
 						<a href="#googleplus"><i class="fa fa-google-plus"></i></a> 
+						<a href="mailto:support@shockandbaww.com"><i class="fa fa-envelope-o"></i></a> 
 					</div>
 
 					<div id="sign-in" class="col-md-5.5 pull-right">
@@ -41,17 +42,19 @@
 		#end
 	</div>
 	
-
-	<div class="row">
-		<div class="col-md-4">
-			<a class="$logo_css_class" href="/web/guest/home-page" title="#language_format ("go-to-x", [$site_name])">
-				<img alt="$logo_description" src="$images_folder/shockandbaww.png"  />
-			</a>
-		</div>
-		<div class="col-md-4">		
-			<strong>Email: </strong><a href="mailto:support@shockandbaww.com">support@shockandbaww.com</a>
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+				<img class="img-responsive" alt="$logo_description" src="$images_folder/shockandbaww.png"> 
+			</div>
+			<div class="col-md-4">
+				<h1>Logo Nav</h1>
+				<p>A Bootstrap navigation template featuring an image logo in place of the navbar header text.</p>
+			</div>
 		</div>
 	</div>
+	
 	
 	
 	
