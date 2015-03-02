@@ -59,7 +59,7 @@ $white: #ffffff;
 @mixin text-shadow-black {
     text-shadow: 0 1px 3px rgba(0, 0, 0, .4), 0 0 30px rgba(0, 0, 0, .075);
 }
-@mixin background-transition {
+@mixin effect-slow-transition {
    -webkit-transition: all .4s ease;
       -moz-transition: all .4s ease;
        -ms-transition: all .4s ease;
@@ -73,14 +73,18 @@ $white: #ffffff;
     border-bottom: 1px solid lighten($bd-color, $percent-fade);
 }
 
-@mixin transparent($tranPercent) {
+@mixin transparent($transPercent) {
 	/* Netscape */
-	-moz-opacity: 0.5;
+	-moz-opacity: $transPercent;
 	/* Safari 1.x */
-	-khtml-opacity: 0.5;
+	-khtml-opacity: $transPercent;
 	/* Good browsers */
-	opacity: 0.5;
+	opacity: $transPercent;
 }
+
+
+
+
 
 
 /********************************************************************************/
@@ -257,17 +261,17 @@ div.dockbar {
                 }
               	li ul li a {
 					@include bg-gradient(url("../images/noise.png"), $darkGray, darken($darkGray, 2%));
-					@include background-transition;
+					@include effect-slow-transition;
                 }
                 li a:hover {
                 	color: $white;
 					@include bg-gradient(url("../images/noise.png"), $yellow, darken($yellow, 2%));
-					@include background-transition;
+					@include effect-slow-transition;
                 }
                 li.selected {
                       & > a {
                           @include bg-gradient(url("../images/noise.png"), $darkGray, darken($darkGray, 2%));
-                          @include background-transition;
+                          @include effect-slow-transition;
                       }
                 }
                 
@@ -297,6 +301,10 @@ div.dockbar {
 		    #desktop-search-controls {
 		    	margin-right:25px; 
 		    	@include transparent(0.5);
+		    	&:hover {
+		    		@include transparent(1);
+		    		@include effect-slow-transition;
+		    	}
 		    	#search-control-input {
 		    		margin-top:5px; 
 		    		
