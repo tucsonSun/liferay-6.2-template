@@ -21,14 +21,14 @@
 
 				#if ($nav_item.isSelected())
 					#set ($nav_item_attr_selected="aria-selected='true'")
-					#set ($nav_item_css_class="$nav_item_css_class act")
+					#set ($nav_item_css_class="$nav_item_css_class selected active")
 				#end
 
 				#if ($nav_item.hasChildren())
 					#set ($nav_item_attr_has_popup="aria-haspopup='true'")
 					#set ($nav_item_caret='<b class="icon-caret-down"></b>')
-					#set ($nav_item_css_class="drop $nav_item_css_class")
-					#set ($nav_item_link_css_class="drop-toggle")
+					#set ($nav_item_css_class="$nav_item_css_class dropdown")
+					#set ($nav_item_link_css_class="dropdown-toggle")
 				#end
 				
 
