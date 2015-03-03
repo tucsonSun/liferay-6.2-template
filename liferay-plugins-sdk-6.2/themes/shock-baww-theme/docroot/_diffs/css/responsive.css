@@ -84,34 +84,15 @@ $white: #ffffff;
 		@include box-shadow-general(0, 1px, 1px, rgba(0, 0, 0, 0.5));
 		@include border-fade($yellow, 15%);
         #nav-pop {
-            margin-bottom: 0;
-            font-size: 14px;
-            line-height: 20px;
-            text-align: center;
-            vertical-align: middle;
             cursor: pointer;
-			@include rounded-border-top(4px);
-   			@include rounded-border-bottom(4px);
-            float: right;
+            display: inline-block;
             padding: 7px 10px 9px 10px;
-            margin: 10px 10px 0 10px;
+            margin: 4px 10px;
             color: $white;
             @include box-shadow-general(0px, 1px, 0px, rgba(0, 0, 0, 0.25));
             @include bg-gradient(url("../images/noise.png"), $darkGray, darken($darkGray, 2%));
-            .icon-bar {
-                display: block;
-                margin-top: 3px;
-                width: 18px;
-                height: 2px;
-                background-color: $white;
-                @include rounded-border-top(4px);
-    			@include rounded-border-bottom(4px);
-                @include box-shadow-general(0px, 1px, 0px, rgba(0, 0, 0, 0.25));
-                line-height: 14px;
-                vertical-align: text-top;
-                background-position: 14px 14px;
-                background-repeat: no-repeat;
-            }
+            @include rounded-border-top(4px);
+   			@include rounded-border-bottom(4px);
         }
        	#nav-pop:hover {
 			@include bg-gradient(url("../images/noise.png"), $yellow, darken($yellow, 2%));
