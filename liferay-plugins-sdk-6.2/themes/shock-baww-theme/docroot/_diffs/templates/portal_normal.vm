@@ -23,7 +23,7 @@
 		$theme.include($body_top_include)
 		
 		<div class="page-wrap">
-			<div class="container hidden-tablet hidden-phone visible-desktop">
+			<div class="container visible-desktop hidden-tablet hidden-phone">
 				<div class="row">
 					#if ($is_signed_in && $permissionChecker.isOmniadmin())
 					     #dockbar()   
