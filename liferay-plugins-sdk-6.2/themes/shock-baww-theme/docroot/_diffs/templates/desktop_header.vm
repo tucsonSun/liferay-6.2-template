@@ -9,7 +9,7 @@
 					</div>
 
 					<div id="sign-in" class="col-md pull-right">
-						<!-- <a class="auth-button" href="/web/guest/video" title="Admin Home">Admin Home</a> -->
+						<!-- <a class="auth-link text-center" href="/web/guest/video" title="Admin Home">Admin Home</a> -->
 						<a class="auth-link" href="/c/portal/logout">
 							<i class="fa fa-sign-out fa-2x"></i><span>&nbsp;Sign Out</span>
 						</a>
@@ -44,7 +44,7 @@
 	</div>
 	
 	
-	<div class="container">
+	<div id="banner-wrapper" class="container">
 		<div class="row">
 			<div class="col-md-3">
 				<img class="img-responsive" alt="$logo_description" src="$images_folder/custom-site/images/shockandbaww.png"> 

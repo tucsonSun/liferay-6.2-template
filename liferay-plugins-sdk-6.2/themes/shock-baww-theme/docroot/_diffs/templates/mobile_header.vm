@@ -1,25 +1,50 @@
-<header id="mobile-top-controls" class="container">
-	<div class="row">
+<header id="mobile-top-controls">
+	<div id="auth-wrapper" class="col-md-12">
 		#if ($is_signed_in)
-			<p>
-				<a href="/c/portal/logout"><span>Sign Out</span></a>&nbsp;&nbsp; | &nbsp;&nbsp;
-				<a class="acct" href="/web/guest/video" title="Admin Home"><span>Admin Home</span></a> 	    	
-		    </p>
 
+		    
+		    <div class="col-md-offset-8 col-md-4">
+				<div class="row">
+					<div id="auth-name-wrapper" class="col-md-6 pull-right text-center">
+						<i class="fa fa-user fa-2x"></i><span>&nbsp;Welcome, $user_first_name <br /> $user_last_name!</span>
+					</div>
+
+					<div id="sign-in" class="col-md pull-right">
+						<!-- <a class="auth-link text-center" href="/web/guest/video" title="Admin Home">Admin Home</a> -->
+						<a class="auth-link text-center" href="/c/portal/logout">
+							<i class="fa fa-sign-out fa-2x"></i><span>&nbsp;Sign Out</span>
+						</a>
+					</div>
+				</div>
+			</div>
 		#else	
-			<p>
-				<!-- <a href="/web/guest/sign-up"><span>Sign Up</span></a>&nbsp;&nbsp; | &nbsp;&nbsp; -->
-				<a href="/web/guest/home-page?p_p_id=58&p_p_lifecycle=0&p_p_state=maximized&p_p_mode=view&_58_struts_action=%2Flogin%2Fforgot_password"><span>Forgot Password</span></a>&nbsp;&nbsp;
-				<a class="acct" href="/c/portal/login?redirect=/web/guest/video"><span>Sign In</span></a>			
-				
-			</p>
+			<div class="col-md-offset-4 col-md-8">
+				<div class="row">
+					<div id="sign-in" class="col-md-5.5 pull-right">
+						<a class="auth-link text-center" href="/web/guest/home-page?p_p_id=58&p_p_lifecycle=0&p_p_state=maximized&p_p_mode=view&_58_struts_action=%2Flogin%2Fforgot_password">
+							<i class="fa fa-cogs fa-2x"></i><span>&nbsp;Forgot <br/> Password</span>
+						</a>
+						<a class="auth-link text-center" href="/c/portal/login?redirect=/web/guest/video">
+							<i class="fa fa-sign-in fa-2x"></i><span>&nbsp;Sign <br/> In</span>
+						</a>
+					</div>
+				</div>
+			</div>
 		#end
 	</div>
-	<div id="mobile-logo-wrapper">
-		<a id="mobile-logo" href="/web/guest/home-page">
-		     <img alt="$logo_description" src="$images_folder/custom-site/images/shockandbaww.png"> 
-		</a>
+	
+	<div id="banner-wrapper" class="container">
+		<div class="row">
+			<div class="col-md-3">
+				<img class="img-responsive" alt="$logo_description" src="$images_folder/custom-site/images/shockandbaww.png"> 
+			</div>
+			<div class="col-md-4">
+				<h1>Logo Nav</h1>
+				<p>A Bootstrap navigation template featuring an image logo in place of the navbar header text.</p>
+			</div>
+		</div>
 	</div>
+	
 </header>
 #if ($has_navigation || $is_signed_in)
    #parse ("$full_templates_path/mobile_navigation.vm")

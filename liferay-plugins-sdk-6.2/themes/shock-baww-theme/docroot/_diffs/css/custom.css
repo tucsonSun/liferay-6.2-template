@@ -47,7 +47,6 @@ $white: #ffffff;
     border-top-right-radius: $brd-top-radius;
     border-top-left-radius: $brd-top-radius;
 }
-
 @mixin rounded-border-bottom($brd-btm-radius) {
     -webkit-border-bottom-right-radius: $brd-btm-radius;
     -webkit-border-bottom-left-radius: $brd-btm-radius;
@@ -72,7 +71,6 @@ $white: #ffffff;
     border-bottom: 1px solid lighten($bd-color, $percent-fade);
     border-bottom: 1px solid lighten($bd-color, $percent-fade);
 }
-
 @mixin transparent($transPercent) {
 	/* Netscape */
 	-moz-opacity: $transPercent;
@@ -169,7 +167,8 @@ div.dockbar {
 }
 
 
-#header-wrapper #desktop-top-controls  {
+#header-wrapper #desktop-top-controls,
+#header-wrapper #mobile-top-controls  {
     background-color: red;
     margin-bottom: 1em;
 }
@@ -243,7 +242,7 @@ div.dockbar {
         #nav-wrapper {
             display: block;
             background-color: $lightGray;
-            border: 1px solid lighten($yellow, 15%);
+            @include border-fade($yellow, 15%);
 			@extend .clearfix;
 			@include rounded-border-top(4px);
 			@include rounded-border-bottom(4px);

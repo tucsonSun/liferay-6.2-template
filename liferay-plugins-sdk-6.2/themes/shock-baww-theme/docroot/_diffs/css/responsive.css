@@ -1,24 +1,42 @@
-$lightestGray: #656565;
-$lightGray: #1b1b1b;
+/********************************************************************************/
+/* Variables                                                                   */
+/********************************************************************************/
+$lightestGray: #cccccc;
+$lightGray: #4F4F4F;
 $darkGray: #3F3F3F;
+$peach: #F5D8A9;
 $yellow: #FF9900;
-$white: #fff;
+$white: #ffffff;
 
+/********************************************************************************/
+/* Mixins                                                                       */
+/********************************************************************************/
 @mixin box-shadow-general($horizontal, $vertical, $blur, $box_color) {
-	-webkit-box-shadow: $horizontal $vertical $blur $box_color;
+    -webkit-box-shadow: $horizontal $vertical $blur $box_color;
     -moz-box-shadow: $horizontal $vertical $blur r$box_color;
     box-shadow: $horizontal $vertical $blur $box_color;
 }
-
-@mixin rounded-border-top($brd-top-radius) {
-	-webkit-border-top-right-radius: $brd-top-radius;
-	-webkit-border-top-left-radius: $brd-top-radius;
-	-moz-border-radius-topright: $brd-top-radius;
-	-moz-border-radius-topleft: $brd-top-radius;
-	border-top-right-radius: $brd-top-radius;
-	border-top-left-radius: $brd-top-radius;
+@mixin bg-gradient($background-image, $from-color, $to-color) {
+    /* Fallback */
+    background-color: mix($from-color, $to-color);
+    /* Fallback */
+    background-image: mix($from-color, $to-color);
+    
+    background: $background-image center center, -webkit-gradient(linear, 0% 0%, 0% 100%, from($from-color), to($to-color));
+    background: $background-image center center, -webkit-linear-gradient(top, $from-color, $to-color);
+    background: $background-image center center, -moz-linear-gradient(top, $from-color, $to-color);
+    background: $background-image center center, -ms-linear-gradient(top, $from-color, $to-color);
+    background: $background-image center center, -o-linear-gradient(top, $from-color, $to-color);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$from-color}', EndColorStr='#{$to-color}')";
 }
-
+@mixin rounded-border-top($brd-top-radius) {
+    -webkit-border-top-right-radius: $brd-top-radius;
+    -webkit-border-top-left-radius: $brd-top-radius;
+    -moz-border-radius-topright: $brd-top-radius;
+    -moz-border-radius-topleft: $brd-top-radius;
+    border-top-right-radius: $brd-top-radius;
+    border-top-left-radius: $brd-top-radius;
+}
 @mixin rounded-border-bottom($brd-btm-radius) {
     -webkit-border-bottom-right-radius: $brd-btm-radius;
     -webkit-border-bottom-left-radius: $brd-btm-radius;
@@ -27,41 +45,12 @@ $white: #fff;
     border-bottom-right-radius: $brd-btm-radius;
     border-bottom-left-radius: $brd-btm-radius;
 }
-
-@mixin gradient($from-color, $to-color) {
-    /* Fallback */
-    background-color: mix($from-color, $to-color);
-    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($from-color), to($to-color));
-    background-image: -webkit-linear-gradient(top, $from-color, $to-color);
-    background-image: -moz-linear-gradient(top, $from-color, $to-color);
-    background-image: -ms-linear-gradient(top, $from-color, $to-color);
-    background-image: -o-linear-gradient(top, $from-color, $to-color);
-    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$from-color}', EndColorStr='#{$to-color}')";
-}
-@mixin bg-gradient($background-image, $from-color, $to-color) {
-    /* Fallback */
-    background-color: mix($from-color, $to-color);
-    /* Fallback */
-    background-image: mix($from-color, $to-color);
-    background: $background-image center center, -webkit-gradient(linear, 0% 0%, 0% 100%, from($from-color), to($to-color));
-    background: $background-image center center, -webkit-linear-gradient(top, $from-color, $to-color);
-    background: $background-image center center, -moz-linear-gradient(top, $from-color, $to-color);
-    background: $background-image center center, -ms-linear-gradient(top, $from-color, $to-color);
-    background: $background-image center center, -o-linear-gradient(top, $from-color, $to-color);
-    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$from-color}', EndColorStr='#{$to-color}')";
-}
-@mixin text-shadow($color) {
-    text-shadow: 0 1px 0 $color;
-}
-@mixin background-fade {
-    -webkit-transition: background-color .3s ease;
-    -o-transition: background-color .3s ease;
-    transition: background-color .3s ease;
-}
-@mixin color-fade {
-    -webkit-transition: color .3s ease;
-    -o-transition: color .3s ease;
-    transition: color .3s ease;
+@mixin effect-slow-transition {
+   -webkit-transition: all .4s ease;
+      -moz-transition: all .4s ease;
+       -ms-transition: all .4s ease;
+        -o-transition: all .4s ease;
+           transition: all .4s ease;
 }
 @mixin border-fade($bd-color, $percent-fade) {
     border-right: 1px solid lighten($bd-color, $percent-fade);
@@ -69,51 +58,31 @@ $white: #fff;
     border-bottom: 1px solid lighten($bd-color, $percent-fade);
     border-bottom: 1px solid lighten($bd-color, $percent-fade);
 }
+@mixin transparent($transPercent) {
+	/* Netscape */
+	-moz-opacity: $transPercent;
+	/* Safari 1.x */
+	-khtml-opacity: $transPercent;
+	/* Good browsers */
+	opacity: $transPercent;
+}
 
-#header-wrapper #mobile-top-controls {
-    padding: 0 0.5rem 0.5rem 0;
-    text-align: right;
-    display: block;
-    a {
-        color: $darkGray;
-        display: inline-block;
-    }
-    a.acct {
-        @include bg-gradient(url("../images/noise.png"), $yellow, darken($yellow, 5%));
-        display: inline-block;
-        text-align: center;
-        height: auto;
-        color: $white;
-        padding: 1.25rem 0.75rem 0.5rem 0.75rem;
-        margin: -10px 0 0 0 !important;
-        font-weight: bold;
-        @include border-fade($yellow, 5%);
-        border-top:none;
-        @include box-shadow-general(0, 5px, 10px, rgba(0, 0, 0, 0.2));
-    	@include rounded-border-bottom(4px);
-        margin-top: -1px;
-        margin-left: 1rem;
-    }
-}
-#mobile-logo-wrapper #mobile-logo {
-    display: block;
-    text-align: center;
-    img {
-        width: 16rem;
-        padding: 1rem 0 1rem 0;
-    }
-}
+
+
+
+/********************************************************************************/
+/* HEADER - Navigation Section          		                                */
+/********************************************************************************/
 #mobile-nav {
-    @include box-shadow-general(0, 10px, 15px, rgba(255, 153, 0, 0.60));
-    ul {
-        clear: both;
-    }
     #mobile-nav-bar {
         display: block;
         height: 55px;
-        @include bg-gradient(url("../images/noise.png"), lighten($darkGray, 10%), $darkGray);
-        border-bottom: 1px solid darken($darkGray, 10%);
-        border-top: 1px solid $darkGray;
+    	background-color: $lightGray;
+		@extend .clearfix;
+		@include rounded-border-top(4px);
+		@include rounded-border-bottom(4px);
+		@include box-shadow-general(0, 1px, 1px, rgba(0, 0, 0, 0.5));
+		@include border-fade($yellow, 15%);
         #nav-pop {
             margin-bottom: 0;
             font-size: 14px;
@@ -123,104 +92,75 @@ $white: #fff;
             cursor: pointer;
 			@include rounded-border-top(4px);
    			@include rounded-border-bottom(4px);
-            background: $yellow;
             float: right;
             padding: 7px 10px 9px 10px;
             margin: 10px 10px 0 10px;
             color: $white;
-            text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-            border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-            @include box-shadow-general(0, 1px, 0px, rgba(255, 255, 255, 0.1));
+            @include box-shadow-general(0px, 1px, 0px, rgba(0, 0, 0, 0.25));
+            @include bg-gradient(url("../images/noise.png"), $darkGray, darken($darkGray, 2%));
             .icon-bar {
                 display: block;
                 margin-top: 3px;
                 width: 18px;
                 height: 2px;
-                background-color: #f5f5f5;
-                @include rounded-border-top(1px);
-    			@include rounded-border-bottom(1px);
+                background-color: $white;
+                @include rounded-border-top(4px);
+    			@include rounded-border-bottom(4px);
                 @include box-shadow-general(0px, 1px, 0px, rgba(0, 0, 0, 0.25));
                 line-height: 14px;
                 vertical-align: text-top;
-                background-image: url("../images/glyphicons-halflings.png");
                 background-position: 14px 14px;
                 background-repeat: no-repeat;
             }
         }
+       	#nav-pop:hover {
+			@include bg-gradient(url("../images/noise.png"), $yellow, darken($yellow, 2%));
+			@include effect-slow-transition;
+      	}
     }
     #mobile-nav-menu .drop-menu {
         display: none;
     }
     #mobile-nav-menu {
         display: none;
-        background: $white;
         border-bottom: 1px solid darken($darkGray, 10%);
-        ul {
-            padding: 0;
-            margin: 0;
-            li {
-                list-style-type: none;
-                padding: 0;
-                a {
-                    display: block;
-                    width: 100%;
-                    background: $darkGray;
-                    color: $white;
-                    border-top: 1px solid lighten($darkGray, 10%);
-                    border-bottom: 1px solid darken($darkGray, 10%);
-                    span {
-                        display: block;
-                        padding: 0.25rem;
-                    }
-                }
-                ul {
-                    padding: 0;
-                    margin: 0;
-                    display: none;
-                    li {
-                        list-style-type: none;
-                        padding: 0;
-                        a {
-                            background: lighten($darkGray, 5%);
-                            border-top: 1px solid lighten($darkGray, 15%);
-                            border-bottom: 1px solid darken($darkGray, 15%);
-                            display: block;
-                            margin: 0;
-                            span {
-                                display: block;
-                                padding: 0.25rem;
-                            }
-                        }
-                    }
-                }
-            }
+        @include effect-slow-transition;       
+        margin: 0 auto;
+        min-height: 0px; 
+        border: 0 solid transparent;
+        .nav {
+        	background-color: $lightGray;
+        	@include rounded-border-bottom(4px);
+        	@include box-shadow-general(0, 1px, 1px, rgba(0, 0, 0, 0.5));
+        	li > a {
+	        	text-shadow:none;
+	           	color: $white;
+	           	font-weight:bold;
+	           	padding: 12px 20px;
+	           	
+			}
+			li ul li a {
+				@include bg-gradient(url("../images/noise.png"), $darkGray, darken($darkGray, 2%));
+				@include effect-slow-transition;
+			}
+			li a:hover {
+	           	color: $white;
+				@include bg-gradient(url("../images/noise.png"), $yellow, darken($yellow, 2%));
+				@include effect-slow-transition;
+			}
+			li.selected {
+	        	& > a {
+	          		@include bg-gradient(url("../images/noise.png"), $darkGray, darken($darkGray, 2%));
+					@include effect-slow-transition;
+				}
+			}
         }
     }
 }
 
-#footer-wrapper {
-	footer {
-	    #mobileFooter {
-	        ul {
-	            display: block;
-	            text-align: center;
-	            width: 100%;
-	            border-bottom: 1px solid $lightestGray;
-	            li {
-	                list-style-type: none;
-	                padding: 1rem;
-	                a {
-	                    display: block;
-	                    color: $white;
-	                    font-size: 2.5rem;
-	                }
-	            }
-	        }
-	    }
-	}
-}
-/** iPhone portrait and under **/
-
+/********************************************************************************/
+/* Mobile Media Sizes                                                           */
+/********************************************************************************/
 @media screen and (max-width: 320px) {
     .aui {
         .table {
@@ -228,8 +168,6 @@ $white: #fff;
         }
     }
 }
-/** iPhone iPhone landscape and under **/
-
 @media screen and (max-width: 640px) {
     .aui {
         .table {
@@ -238,21 +176,24 @@ $white: #fff;
         }
     }
 }
-/** iPad portrait and under **/
 
+
+/********************************************************************************/
+/* Tablet Media Sizes                                                           */
+/********************************************************************************/
 @media screen and (max-width: 768px) {
-    .aui {}
+ 
 }
-/** iPad landscape and under **/
-
 @media screen and (max-width: 850px) {
     #header-wrapper .container-fluid {
         padding-right: 0px;
         padding-left: 0px;
     }
 }
-/** iPad landscape and under **/
 
+/********************************************************************************/
+/* Desktop Media Sizes                                                           */
+/********************************************************************************/
 @media screen and (max-width: 1024px) {
     .aui body {
         padding: 0;
