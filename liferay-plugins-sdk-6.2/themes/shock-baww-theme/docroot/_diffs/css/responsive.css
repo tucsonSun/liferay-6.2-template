@@ -118,7 +118,8 @@ $white: #ffffff;
 	           	color: $white;
 	           	font-weight:bold;
 	           	padding: 12px 20px;
-	           	
+	           	display: inline-block;
+    			width: 100%;
 			}
 			li ul li a {
 				@include bg-gradient(url("../images/noise.png"), $darkGray, darken($darkGray, 2%));
