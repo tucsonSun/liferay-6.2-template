@@ -1,11 +1,10 @@
 <div id="mobile-nav">
  	<div id="mobile-nav-bar">
-
-	  <a class="touche" id="nav-pop">
-	    <span class="icon-bar"></span>
-	    <span class="icon-bar"></span>
-	    <span class="icon-bar"></span>
-	  </a>
+		<a class="touche" id="nav-pop">
+	    	<span class="icon-bar"></span>
+	    	<span class="icon-bar"></span>
+	    	<span class="icon-bar"></span>
+		</a>
 	</div>
 	<div id="mobile-nav-menu">
 		<ul aria-label="#language ("site-pages")" class="nav" role="menubar">
@@ -60,9 +59,22 @@
 				<a>
 					<span>Contact Info<b class="icon-caret-down"></b></span>
 				</a>
-				<ul class="drop-menu child-menu" role="menu">
-					<!-- <li><a href="tel:1-555-555-5555"><span><strong>Tel:</strong> 555.555.5555</span></a></li> -->
-					<li><a href="mailto:support@shockandbaww.com"><span><strong>Email:</strong> support@shockandbaww.com</span></a></li>
+				<ul class="drop-menu child-menu text-center" role="menu">
+					<li>
+						<a href="https://www.facebook.com"><i class="fa fa-facebook fa-2x"></i>&nbsp;facebook</a>
+					</li>
+					<li>
+						<a href="https://twitter.com/leonartgr"><i class="fa fa-twitter fa-2x"></i>&nbsp;twitter</a>
+					</li>
+					<li>
+						<a href="#googleplus"><i class="fa fa-google-plus fa-2x"></i>&nbsp;googleplus</a>
+					</li>
+					<li>
+						<a href="mailto:support@shockandbaww.com"><i class="fa fa-envelope-o fa-2x"></i>&nbsp;support@shockandbaww.com</a>
+					</li>
+					<li>
+						<a href="tel:+15551231234"><i class="fa fa-mobile fa-2x"></i>&nbsp;1-555-123-1234</a>
+					</li>
 				</ul>
 			</li>
 		</ul>
@@ -73,3 +85,61 @@
 		#end
 	</div>
 </div>
+
+
+-------------------------------------------------
+
+<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">Brand</a>
+		</div>
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+				<li><a href="#">Link</a></li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="#">Action</a></li>
+						<li><a href="#">Another action</a></li>
+						<li><a href="#">Something else here</a></li>
+						<li class="divider"></li>
+						<li><a href="#">Separated link</a></li>
+						<li class="divider"></li>
+						<li><a href="#">One more separated link</a></li>
+					</ul>
+				</li>
+			</ul>
+			<form class="navbar-form navbar-left" role="search">
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Search">
+				</div>
+				<button type="submit" class="btn btn-default">Submit</button>
+			</form>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#">Link</a></li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="#">Action</a></li>
+						<li><a href="#">Another action</a></li>
+						<li><a href="#">Something else here</a></li>
+						<li class="divider"></li>
+						<li><a href="#">Separated link</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<!-- /.navbar-collapse -->
+	</div>
+	<!-- /.container-fluid -->
+</nav>
