@@ -98,9 +98,7 @@
 
 
 <div id="mobile-search-controls">
-
-
-	<form id="search-control-form" class="form-search">
+	<form  class="form-search">
 		<div class="input-group">
            <input id="search-control-input" type="text" class="form-control" placeholder="Search...">
            <div class="input-group-btn">

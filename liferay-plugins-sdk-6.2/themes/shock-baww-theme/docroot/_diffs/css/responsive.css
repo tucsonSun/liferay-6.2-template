@@ -147,6 +147,29 @@ $white: #ffffff;
     }
 }
 
+.aui {
+	#header-wrapper {
+	    #mobile-search-controls {
+	    	background-color:blue;
+	    	margin-top: 15px;
+	    	@include transparent(0.5);
+	    	@include box-shadow-general(0, 1px, 1px, rgba(0, 0, 0, 0.5));
+	    	&:hover {
+	    		@include transparent(1);
+	    		@include effect-slow-transition;
+	    		
+	    	}
+	    	#search-control-input {
+	    		margin-top: 0px; 
+	    		height: 44px;
+	    	}
+	    	#SearchBtn:hover {
+	    		color: $yellow;
+	    	}
+	    }
+	}
+}
+
 /********************************************************************************/
 /* Mobile Media Sizes                                                           */
 /********************************************************************************/
