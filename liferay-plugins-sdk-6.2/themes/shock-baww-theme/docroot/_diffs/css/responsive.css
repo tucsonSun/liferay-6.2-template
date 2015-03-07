@@ -121,6 +121,7 @@ $white: #ffffff;
 			    padding: 12px 20px;
 			    text-shadow: none;
 			    width: 100%;
+			    @include effect-slow-transition;
             }
           	li a:hover {
 				text-decoration: none;

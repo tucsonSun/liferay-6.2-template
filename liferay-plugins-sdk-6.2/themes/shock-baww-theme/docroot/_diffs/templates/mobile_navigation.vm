@@ -98,7 +98,7 @@
 
 
 <div id="mobile-search-controls">
-	<form  class="form-search">
+	<form  class="form-search" autocomplete="on">
 		<div class="input-group">
            <input id="search-control-input" type="text" class="form-control" placeholder="Search...">
            <div class="input-group-btn">

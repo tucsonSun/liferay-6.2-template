@@ -59,11 +59,11 @@ $white: #ffffff;
     text-shadow: 0 1px 3px rgba(0, 0, 0, .4), 0 0 30px rgba(0, 0, 0, .075);
 }
 @mixin effect-slow-transition {
-   -webkit-transition: all .4s ease;
-      -moz-transition: all .4s ease;
-       -ms-transition: all .4s ease;
-        -o-transition: all .4s ease;
-           transition: all .4s ease;
+   -webkit-transition: all .55s ease;
+      -moz-transition: all .55s ease;
+       -ms-transition: all .55s ease;
+        -o-transition: all .55s ease;
+           transition: all .55s ease;
 }
 @mixin border-fade($bd-color, $percent-fade) {
     border-right: 1px solid lighten($bd-color, $percent-fade);
@@ -79,9 +79,6 @@ $white: #ffffff;
 	/* Good browsers */
 	opacity: $transPercent;
 }
-
-
-
 
 
 
@@ -300,13 +297,20 @@ div.dockbar {
 		    #desktop-search-controls {
 		    	margin-right:25px; 
 		    	@include transparent(0.5);
+		    	@include effect-slow-transition;
 		    	&:hover {
 		    		@include transparent(1);
 		    		@include effect-slow-transition;
 		    	}
 		    	#search-control-input {
 		    		margin-top:5px; 
-		    		
+		    		width: 60px;
+		    		@include effect-slow-transition;
+		    	}
+		    	#search-control-input:focus {
+		    		@include transparent(1); 
+		    		width: 100%;
+		    		@include effect-slow-transition;
 		    	}
 		    	#SearchBtn:hover {
 		    		color: $yellow;
