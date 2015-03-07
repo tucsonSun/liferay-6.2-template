@@ -1,9 +1,7 @@
 <div id="mobile-nav">
  	<div id="mobile-nav-bar">
 		<a class="touche" id="nav-pop">
-	    	<span class="icon-bar"></span>
-	    	<span class="icon-bar"></span>
-	    	<span class="icon-bar"></span>
+	    	<i class="fa fa-bars fa-2x"></i>
 		</a>
 	</div>
 	<div id="mobile-nav-menu">
@@ -11,12 +9,14 @@
 				
 			
 			#foreach ($nav_item in $nav_items)
-
+				
+				<!-- clear variables -->
 				#set ($nav_item_attr_selected="")
 				#set ($nav_item_attr_has_popup="")
 				#set ($nav_item_caret="")
 				#set ($nav_item_css_class="")
 				#set ($nav_item_link_css_class="")
+				#set ($nav_item_link_css_style="")
 
 				#if ($nav_item.isSelected())
 					#set ($nav_item_attr_selected="aria-selected='true'")
@@ -25,16 +25,26 @@
 
 				#if ($nav_item.hasChildren())
 					#set ($nav_item_attr_has_popup="aria-haspopup='true'")
-					#set ($nav_item_caret='<b class="icon-caret-down"></b>')
-					#set ($nav_item_css_class="$nav_item_css_class dropdown")
-					#set ($nav_item_link_css_class="dropdown-toggle")
+					#set ($nav_item_caret='<i class="fa fa-caret-square-o-down fa-2x"></i>')
+					#set ($nav_item_css_class="$nav_item_css_class drop")
+					#set ($nav_item_link_css_class="drop-toggle")
+					#set ($nav_item_link_css_style="width:80%;")
 				#end
 				
 
 				<li class="$nav_item_css_class touche" id="layout_$nav_item.getLayoutId()" $nav_item_attr_selected role="presentation">
-					<a aria-labelledby="layout_$nav_item.getLayoutId()" $nav_item_attr_has_popup class="$nav_item_link_css_class" href="$nav_item.getURL()" $nav_item.getTarget() role="menuitem">
-						<span>$nav_item.icon() $nav_item.getName() $nav_item_caret</span>
-					</a>
+
+					<div id="menu-parent-wrapper">
+						<a style="$nav_item_link_css_style" aria-labelledby="layout_$nav_item.getLayoutId()" $nav_item_attr_has_popup class="$nav_item_link_css_class" href="$nav_item.getURL()" $nav_item.getTarget() role="menuitem">
+							<span>$nav_item.icon() $nav_item.getName()</span>
+						</a>					
+					
+						#if ($nav_item.hasChildren())
+						<a id="menu-parent-selector" aria-labelledby="layout_$nav_item.getLayoutId()" $nav_item_attr_has_popup class="$nav_item_link_css_class" href="javascript:void(0);" $nav_item.getTarget() role="menuitem">
+							<span> $nav_item_caret </span>
+						</a>
+						#end
+					</div>
 
 					#if ($nav_item.hasChildren())
 						<ul class="drop-menu child-menu" role="menu">

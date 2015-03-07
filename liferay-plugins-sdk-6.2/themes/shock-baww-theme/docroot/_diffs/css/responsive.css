@@ -113,29 +113,36 @@ $white: #ffffff;
         	background-color: $lightGray;
         	@include rounded-border-bottom(4px);
         	@include box-shadow-general(0, 1px, 1px, rgba(0, 0, 0, 0.5));
-        	li > a {
-	        	text-shadow:none;
+
+       		li a {
+           		color: $white;
+			    display: inline-block;
+			    font-weight: bold;
+			    padding: 12px 20px;
+			    text-shadow: none;
+			    width: 100%;
+            }
+          	li a:hover {
+				text-decoration: none;
 	           	color: $white;
-	           	font-weight:bold;
-	           	padding: 12px 20px;
-	           	display: inline-block;
-    			width: 100%;
-			}
-			li ul li a {
-				@include bg-gradient(url("../images/noise.png"), $darkGray, darken($darkGray, 2%));
 				@include effect-slow-transition;
-			}
-			li a:hover {
-	           	color: $white;
 				@include bg-gradient(url("../images/noise.png"), $yellow, darken($yellow, 2%));
+			}
+            li.selected #menu-parent-wrapper {
+           		@include bg-gradient(url("../images/noise.png"), $darkGray, darken($darkGray, 2%));
+				@include effect-slow-transition;
+            }
+         	li #menu-parent-selector {
+            	display: inline-block;
+            	height: 100%;
+            	width: 19%;
+            }
+			li ul li a {
+				display: inline-block;
+				@include bg-gradient(url("../images/noise.png"), $lightGray, darken($lightGray, 2%));
 				@include effect-slow-transition;
 			}
-			li.selected {
-	        	& > a {
-	          		@include bg-gradient(url("../images/noise.png"), $darkGray, darken($darkGray, 2%));
-					@include effect-slow-transition;
-				}
-			}
+
         }
     }
 }
