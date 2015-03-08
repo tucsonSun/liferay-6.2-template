@@ -31,7 +31,7 @@
 
 				#if ($nav_child.isSelected())
 					#set ($nav_child_attr_selected="aria-selected='true'")
-					#set ($nav_child_css_class="child-selected")
+					#set ($nav_child_css_class="$nav_child_css_class child-selected")
 				#end
 
 				<li class="$nav_child_css_class" id="layout_$nav_child.getLayoutId()" $nav_child_attr_selected role="presentation">
@@ -44,10 +44,10 @@
 #end
 <ul class="span2">
 	<li class="list-header"><a href="javascript:void(0);" >Connect</a></li>  
-	<li><a href="http://www.facebook.com/abc15" target="_blank">facebook <i class="icon-facebook icon-2x"></i></a></li>
-	<li><a href="http://twitter.com/abc15" target="_blank">twitter <i class="icon-twitter icon-2x"></i></a></li>
-	<li><a href="http://instagram.com/abc15arizona">instagram <i class="icon-instagram icon-2x"></i></a></li>
-	<li><a href="http://www.youtube.com/abc15">youtube <i class="icon-youtube icon-2x"> </i></a></li>
-	<li><a href="/newsletters">Newsletters <i class="icon-envelope icon-2x"></i></a></li>
+	<li class="list-child"><a href="http://www.facebook.com/abc15" target="_blank">facebook <i class="icon-facebook icon-2x"></i></a></li>
+	<li class="list-child"><a href="http://twitter.com/abc15" target="_blank">twitter <i class="icon-twitter icon-2x"></i></a></li>
+	<li class="list-child"><a href="http://instagram.com/abc15arizona">instagram <i class="icon-instagram icon-2x"></i></a></li>
+	<li class="list-child"><a href="http://www.youtube.com/abc15">youtube <i class="icon-youtube icon-2x"> </i></a></li>
+	<li class="list-child"><a href="/newsletters">Newsletters <i class="icon-envelope icon-2x"></i></a></li>
 </ul>
 

@@ -514,16 +514,20 @@ div.dockbar {
 			list-style-type: none;
 		}
 		#footer-top ul li.list-header {
-			font-weight:bold;
+			font-weight: bold;
 			font-size: x-large;
 			padding-bottom: 15px;
 			border-bottom: 1px solid $white;
 		}
+		#footer-top ul li.list-child {
+			margin-top: 5px;
+			font-weight: normal;
+		}
 		#footer-top ul li.selected > a {
-			color: darken($yellow, 15%);
+			color: darken($lightestGray, 15%);
 		}	
 		#footer-top ul li.child-selected > a {
-			color: darken($yellow, 15%);
+			color: $yellow;
 		}		
 		#footer-top a {
 			color: $white;
