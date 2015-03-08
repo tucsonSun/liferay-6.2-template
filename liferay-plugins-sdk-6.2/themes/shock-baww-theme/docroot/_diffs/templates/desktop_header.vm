@@ -47,7 +47,9 @@
 	<div id="banner-wrapper" class="container">
 		<div class="row">
 			<div class="col-md-3">
-				<img class="img-responsive" alt="$logo_description" src="$images_folder/custom-site/images/shockandbaww.png"> 
+				<a href="/web/guest">
+					<img class="img-responsive" alt="$logo_description" src="$images_folder/custom-site/images/shockandbaww.png"> 
+				</a> 
 			</div>
 			<div class="col-md-4">
 				<h1>Logo Nav</h1>
