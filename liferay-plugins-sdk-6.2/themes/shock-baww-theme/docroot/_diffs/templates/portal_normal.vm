@@ -67,19 +67,23 @@
 			     </div>
 			</div>
 			<div id="footer-wrapper" class="container-fluid">
-				<footer id="footer" role="banner" class="container">    	 
-		          	<div id="desktopFooter" class="visible-desktop">
-						#parse ("$full_templates_path/desktop_footer.vm")
-					</div>
-					
-					<div id="mobileFooter" class="hidden-desktop">
-						#parse ("$full_templates_path/mobile_footer.vm")
+				<footer id="footer" role="banner" class="row" > 
+					<div id="footer-top" class="container">   	 
+			          	<div id="desktopFooter" class="visible-desktop">
+							#parse ("$full_templates_path/desktop_footer.vm")
+						</div>
+						
+						<div id="mobileFooter" class="hidden-desktop text-center">
+							#parse ("$full_templates_path/mobile_footer.vm")
+						</div>
 					</div>
 		        
-		        	<div id="copyRightFooter" class="clear">
-		        		<p>
-		        		Copyright &copy; Shock and Baww <script>document.write(new Date().getFullYear());</script>
-		        		</p>
+		        	<div id="footer-copyright" class="clear">
+		        		<div class="container">   	
+			        		<p>
+			        		Copyright &copy; Shock and Baww <script>document.write(new Date().getFullYear());</script>
+			        		</p>
+		        		</div>
 		        	</div>
 				</footer>
 			</div>

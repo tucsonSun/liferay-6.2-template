@@ -319,6 +319,8 @@ div.dockbar {
 		}
 	}
 }
+
+
 /********************************************************************************/
 /* Breakcrumbs                                                                  */
 /********************************************************************************/
@@ -486,6 +488,57 @@ div.dockbar {
 /********************************************************************************/
 /* Footer       styles                                                          */
 /********************************************************************************/
+.aui {
+	#footer-wrapper {
+		@extend .clearfix;
+		footer {
+			background-color: #434955;
+			#footer-copyright {
+				background-color: #353b47;
+			    color: $white;
+			    padding: 20px 0;
+			}
+		}
+	}
+	
+	
+	#footer-wrapper {
+		#footer-top {
+			color: $white;
+			padding: 20px 0px;
+			@include bg-gradient(url("../images/noise.png"), $darkGray, darken($darkGray, 2%));
+			@include effect-slow-transition;
+		}
+		
+		#footer-top ul li {
+			list-style-type: none;
+		}
+		#footer-top ul li.list-header {
+			font-weight:bold;
+			font-size: x-large;
+			padding-bottom: 15px;
+			border-bottom: 1px solid $white;
+		}
+		#footer-top ul li.selected > a {
+			color: darken($yellow, 15%);
+		}	
+		#footer-top ul li.child-selected > a {
+			color: darken($yellow, 15%);
+		}		
+		#footer-top a {
+			color: $white;
+		 	text-decoration:none; 
+	        margin: 5px 0px;
+	        font-weight: bold;
+	        border-top: none;
+			@include effect-slow-transition;
+		}
+		#footer-top a:hover {
+			color: darken($yellow, 15%);
+			@include effect-slow-transition;
+		}
+	}
+}
 
 
 

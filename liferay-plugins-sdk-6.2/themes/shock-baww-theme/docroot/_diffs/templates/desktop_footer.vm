@@ -2,47 +2,48 @@
 		#set ($nav_item_attr_selected="")
 		#set ($nav_item_attr_has_popup="")
 		#set ($nav_item_caret="")
-		#set ($nav_item_css_class="lfr-nav-item")
+		#set ($nav_header_css_class="list-header")
 		#set ($nav_item_link_css_class="")
 
-	#if ($nav_item.isSelected())
-		#set ($nav_item_attr_selected="aria-selected='true'")
-		#set ($nav_item_css_class="$nav_item_css_class selected active")
-	#end
-
-	##if ($nav_item.hasChildren())
-		##set ($nav_item_attr_has_popup="aria-haspopup='true'")
-		##set ($nav_item_caret='<b class="icon-caret-down"></b>')
-		##set ($nav_item_css_class="$nav_item_css_class dropdown")
-		##set ($nav_item_link_css_class="dropdown-toggle")
-	##end
-	<ul class="span2">
-		<li class="list-header $nav_item_css_class" id="layout_$nav_item.getLayoutId()" $nav_item_attr_selected role="presentation">
+		#if ($nav_item.isSelected())
+			#set ($nav_item_attr_selected="aria-selected='true'")
+			#set ($nav_header_css_class="$nav_header_css_class selected active")
+		#end
+	
+		##if ($nav_item.hasChildren())
+			##set ($nav_item_attr_has_popup="aria-haspopup='true'")
+			##set ($nav_item_caret='<b class="icon-caret-down"></b>')
+			##set ($nav_header_css_class="$nav_header_css_class dropdown")
+			##set ($nav_item_link_css_class="dropdown-toggle")
+		##end	
+	
+	<ul class="col-md-2">
+		<li class="$nav_header_css_class" id="layout_$nav_item.getLayoutId()" $nav_item_attr_selected role="presentation">
 			<a aria-labelledby="layout_$nav_item.getLayoutId()" $nav_item_attr_has_popup class="$nav_item_link_css_class" href="$nav_item.getURL()" $nav_item.getTarget() role="menuitem">
 				<span>$nav_item.icon() $nav_item.getName() $nav_item_caret</span>
 			</a>
 		</li>
 
-			#if ($nav_item.hasChildren())
-				#foreach ($nav_child in $nav_item.getChildren())
-					#set ($nav_child_attr_selected="")
-					#set ($nav_child_css_class="lfr-nav-item")
+		#if ($nav_item.hasChildren())
+			#foreach ($nav_child in $nav_item.getChildren())
+				#set ($nav_child_attr_selected="")
+				#set ($nav_child_css_class="list-child")
 
-					#if ($nav_child.isSelected())
-						#set ($nav_child_attr_selected="aria-selected='true'")
-						#set ($nav_child_css_class="selected")
-					#end
-
-					<li class="$nav_child_css_class" id="layout_$nav_child.getLayoutId()" $nav_child_attr_selected role="presentation">
-						<a aria-labelledby="layout_$nav_child.getLayoutId()" href="$nav_child.getURL()" $nav_child.getTarget() role="menuitem">$nav_child.getName()</a>
-					</li>
+				#if ($nav_child.isSelected())
+					#set ($nav_child_attr_selected="aria-selected='true'")
+					#set ($nav_child_css_class="child-selected")
 				#end
+
+				<li class="$nav_child_css_class" id="layout_$nav_child.getLayoutId()" $nav_child_attr_selected role="presentation">
+					<a aria-labelledby="layout_$nav_child.getLayoutId()" href="$nav_child.getURL()" $nav_child.getTarget() role="menuitem">$nav_child.getName()</a>
+				</li>
 			#end
+		#end
 	</ul>
 	<span class="vertical-separator"></span>
 #end
 <ul class="span2">
-	<li class="list-header"><a href="#" >Stay Connected</a></li>  
+	<li class="list-header"><a href="javascript:void(0);" >Connect</a></li>  
 	<li><a href="http://www.facebook.com/abc15" target="_blank">facebook <i class="icon-facebook icon-2x"></i></a></li>
 	<li><a href="http://twitter.com/abc15" target="_blank">twitter <i class="icon-twitter icon-2x"></i></a></li>
 	<li><a href="http://instagram.com/abc15arizona">instagram <i class="icon-instagram icon-2x"></i></a></li>
