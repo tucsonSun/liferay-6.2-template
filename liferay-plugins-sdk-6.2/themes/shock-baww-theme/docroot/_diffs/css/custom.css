@@ -493,8 +493,10 @@ div.dockbar {
 		footer {
 			#footer-copyright {
 				background-color: #353b47;
+				background: url("../images/footBg.png") repeat-x scroll 0 0 #494949;
 			    color: $white;
 			    padding: 20px 0;
+			    font-size: 11px;
 			}
 		}
 	}

@@ -80,9 +80,15 @@
 		        
 		        	<div id="footer-copyright"> 	
 		        		<div class="container">
-			        		<p>
-			        		Copyright &copy; Shock and Baww <script>document.write(new Date().getFullYear());</script>
-			        		</p>
+					   		<p class="col-sm-8 col-md-8">
+			        			Copyright &copy; ShockandBaww.com <script>document.write(new Date().getFullYear());</script>. Design by Ernesto Rendon. <br />
+			        			Reproduction without explicit permission is prohibited.  All Rights Reserved.
+							</p>
+							<p class="col-sm-4 col-md-4">	
+								Disclaimer: The editor(s) reserve the right to edit any comments that are found to be abusive, 
+								offensive, contain profanity, serves as spam, is largely self-promotional, or displaying attempts to 
+								harbour irrelevant text links for any purpose.
+							</p>
 		        		</div>
 		        	</div>
 				</footer>
