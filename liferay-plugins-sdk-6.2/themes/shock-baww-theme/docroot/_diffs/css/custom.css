@@ -421,7 +421,7 @@ div.dockbar {
 	/** Make all sections transparent **/
     #content-wrapper {
     	section {
-    		@include transparent(0.85);
+    		
     	}
 	}
 
