@@ -195,8 +195,15 @@ $white: #ffffff;
 
 .aui {
     #footer-social-media-wrapper {
-        @extend .generalAuthLink;
-        @include border-fade-top($yellow, 5%);
+		display: inline-block;
+		padding: 10px;
+		top: 0;
+		@include border-fade-left-right($yellow, 5%);
+		@include border-fade-top($yellow, 5%);
+		@include border-fade-bottom($yellow, 5%);
+		@include box-shadow-general(0, 5px, 10px, rgba(0, 0, 0, 0.2));
+		@include bg-gradient(url("../images/noiseImg.png"), $darkGray, darken($darkGray, 5%));
+		@include rounded-border-bottom(4px);
         @include rounded-border-top(4px);
     }
     #footer-social-media-wrapper a {
