@@ -172,24 +172,29 @@ $white: #ffffff;
 	    }
 	}
 }
+/********************************************************************************/
+/* Footer       styles                                                          */
+/********************************************************************************/
+.aui {
+	#footer-wrapper {
+		footer {
+			#mobileFooter {
+				ul {
+					margin: 0px;
+				}
+			}
+		}
+	}
+}
 
 /********************************************************************************/
 /* Mobile Media Sizes                                                           */
 /********************************************************************************/
 @media screen and (max-width: 320px) {
-    .aui {
-        .table {
-            display: block;
-        }
-    }
+
 }
 @media screen and (max-width: 640px) {
-    .aui {
-        .table {
-            margin: 0 0 1rem 0;
-            width: 100%;
-        }
-    }
+
 }
 
 
@@ -200,10 +205,7 @@ $white: #ffffff;
  
 }
 @media screen and (max-width: 850px) {
-    #header-wrapper .container-fluid {
-        padding-right: 0px;
-        padding-left: 0px;
-    }
+
 }
 
 /********************************************************************************/

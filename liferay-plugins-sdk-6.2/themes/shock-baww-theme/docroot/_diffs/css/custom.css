@@ -1,7 +1,7 @@
 /********************************************************************************/
 /* Variables                                                                   */
 /********************************************************************************/
-$lightestGray: #cccccc;
+$lightestGray: #E8E8E8;
 $lightGray: #4F4F4F;
 $darkGray: #3F3F3F;
 $peach: #F5D8A9;
@@ -79,7 +79,6 @@ $white: #ffffff;
 	/* Good browsers */
 	opacity: $transPercent;
 }
-
 
 
 /********************************************************************************/
@@ -238,7 +237,7 @@ div.dockbar {
     #header-wrapper {
         #nav-wrapper {
             display: block;
-            background-color: $lightGray;
+            @include color-gradient(lighten($darkGray, 20%), $darkGray);
             @include border-fade($yellow, 15%);
 			@extend .clearfix;
 			@include rounded-border-top(4px);
@@ -326,7 +325,7 @@ div.dockbar {
 /********************************************************************************/
 .aui {
     .hgroup {
-        border-bottom: 1px solid $lightestGray;
+        border-bottom: 1px solid $lightGray;
         margin-bottom: 26px;
         margin-top: 26px;
         padding-bottom: 17px;
@@ -349,7 +348,7 @@ div.dockbar {
     }
     .hgroup .breadcrumb {
         background-color: $darkGray;
-        border: 1px solid $lightestGray;
+        border: 1px solid $lightGray;
         bottom: -15px;
         font-size: 12px;
         margin: 0;
@@ -397,13 +396,14 @@ div.dockbar {
         @extend .clearfix;
         display: block;
         width: 100%;
+        background-color: $lightestGray;
     }
 
     #content-wrapper {
         .portlet, .portlet-borderless-container {
             @extend .clearfix;
             .portlet-topper {
-                @include color-gradient(lighten($darkGray, 5%), $darkGray);
+                @include color-gradient(lighten($darkGray, 20%), $darkGray);
                 text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
             }
             .portlet-content {
@@ -491,7 +491,6 @@ div.dockbar {
 	#footer-wrapper {
 		@extend .clearfix;
 		footer {
-			background-color: #434955;
 			#footer-copyright {
 				background-color: #353b47;
 			    color: $white;
@@ -505,7 +504,7 @@ div.dockbar {
 		#footer-top {
 			color: $white;
 			padding: 20px 0px;
-			@include bg-gradient(url("../images/noise.png"), $darkGray, darken($darkGray, 2%));
+			@include color-gradient(lighten($darkGray, 20%), $darkGray);
 			@include effect-slow-transition;
 		}
 		
@@ -523,7 +522,7 @@ div.dockbar {
 			font-weight: normal;
 		}
 		#footer-top ul li.selected > a {
-			color: darken($lightestGray, 15%);
+			color: darken($lightGray, 15%);
 		}	
 		#footer-top ul li.child-selected > a {
 			color: $yellow;

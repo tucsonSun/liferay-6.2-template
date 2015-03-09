@@ -1,9 +1,16 @@
-<div class="row">
-	<div class="span12">
-		<ul>
-			<li class="list-header"><a href="#" >Stay Connected</a></li>  
-			<li><a href="http://www.facebook.com/abc15" target="_blank">facebook <i class="icon-facebook icon-3x"></i></a></li>
-			<li><a href="http://twitter.com/abc15" target="_blank">twitter <i class="icon-twitter icon-3x"></i> </a></li>
-		</ul>
+<div class="container text-center">
+	<ul>
+		<li class="list-header"><a href="#" >Connect</a></li>  
+		<li><a href="http://www.facebook.com/abc15" target="_blank">facebook <i class="icon-facebook icon-3x"></i></a></li>
+		<li><a href="http://twitter.com/abc15" target="_blank">twitter <i class="icon-twitter icon-3x"></i> </a></li>
+	</ul>
+	
+	
+	<div id="social_media_wrapper" class="col-md-2.5 pull-right">
+		<a href="https://www.facebook.com"><i class="fa fa-facebook"></i></a> 
+		<a href="https://twitter.com/leonartgr"><i class="fa fa-twitter"></i></a> 
+		<a href="#googleplus"><i class="fa fa-google-plus"></i></a> 
+		<a href="mailto:support@shockandbaww.com"><i class="fa fa-envelope-o"></i></a> 
+		<a href="tel:+15551231234"><i class="fa fa-mobile"></i></a> 
 	</div>
 </div>

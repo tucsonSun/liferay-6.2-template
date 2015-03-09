@@ -31,7 +31,7 @@
 				</div>
 			</div>
 			
-			<div id="header-wrapper" class="container-fluid">
+			<div id="header-wrapper">
 				<header id="header" class="container" role="banner">
 					<div class="visible-desktop hidden-tablet hidden-phone">
 						   #parse ("$full_templates_path/desktop_header.vm")
@@ -42,7 +42,7 @@
 				</header>
 			</div>
 		
-			<div id="content-wrapper" class="container-fluid">
+			<div id="content-wrapper">
 			     <div id="content" class="container">    	 
 					#set ($url = $themeDisplay.getURLCurrent())
 	     				
@@ -66,20 +66,20 @@
 					#end
 			     </div>
 			</div>
-			<div id="footer-wrapper" class="container-fluid">
-				<footer id="footer" role="banner" class="row" > 
-					<div id="footer-top" class="container">   	 
+			<div id="footer-wrapper">
+				<footer id="footer" role="banner">
+					<div id="footer-top">   	 
 			          	<div id="desktopFooter" class="visible-desktop">
 							#parse ("$full_templates_path/desktop_footer.vm")
 						</div>
 						
-						<div id="mobileFooter" class="hidden-desktop text-center">
+						<div id="mobileFooter" class="hidden-desktop">
 							#parse ("$full_templates_path/mobile_footer.vm")
 						</div>
 					</div>
 		        
-		        	<div id="footer-copyright" class="clear">
-		        		<div class="container">   	
+		        	<div id="footer-copyright"> 	
+		        		<div class="container">
 			        		<p>
 			        		Copyright &copy; Shock and Baww <script>document.write(new Date().getFullYear());</script>
 			        		</p>
