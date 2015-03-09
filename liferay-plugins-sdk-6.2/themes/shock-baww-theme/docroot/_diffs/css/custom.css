@@ -163,6 +163,13 @@ div.dockbar {
 	background: url("../images/custom-site/images/Antelope-Canyon2.jpg") repeat-y scroll 0 0 rgba(0, 0, 0, 0);
 }
 
+/** For some reason there is 15px padding on the header **/
+#header-wrapper {
+	#header {
+		padding-left: 0px;
+  		padding-right: 0px;
+	}
+}
 
 #header-wrapper #desktop-top-controls,
 #header-wrapper #mobile-top-controls  {
@@ -397,13 +404,13 @@ div.dockbar {
 /********************************************************************************/
 .aui {
     #content-wrapper {
-        clear: both;
         min-height: 600px;
         @extend .clearfix;
-        display: block;
-        width: 100%;
         background-color: $lightestGray;
+        padding-top: 15px;
+  		padding-bottom: 15px;
     }
+
 
     #content-wrapper {
         .portlet, .portlet-borderless-container {
@@ -498,8 +505,7 @@ div.dockbar {
 		@extend .clearfix;
 		footer {
 			#footer-copyright {
-				background-color: #353b47;
-				background: url("../images/footBg.png") repeat-x scroll 0 0 #494949;
+				background: url("../images/footBg.png") repeat-x scroll 0 0 $lightGray;
 			    color: $white;
 			    padding: 20px 0;
 			    font-size: 11px;
