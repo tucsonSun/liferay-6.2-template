@@ -247,17 +247,11 @@ div.dockbar {
         #nav-wrapper {
             display: block;
             @include color-gradient(lighten($darkGray, 20%), $darkGray);
-         	@include border-fade-left-right($yellow, 5%);
-			@include border-fade-bottom($yellow, 5%);
-			@include border-fade-top($yellow, 5%);
 			@extend .clearfix;
-			@include rounded-border-top(4px);
-			@include rounded-border-bottom(4px);
 			@include box-shadow-general(0, 1px, 1px, rgba(0, 0, 0, 0.5));
             #navigation {
                 margin: 0 auto;
                 min-height: 0px; 
-                border: 0 solid transparent;
                 li > a {
                  	text-shadow:none;
                 	color: $white;
@@ -305,7 +299,6 @@ div.dockbar {
 	#header-wrapper {
 	    #nav-wrapper {
 		    #desktop-search-controls {
-		    	margin-right:25px; 
 		    	@include transparent(0.5);
 		    	@include effect-slow-transition;
 		    	&:hover {
@@ -411,6 +404,26 @@ div.dockbar {
   		padding-bottom: 15px;
     }
 
+	#content-wrapper {
+		#content {
+			@include border-fade-left-right(red, 5%);
+			@include border-fade-top(red, 5%);
+			@include border-fade-bottom(red, 5%);
+			background: url("../images/camping-bg.jpg");
+		    background-size: 100%;
+		    background-size: cover;
+		    -webkit-background-size: cover;
+			-moz-background-size: cover;
+			-o-background-size: cover;
+		}
+	}
+
+	/** Make all sections transparent **/
+    #content-wrapper {
+    	section {
+    		@include transparent(0.85);
+    	}
+	}
 
     #content-wrapper {
         .portlet, .portlet-borderless-container {

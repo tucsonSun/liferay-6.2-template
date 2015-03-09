@@ -1,4 +1,4 @@
-<div id="desktop-top-controls">
+<div id="desktop-top-controls" class="container">
 	<div id="auth-wrapper" class="col-md-12">
 		#if ($is_signed_in)
 
@@ -44,7 +44,7 @@
 	</div>
 	
 	
-	<div id="banner-wrapper" class="container">
+	<div id="banner-wrapper">
 		<div class="row">
 			<div class="col-md-3">
 				<a href="/web/guest">
@@ -59,9 +59,7 @@
 	</div>
 	
 	
-	
-	
-</div>	
+</div>
 #if ($has_navigation || $is_signed_in)
 	#parse ("$full_templates_path/desktop_navigation.vm")
 #end
