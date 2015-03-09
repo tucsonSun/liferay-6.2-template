@@ -179,7 +179,7 @@ div.dockbar {
 	top: 0;
 	@include border-fade($yellow, 5%);
 	@include box-shadow-general(0, 5px, 10px, rgba(0, 0, 0, 0.2));
-	@include bg-gradient(url("../images/noise.png"), $darkGray, darken($darkGray, 5%));
+	@include bg-gradient(url("../images/noiseImg.png"), $darkGray, darken($darkGray, 5%));
 	@include rounded-border-bottom(4px);
 }
 
@@ -197,7 +197,7 @@ div.dockbar {
 
     }
 	#auth-wrapper  a:hover {
-        @include bg-gradient(url("../images/noise.png"), $yellow, darken($yellow, 5%));
+        @include bg-gradient(url("../images/noiseImg.png"), $yellow, darken($yellow, 5%));
     }
     #auth-wrapper { 
 	    #auth-name-wrapper {
@@ -255,17 +255,17 @@ div.dockbar {
                 	
                 }
               	li ul li a {
-					@include bg-gradient(url("../images/noise.png"), $darkGray, darken($darkGray, 2%));
+					@include bg-gradient(url("../images/noiseImg.png"), $darkGray, darken($darkGray, 2%));
 					@include effect-slow-transition;
                 }
                 li a:hover {
                 	color: $white;
-					@include bg-gradient(url("../images/noise.png"), $yellow, darken($yellow, 2%));
+					@include bg-gradient(url("../images/noiseImg.png"), $yellow, darken($yellow, 2%));
 					@include effect-slow-transition;
                 }
                 li.selected {
                       & > a {
-                          @include bg-gradient(url("../images/noise.png"), $darkGray, darken($darkGray, 2%));
+                          @include bg-gradient(url("../images/noiseImg.png"), $darkGray, darken($darkGray, 2%));
                           @include effect-slow-transition;
                       }
                 }
@@ -425,13 +425,13 @@ div.dockbar {
             margin: -15px -15px 15px;
             font-size: 17.5px;
             font-weight: 500;
-            @include bg-gradient(url("../images/noise.png"), lighten($darkGray, 5%), $darkGray);
+            @include bg-gradient(url("../images/noiseImg.png"), lighten($darkGray, 5%), $darkGray);
             border-bottom: 0.25rem solid $yellow;
             @include rounded-border-top(4px);
             color: $white;
         }
         .panel-heading.admin {
-            @include bg-gradient(url("../images/noise.png"), lighten($yellow, 5%), $yellow);
+            @include bg-gradient(url("../images/noiseImg.png"), lighten($yellow, 5%), $yellow);
             border-bottom: 0.25rem solid lighten($darkGray, 10%);
         }
         .panel-footer {

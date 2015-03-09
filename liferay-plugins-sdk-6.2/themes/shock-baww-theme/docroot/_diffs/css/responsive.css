@@ -90,12 +90,12 @@ $white: #ffffff;
             margin: 4px 10px;
             color: $white;
             @include box-shadow-general(0px, 1px, 0px, rgba(0, 0, 0, 0.25));
-            @include bg-gradient(url("../images/noise.png"), $darkGray, darken($darkGray, 2%));
+            @include bg-gradient(url("../images/noiseImg.png"), $darkGray, darken($darkGray, 2%));
             @include rounded-border-top(4px);
    			@include rounded-border-bottom(4px);
         }
        	#nav-pop:hover {
-			@include bg-gradient(url("../images/noise.png"), $yellow, darken($yellow, 2%));
+			@include bg-gradient(url("../images/noiseImg.png"), $yellow, darken($yellow, 2%));
 			@include effect-slow-transition;
       	}
     }
@@ -127,10 +127,10 @@ $white: #ffffff;
 				text-decoration: none;
 	           	color: $white;
 				@include effect-slow-transition;
-				@include bg-gradient(url("../images/noise.png"), $yellow, darken($yellow, 2%));
+				@include bg-gradient(url("../images/noiseImg.png"), $yellow, darken($yellow, 2%));
 			}
             li.selected #menu-parent-wrapper {
-           		@include bg-gradient(url("../images/noise.png"), $darkGray, darken($darkGray, 2%));
+           		@include bg-gradient(url("../images/noiseImg.png"), $darkGray, darken($darkGray, 2%));
 				@include effect-slow-transition;
             }
          	li #menu-parent-selector {
@@ -140,7 +140,7 @@ $white: #ffffff;
             }
 			li ul li a {
 				display: inline-block;
-				@include bg-gradient(url("../images/noise.png"), $lightGray, darken($lightGray, 2%));
+				@include bg-gradient(url("../images/noiseImg.png"), $lightGray, darken($lightGray, 2%));
 				@include effect-slow-transition;
 			}
 
