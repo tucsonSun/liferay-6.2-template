@@ -245,10 +245,10 @@ div.dockbar {
 .aui {
     #header-wrapper {
         #nav-wrapper {
-            display: block;
             @include color-gradient(lighten($darkGray, 20%), $darkGray);
 			@extend .clearfix;
 			@include box-shadow-general(0, 1px, 1px, rgba(0, 0, 0, 0.5));
+			@include transparent(0.9);
             #navigation {
                 margin: 0 auto;
                 min-height: 0px; 
@@ -421,7 +421,7 @@ div.dockbar {
 	/** Make all sections transparent **/
     #content-wrapper {
     	section {
-    		
+    		@include transparent(0.9);
     	}
 	}
 
