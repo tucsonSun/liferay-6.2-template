@@ -63,7 +63,7 @@
 			 <output path="classes"/>
 		  	
 		  	<!-- JARS located in Lib folder -->
-		  	<library path="lib/jackson-all-1.9.11.jar"/>
+		  	<!-- <library path="lib/jackson-all-1.9.11.jar"/> -->
 		  	
 		  	<!-- JARS located in Tomcat ROOT -->
 			<library path="${app.server.lib.portal.dir}/portal-client.jar"/>
