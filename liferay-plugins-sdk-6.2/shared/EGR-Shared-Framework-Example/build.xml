@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<!DOCTYPE project>
+
+<!-- ***************************************************************************** -->
+<!-- EGR-Custom targets for Liferay -->
+<!-- ***************************************************************************** -->	
+<project name="EGR-Shared-Framework-Example" basedir="." default="deploy">
+	<property name="plugin.version" value="1" />
+	<import file="../build-common-shared.xml" />
+	
+	<!-- *********************************************************** -->
+	<!-- EGR-Custom target. Define task us jars in the shared lib folder  -->
+	<!-- *********************************************************** -->
+	<taskdef name="eclipse" classname="prantl.ant.eclipse.EclipseTask">
+        <classpath>  
+            <fileset dir="./lib" includes="ant-eclipse.jar"/>
+         </classpath>
+    </taskdef>
+		
+	<path id="new.plugin.classpath">
+		<path refid="plugin-lib.classpath" />
+		<path refid="plugin.classpath" />
+		<fileset dir="${app.server.lib.global.dir}" includes="*.jar" />
+		<fileset dir="${app.server.lib.portal.dir}" includes="*.jar" />
+		<fileset dir="${sdk.dir}/lib" includes="activation.jar,javax.servlet-api.jar,jsp-api.jar,mail.jar,jldap.jar" />
+	</path>	
+	
+	<!-- *********************************************************** -->
+	<!-- EGR-Custom target. Target to compile  -->
+	<!-- *********************************************************** -->
+	<target name="compile">
+		<antcall target="compile-import-shared" />
+
+		<echo message="delete the classes folder..." />		
+		<delete dir="classes" verbose="true" />
+		
+		<echo message="create classes folder..." />		
+		<mkdir dir="classes" />
+
+		
+		<echo message="create the classes sub directories..." />	
+		<copy todir="classes" verbose="true">
+			<fileset dir="src" excludes="**/*.java" />
+		</copy>
+
+		<echo message="compiling java files from src and place in classes folder..." />
+		<antcall target="compile-java">
+			<param name="javac.classpathref" value="new.plugin.classpath" />
+			<param name="javac.destdir" value="classes" />
+			<param name="javac.srcdir" value="src" />
+		</antcall>
+	</target>
+
+	
+	<!-- *********************************************************** -->
+	<!-- EGR-Custom target. Target to Setup for eclipse  -->
+	<!-- *********************************************************** -->
+	<target name="setup-eclipse" description="Target that will adjust your Eclipse .classpath file to point to the additional JARs that are needed by this this shared framework.">
+		<eclipse updatealways="true" mode="java" >
+		  <project/>
+		  <classpath>
+			 <source path="src"/>
+			 <output path="classes"/>
+		  	
+		  	<!-- JARS located in Lib folder -->
+		  	<library path="lib/jackson-all-1.9.11.jar"/>
+		  	
+		  	<!-- JARS located in Tomcat ROOT -->
+		  	<library path="${app.server.lib.portal.dir}/spring-aop.jar"/>
+			<library path="${app.server.lib.portal.dir}/spring-asm.jar"/>
+			<library path="${app.server.lib.portal.dir}/spring-aspects.jar"/>
+			<library path="${app.server.lib.portal.dir}/spring-beans.jar"/>
+			<library path="${app.server.lib.portal.dir}/spring-context.jar"/>
+			<library path="${app.server.lib.portal.dir}/spring-context-support.jar"/>
+			<library path="${app.server.lib.portal.dir}/spring-core.jar"/>
+			<library path="${app.server.lib.portal.dir}/spring-expression.jar"/>
+			<library path="${app.server.lib.portal.dir}/spring-jdbc.jar"/>
+			<library path="${app.server.lib.portal.dir}/spring-transaction.jar"/>
+			<library path="${app.server.lib.portal.dir}/spring-web.jar"/>
+			<library path="${app.server.lib.portal.dir}/spring-web-portlet.jar"/>
+			<library path="${app.server.lib.portal.dir}/portal-client.jar"/>
+			<library path="${app.server.lib.portal.dir}/portal-impl.jar"/>
+			<library path="${app.server.lib.portal.dir}/portal-pacl.jar"/>
+			<library path="${app.server.lib.portal.dir}/slf4j-api.jar"/>
+			<library path="${app.server.lib.portal.dir}/log4j.jar"/>
+			<library path="${app.server.lib.global.dir}/portal-service.jar" />
+			<library path="${app.server.lib.global.dir}/portlet.jar" />
+		
+		  	<!-- JARS located in Tomcat ROOT -->
+			<library path="${app.server.lib.portal.dir}/easyconf.jar"/>
+			<library path="${app.server.lib.portal.dir}/commons-configuration.jar"/>
+			<library path="${app.server.lib.portal.dir}/commons-digester.jar"/>
+			<library path="${app.server.lib.portal.dir}/xstream.jar"/>			
+			<library path="${app.server.lib.portal.dir}/commons-collections.jar"/>
+			<library path="${app.server.lib.portal.dir}/commons-codec.jar" />
+		  	
+		  	<!-- JARS located in SDK LIB Folder -->
+		  	<library path="${sdk.dir}/lib/activation.jar"/>
+			<library path="${sdk.dir}/lib/jsp-api.jar"/>
+			<library path="${sdk.dir}/lib/mail.jar"/>
+		  	<library path="${sdk.dir}/lib/powermock-api-support.jar"/>
+		  	<library path="${sdk.dir}/lib/powermock-core.jar"/>
+		  	<library path="${sdk.dir}/lib/powermock-module-junit4.jar"/>
+		  	<library path="${sdk.dir}/lib/powermock-module-junit4-common.jar"/>
+		  	<library path="${sdk.dir}/lib/powermock-reflect.jar"/>
+		  	<library path="${sdk.dir}/lib/powermock-api-mockito.jar"/>
+		  	<library path="${sdk.dir}/lib/javassist.jar"/>
+			<library path="${sdk.dir}/lib/javax.servlet-api.jar"/>
+		  	<library path="${sdk.dir}/lib/xmlpull.jar"/>
+		  	<library path="${sdk.dir}/lib/powermock-mockito-release-full.jar"/>
+			<library path="${sdk.dir}/lib/junit.jar"/>
+			<library path="${sdk.dir}/lib/mockito-all.jar" />
+			<library path="${sdk.dir}/lib/jldap.jar" />			
+		  	
+		  </classpath>
+		</eclipse>
+	</target>	
+</project>
