@@ -4,7 +4,7 @@
 <!-- ***************************************************************************** -->
 <!-- EGR-Custom targets for Liferay -->
 <!-- ***************************************************************************** -->	
-<project name="EGR-Shared-Framework-Example" basedir="." default="deploy">
+<project name="EGR-Framework-Utilities" basedir="." default="deploy">
 	<property name="plugin.version" value="1" />
 	<import file="../build-common-shared.xml" />
 	
@@ -66,20 +66,6 @@
 		  	<library path="lib/jackson-all-1.9.11.jar"/>
 		  	
 		  	<!-- JARS located in Tomcat ROOT -->
-		  	<library path="${app.server.lib.portal.dir}/spring-aop.jar"/>
-			<library path="${app.server.lib.portal.dir}/spring-asm.jar"/>
-			<library path="${app.server.lib.portal.dir}/spring-aspects.jar"/>
-			<library path="${app.server.lib.portal.dir}/spring-beans.jar"/>
-			<library path="${app.server.lib.portal.dir}/spring-context.jar"/>
-			<library path="${app.server.lib.portal.dir}/spring-context-support.jar"/>
-			<library path="${app.server.lib.portal.dir}/spring-core.jar"/>
-			<library path="${app.server.lib.portal.dir}/spring-expression.jar"/>
-			<library path="${app.server.lib.portal.dir}/spring-jdbc.jar"/>
-			<library path="${app.server.lib.portal.dir}/spring-transaction.jar"/>
-			<library path="${app.server.lib.portal.dir}/spring-web.jar"/>
-			<library path="${app.server.lib.portal.dir}/spring-web-portlet.jar"/>
-		  	
-		  	<!-- JARS located in Tomcat ROOT -->
 			<library path="${app.server.lib.portal.dir}/portal-client.jar"/>
 			<library path="${app.server.lib.portal.dir}/portal-impl.jar"/>
 			<library path="${app.server.lib.portal.dir}/portal-pacl.jar"/>
@@ -111,8 +97,7 @@
 		  	<library path="${sdk.dir}/lib/xmlpull.jar"/>
 		  	<library path="${sdk.dir}/lib/powermock-mockito-release-full.jar"/>
 			<library path="${sdk.dir}/lib/junit.jar"/>
-			<library path="${sdk.dir}/lib/mockito-all.jar" />
-			<library path="${sdk.dir}/lib/jldap.jar" />			
+			<library path="${sdk.dir}/lib/mockito-all.jar" />	
 		  	
 		  </classpath>
 		</eclipse>
