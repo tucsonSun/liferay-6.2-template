@@ -2037,4 +2037,26 @@ Please find a solution that does not require portal-impl.jar.
 			<arg value="sort.xml.file.name=${sort.xml.file.name}" />
 		</java>
 	</target>
+	
+	<!-- *********************************************************************** -->
+	<!-- EGR-Custom target. Define task to compile srcDir used by shared-Frameworks	 -->
+	<!-- *********************************************************************** -->
+	<target name="compile-java">
+		<echo message="Copy java from '${javac.srcdir}' -- to -- '${javac.destdir}'" />
+		<copy todir="${javac.destdir}">
+			<fileset dir="${javac.srcdir}" excludes="**/*.java" />
+		</copy>
+
+		<javac
+			classpathref="${javac.classpathref}"
+			compiler="${javac.compiler}"
+			debug="${javac.debug}"
+			deprecation="${javac.deprecation}"
+			destdir="${javac.destdir}"
+			encoding="${javac.encoding}"
+			includeAntRuntime="false"
+			nowarn="${javac.nowarn}"
+			srcdir="${javac.srcdir}"
+		/>
+	</target>
 </project>
