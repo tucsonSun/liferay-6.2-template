@@ -1,7 +1,10 @@
-
 .classpath
 .settings
 
+/.ivy*
+ivy.xml.MD5
+/dist
+/lib/
 
 /webs/resources-importer-web/docroot/WEB-INF/lib*
 /webs/resources-importer-web/docroot/WEB-INF/classes
@@ -29,7 +32,6 @@
 /themes/*/docroot/WEB-INF/classes*
 
 
-/.ivy*
-ivy.xml.MD5
-/dist
-/lib/
+/shared/*/classes
+
+
