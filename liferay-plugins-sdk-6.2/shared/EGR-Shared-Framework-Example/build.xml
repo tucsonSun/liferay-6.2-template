@@ -63,7 +63,7 @@
 			 <output path="classes"/>
 		  	
 		  	<!-- JARS located in Lib folder -->
-		  	<library path="lib/jackson-all-1.9.11.jar"/>
+		  	<library path="lib/*.jar"/>
 		  	
 		  	<!-- JARS located in Tomcat ROOT -->
 		  	<library path="${app.server.lib.portal.dir}/spring-aop.jar"/>
@@ -78,6 +78,8 @@
 			<library path="${app.server.lib.portal.dir}/spring-transaction.jar"/>
 			<library path="${app.server.lib.portal.dir}/spring-web.jar"/>
 			<library path="${app.server.lib.portal.dir}/spring-web-portlet.jar"/>
+		  	
+		  	<!-- JARS located in Tomcat ROOT -->
 			<library path="${app.server.lib.portal.dir}/portal-client.jar"/>
 			<library path="${app.server.lib.portal.dir}/portal-impl.jar"/>
 			<library path="${app.server.lib.portal.dir}/portal-pacl.jar"/>
