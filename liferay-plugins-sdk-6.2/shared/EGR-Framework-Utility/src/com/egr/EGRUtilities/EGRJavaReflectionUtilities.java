@@ -31,7 +31,7 @@ import org.slf4j.LoggerFactory;
  */
 public class EGRJavaReflectionUtilities {
 	
-	protected static Logger _logger = LoggerFactory.getLogger(EGRFileUtilities.class);
+	protected static Logger _logger = LoggerFactory.getLogger(EGRJavaReflectionUtilities.class);
 
 //
 // WO API
