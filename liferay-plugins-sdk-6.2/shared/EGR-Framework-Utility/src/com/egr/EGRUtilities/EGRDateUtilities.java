@@ -16,6 +16,8 @@ package com.egr.EGRUtilities;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
@@ -91,19 +93,15 @@ public class EGRDateUtilities {
 	 * @param aTimeStamp
 	 * @return End of day 23:59:59 time
 	 */
-	public static NSTimestamp endOfDayForTimestamp(NSTimestamp aTimeStamp) {
-		
-		if (aTimeStamp == null ) throw new IllegalArgumentException("endOfDay :: timeStamp is not allowed to be null");
-		GregorianCalendar calendar = new GregorianCalendar();
+	public static Date endOfDayForTimestamp(Date aTimeStamp) {
+		if (aTimeStamp == null) throw new IllegalArgumentException("endOfDay :: timeStamp is not allowed to be null");
+		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(aTimeStamp);
-		int year = calendar.get(GregorianCalendar.YEAR);
-		int month = calendar.get(GregorianCalendar.MONTH) + 1;
-		int day = calendar.get(GregorianCalendar.DATE);
-		int hour = calendar.get(GregorianCalendar.HOUR);
-		int second = calendar.get(GregorianCalendar.SECOND);
-		TimeZone timeZone = calendar.getTimeZone();
-		// year, month, date, hour, minute, second, timezone
-		return new NSTimestamp(year, month, day, 23, 59, 59, timeZone);
+		calendar.set(Calendar.HOUR_OF_DAY, 23);
+		calendar.set(Calendar.MINUTE, 59);
+		calendar.set(Calendar.SECOND, 59);
+		calendar.set(Calendar.MILLISECOND, 999);
+		return calendar.getTime();
 	}
 
 	/**
@@ -111,18 +109,15 @@ public class EGRDateUtilities {
 	 * @param aTimeStamp
 	 * @return Start of day 00:00:00
 	 */
-	public static NSTimestamp startOfDayForTimestamp(NSTimestamp aTimeStamp) {
+	public static Date startOfDayForTimestamp(Date aTimeStamp) {
 		if (aTimeStamp == null ) throw new IllegalArgumentException("startOfDay :: timeStamp is not allowed to be null");
-		GregorianCalendar calendar = new GregorianCalendar();
-		calendar.setTime(aTimeStamp);
-		int year = calendar.get(GregorianCalendar.YEAR);
-		int month = calendar.get(GregorianCalendar.MONTH) + 1;
-		int day = calendar.get(GregorianCalendar.DATE);
-		int hour = calendar.get(GregorianCalendar.HOUR);
-		int second = calendar.get(GregorianCalendar.SECOND);
-		TimeZone timeZone = calendar.getTimeZone();
-		// year, month, date, hour, minute, second, timezone
-		return new NSTimestamp(year, month, day, 0, 0, 0, timeZone);
+	    Calendar calendar = Calendar.getInstance();
+	    calendar.setTime(aTimeStamp);
+	    calendar.set(Calendar.HOUR_OF_DAY, 0);
+	    calendar.set(Calendar.MINUTE, 0);
+	    calendar.set(Calendar.SECOND, 0);
+	    calendar.set(Calendar.MILLISECOND, 0);
+	    return calendar.getTime();
 	}
 	
 	/**
