@@ -18,8 +18,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
 import org.slf4j.Logger;
@@ -47,7 +45,7 @@ public class EGRDateUtilities {
      * "yyMMddHHmmssZ" 					010704120856-0700
      * "yyyy-MM-dd'T'HH:mm:ss.SSSZ" 	2001-07-04T12:08:56.235-0700
 	 */
-	public static String formattedTime(NSTimestamp aTimestamp, String formatPattern) { 
+	public static String formattedTime(Date aTimestamp, String formatPattern) { 
 		if (aTimestamp == null) throw new IllegalArgumentException("aTimestamp is not allowed to be null");
 		if (formatPattern == null || formatPattern.length() == 0) throw new IllegalArgumentException("formattedTime :: format is not set correctly");
 
@@ -67,7 +65,7 @@ public class EGRDateUtilities {
      * @param startTimestamp
      * @return Boolean
      */
-     public static Boolean isDateBeforeStartDate(NSTimestamp aTimestamp, NSTimestamp startTimestamp) { return aTimestamp.before(startTimestamp); }
+     public static Boolean isDateBeforeStartDate(Date aTimestamp, Date startTimestamp) { return aTimestamp.before(startTimestamp); }
 
      /**
       * Method returns true if endTimestamp is after aTimestamp.
@@ -75,7 +73,7 @@ public class EGRDateUtilities {
       * @param endTimestamp
       * @return Boolean
       */
-     public static Boolean isDateAfterEndDate(NSTimestamp aTimestamp, NSTimestamp endTimestamp) { return aTimestamp.after(endTimestamp); }
+     public static Boolean isDateAfterEndDate(Date aTimestamp, Date endTimestamp) { return aTimestamp.after(endTimestamp); }
     
      /**
       * Method returns true if aTimestamp is between startTimestamp and endTimestamp
@@ -84,7 +82,7 @@ public class EGRDateUtilities {
       * @param aTimestamp
       * @return Boolean
       */
-     public static Boolean isDateBetween(NSTimestamp startTimestamp, NSTimestamp endTimestamp, NSTimestamp aTimestamp) { 
+     public static Boolean isDateBetween(Date startTimestamp, Date endTimestamp, Date aTimestamp) { 
     	 return aTimestamp.after(startTimestamp) && aTimestamp.before(endTimestamp); 
      }
 
@@ -131,13 +129,14 @@ public class EGRDateUtilities {
 	 * @param formatPattern
 	 * @return
 	 */
-	public static NSTimestamp convertStringToDate(String stringDate, String formatPattern) {
+	public static Date convertStringToDate(String stringDate, String formatPattern) {
 		SimpleDateFormat formatter = new SimpleDateFormat(formatPattern);
 		try {
-			return new NSTimestamp(formatter.parse(stringDate));
-		} catch (ParseException e) {
-			//NSLog.err.appendln("EGRDateUtilities.convertStringToDate: could not covert string to date because.... \n" +e);	
-			throw e; 
+			Date date = formatter.parse(stringDate);
+			return date;
+		} catch (ParseException e) {	
+			_logger.error("EGRDateUtilities.convertStringToDate: could not covert string to date because.... \n", e);	
+			return null;
 		}
 	}
 	
