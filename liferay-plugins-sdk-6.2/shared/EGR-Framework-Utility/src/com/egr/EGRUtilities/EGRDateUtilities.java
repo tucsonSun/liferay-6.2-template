@@ -54,7 +54,7 @@ public class EGRDateUtilities {
 		try {
 			return formatter.format(aTimestamp);
 		} catch (NumberFormatException e) {
-			NSLog.out.appendln("EGRDateUtilities.formattedTime: could not format time because.... \n" +e);
+			_logger.error("EGRDateUtilities.formattedTime: could not format time because.... \n",e);
 			return aTimestamp.toString();
 		}
 	}
