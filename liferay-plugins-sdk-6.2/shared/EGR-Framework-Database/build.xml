@@ -4,7 +4,7 @@
 <!-- ***************************************************************************** -->
 <!-- EGR-Custom targets for Liferay -->
 <!-- ***************************************************************************** -->	
-<project name="EGR-Utilities-Framework" basedir="." default="deploy">
+<project name="EGR-Database-Framework" basedir="." default="deploy">
 	<property name="plugin.version" value="1" />
 	<import file="../build-common-shared.xml" />
 	
@@ -64,8 +64,8 @@
 		  	
 		  	<!-- JARS located in Lib folder -->
 		  	<!-- <library path="lib/jackson-all-1.9.11.jar"/> -->
-		  	<library path="lib/jsoup-1.7.2.jar" />
-		  	<library path="lib/guava-19.0.0.jar" />
+		  	<!-- <library path="lib/jsoup-1.7.2.jar" /> 
+		  	<library path="lib/guava-19.0.0.jar" /> -->
 		  	
 		  	<!-- JARS located in Tomcat ROOT -->
 			<library path="${app.server.lib.portal.dir}/portal-client.jar"/>
