@@ -20,13 +20,13 @@ import java.util.GregorianCalendar;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
-import com.webobjects.foundation.NSForwardException;
-import com.webobjects.foundation.NSLog;
-import com.webobjects.foundation.NSTimestamp;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 public class EGRDateUtilities {
 	
+	protected static Logger _logger = LoggerFactory.getLogger(EGRDateUtilities.class);
 	/**
 	 * Method attempts to format aTimestamp with the specified format. If the format fails then the method returns aTimestamp toString.
 	 * @param aTimestamp NSTimestamp
