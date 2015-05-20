@@ -1,7 +1,7 @@
 .classpath
 .settings
 
-/.ivy*
+
 ivy.xml.MD5
 /dist
 /lib/
