@@ -33,5 +33,6 @@ ivy.xml.MD5
 
 
 /shared/*/classes
+/shared/*/bin
 
 
