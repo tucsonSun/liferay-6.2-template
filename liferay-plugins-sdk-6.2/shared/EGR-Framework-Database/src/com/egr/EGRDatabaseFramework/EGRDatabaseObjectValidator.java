@@ -14,8 +14,9 @@
  */
 package com.egr.EGRDatabaseFramework;
 
-import com.webobjects.foundation.NSMutableArray;
-import com.webobjects.foundation.NSValidation;
+import java.util.ArrayList;
+
+import javax.xml.bind.ValidationException;
 
 /**
  * A instance of class type EGRDatabaseObjectValidator is used to ...
@@ -29,7 +30,7 @@ public abstract class EGRDatabaseObjectValidator<T> {
 	static public final String VALIDATION_FOR_SUBMIT_ATTEMPT_FAILED = "Validation for submit attempt failed...";
 	
 	protected T _item;
-	protected NSMutableArray<String> _validationArray = new NSMutableArray<String>();
+	protected ArrayList<String> _validationArray = new ArrayList<String>();
 	
 	/**
 	 * Constructor
@@ -65,18 +66,18 @@ public abstract class EGRDatabaseObjectValidator<T> {
 	 * Method should check if EO is valid to save to database
 	 * @throws NSValidation.ValidationException
 	 */
-	abstract public void validateForSave() throws NSValidation.ValidationException;
+	abstract public void validateForSave() throws ValidationException;
 
 	/**
 	 * Method should check if EO is valid for a submit 
 	 * @throws NSValidation.ValidationException
 	 */
-	abstract public void validateForSubmit() throws NSValidation.ValidationException;	
+	abstract public void validateForSubmit() throws ValidationException;	
 //
 // accessor methods
 //
-	public NSMutableArray<String> validationArray() { return _validationArray; }
-	public void setValidationArray(NSMutableArray<String> validationArray) { _validationArray = validationArray; }
+	public ArrayList<String> validationArray() { return _validationArray; }
+	public void setValidationArray(ArrayList<String> validationArray) { _validationArray = validationArray; }
 //
 // accessor methods
 //
