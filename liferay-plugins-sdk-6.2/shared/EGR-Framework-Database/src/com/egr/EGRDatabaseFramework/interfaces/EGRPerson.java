@@ -23,7 +23,7 @@ import java.util.Date;
  * @version 1.0
  * @since 1.0
  */
-public interface EGRPerson extends EOEnterpriseObject {
+public interface EGRPerson extends EGRUpdateObject {
 //
 // WOAPI
 //
