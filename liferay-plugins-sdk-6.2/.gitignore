@@ -1,11 +1,16 @@
-.classpath
+#
+# Comment out line
+#.classpath
 .settings
 
 
 ivy.xml.MD5
 /dist
-/lib/
 
+
+#
+# Misc.
+#
 /webs/resources-importer-web/docroot/WEB-INF/lib*
 /webs/resources-importer-web/docroot/WEB-INF/classes
 /webs/resources-importer-web/docroot/META-INF*
@@ -13,6 +18,9 @@ ivy.xml.MD5
 /webs/resources-importer-web/.classpath
 /webs/resources-importer-web/.settings
 
+#
+# Misc.
+#
 /tools/ext_tmpl/docroot/WEB-INF/lib*
 /tools/ext_tmpl/docroot/WEB-INF/ext-impl/.gitignore
 /tools/hook_tmpl/docroot/WEB-INF/lib*
@@ -21,6 +29,9 @@ ivy.xml.MD5
 /tools/theme_tmpl/docroot/WEB-INF/lib*
 /tools/web_tmpl/docroot/WEB-INF/lib*
 
+#
+# Themes
+#
 /themes/*/docroot/WEB-INF/lib/util-bridges.jar
 /themes/*/docroot/WEB-INF/lib/util-java.jar
 /themes/*/docroot/WEB-INF/lib/util-taglib.jar
@@ -31,7 +42,9 @@ ivy.xml.MD5
 /themes/*/docroot/templates*
 /themes/*/docroot/WEB-INF/classes*
 
-
+#
+# Shared frameworks
+#
 /shared/*/classes
 /shared/*/bin
 
