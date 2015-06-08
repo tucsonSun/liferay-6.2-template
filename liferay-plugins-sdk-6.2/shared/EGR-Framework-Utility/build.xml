@@ -4,7 +4,7 @@
 <!-- ***************************************************************************** -->
 <!-- EGR-Custom targets for Liferay -->
 <!-- ***************************************************************************** -->	
-<project name="EGR-Utilities-Framework" basedir="." default="deploy">
+<project name="EGR-Utility-Framework" basedir="." default="deploy">
 	<property name="plugin.version" value="1" />
 	<import file="../build-common-shared.xml" />
 	
