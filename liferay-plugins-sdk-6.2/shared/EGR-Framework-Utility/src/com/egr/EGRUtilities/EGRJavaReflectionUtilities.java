@@ -155,7 +155,7 @@ public class EGRJavaReflectionUtilities {
 	 * @return Method returns the resulting object from the method name or returns null
 	 * @throws NoSuchMethodException 
 	 */
-	public static Method methodOnTargetObject(Object targetObject, String methodName, Class<?>[] methodParameterClasses) throws NoSuchMethodException {
+	public static Method methodOnTargetObject(Object targetObject, String methodName, Class<?>[] methodParameterClasses) throws Exception {
 		Method resultObject = null;
 		if (methodName == null || methodName.length() == 0)
 			throw new IllegalArgumentException("methodForTargetObject :: methodName is not allowed to be null");
