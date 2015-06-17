@@ -40,7 +40,7 @@ public interface EGRUpdateObject {
 //
 // misc.
 //
-	public String personName();
+	public String name();
 //
 // abstract/interface methods
 //
