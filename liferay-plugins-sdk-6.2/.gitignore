@@ -8,7 +8,8 @@
 # Ivy Settings
 #
 ivy.xml.MD5
-.ivy/cache/*
+/.ivy/cache/*
+/lib/*.jar
 
 #
 # Deployment
