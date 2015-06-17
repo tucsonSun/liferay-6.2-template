@@ -28,7 +28,7 @@ ivy.xml.MD5
 /webs/resources-importer-web/.settings
 
 #
-# Misc.
+# Tools
 #
 /tools/ext_tmpl/docroot/WEB-INF/lib*
 /tools/ext_tmpl/docroot/WEB-INF/ext-impl/.gitignore
