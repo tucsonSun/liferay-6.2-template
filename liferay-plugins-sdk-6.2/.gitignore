@@ -4,7 +4,15 @@
 .settings
 
 
+#
+# Ivy Settings
+#
 ivy.xml.MD5
+.ivy/cache/*
+
+#
+# Deployment
+#
 /dist
 
 
