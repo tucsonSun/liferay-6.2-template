@@ -59,7 +59,7 @@ public abstract class EGRDatabaseObject implements EGRSelectableObject {
 		//
 		if (this instanceof EGRUpdateObject) {
 			EGRUpdateObject udpateObject = (EGRUpdateObject)this;
-			udpateObject.setCreatedBy(udpateObject.personName());
+			udpateObject.setCreatedBy(udpateObject.name());
 			udpateObject.setCreatedDate(new Date());
 		}
 	}	
@@ -71,10 +71,10 @@ public abstract class EGRDatabaseObject implements EGRSelectableObject {
 		//
 		if (this instanceof EGRUpdateObject) {
 			EGRUpdateObject udpateObject = (EGRUpdateObject)this;
-			if (udpateObject.createdBy() == null) udpateObject.setCreatedBy(udpateObject.personName());
+			if (udpateObject.createdBy() == null) udpateObject.setCreatedBy(udpateObject.name());
 			if (udpateObject.createdDate() == null) udpateObject.setCreatedDate(new Date());
 			
-			udpateObject.setModifiedBy(udpateObject.personName());
+			udpateObject.setModifiedBy(udpateObject.name());
 			udpateObject.setModifiedDate(new Date());
 		}
 	}
