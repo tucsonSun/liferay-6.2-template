@@ -1,5 +1,6 @@
 #
 # Comment out line
+#
 #.classpath
 .settings
 
@@ -50,6 +51,16 @@ ivy.xml.MD5
 /themes/*/docroot/js*
 /themes/*/docroot/templates*
 /themes/*/docroot/WEB-INF/classes*
+
+#
+# Portlets
+#
+/portlets/*/docroot/WEB-INF/lib*
+/portlets/*/docroot/WEB-INF/classes
+/portlets/*/docroot/META-INF*
+/portlets/*/.project
+/portlets/*/.classpath
+/portlets/*/.settings
 
 #
 # Shared frameworks
