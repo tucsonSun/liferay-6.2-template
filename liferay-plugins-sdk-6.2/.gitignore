@@ -57,15 +57,15 @@ ivy.xml.MD5
 #
 /portlets/*/docroot/WEB-INF/lib*
 /portlets/*/docroot/WEB-INF/classes
-/portlets/*/docroot/META-INF*
 /portlets/*/.project
-/portlets/*/.classpath
+#/portlets/*/.classpath
 /portlets/*/.settings
 
 #
 # Shared frameworks
 #
 /shared/*/classes
+#/shared/*/.classpath
 /shared/*/bin
 
 
