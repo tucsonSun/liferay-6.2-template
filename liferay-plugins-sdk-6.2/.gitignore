@@ -64,6 +64,7 @@ ivy.xml.MD5
 #
 # Shared frameworks
 #
+/shared/*/.settings
 /shared/*/classes
 #/shared/*/.classpath
 /shared/*/bin
