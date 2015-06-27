@@ -80,13 +80,15 @@
 			<library path="${app.server.lib.portal.dir}/spring-web-portlet.jar"/>
 		  	
 		  	<!-- JARS located in Tomcat ROOT -->
-			<library path="${app.server.lib.portal.dir}/portal-client.jar"/>
+		  	<!--<library path="${app.server.lib.portal.dir}/portal-client.jar"/>
 			<library path="${app.server.lib.portal.dir}/portal-impl.jar"/>
 			<library path="${app.server.lib.portal.dir}/portal-pacl.jar"/>
+			<library path="${app.server.lib.global.dir}/portal-service.jar" />
+			<library path="${app.server.lib.global.dir}/portlet.jar" />-->
+			
+			<!-- JARS located in Tomcat ROOT -->
 			<library path="${app.server.lib.portal.dir}/slf4j-api.jar"/>
 			<library path="${app.server.lib.portal.dir}/log4j.jar"/>
-			<library path="${app.server.lib.global.dir}/portal-service.jar" />
-			<library path="${app.server.lib.global.dir}/portlet.jar" />
 		
 		  	<!-- JARS located in Tomcat ROOT -->
 			<library path="${app.server.lib.portal.dir}/easyconf.jar"/>
