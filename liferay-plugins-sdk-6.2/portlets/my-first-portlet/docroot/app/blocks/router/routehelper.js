@@ -95,7 +95,7 @@
         }
 
         function updateDocTitle() {
-            $rootScope.$on('$routeChangeSuccess',
+            $rootScope.$on('$stateChangeSuccess',
                 function(event, current, previous) {
                     routeCounts.changes++;
                     handlingRouteChangeError = false;
