@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans        
+						http://www.springframework.org/schema/beans/spring-beans-3.0.xsd        
+						http://www.springframework.org/schema/context        
+						http://www.springframework.org/schema/context/spring-context-3.0.xsd        
+						http://www.springframework.org/schema/mvc        
+						http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd        
+						http://www.springframework.org/schema/aop        
+						http://www.springframework.org/schema/aop/spring-aop-3.0.xsd        
+						http://www.springframework.org/schema/tx        
+						http://www.springframework.org/schema/tx/spring-tx-3.0.xsd        
+						http://www.springframework.org/schema/util         
+						http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+	
+	
+	<!-- ********************************************************************** -->
+	<!-- Route classes  														-->
+	<!-- ********************************************************************** -->
+	<bean id="SimpleRoute" abstract="true"
+		class="com.copperpoint.services.core.web.SimpleRoute" />
+	<!-- ********************************************************************** -->
+	<!-- Spring based classes  														-->
+	<!-- ********************************************************************** -->
+	<bean id="classGen" abstract="true"
+		class="org.springframework.beans.factory.config.MethodInvokingFactoryBean"
+		p:targetClass="java.lang.Class" p:targetMethod="forName" />
+						
+	<!-- ********************************************************************** -->
+	<!-- Permission classes  													-->
+	<!-- ********************************************************************** -->
+	<bean id="LiferayPerm" abstract="true"
+		class="com.copperpoint.services.auth.HasLiferayPermission" />
+
+
+	<!-- ********************************************************************** -->
+	<!-- Model classes for input parameters on PUT/POSTs  						-->
+	<!-- ********************************************************************** -->
+	<bean id="PortalUserClass" parent="classGen"
+		p:arguments="com.copperpoint.portal.services.model.PortalUser" />
+
+
+
+	<!-- ********************************************************************** -->
+	<!-- Utility classes  														-->
+	<!-- ********************************************************************** -->
+	<util:list id="routes" value-type="com.copperpoint.services.core.web.SimpleRoute">
+
+
+		<!-- *********************** -->
+		<!-- NON-AUTHENTICATED routes -->
+		<!-- *********************** -->		
+		<bean parent="SimpleRoute" p:uri="/weather" p:method="GET"
+			p:authenticated="false" p:commandName="weatherCMD">
+		</bean>	
+
+		<!-- *********************** -->
+		<!-- AUTHENTICATED routes -->
+		<!-- *********************** -->
+		
+	</util:list>
+</beans>
