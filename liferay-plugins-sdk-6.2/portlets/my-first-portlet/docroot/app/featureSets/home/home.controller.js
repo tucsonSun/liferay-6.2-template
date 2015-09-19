@@ -14,5 +14,10 @@
 		vm.myAccountAction = function() {
 			vm.resultData = landingSrv.getMyAccount(vm);
 		};
+		
+		vm.weatherAction = function() {
+			vm.resultData = landingSrv.weather(vm);
+		};
+		
 	}//end of Ctrl	
 })();

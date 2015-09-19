@@ -9,6 +9,10 @@
 
     function landingSrv(myFirstBaseService) {
         return {
+        	weatherPromsie: function() {
+        		return myFirstBaseService.weather.get().$promise;
+        	},
+        	
         	getMyAccountPromise: function() {
                 return myFirstBaseService.getMyAccount.get().$promise;
             },
@@ -26,7 +30,26 @@
                 .catch(function(error){
                     vm.message = {
                         type: 'error',
-                        msg: 'There was a problem processing your request. Please contact us at 1.800.231.1363 so that we can assist.'
+                        msg: 'There was a problem processing your request.'
+                    };
+                    vm.contentLoaded = true;
+                });
+            },
+            
+            weather: function(vm) {
+            	this.weatherPromsie().then(function(response) {
+                    if (response.succeeded) {
+                        vm.resultData = response.data;
+                        vm.contentLoaded = true;
+                    } else {
+                        vm.message = response.message;
+                        vm.contentLoaded = true;
+                    }
+                })
+                .catch(function(error){
+                    vm.message = {
+                        type: 'error',
+                        msg: 'There was a problem processing your request.'
                     };
                     vm.contentLoaded = true;
                 });
