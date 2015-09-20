@@ -73,6 +73,7 @@ public class MyAccountCMD implements CommandInterface, ICommandKeys {
 
 		try {
 			String emailAddress = user.getEmailAddress();
+			_logger.info("emailAddress= "+emailAddress);
 			HttpServletRequest request = context.getEntity(REQUEST_KEY);
 			UserPermissionInfo userPermissionInfo = UserPermissionInfo.getUserPermissionInfo(request);
 			context.put("id", emailAddress);
