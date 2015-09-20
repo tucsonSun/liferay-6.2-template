@@ -42,9 +42,10 @@ public interface IPropertiesConstants {
 	//
 	// abstract/interface methods
 	//
-	public static final String PROP_FILE__UI_MESSAGES = "com.copperpoint.portal.services.resources.messages";
-	public static final String PROPFILE__UI_DISPLAY = "com.copperpoint.portal.services.resources.uidisplaymessages";
-	public static final String PROPFILE__SOME_COMMON = "some-common.properties";
+	public static final String PROPFILE__USER_PERMS = "com/egr/rest/properties/user-perms.properties";
+	public static final String PROPFILE__SOME_COMMON = "com/egr/rest/properties/some-common.properties";
+	public static final String PROPFILE__UI_REST_MESSAGES = "com.egr.rest.properties.ui-rest-messages";
+	public static final String PROPFILE__UI_DISPLAY_MESSAGES = "com.egr.rest.properties.ui-display-messages";
 	public static final String PROPFILE__LIFERAY_TOMCAT = "egr.properties";
 	
 	//

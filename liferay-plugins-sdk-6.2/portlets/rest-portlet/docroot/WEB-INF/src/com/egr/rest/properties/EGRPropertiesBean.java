@@ -34,12 +34,21 @@ public class EGRPropertiesBean implements IPropertiesConstants {
 	
 	private static Logger _logger = LoggerFactory.getLogger(EGRPropertiesBean.class);
 	
+	
+	@Bean(name = "userPermsProperties")
+	public PropertiesFactoryBean mapper() {
+	    PropertiesFactoryBean propertiesFactoryBean = new PropertiesFactoryBean();
+	    propertiesFactoryBean.setLocation(new ClassPathResource(PROPFILE__USER_PERMS));
+	    _logger.info("loading properties file '"+PROPFILE__USER_PERMS+"'");
+	    return propertiesFactoryBean;
+	}	
+	
 	@Bean(name="uiMessagesProperties")
 	public ResourceBundleMessageSource setResourceBundle(){
 		ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-		messageSource.setBasenames(new String[]{PROP_FILE__UI_MESSAGES, PROPFILE__UI_DISPLAY});
-		
-		_logger.info("loading properties files '"+PROP_FILE__UI_MESSAGES+"'  '"+PROPFILE__UI_DISPLAY+"'");
+		messageSource.setBasenames(new String[]{PROPFILE__UI_REST_MESSAGES, PROPFILE__UI_DISPLAY_MESSAGES});
+		_logger.info("loading properties file '"+PROPFILE__UI_REST_MESSAGES+"'");
+		_logger.info("loading properties file '"+PROPFILE__UI_DISPLAY_MESSAGES+"'");
 		return messageSource;
 	}
 	
@@ -47,7 +56,6 @@ public class EGRPropertiesBean implements IPropertiesConstants {
 	public PropertiesFactoryBean loadCommonProperties(){
 		PropertiesFactoryBean propertiesFactoryBean = new PropertiesFactoryBean();
 		propertiesFactoryBean.setLocation(new ClassPathResource(PROPFILE__SOME_COMMON));
-		
 		_logger.info("loading properties file '"+PROPFILE__SOME_COMMON+"'");
 		return propertiesFactoryBean;
 	}
