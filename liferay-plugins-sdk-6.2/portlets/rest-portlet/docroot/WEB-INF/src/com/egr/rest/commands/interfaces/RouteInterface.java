@@ -60,9 +60,6 @@ public interface RouteInterface {
 
 	public Class<?> getInputClass();
 	public void setInputClass(Class<?> inputClass);
-	
-	public String getInputClassName();
-	public void setInputClassName(String inputClassName);
 
 	public List<AuthenticatorInterface> getAuthenticators();
 	public void setAuthenticators(List<AuthenticatorInterface> authenticators);
