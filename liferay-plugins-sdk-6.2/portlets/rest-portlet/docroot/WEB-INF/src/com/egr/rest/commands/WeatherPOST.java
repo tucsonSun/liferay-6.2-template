@@ -55,7 +55,7 @@ public class WeatherPOST implements CommandInterface {
 	//
 	public CommandResult execute(ContextInterface context) {
 		User user = context.getEntity("USER");
-		WeatherModel weatherModel = context.getEntity("WeatherModel");
+		WeatherModel weatherModel = context.getEntity(WeatherModel.class.getName());
 				
 		return new CommandResult().setSucceeded(true).setData(weatherModel);
 //

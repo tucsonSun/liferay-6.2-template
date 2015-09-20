@@ -34,7 +34,6 @@ public class SimpleRoute implements RouteInterface {
 	private HttpMethod _httpMethod;
 	private String _commandName;
 	private Class<?> _inputClass;
-	private String _inputClassName;
 	private Boolean _isRouteAuthenticated = true;
 	private List<AuthenticatorInterface> _authenticators = new ArrayList<AuthenticatorInterface>();
 
@@ -70,14 +69,11 @@ public class SimpleRoute implements RouteInterface {
 	 * @param httpMethod
 	 * @param commandName
 	 * @param inputClass
-	 * @param inputClassName
 	 */
-	public SimpleRoute(String uri, HttpMethod httpMethod, String commandName, Class<?> inputClass, String inputClassName) {
+	public SimpleRoute(String uri, HttpMethod httpMethod, String commandName, Class<?> inputClass) {
 		this(uri, httpMethod, commandName);
 		Validate.notNull(inputClass);
-		Validate.notNull(inputClassName);
 		_inputClass = inputClass;
-		_inputClassName = inputClassName;
 	}
 	//
 	// JAVA API
@@ -140,16 +136,6 @@ public class SimpleRoute implements RouteInterface {
 	@Override
 	public void setInputClass(Class<?> inputClass) {
 		_inputClass = inputClass;
-	}
-
-	@Override
-	public String getInputClassName() {
-		return _inputClassName;
-	}
-
-	@Override
-	public void setInputClassName(String inputClassName) {
-		_inputClassName = inputClassName;
 	}
 
 	@Override
