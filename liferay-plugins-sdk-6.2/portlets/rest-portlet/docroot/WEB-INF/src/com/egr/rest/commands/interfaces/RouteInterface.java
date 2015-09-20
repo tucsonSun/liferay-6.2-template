@@ -49,14 +49,14 @@ public interface RouteInterface {
 	//
 	// accessor methods
 	//
+	public String getCommandName();
+	public void setCommandName(String commandName);
+	
 	public String getUri();
 	public void setUri(String uri);
 
 	public HttpMethod getHttpMethod();
 	public void setHttpMethod(HttpMethod httpMethod);
-
-	public String getCommandName();
-	public void setCommandName(String commandName);
 
 	public Class<?> getInputClass();
 	public void setInputClass(Class<?> inputClass);
@@ -67,6 +67,6 @@ public interface RouteInterface {
 	public List<AuthenticatorInterface> getAuthenticators();
 	public void setAuthenticators(List<AuthenticatorInterface> authenticators);
 	
-	boolean isAuthenticated();
-	public void setAuthenticated(boolean authenticated);
+	Boolean isRouteAuthenticated();
+	public void setIsRouteAuthenticated(Boolean isRouteAuthenticated);
 }
