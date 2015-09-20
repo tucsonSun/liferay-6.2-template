@@ -8,7 +8,15 @@ public class WeatherModel {
 	//
 	// JAVA API
 	//
-
+	/**
+	 * Overrode in order to ...
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "status='"+_status+"'   some='"+_some+"'";
+	}
 	//
 	// WO API
 	//

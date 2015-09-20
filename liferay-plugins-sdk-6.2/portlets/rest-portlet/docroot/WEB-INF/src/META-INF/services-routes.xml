@@ -40,10 +40,12 @@
 	<!-- ********************************************************************** -->
 	<!-- Model classes for input parameters on PUT/POSTs  						-->
 	<!-- ********************************************************************** -->
-	<bean id="PortalUserClass" parent="classGen"
-		p:arguments="com.copperpoint.portal.services.model.PortalUser" />
-
-
+	<bean id="WeatherClass" parent="classGen" 
+		p:arguments="com.egr.rest.commands.model.WeatherModel" />
+	        
+	 <bean id="IsOmniAdminUser" abstract="true" 
+	  	class="com.egr.rest.commands.auth.IsOmniAdminUser"/>       
+	        
 
 	<!-- ********************************************************************** -->
 	<!-- Utility classes  														-->
@@ -53,14 +55,28 @@
 
 		<!-- *********************** -->
 		<!-- NON-AUTHENTICATED routes -->
-		<!-- *********************** -->		
+		<!-- *********************** -->
+		<bean parent="SimpleRoute" p:uri="/myaccount" p:method="GET"
+			p:authenticated="false" p:commandName="myAccountCMD">
+		</bean>	
+		
 		<bean parent="SimpleRoute" p:uri="/weather" p:method="GET"
-			p:authenticated="false" p:commandName="weatherCMD">
+			p:authenticated="false" p:commandName="weatherGET">
 		</bean>	
 
 		<!-- *********************** -->
 		<!-- AUTHENTICATED routes -->
-		<!-- *********************** -->
+		<!-- *********************** -->		
+	  	<bean parent="SimpleRoute"  p:uri="/weather" p:method="POST" 
+		      p:commandName="weatherPOST"
+	   	      p:inputClass-ref="WeatherClass" p:inputClassName="WeatherModel">
+		      <property name="authenticators">
+		         <util:list value-type="com.egr.rest.commands.interfaces.AuthenticatorInterface">
+		           <bean parent="IsOmniAdminUser" />		         
+		         </util:list>
+		      </property>	      
+		</bean>
+		
 		
 	</util:list>
 </beans>
