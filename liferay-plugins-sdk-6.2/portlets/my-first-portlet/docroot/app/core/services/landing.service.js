@@ -9,12 +9,16 @@
 
     function landingSrv(myFirstBaseService) {
         return {
-        	weatherPromsie: function() {
+        	getWeatherPromsie: function() {
         		return myFirstBaseService.weather.get().$promise;
         	},
         	
+        	saveWeatherPromsie: function(vm) {
+        		return myFirstBaseService.weather.save(vm.weatherModel).$promise;
+        	},
+        	
         	getMyAccountPromise: function() {
-                return myFirstBaseService.getMyAccount.get().$promise;
+                return myFirstBaseService.myAccount.get().$promise;
             },
 
             getMyAccount: function(vm) {
@@ -36,8 +40,27 @@
                 });
             },
             
-            weather: function(vm) {
-            	this.weatherPromsie().then(function(response) {
+            getWeather: function(vm) {
+            	this.getWeatherPromsie().then(function(response) {
+                    if (response.succeeded) {
+                        vm.resultData = response.data;
+                        vm.contentLoaded = true;
+                    } else {
+                        vm.message = response.message;
+                        vm.contentLoaded = true;
+                    }
+                })
+                .catch(function(error){
+                    vm.message = {
+                        type: 'error',
+                        msg: 'There was a problem processing your request.'
+                    };
+                    vm.contentLoaded = true;
+                });
+            },
+            
+            saveWeather: function(vm) {
+            	this.saveWeatherPromsie(vm).then(function(response) {
                     if (response.succeeded) {
                         vm.resultData = response.data;
                         vm.contentLoaded = true;
