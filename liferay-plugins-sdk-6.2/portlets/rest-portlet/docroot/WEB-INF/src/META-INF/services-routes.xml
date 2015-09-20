@@ -22,7 +22,7 @@
 	<!-- Route classes  														-->
 	<!-- ********************************************************************** -->
 	<bean id="SimpleRoute" abstract="true"
-		class="com.copperpoint.services.core.web.SimpleRoute" />
+		class="com.egr.rest.commands.core.SimpleRoute" />
 	<!-- ********************************************************************** -->
 	<!-- Spring based classes  														-->
 	<!-- ********************************************************************** -->
@@ -48,27 +48,25 @@
 	        
 
 	<!-- ********************************************************************** -->
-	<!-- Utility classes  														-->
+	<!-- LOOP THRU ALL DEFINED THE ROUTES   														-->
 	<!-- ********************************************************************** -->
-	<util:list id="routes" value-type="com.copperpoint.services.core.web.SimpleRoute">
-
-
+	<util:list id="routes" value-type="com.egr.rest.commands.core.SimpleRoute">
 		<!-- *********************** -->
 		<!-- NON-AUTHENTICATED routes -->
 		<!-- *********************** -->
 		<bean parent="SimpleRoute" p:uri="/myaccount" p:method="GET"
-			p:authenticated="false" p:commandName="myAccountCMD">
+			p:isRouteAuthenticated="false" p:commandName="myAccountCMD">
 		</bean>	
 		
 		<bean parent="SimpleRoute" p:uri="/weather" p:method="GET"
-			p:authenticated="false" p:commandName="weatherGET">
+			p:isRouteAuthenticated="false" p:commandName="weatherGET">
 		</bean>	
 
 		<!-- *********************** -->
 		<!-- AUTHENTICATED routes -->
 		<!-- *********************** -->		
 	  	<bean parent="SimpleRoute"  p:uri="/weather" p:method="POST" 
-		      p:commandName="weatherPOST"
+		      p:isRouteAuthenticated="true" p:commandName="weatherPOST"
 	   	      p:inputClass-ref="WeatherClass" p:inputClassName="WeatherModel">
 		      <property name="authenticators">
 		         <util:list value-type="com.egr.rest.commands.interfaces.AuthenticatorInterface">
