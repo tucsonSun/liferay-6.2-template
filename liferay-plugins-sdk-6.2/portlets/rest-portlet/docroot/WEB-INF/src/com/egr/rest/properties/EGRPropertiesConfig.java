@@ -38,8 +38,8 @@ public class EGRPropertiesConfig implements IPropertiesConstants {
 	
 	private static Logger _logger = LoggerFactory.getLogger(EGRPropertiesConfig.class);
 	
-	@Bean
-	public PropertyPlaceholderConfigurer cpmProperties() {
+	@Bean(name="egrLiferayProperties")
+	public PropertyPlaceholderConfigurer egrLiferayProperties() {
 		String pathToProperties = PropsUtil.get(PROPFILE__LIFERAY_TOMCAT);
 		if (pathToProperties == null) {
 			throw new IllegalArgumentException("pathToProperties not found in portal-ext.properties");
