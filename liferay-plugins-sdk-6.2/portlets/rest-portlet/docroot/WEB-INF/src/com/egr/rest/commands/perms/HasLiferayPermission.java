@@ -15,12 +15,10 @@ package com.egr.rest.commands.perms;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import com.egr.rest.commands.core.HolderObj;
 import com.egr.rest.commands.interfaces.AuthenticatorInterface;
 import com.egr.rest.commands.interfaces.ContextInterface;
-import com.egr.rest.commands.user.UserManagerImpl;
 import com.liferay.portal.model.User;
 
 /**
@@ -32,19 +30,16 @@ import com.liferay.portal.model.User;
  */
 public class HasLiferayPermission implements AuthenticatorInterface {
 
-	@Autowired
-	private UserManagerImpl userManager;
-
 	private static final Logger _logger = LoggerFactory.getLogger(HasLiferayPermission.class);
 
-	private String portlet = "unknown";
-	private String permission = "unknown";
+	private String _portlet = "unknown";
+	private String _permission = "unknown";
 
 	@Override
 	public boolean authenticate(HolderObj holderObj) {
 
 		/*
-		 * In the current CPM implementation permissions are granted through
+		 * In the current implementation permissions are granted through
 		 * site roles -- thus the permission checks need a site id. This logic
 		 * is invoked only for authenticated users -- if the site id is not in
 		 * session determine the site id and save it in session
@@ -59,7 +54,7 @@ public class HasLiferayPermission implements AuthenticatorInterface {
 		boolean canAccess = false;
 		try {
 			UserPermissionInfo userPermissionInfo = UserPermissionInfo.getUserPermissionInfo(holderObj.getRequest());
-			canAccess = userPermissionInfo.hasPermission(portlet, permission);
+			canAccess = userPermissionInfo.hasPermission(_portlet, _permission);
 		} catch (Exception e) {
 			_logger.error(e.toString());
 			canAccess = false;
@@ -68,25 +63,25 @@ public class HasLiferayPermission implements AuthenticatorInterface {
 		}
 
 		if (!canAccess) {
-			_logger.info(String.format("Liferay permission check fails, uri=%s, user=%s, portlet=%s, perm=%s", holderObj.getRoutingUri(), user.getEmailAddress(), portlet, permission));
+			_logger.info(String.format("Liferay permission check fails, uri=%s, user=%s, portlet=%s, perm=%s", holderObj.getRoutingUri(), user.getEmailAddress(), _portlet, _permission));
 		}
 		return canAccess;
 	}
 
 	public String getPortlet() {
-		return portlet;
+		return _portlet;
 	}
 
 	public void setPortlet(String portlet) {
-		this.portlet = portlet;
+		this._portlet = portlet;
 	}
 
 	public String getPermission() {
-		return permission;
+		return _permission;
 	}
 
 	public void setPermission(String permission) {
-		this.permission = permission;
+		this._permission = permission;
 	}
 
 }

@@ -52,7 +52,7 @@ public class EGRPropertiesUtil implements IPropertiesConstants {
 	public static boolean load() {
 		String pathToProperties = PropsUtil.get(PROPFILE__LIFERAY_TOMCAT);
 		if (pathToProperties == null) {
-			throw new IllegalArgumentException("CPM property file setting not in portal-ext.properties");
+			throw new IllegalArgumentException("Path to properties is null. Not able to find '"+PROPFILE__LIFERAY_TOMCAT+"' in portal-ext.properties");
 		}
 		try {
 			_properties.load(new FileInputStream(pathToProperties));

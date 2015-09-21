@@ -2,14 +2,14 @@
     'use strict';
 
     angular.module('myFirstApp.directives')
-        .directive('cpmiLoader', cpmiLoader);
+        .directive('egrLoader', egrLoader);
 
-        function cpmiLoader() {
+        function egrLoader() {
             var directive = {
                 restrict: 'A',
-                template: '<div class="loader" ng-hide="cpmiContentLoaded"></div>',
+                template: '<div class="loader" ng-hide="egrContentLoaded"></div>',
                 scope: {
-                    cpmiContentLoaded: '='
+                	egrContentLoaded: '='
                 }
             };
             return directive;
