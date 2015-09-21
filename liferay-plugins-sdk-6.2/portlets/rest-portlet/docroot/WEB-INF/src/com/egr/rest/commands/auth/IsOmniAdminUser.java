@@ -14,17 +14,13 @@
  */
 package com.egr.rest.commands.auth;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.copperpoint.services.core.commands.ICommandKeys;
+import com.egr.rest.commands.core.HolderObj;
 import com.egr.rest.commands.interfaces.AuthenticatorInterface;
-import com.egr.rest.commands.interfaces.CommandInterface;
 import com.egr.rest.commands.interfaces.ContextInterface;
-import com.egr.rest.commands.interfaces.RouteInterface;
 import com.egr.rest.commands.user.UserManagerImpl;
 import com.liferay.portal.model.User;
 
@@ -46,10 +42,10 @@ public class IsOmniAdminUser implements AuthenticatorInterface {
 	//
 
 	@Override
-	public boolean authenticate(HttpServletRequest request, String uri, String commandName, RouteInterface route, CommandInterface command, ContextInterface context) {
+	public boolean authenticate(HolderObj holderObj) {
 
-		User user = context.getEntity(ContextInterface.USER);
-		Long companyId = (Long) context.getEntity(ContextInterface.COMPANY_ID);
+		User user = holderObj.getContextInterface().getEntity(ContextInterface.USER);
+		Long companyId = (Long) holderObj.getContextInterface().getEntity(ContextInterface.COMPANY_ID);
 		if (user == null) {
 			_logger.info("user not found in context");
 			return false;
@@ -62,10 +58,10 @@ public class IsOmniAdminUser implements AuthenticatorInterface {
 		boolean isUserOMNIAdmin = _userManager.isUserOMNIAdmin(user);
 
 		if (isUserOMNIAdmin) {
-			_logger.info(String.format(IsOmniAdminUser.class.getSimpleName()+" user permission check passed. uri=%s, user=%s", uri, user.getEmailAddress()));
+			_logger.info(String.format(IsOmniAdminUser.class.getSimpleName()+" user permission check passed. uri=%s, user=%s", holderObj.getRoutingUri(), user.getEmailAddress()));
 			return true;
 		} else {
-			_logger.info(String.format(IsOmniAdminUser.class.getSimpleName()+" user permission check failied. uri=%s, user=%s", uri, user.getEmailAddress()));
+			_logger.info(String.format(IsOmniAdminUser.class.getSimpleName()+" user permission check failied. uri=%s, user=%s", holderObj.getRoutingUri(), user.getEmailAddress()));
 			return false;
 		}
 	}

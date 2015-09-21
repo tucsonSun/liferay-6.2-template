@@ -13,7 +13,7 @@
  */
 package com.egr.rest.commands.interfaces;
 
-import javax.servlet.http.HttpServletRequest;
+import com.egr.rest.commands.core.HolderObj;
 
 /**
  * 
@@ -43,12 +43,7 @@ public interface AuthenticatorInterface {
 	//
 	// abstract/interface methods
 	//
-	public boolean authenticate(HttpServletRequest request,
-			                    String             		uri,
-			                    String             		commandName,
-			                    RouteInterface             		route,
-			                    CommandInterface           command,
-			                    ContextInterface           context);
+	public boolean authenticate(HolderObj holderObj);
 	//
 	// accessor methods
 	//
