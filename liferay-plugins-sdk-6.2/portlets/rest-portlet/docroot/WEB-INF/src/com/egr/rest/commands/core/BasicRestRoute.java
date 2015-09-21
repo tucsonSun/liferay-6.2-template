@@ -1,5 +1,5 @@
 /*
- * File Name: SimpleRoute.java
+ * File Name: BasicRestRoute.java
  * 
  * Created by: Ernesto Rendon on Sep 20, 2015 1:41:47 PM.
  * 
@@ -23,12 +23,12 @@ import com.egr.rest.commands.interfaces.RouteInterface;
 
 /**
  * 
- * A instance of class type SimpleRoute is used to ...
+ * A instance of class type BasicRestRoute is used to ...
  * 
  * @author Ernesto Rendon
  * @version 1.0
  */
-public class SimpleRoute implements RouteInterface {
+public class BasicRestRoute implements RouteInterface {
 
 	private String _uri;
 	private HttpMethod _httpMethod;
@@ -41,7 +41,7 @@ public class SimpleRoute implements RouteInterface {
 	 * 
 	 * Constructor
 	 */
-	public SimpleRoute() {
+	public BasicRestRoute() {
 		super();
 	}
 
@@ -52,7 +52,7 @@ public class SimpleRoute implements RouteInterface {
 	 * @param httpMethod
 	 * @param commandName
 	 */
-	public SimpleRoute(String uri, HttpMethod httpMethod, String commandName) {
+	public BasicRestRoute(String uri, HttpMethod httpMethod, String commandName) {
 		Validate.notNull(uri, "URI cannot be null in route definition");
 		Validate.notNull(httpMethod, "HttpMethod cannot be null in route definition");
 		Validate.notNull(commandName, "Command name now allowed to be null in route definition");
@@ -70,7 +70,7 @@ public class SimpleRoute implements RouteInterface {
 	 * @param commandName
 	 * @param inputClass
 	 */
-	public SimpleRoute(String uri, HttpMethod httpMethod, String commandName, Class<?> inputClass) {
+	public BasicRestRoute(String uri, HttpMethod httpMethod, String commandName, Class<?> inputClass) {
 		this(uri, httpMethod, commandName);
 		Validate.notNull(inputClass);
 		_inputClass = inputClass;

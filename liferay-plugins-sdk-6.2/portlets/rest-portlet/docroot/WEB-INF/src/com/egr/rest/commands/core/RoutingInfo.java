@@ -27,7 +27,7 @@ import com.egr.rest.commands.interfaces.RouteInterface;
 public class RoutingInfo {
 
 	private Map<String, String> _pathParameters;
-	private RouteInterface _route;
+	private RouteInterface _routeInterface;
 
 	//
 	// JAVA API
@@ -48,15 +48,16 @@ public class RoutingInfo {
 	//
 	// abstract/interface methods
 	//
+	
 	//
 	// accessor methods
 	//
-	public RouteInterface getRoute() {
-		return _route;
+	public RouteInterface getRouteInterface() {
+		return _routeInterface;
 	}
 
-	public void setRoute(RouteInterface route) {
-		_route = route;
+	public void setRouteInterface(RouteInterface routeInterface) {
+		_routeInterface = routeInterface;
 	}
 	
 	public Map<String, String> getPathParameters() {
