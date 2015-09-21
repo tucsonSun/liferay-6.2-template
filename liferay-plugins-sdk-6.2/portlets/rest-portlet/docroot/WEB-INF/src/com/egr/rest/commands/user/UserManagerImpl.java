@@ -41,9 +41,8 @@ public class UserManagerImpl implements UserManagerInterface {
 
 	/**
 	 * Method checks if the user is OMNI Admin
-	 * @see com.copperpoint.portal.services.user.UserManagerInterface#isUserOMNIAdmin(com.liferay.portal.model.User)
+	 * @see com.egr.rest.commands.user.UserManagerInterface#isUserOMNIAdmin(com.liferay.portal.model.User)
 	 */
-	@Override
 	public boolean isUserOMNIAdmin(User user) {
 		if (user == null)
 			return false;
