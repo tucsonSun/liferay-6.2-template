@@ -25,6 +25,8 @@ import java.util.Map;
 @SuppressWarnings("rawtypes")	
 public interface ContextInterface extends Map {
 		
+	public static final String USER = "USER";
+	public static final String COMPANY_ID = "COMPANY_ID";
 	//
 	// JAVA API
 	//

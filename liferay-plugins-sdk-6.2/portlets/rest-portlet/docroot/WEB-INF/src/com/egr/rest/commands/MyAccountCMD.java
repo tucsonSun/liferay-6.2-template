@@ -41,7 +41,7 @@ import com.liferay.portal.model.User;
  * @version 1.0
  */
 @Component("myAccountCMD")
-public class MyAccountCMD implements CommandInterface, ICommandKeys {
+public class MyAccountCMD implements CommandInterface {
 
 	public static final String REQUEST_KEY ="_request";
 	public static final String ACCOUNTS_SESSION_KEY = "__accounts__";
@@ -68,7 +68,7 @@ public class MyAccountCMD implements CommandInterface, ICommandKeys {
 	@SuppressWarnings("unchecked")
 	public CommandResult execute(ContextInterface context) {
 
-		User user = context.getEntity(USER);
+		User user = context.getEntity(ContextInterface.USER);
 		Validate.notNull(user, "MyAccounts requires a logged in user");
 
 		try {
@@ -88,7 +88,7 @@ public class MyAccountCMD implements CommandInterface, ICommandKeys {
 			return new CommandResult().setSucceeded(true).setData(someList);
 
 		} catch (Exception e) {
-			_logger.error(ServicesUtil.exceptionToString(e));
+			_logger.error(e.toString());
 			return new CommandResult().setSucceeded(false);
 		}
 	}

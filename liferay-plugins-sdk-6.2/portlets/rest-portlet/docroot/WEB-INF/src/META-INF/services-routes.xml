@@ -21,8 +21,8 @@
 	<!-- ********************************************************************** -->
 	<!-- Route classes  														-->
 	<!-- ********************************************************************** -->
-	<bean id="SimpleRoute" abstract="true"
-		class="com.egr.rest.commands.core.SimpleRoute" />
+	<bean id="BasicRestRoute" abstract="true"
+		class="com.egr.rest.commands.core.BasicRestRoute" />
 	<!-- ********************************************************************** -->
 	<!-- Spring based classes  														-->
 	<!-- ********************************************************************** -->
@@ -50,22 +50,22 @@
 	<!-- ********************************************************************** -->
 	<!-- LOOP THRU ALL DEFINED THE ROUTES   														-->
 	<!-- ********************************************************************** -->
-	<util:list id="routes" value-type="com.egr.rest.commands.core.SimpleRoute">
+	<util:list id="routes" value-type="com.egr.rest.commands.core.BasicRestRoute">
 		<!-- *********************** -->
 		<!-- NON-AUTHENTICATED routes -->
 		<!-- *********************** -->
-		<bean parent="SimpleRoute" p:uri="/myaccount" p:method="GET"
+		<bean parent="BasicRestRoute" p:uri="/myaccount" p:method="GET"
 			p:isRouteAuthenticated="false" p:commandName="myAccountCMD">
 		</bean>	
 		
-		<bean parent="SimpleRoute" p:uri="/weather" p:method="GET"
+		<bean parent="BasicRestRoute" p:uri="/weather" p:method="GET"
 			p:isRouteAuthenticated="false" p:commandName="weatherGET">
 		</bean>	
 
 		<!-- *********************** -->
 		<!-- AUTHENTICATED routes -->
 		<!-- *********************** -->		
-	  	<bean parent="SimpleRoute"  p:uri="/weather" p:method="POST" 
+	  	<bean parent="BasicRestRoute"  p:uri="/weather" p:method="POST" 
 		      p:isRouteAuthenticated="true" p:commandName="weatherPOST" p:inputClass-ref="Weather-REF">
 		      <property name="authenticators">
 		         <util:list value-type="com.egr.rest.commands.interfaces.AuthenticatorInterface">

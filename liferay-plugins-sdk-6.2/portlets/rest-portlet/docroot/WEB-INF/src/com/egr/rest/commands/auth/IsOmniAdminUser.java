@@ -48,8 +48,8 @@ public class IsOmniAdminUser implements AuthenticatorInterface {
 	@Override
 	public boolean authenticate(HttpServletRequest request, String uri, String commandName, RouteInterface route, CommandInterface command, ContextInterface context) {
 
-		User user = context.getEntity(ICommandKeys.USER);
-		Long companyId = (Long) context.getEntity(ICommandKeys.COMPANY_ID);
+		User user = context.getEntity(ContextInterface.USER);
+		Long companyId = (Long) context.getEntity(ContextInterface.COMPANY_ID);
 		if (user == null) {
 			_logger.info("user not found in context");
 			return false;
