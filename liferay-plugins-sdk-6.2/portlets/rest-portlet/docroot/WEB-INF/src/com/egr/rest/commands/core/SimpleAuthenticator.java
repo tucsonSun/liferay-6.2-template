@@ -15,16 +15,11 @@ package com.egr.rest.commands.core;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import com.egr.rest.commands.interfaces.AuthenticatorInterface;
-import com.egr.rest.commands.interfaces.CommandInterface;
-import com.egr.rest.commands.interfaces.ContextInterface;
-import com.egr.rest.commands.interfaces.RouteInterface;
 import com.liferay.portal.model.User;
 import com.liferay.portal.util.PortalUtil;
 
@@ -48,17 +43,17 @@ public class SimpleAuthenticator implements AuthenticatorInterface {
 	/**
 	 * 
 	 * Overrode in order to ...
-	 * @see com.egr.rest.commands.interfaces.AuthenticatorInterface#authenticate(javax.servlet.http.HttpServletRequest, java.lang.String, java.lang.String, com.egr.rest.commands.interfaces.RouteInterface, com.egr.rest.commands.interfaces.CommandInterface, com.egr.rest.commands.interfaces.ContextInterface)
+	 * @see com.egr.rest.commands.interfaces.AuthenticatorInterface#authenticate(com.egr.rest.commands.core.HolderObj)
 	 */
 	@Override
-	public boolean authenticate(HttpServletRequest request, String uri, String commandName, RouteInterface route, CommandInterface command, ContextInterface context) {
+	public boolean authenticate(HolderObj holderObj) {
 		User user = null;
 		try {
-			user = PortalUtil.getUser(request);
+			user = PortalUtil.getUser(holderObj.getRequest());
 			if (user == null) {
-				return !route.isRouteAuthenticated();
+				return !holderObj.getRouteInterface().isRouteAuthenticated();
 			} else {
-				return processALLAuthenticators_AND(request, uri, commandName, route, command, context, user);
+				return AND_ALL_Authenticators(holderObj, user);
 			}
 		} catch (Exception e) {
 			_logger.error(e.toString());
@@ -77,19 +72,19 @@ public class SimpleAuthenticator implements AuthenticatorInterface {
 	 * @param user
 	 * @return
 	 */
-	private boolean processALLAuthenticators_AND(HttpServletRequest request, String uri, String commandName, RouteInterface route, CommandInterface command, ContextInterface context, User user) {
-		List<AuthenticatorInterface> authenticators = route.getAuthenticators();
+	private boolean AND_ALL_Authenticators(HolderObj holderObj, User user) {
+		List<AuthenticatorInterface> authenticators = holderObj.getRouteInterface().getAuthenticators();
 		for (AuthenticatorInterface authenticator : authenticators) {
 			boolean canAccess = false;
 			try {
-				canAccess = authenticator.authenticate(request, uri, commandName, route, command, context);
+				canAccess = authenticator.authenticate(holderObj);
 			} catch (Exception e) {
 				_logger.error(e.toString());
 				canAccess = false;
 			}
 			if (!canAccess) {
 
-				_logger.info(String.format("Request to access uri=%s, method=%s, user=%s, denied by=%s", uri, route.getHttpMethod().toString(), user.getEmailAddress(), authenticator.getClass().getName()));
+				_logger.info(String.format("Request to access uri=%s, method=%s, user=%s, denied by=%s", holderObj.getRoutingUri(), holderObj.getRouteInterface().getHttpMethod().toString(), user.getEmailAddress(), authenticator.getClass().getName()));
 				return false;
 			}
 		}
