@@ -30,8 +30,8 @@ public class UserPermissionInfo {
 	private String userClass;
 	private long assignedOrgId;
 	private long assignedOrgGroupId;
-	private String taxId;
-	private String accountNumber;
+//	private String taxId;
+//	private String accountNumber;
 
 	// Making the constructor private so no one else create the instance from
 	// outside.
@@ -93,7 +93,7 @@ public class UserPermissionInfo {
 	}
 
 	public static UserPermissionInfo getUserPermissionInfo(HttpServletRequest request) {
-		UserPermissionInfo userPermissionInfo = (UserPermissionInfo) request.getAttribute(ICommandKeys.USER_PERMISSION_PARAM_NAME);
+		UserPermissionInfo userPermissionInfo = (UserPermissionInfo) request.getAttribute(IPermission.USER_PERMISSION_PARAM_NAME);
 		try {
 			if (null == userPermissionInfo) {
 				userPermissionInfo = new UserPermissionInfo();
@@ -103,12 +103,12 @@ public class UserPermissionInfo {
 					userPermissionInfo.setCompanyId(user.getCompanyId());
 				}
 				HttpSession session = request.getSession();
-				String userType = (String) session.getAttribute(ICommandKeys.USERTYPE_SESSION_KEY);
+				String userType = (String) session.getAttribute(IPermission.USERTYPE_SESSION_KEY);
 				if (userType == null) {
-					userType = ICommandKeys.UNKNOWN_USER_TYPE;
+					userType = IPermission.UNKNOWN_USER_TYPE;
 				}
 				userPermissionInfo.setUserType(userType);
-				request.setAttribute(ICommandKeys.USER_PERMISSION_PARAM_NAME, userPermissionInfo);
+				request.setAttribute(IPermission.USER_PERMISSION_PARAM_NAME, userPermissionInfo);
 			}
 		} catch (Exception e) {
 			_logger.error("Exception while getting the user permission", e);
@@ -164,21 +164,21 @@ public class UserPermissionInfo {
 		this.user = user;
 	}
 
-	public String getTaxId() {
-		return taxId;
-	}
-
-	public void setTaxId(String taxId) {
-		this.taxId = taxId;
-	}
-
-	public String getAccountNumber() {
-		return accountNumber;
-	}
-
-	public void setAccountNumber(String accountNumber) {
-		this.accountNumber = accountNumber;
-	}
+//	public String getTaxId() {
+//		return taxId;
+//	}
+//
+//	public void setTaxId(String taxId) {
+//		this.taxId = taxId;
+//	}
+//
+//	public String getAccountNumber() {
+//		return accountNumber;
+//	}
+//
+//	public void setAccountNumber(String accountNumber) {
+//		this.accountNumber = accountNumber;
+//	}
 
 	private static Object getExpandoValue(Organization org, String columnName) {
 		Object value = null;

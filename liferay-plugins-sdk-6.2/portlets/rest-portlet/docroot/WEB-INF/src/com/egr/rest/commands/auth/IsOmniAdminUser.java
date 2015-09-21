@@ -41,6 +41,21 @@ public class IsOmniAdminUser implements AuthenticatorInterface {
 	// JAVA API
 	//
 
+	//
+	// state indicator methods
+	//
+
+	//
+	// action methods
+	//
+
+	//
+	// misc.
+	//
+
+	//
+	// abstract/interface methods
+	//
 	@Override
 	public boolean authenticate(HolderObj holderObj) {
 
@@ -65,23 +80,7 @@ public class IsOmniAdminUser implements AuthenticatorInterface {
 			return false;
 		}
 	}
-
-	//
-	// state indicator methods
-	//
-
-	//
-	// action methods
-	//
-
-	//
-	// misc.
-	//
-
-	//
-	// abstract/interface methods
-	//
-
+	
 	//
 	// accessor methods
 	//
