@@ -24,7 +24,7 @@
 						<a class="auth-link text-center" href="/web/guest/home-page?p_p_id=58&p_p_lifecycle=0&p_p_state=maximized&p_p_mode=view&_58_struts_action=%2Flogin%2Fforgot_password">
 							<i class="fa fa-cogs fa-2x"></i><span>&nbsp;Forgot <br/> Password</span>
 						</a>
-						<a class="auth-link text-center" href="/c/portal/login?redirect=/web/guest/video">
+						<a class="auth-link text-center" href="/c/portal/login?redirect=/web/guest/my-first">
 							<i class="fa fa-sign-in fa-2x"></i><span>&nbsp;Sign <br/> In</span>
 						</a>
 					</div>

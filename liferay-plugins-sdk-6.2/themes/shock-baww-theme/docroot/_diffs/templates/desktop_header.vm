@@ -9,7 +9,6 @@
 					</div>
 
 					<div id="sign-in" class="col-md pull-right">
-						<!-- <a class="auth-link text-center" href="/web/guest/video" title="Admin Home">Admin Home</a> -->
 						<a class="auth-link" href="/c/portal/logout">
 							<i class="fa fa-sign-out fa-2x"></i><span>&nbsp;Sign Out</span>
 						</a>
@@ -33,7 +32,7 @@
 							<i class="fa fa-cogs fa-2x"></i><span>&nbsp;Forgot Password</span>
 						</a>
 						<span class="auth-divider">|</span>
-						<a class="auth-link" href="/c/portal/login?redirect=/web/guest/video">
+						<a class="auth-link" href="/c/portal/login?redirect=/web/guest/my-first">
 							<i class="fa fa-sign-in fa-2x"></i><span>&nbsp;Sign In</span>
 						</a>
 						<span class="auth-divider">|</span>&nbsp;
