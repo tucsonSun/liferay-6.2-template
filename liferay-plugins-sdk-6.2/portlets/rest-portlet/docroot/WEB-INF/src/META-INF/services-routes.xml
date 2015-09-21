@@ -34,7 +34,7 @@
 	<!-- Permission classes  													-->
 	<!-- ********************************************************************** -->
 	<bean id="LiferayPerm" abstract="true"
-		class="com.copperpoint.services.auth.HasLiferayPermission" />
+		class="com.egr.rest.commands.perms.HasLiferayPermission" />
 
 
 	<!-- ********************************************************************** -->

@@ -22,7 +22,7 @@
 	<context:annotation-config />
 	
 	<!-- Configure what packages to scan -->
-	<context:component-scan base-package="com.egr.rest, com.copperpoint" />
+	<context:component-scan base-package="com.egr, com.egr.rest" />
 
 	<!-- Import the services routes configuration file -->    	
 	<import resource="classpath*:META-INF/services-routes.xml" />

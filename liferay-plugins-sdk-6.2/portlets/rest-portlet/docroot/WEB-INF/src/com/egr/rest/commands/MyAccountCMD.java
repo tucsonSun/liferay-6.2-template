@@ -24,11 +24,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-import com.copperpoint.services.core.web.UserPermissionInfo;
 import com.egr.rest.commands.interfaces.CommandInterface;
 import com.egr.rest.commands.interfaces.CommandResult;
 import com.egr.rest.commands.interfaces.ContextInterface;
 import com.egr.rest.commands.model.WeatherModel;
+import com.egr.rest.commands.perms.UserPermissionInfo;
 import com.liferay.portal.model.User;
 
 /**

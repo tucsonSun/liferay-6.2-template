@@ -1,4 +1,4 @@
-package com.copperpoint.services.core.commands;
+package com.egr.rest.commands.perms;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;

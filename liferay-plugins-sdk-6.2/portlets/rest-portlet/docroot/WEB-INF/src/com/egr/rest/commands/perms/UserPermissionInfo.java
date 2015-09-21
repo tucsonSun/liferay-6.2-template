@@ -1,4 +1,4 @@
-package com.copperpoint.services.core.web;
+package com.egr.rest.commands.perms;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,7 +12,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;
 
-import com.copperpoint.services.core.commands.ICommandKeys;
 import com.liferay.portal.model.Organization;
 import com.liferay.portal.model.User;
 import com.liferay.portal.security.permission.PermissionChecker;
