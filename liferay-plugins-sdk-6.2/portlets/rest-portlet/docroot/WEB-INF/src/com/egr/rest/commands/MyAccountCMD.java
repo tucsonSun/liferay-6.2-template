@@ -24,8 +24,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-import com.egr.rest.commands.core.CommandResult;
-import com.egr.rest.commands.interfaces.CommandInterface;
+import com.egr.rest.commands.core.CommandOutput;
+import com.egr.rest.commands.interfaces.CommandInputInterface;
 import com.egr.rest.commands.interfaces.RouteContextInterface;
 import com.egr.rest.commands.model.WeatherModel;
 import com.egr.rest.commands.perms.UserPermissionInfo;
@@ -39,7 +39,7 @@ import com.liferay.portal.model.User;
  * @version 1.0
  */
 @Component("myAccountCMD")
-public class MyAccountCMD implements CommandInterface {
+public class MyAccountCMD implements CommandInputInterface {
 
 	public static final String REQUEST_KEY ="_request";
 	public static final String ACCOUNTS_SESSION_KEY = "__accounts__";
@@ -64,7 +64,7 @@ public class MyAccountCMD implements CommandInterface {
 	// abstract/interface methods
 	//
 	@SuppressWarnings("unchecked")
-	public CommandResult execute(RouteContextInterface context) {
+	public CommandOutput execute(RouteContextInterface context) {
 
 		User user = context.getEntity(RouteContextInterface.USER);
 		Validate.notNull(user, "MyAccounts requires a logged in user");
@@ -83,11 +83,11 @@ public class MyAccountCMD implements CommandInterface {
 			}
 			List<WeatherModel> someList = new ArrayList<WeatherModel>();
 
-			return new CommandResult<List<WeatherModel>>().setSucceeded(true).setData(someList);
+			return new CommandOutput<List<WeatherModel>>().setSucceeded(true).setData(someList);
 
 		} catch (Exception e) {
 			_logger.error(e.toString());
-			return new CommandResult<List<WeatherModel>>().setSucceeded(false);
+			return new CommandOutput<List<WeatherModel>>().setSucceeded(false);
 		}
 	}
 	//

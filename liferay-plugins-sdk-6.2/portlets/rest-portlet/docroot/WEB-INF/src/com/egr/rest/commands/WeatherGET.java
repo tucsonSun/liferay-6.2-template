@@ -18,8 +18,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-import com.egr.rest.commands.core.CommandResult;
-import com.egr.rest.commands.interfaces.CommandInterface;
+import com.egr.rest.commands.core.CommandOutput;
+import com.egr.rest.commands.interfaces.CommandInputInterface;
 import com.egr.rest.commands.interfaces.RouteContextInterface;
 import com.egr.rest.commands.model.WeatherModel;
 
@@ -30,7 +30,7 @@ import com.egr.rest.commands.model.WeatherModel;
  * @version 1.0
  */
 @Component("weatherGET")
-public class WeatherGET implements CommandInterface {
+public class WeatherGET implements CommandInputInterface {
 	
 	private static final Logger _logger = LoggerFactory.getLogger(WeatherGET.class);
 	//
@@ -52,16 +52,16 @@ public class WeatherGET implements CommandInterface {
 	//
 	// abstract/interface methods
 	//
-	public CommandResult<WeatherModel> execute(RouteContextInterface context) {
+	public CommandOutput<WeatherModel> execute(RouteContextInterface context) {
 
 		WeatherModel abc = new WeatherModel();
 		abc.setStatus("this is the GET");
 		
-		return new CommandResult<WeatherModel>().setSucceeded(true).setData(abc);
+		return new CommandOutput<WeatherModel>().setSucceeded(true).setData(abc);
 //
 //		} catch (Exception e) {
 //			_logger.error(ServicesUtil.exceptionToString(e));
-//			return new CommandResult().setSucceeded(false);
+//			return new CommandOutput().setSucceeded(false);
 //		}
 	}
 	//

@@ -18,8 +18,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-import com.egr.rest.commands.core.CommandResult;
-import com.egr.rest.commands.interfaces.CommandInterface;
+import com.egr.rest.commands.core.CommandOutput;
+import com.egr.rest.commands.interfaces.CommandInputInterface;
 import com.egr.rest.commands.interfaces.RouteContextInterface;
 import com.egr.rest.commands.model.WeatherModel;
 import com.liferay.portal.model.User;
@@ -31,7 +31,7 @@ import com.liferay.portal.model.User;
  * @version 1.0
  */
 @Component("weatherPOST")
-public class WeatherPOST implements CommandInterface {
+public class WeatherPOST implements CommandInputInterface {
 	
 	private static final Logger _logger = LoggerFactory.getLogger(WeatherPOST.class);
 	//
@@ -53,15 +53,15 @@ public class WeatherPOST implements CommandInterface {
 	//
 	// abstract/interface methods
 	//
-	public CommandResult<WeatherModel> execute(RouteContextInterface context) {
+	public CommandOutput<WeatherModel> execute(RouteContextInterface context) {
 		User user = context.getEntity("USER");
 		WeatherModel weatherModel = context.getEntity(WeatherModel.class.getName());
 				
-		return new CommandResult<WeatherModel>().setSucceeded(true).setData(weatherModel);
+		return new CommandOutput<WeatherModel>().setSucceeded(true).setData(weatherModel);
 //
 //		} catch (Exception e) {
 //			_logger.error(ServicesUtil.exceptionToString(e));
-//			return new CommandResult().setSucceeded(false);
+//			return new CommandOutput().setSucceeded(false);
 //		}
 	}
 	//
