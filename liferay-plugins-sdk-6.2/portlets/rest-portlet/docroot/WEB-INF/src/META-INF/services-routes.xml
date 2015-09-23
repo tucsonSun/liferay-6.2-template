@@ -21,8 +21,7 @@
 	<!-- ********************************************************************** -->
 	<!-- Route classes  														-->
 	<!-- ********************************************************************** -->
-	<bean id="BasicRestRoute" abstract="true"
-		class="com.egr.rest.commands.core.BasicRestRoute" />
+	<bean id="GenericRouteImpl" abstract="true" class="com.egr.rest.commands.core.GenericRouteImpl" />
 	<!-- ********************************************************************** -->
 	<!-- Spring based classes  														-->
 	<!-- ********************************************************************** -->
@@ -48,24 +47,24 @@
 	        
 
 	<!-- ********************************************************************** -->
-	<!-- LOOP THRU ALL DEFINED THE ROUTES   														-->
+	<!-- START LOOP THRU ALL DEFINED THE ROUTES   														-->
 	<!-- ********************************************************************** -->
-	<util:list id="routes" value-type="com.egr.rest.commands.core.BasicRestRoute">
+	<util:list id="GenericRouteListId" value-type="com.egr.rest.commands.core.GenericRouteImpl">
 		<!-- *********************** -->
 		<!-- NON-AUTHENTICATED routes -->
 		<!-- *********************** -->
-		<bean parent="BasicRestRoute" p:uri="/myaccount" p:method="GET"
+		<bean parent="GenericRouteImpl" p:uri="/myaccount" p:method="GET"
 			p:isRouteAuthenticated="false" p:commandName="myAccountCMD">
 		</bean>	
 		
-		<bean parent="BasicRestRoute" p:uri="/weather" p:method="GET"
+		<bean parent="GenericRouteImpl" p:uri="/weather" p:method="GET"
 			p:isRouteAuthenticated="false" p:commandName="weatherGET">
 		</bean>	
 
 		<!-- *********************** -->
 		<!-- AUTHENTICATED routes -->
 		<!-- *********************** -->		
-	  	<bean parent="BasicRestRoute"  p:uri="/weather" p:method="POST" 
+	  	<bean parent="GenericRouteImpl"  p:uri="/weather" p:method="POST" 
 		      p:isRouteAuthenticated="true" p:commandName="weatherPOST" p:inputClass-ref="Weather-REF">
 		      <property name="authenticators">
 		         <util:list value-type="com.egr.rest.commands.interfaces.AuthenticatorInterface">
@@ -73,7 +72,8 @@
 		         </util:list>
 		      </property>	      
 		</bean>
-		
-		
 	</util:list>
+	<!-- ********************************************************************** -->
+	<!-- END LOOP THRU ALL DEFINED THE ROUTES   														-->
+	<!-- ********************************************************************** -->
 </beans>

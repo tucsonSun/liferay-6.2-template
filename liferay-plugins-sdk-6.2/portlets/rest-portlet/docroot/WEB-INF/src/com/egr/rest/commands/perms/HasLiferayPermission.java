@@ -18,7 +18,7 @@ import org.slf4j.LoggerFactory;
 
 import com.egr.rest.commands.core.HolderObj;
 import com.egr.rest.commands.interfaces.AuthenticatorInterface;
-import com.egr.rest.commands.interfaces.ContextInterface;
+import com.egr.rest.commands.interfaces.RouteContextInterface;
 import com.liferay.portal.model.User;
 
 /**
@@ -44,7 +44,7 @@ public class HasLiferayPermission implements AuthenticatorInterface {
 		 * is invoked only for authenticated users -- if the site id is not in
 		 * session determine the site id and save it in session
 		 */
-		User user = holderObj.getContextInterface().getEntity(ContextInterface.USER);
+		User user = holderObj.getRouteContextInterface().getEntity(RouteContextInterface.USER);
 
 		if (user == null) {
 			_logger.error("Liferay permission checker finds no user in request");
