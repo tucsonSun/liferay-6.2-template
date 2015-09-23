@@ -19,7 +19,7 @@ public class ServicesUtil {
 
 
 	public enum UserType {
-		EMPLOYEE, CUSTOMER, BROKER, UNKNOWN
+		EMPLOYEE, CUSTOMER, UNKNOWN
 	};
 
 	private static final Logger _logger = LoggerFactory.getLogger(ServicesUtil.class);

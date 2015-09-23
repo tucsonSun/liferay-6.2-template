@@ -13,6 +13,8 @@
  */
 package com.egr.rest.commands.interfaces;
 
+import com.egr.rest.commands.core.CommandResult;
+
 
 /**
  * 

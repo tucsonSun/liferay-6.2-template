@@ -30,7 +30,6 @@ import org.springframework.context.ApplicationContext;
 
 import com.egr.rest.commands.interfaces.AuthenticatorInterface;
 import com.egr.rest.commands.interfaces.CommandInterface;
-import com.egr.rest.commands.interfaces.CommandResult;
 import com.egr.rest.commands.interfaces.GenericRouteInterface;
 import com.egr.rest.commands.interfaces.GenericRouterArrayInterface;
 

@@ -18,8 +18,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+import com.egr.rest.commands.core.CommandResult;
 import com.egr.rest.commands.interfaces.CommandInterface;
-import com.egr.rest.commands.interfaces.CommandResult;
 import com.egr.rest.commands.interfaces.RouteContextInterface;
 import com.egr.rest.commands.model.WeatherModel;
 

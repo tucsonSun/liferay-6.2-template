@@ -24,8 +24,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.egr.rest.commands.interfaces.CommandResult;
-
 /**
  * 
  * A instance of class type ServicesController is used to ...

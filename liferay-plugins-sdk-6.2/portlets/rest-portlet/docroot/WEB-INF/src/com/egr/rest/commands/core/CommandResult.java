@@ -11,7 +11,10 @@
  * only in accordance with the terms of the license agreement you entered into
  * with EGR Software Inc.
  */
-package com.egr.rest.commands.interfaces;
+package com.egr.rest.commands.core;
+
+import com.egr.rest.commands.interfaces.CommandInterface;
+import com.egr.rest.commands.interfaces.CommandResultInterface;
 
 /**
  * 
@@ -20,12 +23,7 @@ package com.egr.rest.commands.interfaces;
  * @author Ernesto Rendon
  * @version 1.0
  */
-public class CommandResult {
-
-	public static final String DEFAULT_ROUTE_NOT_FOUND = "Sorry, your requested route could not be determined";
-	public static final String DEFAULT_ERROR_MESSAGE = "Whoops, your request caused an error while processing.";
-	public static final String DEFAULT_AUTHERROR_MESSAGE = "Sorry, your request is not authorized.";
-	public static final String DEFAULT_SUCCESS = "Yippie, your request succeeded.";
+public class CommandResult implements CommandResultInterface {
 
 	private Boolean _succeeded = true;
 	private Object _data = null;
@@ -63,9 +61,9 @@ public class CommandResult {
 		_succeeded = succeeded;
 
 		if (succeeded == null || !_succeeded)
-			setMessage(DEFAULT_ERROR_MESSAGE);
+			setMessage(CommandResultInterface.DEFAULT_ERROR_MESSAGE);
 		else if (_succeeded)
-			setMessage(DEFAULT_SUCCESS);
+			setMessage(CommandResultInterface.DEFAULT_SUCCESS);
 
 		return this;
 	}
