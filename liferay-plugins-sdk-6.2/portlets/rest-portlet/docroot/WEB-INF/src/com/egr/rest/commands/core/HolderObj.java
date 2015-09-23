@@ -16,7 +16,7 @@ package com.egr.rest.commands.core;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.egr.rest.commands.interfaces.CommandInterface;
+import com.egr.rest.commands.interfaces.CommandInputInterface;
 import com.egr.rest.commands.interfaces.RouteContextInterface;
 import com.egr.rest.commands.interfaces.GenericRouteInterface;
 
@@ -32,7 +32,7 @@ public class HolderObj {
 	protected String _routingUri;
 	protected String _commandName;
 	protected GenericRouteInterface _genericRouteInterface;
-	protected CommandInterface _commandInterface;
+	protected CommandInputInterface _commandInputInterface;
 	protected RouteContextInterface _routeContextInterface;
 	
 	/**
@@ -41,15 +41,15 @@ public class HolderObj {
 	 * @param routingUri
 	 * @param commandName
 	 * @param genericRouteInterface
-	 * @param commandInterface
+	 * @param commandInputInterface
 	 * @param context
 	 */
-	public HolderObj(HttpServletRequest request, String routingUri, String commandName, GenericRouteInterface genericRouteInterface, CommandInterface commandInterface, RouteContextInterface context) {
+	public HolderObj(HttpServletRequest request, String routingUri, String commandName, GenericRouteInterface genericRouteInterface, CommandInputInterface commandInputInterface, RouteContextInterface context) {
 		setRequest(request);
 		setRoutingUri(routingUri);
 		setCommandName(commandName);
 		setGenericRouteInterface(genericRouteInterface);
-		setCommandInterface(commandInterface);
+		setCommandInterface(commandInputInterface);
 		setRouteContextInterface(context);
 	}
 	
@@ -100,11 +100,11 @@ public class HolderObj {
 	public void setGenericRouteInterface(GenericRouteInterface genericRouteInterface) {
 		_genericRouteInterface = genericRouteInterface;
 	}
-	public CommandInterface getCommandInterface() {
-		return _commandInterface;
+	public CommandInputInterface getCommandInterface() {
+		return _commandInputInterface;
 	}
-	public void setCommandInterface(CommandInterface commandInterface) {
-		_commandInterface = commandInterface;
+	public void setCommandInterface(CommandInputInterface commandInputInterface) {
+		_commandInputInterface = commandInputInterface;
 	}
 	public RouteContextInterface getRouteContextInterface() {
 		return _routeContextInterface;

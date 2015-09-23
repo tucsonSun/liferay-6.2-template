@@ -22,7 +22,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.AntPathMatcher;
 
 import com.egr.rest.commands.interfaces.GenericRouteInterface;
-import com.egr.rest.commands.interfaces.GenericRouterArrayInterface;
+import com.egr.rest.commands.interfaces.GenericRouterListInterface;
 
 /**
  * 
@@ -32,7 +32,7 @@ import com.egr.rest.commands.interfaces.GenericRouterArrayInterface;
  * @version 1.0
  */
 @Component("genericRouterListContainerImpl")
-public class GenericRouterListContainerImpl implements GenericRouterArrayInterface {
+public class GenericRouterListContainerImpl implements GenericRouterListInterface {
 
 	@Resource(name = "GenericRouteListId")
 	private List<GenericRouteImpl> _genericRouteImplList;
@@ -51,7 +51,7 @@ public class GenericRouterListContainerImpl implements GenericRouterArrayInterfa
 	/**
 	 * 
 	 * Overrode in order to ...
-	 * @see com.egr.rest.commands.interfaces.GenericRouterArrayInterface#getRoutingInfo(java.lang.String, java.lang.String)
+	 * @see com.egr.rest.commands.interfaces.GenericRouterListInterface#getRoutingInfo(java.lang.String, java.lang.String)
 	 */
 	public RoutingInfo getRoutingInfo(String requestUri, String httpMethod) {
 		AntPathMatcher matcher = new AntPathMatcher();

@@ -29,9 +29,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 
 import com.egr.rest.commands.interfaces.AuthenticatorInterface;
-import com.egr.rest.commands.interfaces.CommandInterface;
+import com.egr.rest.commands.interfaces.CommandInputInterface;
 import com.egr.rest.commands.interfaces.GenericRouteInterface;
-import com.egr.rest.commands.interfaces.GenericRouterArrayInterface;
+import com.egr.rest.commands.interfaces.GenericRouterListInterface;
 
 /**
  * A instance of class type ServicesControllerAbstract is used to ...
@@ -53,12 +53,12 @@ public abstract class ServicesControllerAbstract {
 	private ApplicationContext _applicationContext;
 
 	@Autowired
-	@Qualifier("simpleAuthenticator")
+	@Qualifier("authenticatorImpl")
 	private AuthenticatorInterface _authenticatorInterface;
 	
 	@Autowired
 	@Qualifier("genericRouterListContainerImpl")
-	private GenericRouterArrayInterface _genericRouterListContainerInterface;
+	private GenericRouterListInterface _genericRouterListContainerInterface;
 	//
 	// JAVA API
 	//
@@ -71,13 +71,13 @@ public abstract class ServicesControllerAbstract {
 	// action methods
 	//
 	/**
-	 * Method is a helper that executes the command for GET/DELETE/PUT/POST and returns a CommandResult object
+	 * Method is a helper that executes the command for GET/DELETE/PUT/POST and returns a CommandOutput object
 	 * @param json
 	 * @param routingUri
 	 * @param request
-	 * @return CommandResult
+	 * @return CommandOutput
 	 */
-	protected CommandResult process_REST_call_for_JSON_ROUTE(String json, String routingUri, HttpServletRequest request) {
+	protected CommandOutput process_REST_call_for_JSON_ROUTE(String json, String routingUri, HttpServletRequest request) {
 		_logger.trace("Starting command execution handler");
 
 		if (_logRequests) {
@@ -90,7 +90,7 @@ public abstract class ServicesControllerAbstract {
 		RoutingInfo routingInfo = _genericRouterListContainerInterface.getRoutingInfo(routingUri, request.getMethod());
 
 		if (routingInfo == null || routingInfo.getGenericRouteInterface() == null || routingInfo.getGenericRouteInterface().getCommandName() == null) {
-			return new CommandResult().setSucceeded(false).setMessage(CommandResult.DEFAULT_ROUTE_NOT_FOUND);
+			return new CommandOutput().setSucceeded(false).setMessage(CommandOutput.DEFAULT_ROUTE_NOT_FOUND);
 		}
 
 		GenericRouteInterface genericRouteInterface = routingInfo.getGenericRouteInterface();
@@ -99,18 +99,18 @@ public abstract class ServicesControllerAbstract {
 
 		if (commandObject == null) {
 			_logger.error(String.format("Could not locate command %s for uri=%s", commandName, routingUri));
-			return new CommandResult().setSucceeded(false).setMessage("Requested command could not be located");
+			return new CommandOutput().setSucceeded(false).setMessage("Requested command could not be located");
 		}
 
-		if (!(commandObject instanceof CommandInterface)) {
+		if (!(commandObject instanceof CommandInputInterface)) {
 			_logger.error(String.format("Named command %s for uri=%s is not a ICommand object", commandName, routingUri));
-			return new CommandResult().setSucceeded(false).setMessage("Requested command could not be located");
+			return new CommandOutput().setSucceeded(false).setMessage("Requested command could not be located");
 
 		}
 
-		CommandInterface commandInterface = (CommandInterface) commandObject;
+		CommandInputInterface commandInputInterface = (CommandInputInterface) commandObject;
 		RouteContextLiferay context = new RouteContextLiferay(request, routingInfo.getPathParameters());
-		CommandResult result = null;
+		CommandOutput result = null;
 
 		try {
 			if (json != null && json.length() > 0) {
@@ -121,26 +121,26 @@ public abstract class ServicesControllerAbstract {
 			// NOTE: authentication must occur after parsing of input because
 			// some authentication logic will be dependent on what is being
 			// created/updated
-			HolderObj ho = new HolderObj(request, routingUri, commandName, genericRouteInterface, commandInterface, context);
+			HolderObj ho = new HolderObj(request, routingUri, commandName, genericRouteInterface, commandInputInterface, context);
 			boolean authenticated = _authenticatorInterface.authenticate(ho);
 
 			if (!authenticated) {
 				_logger.error(String.format("Authentication fails for named command %s for uri=%s", commandName, routingUri));
-				return new CommandResult().setSucceeded(false);
+				return new CommandOutput().setSucceeded(false);
 			}
-			result = commandInterface.execute(context);
+			result = commandInputInterface.execute(context);
 		}
 		// assumption is that most of the IllegalArgumentExceptions are being thrown by
 		// validation logic and that the error messages would be useful to JS code
 		// running on the client so send that message on through ....
 		catch (IllegalArgumentException e) {
 			_logger.error(e.toString());
-			return new CommandResult().setSucceeded(false).setMessage(e.getMessage());
+			return new CommandOutput().setSucceeded(false).setMessage(e.getMessage());
 		}
 		// .... but for all other exceptions send a generic error message
 		catch (Exception e) {
 			_logger.error(e.toString());
-			return new CommandResult().setSucceeded(false);
+			return new CommandOutput().setSucceeded(false);
 		}
 
 		if (_logRequests) {
@@ -206,18 +206,18 @@ public abstract class ServicesControllerAbstract {
 	}
 
 	/**
-	 * Method converts CommandResult to JSON
+	 * Method converts CommandOutput to JSON
 	 * NOTE: SimpleDateFormat is not thread safe so set a new one each time
-	 * @param commandResult
+	 * @param commandOutput
 	 * @param logRequests
 	 * @return
 	 */
-	protected String covert_CommandResult_to_JSON(CommandResult commandResult) {
+	protected String covert_CommandOutput_to_JSON(CommandOutput commandOutput) {
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.setDateFormat(new SimpleDateFormat(JSON_DATE_FORMAT));
 		StringWriter sw = new StringWriter();
 		try {
-			mapper.writeValue(sw, commandResult);
+			mapper.writeValue(sw, commandOutput);
 			String json = sw.toString();
 			if (_logRequests) {
 				_logger.info(String.format("The JSON object returned=%s", cleanseJson(json)));

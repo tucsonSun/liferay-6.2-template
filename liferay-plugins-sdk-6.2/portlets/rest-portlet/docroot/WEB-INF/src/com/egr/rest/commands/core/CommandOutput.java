@@ -1,5 +1,5 @@
 /*
- * File Name: CommandResult.java
+ * File Name: CommandOutput.java
  * 
  * Created by: Ernesto Rendon on Sep 19, 2015 10:40:38 AM.
  * 
@@ -13,17 +13,17 @@
  */
 package com.egr.rest.commands.core;
 
-import com.egr.rest.commands.interfaces.CommandResultInterface;
+import com.egr.rest.commands.interfaces.CommandOutputInterface;
 
 /**
  * 
- * A instance of class type CommandResult is used to ...
+ * A instance of class type CommandOutput is used to ...
  * 
  * @author Ernesto Rendon
  * @version 1.0
  * @param <T>
  */
-public class CommandResult<T> implements CommandResultInterface<T> {
+public class CommandOutput<T> implements CommandOutputInterface<T> {
 
 	private Boolean _succeeded = true;
 	private T _data = null;
@@ -57,13 +57,13 @@ public class CommandResult<T> implements CommandResultInterface<T> {
 		return _succeeded;
 	}
 
-	public CommandResult<T> setSucceeded(Boolean succeeded) {
+	public CommandOutput<T> setSucceeded(Boolean succeeded) {
 		_succeeded = succeeded;
 
 		if (succeeded == null || !_succeeded)
-			setMessage(CommandResultInterface.DEFAULT_ERROR_MESSAGE);
+			setMessage(CommandOutputInterface.DEFAULT_ERROR_MESSAGE);
 		else if (_succeeded)
-			setMessage(CommandResultInterface.DEFAULT_SUCCESS);
+			setMessage(CommandOutputInterface.DEFAULT_SUCCESS);
 
 		return this;
 	}
@@ -72,7 +72,7 @@ public class CommandResult<T> implements CommandResultInterface<T> {
 		return _data;
 	}
 
-	public CommandResult<T> setData(T data) {
+	public CommandOutput<T> setData(T data) {
 		_data = data;
 		return this;
 	}
@@ -81,7 +81,7 @@ public class CommandResult<T> implements CommandResultInterface<T> {
 		return _message;
 	}
 
-	public CommandResult<T> setMessage(String message) {
+	public CommandOutput<T> setMessage(String message) {
 		_message = message;
 		return this;
 	}
@@ -90,7 +90,7 @@ public class CommandResult<T> implements CommandResultInterface<T> {
 		return _cached;
 	}
 
-	public CommandResult<T> setCached(Boolean cached) {
+	public CommandOutput<T> setCached(Boolean cached) {
 		_cached = cached;
 		return this;
 	}

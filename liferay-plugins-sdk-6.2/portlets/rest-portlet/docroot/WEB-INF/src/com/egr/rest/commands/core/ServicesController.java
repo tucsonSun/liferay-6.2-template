@@ -49,13 +49,13 @@ public class ServicesController extends ServicesControllerAbstract {
 		_logger.trace("Starting GET or DELETE request handler");
 		appendCacheHEADERStoResponse(response);
 
-		CommandResult commandResult = process_REST_call_for_JSON_ROUTE(null, stripUriPrefix(request.getRequestURI()), request);
+		CommandOutput<?> commandOutput = process_REST_call_for_JSON_ROUTE(null, stripUriPrefix(request.getRequestURI()), request);
 		//TODO: FIX Caching is not implemented
-		if (!commandResult.isCached()) {
-			return covert_CommandResult_to_JSON(commandResult);
+		if (!commandOutput.isCached()) {
+			return covert_CommandOutput_to_JSON(commandOutput);
 		} else {
 			// NOTE: cached results should be a string
-			return commandResult.getData().toString();
+			return commandOutput.getData().toString();
 		}
 	}
 
@@ -71,8 +71,8 @@ public class ServicesController extends ServicesControllerAbstract {
 	public String execute(@RequestBody String json, HttpServletRequest request, HttpServletResponse response) {
 		_logger.trace("Starting POST or PUT request handler");
 		appendCacheHEADERStoResponse(response);
-		CommandResult commandResult = process_REST_call_for_JSON_ROUTE(json, stripUriPrefix(request.getRequestURI()), request);
-		return covert_CommandResult_to_JSON(commandResult);
+		CommandOutput commandOutput = process_REST_call_for_JSON_ROUTE(json, stripUriPrefix(request.getRequestURI()), request);
+		return covert_CommandOutput_to_JSON(commandOutput);
 	}
 
 

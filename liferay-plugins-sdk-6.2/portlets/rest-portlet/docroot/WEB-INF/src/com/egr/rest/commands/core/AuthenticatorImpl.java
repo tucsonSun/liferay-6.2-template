@@ -1,5 +1,5 @@
 /*
- * File Name: SimpleAuthenticator.java
+ * File Name: AuthenticatorImpl.java
  * 
  * Created by: Ernesto Rendon on Sep 20, 2015 5:29:12 PM.
  * 
@@ -23,10 +23,10 @@ import com.egr.rest.commands.interfaces.AuthenticatorInterface;
 import com.liferay.portal.model.User;
 import com.liferay.portal.util.PortalUtil;
 
-@Component("simpleAuthenticator")
-public class SimpleAuthenticator implements AuthenticatorInterface {
+@Component("authenticatorImpl")
+public class AuthenticatorImpl implements AuthenticatorInterface {
 
-	private static final Logger _logger = LoggerFactory.getLogger(SimpleAuthenticator.class);
+	private static final Logger _logger = LoggerFactory.getLogger(AuthenticatorImpl.class);
 
 	
 	//
