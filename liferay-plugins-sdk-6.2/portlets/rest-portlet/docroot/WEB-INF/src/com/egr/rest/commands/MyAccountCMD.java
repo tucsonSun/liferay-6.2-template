@@ -26,7 +26,7 @@ import org.springframework.stereotype.Component;
 
 import com.egr.rest.commands.interfaces.CommandInterface;
 import com.egr.rest.commands.interfaces.CommandResult;
-import com.egr.rest.commands.interfaces.ContextInterface;
+import com.egr.rest.commands.interfaces.RouteContextInterface;
 import com.egr.rest.commands.model.WeatherModel;
 import com.egr.rest.commands.perms.UserPermissionInfo;
 import com.liferay.portal.model.User;
@@ -64,9 +64,9 @@ public class MyAccountCMD implements CommandInterface {
 	// abstract/interface methods
 	//
 	@SuppressWarnings("unchecked")
-	public CommandResult execute(ContextInterface context) {
+	public CommandResult execute(RouteContextInterface context) {
 
-		User user = context.getEntity(ContextInterface.USER);
+		User user = context.getEntity(RouteContextInterface.USER);
 		Validate.notNull(user, "MyAccounts requires a logged in user");
 
 		try {

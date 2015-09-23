@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
 
 import com.egr.rest.commands.interfaces.CommandInterface;
 import com.egr.rest.commands.interfaces.CommandResult;
-import com.egr.rest.commands.interfaces.ContextInterface;
+import com.egr.rest.commands.interfaces.RouteContextInterface;
 import com.egr.rest.commands.model.WeatherModel;
 
 /**
@@ -52,7 +52,7 @@ public class WeatherGET implements CommandInterface {
 	//
 	// abstract/interface methods
 	//
-	public CommandResult execute(ContextInterface context) {
+	public CommandResult execute(RouteContextInterface context) {
 
 		WeatherModel abc = new WeatherModel();
 		abc.setStatus("this is the GET");

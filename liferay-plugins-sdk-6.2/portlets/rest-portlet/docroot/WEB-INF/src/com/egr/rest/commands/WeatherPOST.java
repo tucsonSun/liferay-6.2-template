@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
 
 import com.egr.rest.commands.interfaces.CommandInterface;
 import com.egr.rest.commands.interfaces.CommandResult;
-import com.egr.rest.commands.interfaces.ContextInterface;
+import com.egr.rest.commands.interfaces.RouteContextInterface;
 import com.egr.rest.commands.model.WeatherModel;
 import com.liferay.portal.model.User;
 
@@ -53,7 +53,7 @@ public class WeatherPOST implements CommandInterface {
 	//
 	// abstract/interface methods
 	//
-	public CommandResult execute(ContextInterface context) {
+	public CommandResult execute(RouteContextInterface context) {
 		User user = context.getEntity("USER");
 		WeatherModel weatherModel = context.getEntity(WeatherModel.class.getName());
 				
