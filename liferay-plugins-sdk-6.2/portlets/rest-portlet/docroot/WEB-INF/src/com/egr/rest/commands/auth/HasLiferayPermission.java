@@ -11,7 +11,7 @@
  * only in accordance with the terms of the license agreement you entered into
  * with EGR Software Inc.
  */
-package com.egr.rest.commands.perms;
+package com.egr.rest.commands.auth;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,6 +19,8 @@ import org.slf4j.LoggerFactory;
 import com.egr.rest.commands.core.HolderObj;
 import com.egr.rest.commands.interfaces.AuthenticatorInterface;
 import com.egr.rest.commands.interfaces.RouteContextInterface;
+import com.egr.rest.commands.perms.ServicesUtil;
+import com.egr.rest.commands.perms.UserPermissionInfo;
 import com.liferay.portal.model.User;
 
 /**

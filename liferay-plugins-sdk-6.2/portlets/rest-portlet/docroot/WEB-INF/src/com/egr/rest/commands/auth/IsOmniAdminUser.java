@@ -70,15 +70,7 @@ public class IsOmniAdminUser implements AuthenticatorInterface {
 			return false;
 		}
 
-		boolean isUserOMNIAdmin = _userManager.isUserOMNIAdmin(user);
-
-		if (isUserOMNIAdmin) {
-			_logger.info(String.format(IsOmniAdminUser.class.getSimpleName()+" user permission check passed. uri=%s, user=%s", holderObj.getRoutingUri(), user.getEmailAddress()));
-			return true;
-		} else {
-			_logger.info(String.format(IsOmniAdminUser.class.getSimpleName()+" user permission check failied. uri=%s, user=%s", holderObj.getRoutingUri(), user.getEmailAddress()));
-			return false;
-		}
+		return _userManager.isUserOMNIAdmin(user);
 	}
 	
 	//

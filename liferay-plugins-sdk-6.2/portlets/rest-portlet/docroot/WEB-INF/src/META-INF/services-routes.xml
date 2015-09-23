@@ -33,7 +33,7 @@
 	<!-- Permission classes  													-->
 	<!-- ********************************************************************** -->
 	<bean id="LiferayPerm" abstract="true"
-		class="com.egr.rest.commands.perms.HasLiferayPermission" />
+		class="com.egr.rest.commands.auth.HasLiferayPermission" />
 
 
 	<!-- ********************************************************************** -->

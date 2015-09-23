@@ -53,41 +53,70 @@ public class AuthenticatorImpl implements AuthenticatorInterface {
 			if (user == null) {
 				return !holderObj.getGenericRouteInterface().isRouteAuthenticated();
 			} else {
-				return executeALLAuthenticators(holderObj, user);
+				Boolean useORAuthenticator = holderObj.getCommandInterface().useORAuthenticator();
+				if (useORAuthenticator)
+					return executeORAuthenticators(holderObj, user);
+				else
+					return executeANDAuthenticators(holderObj, user);
 			}
 		} catch (Exception e) {
 			_logger.error(e.toString());
 			return false;
 		}
 	}
-
+	
 	/**
-	 * Method will run thru all authenticators and make sure they are all TRUE. Basically AND logic.
-	 * @param request
-	 * @param uri
-	 * @param commandName
-	 * @param route
-	 * @param command
-	 * @param context
+	 * Method processes all authenticators with AND logic
+	 * @param holderObj
 	 * @param user
 	 * @return
 	 */
-	private boolean executeALLAuthenticators(HolderObj holderObj, User user) {
+	private Boolean executeANDAuthenticators(HolderObj holderObj, User user) {
 		List<AuthenticatorInterface> authenticators = holderObj.getGenericRouteInterface().getAuthenticators();
 		for (AuthenticatorInterface authenticator : authenticators) {
-			boolean canAccess = false;
+			boolean isValid = false;
 			try {
-				canAccess = authenticator.authenticate(holderObj);
+				isValid = authenticator.authenticate(holderObj);
 			} catch (Exception e) {
 				_logger.error(e.toString());
-				canAccess = false;
+				isValid = false;
 			}
-			if (!canAccess) {
-				_logger.info(String.format("Request to access uri=%s, method=%s, user=%s, denied by=%s", holderObj.getRoutingUri(), holderObj.getGenericRouteInterface().getHttpMethod().toString(), user.getEmailAddress(), authenticator.getClass().getName()));
+			
+			if (isValid) {
+				_logger.info(String.format(authenticator.getClass().getSimpleName()+" authenticator check passed for: uri=%s, user=%s", holderObj.getRoutingUri(), user.getEmailAddress()));
+			} else {
+				_logger.info(String.format(authenticator.getClass().getSimpleName()+" authenticator check denied for: uri=%s, user=%s", holderObj.getRoutingUri(), user.getEmailAddress()));
 				return false;
 			}
 		}
 		return true;
+	}
+
+	/**
+	 * Method processes all authenticators with OR logic
+	 * @param holderObj
+	 * @param user
+	 * @return
+	 */
+	private Boolean executeORAuthenticators(HolderObj holderObj, User user) {
+		List<AuthenticatorInterface> authenticators = holderObj.getGenericRouteInterface().getAuthenticators();
+		for (AuthenticatorInterface authenticator : authenticators) {
+			boolean isValid = false;
+			try {
+				isValid = authenticator.authenticate(holderObj);
+			} catch (Exception e) {
+				_logger.error(e.toString());
+				isValid = false;
+			}
+			
+			if (isValid) {
+				_logger.info(String.format(authenticator.getClass().getSimpleName()+" user permission check passed. uri=%s, user=%s", holderObj.getRoutingUri(), user.getEmailAddress()));
+				return true;
+			} else {
+				_logger.info(String.format(authenticator.getClass().getSimpleName()+" user permission check denied. uri=%s, user=%s", holderObj.getRoutingUri(), user.getEmailAddress()));
+			}
+		}
+		return false;
 	}
 	//
 	// misc.
