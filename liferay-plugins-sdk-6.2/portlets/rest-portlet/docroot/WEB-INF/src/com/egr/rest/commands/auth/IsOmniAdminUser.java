@@ -20,7 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.egr.rest.commands.core.HolderObj;
 import com.egr.rest.commands.interfaces.AuthenticatorInterface;
-import com.egr.rest.commands.interfaces.ContextInterface;
+import com.egr.rest.commands.interfaces.RouteContextInterface;
 import com.egr.rest.commands.user.UserManagerImpl;
 import com.liferay.portal.model.User;
 
@@ -59,8 +59,8 @@ public class IsOmniAdminUser implements AuthenticatorInterface {
 	@Override
 	public boolean authenticate(HolderObj holderObj) {
 
-		User user = holderObj.getContextInterface().getEntity(ContextInterface.USER);
-		Long companyId = (Long) holderObj.getContextInterface().getEntity(ContextInterface.COMPANY_ID);
+		User user = holderObj.getRouteContextInterface().getEntity(RouteContextInterface.USER);
+		Long companyId = (Long) holderObj.getRouteContextInterface().getEntity(RouteContextInterface.COMPANY_ID);
 		if (user == null) {
 			_logger.info("user not found in context");
 			return false;
