@@ -83,11 +83,11 @@ public class MyAccountCMD implements CommandInterface {
 			}
 			List<WeatherModel> someList = new ArrayList<WeatherModel>();
 
-			return new CommandResult().setSucceeded(true).setData(someList);
+			return new CommandResult<List<WeatherModel>>().setSucceeded(true).setData(someList);
 
 		} catch (Exception e) {
 			_logger.error(e.toString());
-			return new CommandResult().setSucceeded(false);
+			return new CommandResult<List<WeatherModel>>().setSucceeded(false);
 		}
 	}
 	//

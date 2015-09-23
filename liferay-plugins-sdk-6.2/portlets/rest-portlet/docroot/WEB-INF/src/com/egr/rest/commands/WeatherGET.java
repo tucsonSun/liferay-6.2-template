@@ -52,13 +52,12 @@ public class WeatherGET implements CommandInterface {
 	//
 	// abstract/interface methods
 	//
-	public CommandResult execute(RouteContextInterface context) {
+	public CommandResult<WeatherModel> execute(RouteContextInterface context) {
 
 		WeatherModel abc = new WeatherModel();
 		abc.setStatus("this is the GET");
 		
-		
-		return new CommandResult().setSucceeded(true).setData(abc);
+		return new CommandResult<WeatherModel>().setSucceeded(true).setData(abc);
 //
 //		} catch (Exception e) {
 //			_logger.error(ServicesUtil.exceptionToString(e));

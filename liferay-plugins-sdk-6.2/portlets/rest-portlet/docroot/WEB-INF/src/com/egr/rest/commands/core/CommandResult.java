@@ -13,7 +13,6 @@
  */
 package com.egr.rest.commands.core;
 
-import com.egr.rest.commands.interfaces.CommandInterface;
 import com.egr.rest.commands.interfaces.CommandResultInterface;
 
 /**
@@ -22,11 +21,12 @@ import com.egr.rest.commands.interfaces.CommandResultInterface;
  * 
  * @author Ernesto Rendon
  * @version 1.0
+ * @param <T>
  */
-public class CommandResult implements CommandResultInterface {
+public class CommandResult<T> implements CommandResultInterface<T> {
 
 	private Boolean _succeeded = true;
-	private Object _data = null;
+	private T _data = null;
 	private String _message = "";
 	private Boolean _cached = false;
 
@@ -57,7 +57,7 @@ public class CommandResult implements CommandResultInterface {
 		return _succeeded;
 	}
 
-	public CommandResult setSucceeded(Boolean succeeded) {
+	public CommandResult<T> setSucceeded(Boolean succeeded) {
 		_succeeded = succeeded;
 
 		if (succeeded == null || !_succeeded)
@@ -68,11 +68,11 @@ public class CommandResult implements CommandResultInterface {
 		return this;
 	}
 
-	public Object getData() {
+	public T getData() {
 		return _data;
 	}
 
-	public CommandResult setData(Object data) {
+	public CommandResult<T> setData(T data) {
 		_data = data;
 		return this;
 	}
@@ -81,7 +81,7 @@ public class CommandResult implements CommandResultInterface {
 		return _message;
 	}
 
-	public CommandResult setMessage(String message) {
+	public CommandResult<T> setMessage(String message) {
 		_message = message;
 		return this;
 	}
@@ -90,7 +90,7 @@ public class CommandResult implements CommandResultInterface {
 		return _cached;
 	}
 
-	public CommandResult setCached(Boolean cached) {
+	public CommandResult<T> setCached(Boolean cached) {
 		_cached = cached;
 		return this;
 	}

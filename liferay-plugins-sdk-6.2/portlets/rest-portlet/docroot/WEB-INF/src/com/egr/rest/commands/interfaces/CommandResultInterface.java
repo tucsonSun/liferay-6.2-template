@@ -21,8 +21,9 @@ import com.egr.rest.commands.core.CommandResult;
  * 
  * @author Ernesto Rendon
  * @version 1.0
+ * @param <T>
  */
-public interface CommandResultInterface {
+public interface CommandResultInterface<T> {
 
 	public static final String DEFAULT_ROUTE_NOT_FOUND = "Sorry, your requested route could not be determined";
 	public static final String DEFAULT_ERROR_MESSAGE = "Whoops, your request caused an error while processing.";
@@ -58,8 +59,8 @@ public interface CommandResultInterface {
 	public boolean isSucceeded();
 	public CommandResult setSucceeded(Boolean succeeded);
 	
-	public Object getData();
-	public CommandResult setData(Object data);
+	public T getData();
+	public CommandResult setData(T data);
 
 	public String getMessage();
 	public CommandResult setMessage(String message);
