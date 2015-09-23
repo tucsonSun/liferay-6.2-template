@@ -53,6 +53,11 @@ public class WeatherPOST implements CommandInputInterface {
 	//
 	// abstract/interface methods
 	//
+	@Override
+	public Boolean useORAuthenticator() {
+		return false;
+	}
+	
 	public CommandOutput<WeatherModel> execute(RouteContextInterface context) {
 		User user = context.getEntity("USER");
 		WeatherModel weatherModel = context.getEntity(WeatherModel.class.getName());

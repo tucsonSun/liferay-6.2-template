@@ -71,7 +71,7 @@ public class ServicesController extends ServicesControllerAbstract {
 	public String execute(@RequestBody String json, HttpServletRequest request, HttpServletResponse response) {
 		_logger.trace("Starting POST or PUT request handler");
 		appendCacheHEADERStoResponse(response);
-		CommandOutput commandOutput = process_REST_call_for_JSON_ROUTE(json, stripUriPrefix(request.getRequestURI()), request);
+		CommandOutput<?> commandOutput = process_REST_call_for_JSON_ROUTE(json, stripUriPrefix(request.getRequestURI()), request);
 		return covert_CommandOutput_to_JSON(commandOutput);
 	}
 

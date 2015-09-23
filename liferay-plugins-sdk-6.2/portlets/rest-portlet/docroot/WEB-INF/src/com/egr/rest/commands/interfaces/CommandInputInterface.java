@@ -24,7 +24,7 @@ import com.egr.rest.commands.core.CommandOutput;
  * @version 1.0
  * @param <E>
  */
-public interface CommandInputInterface<E> {
+public interface CommandInputInterface {
 	
 	//
 	// JAVA API
@@ -46,6 +46,7 @@ public interface CommandInputInterface<E> {
 	// abstract/interface methods
 	//
 	public CommandOutput<?> execute(RouteContextInterface context);
+	public Boolean useORAuthenticator();
 	//
 	// accessor methods
 	//

@@ -53,7 +53,7 @@ public class AuthenticatorImpl implements AuthenticatorInterface {
 			if (user == null) {
 				return !holderObj.getGenericRouteInterface().isRouteAuthenticated();
 			} else {
-				return AND_ALL_Authenticators(holderObj, user);
+				return executeALLAuthenticators(holderObj, user);
 			}
 		} catch (Exception e) {
 			_logger.error(e.toString());
@@ -72,7 +72,7 @@ public class AuthenticatorImpl implements AuthenticatorInterface {
 	 * @param user
 	 * @return
 	 */
-	private boolean AND_ALL_Authenticators(HolderObj holderObj, User user) {
+	private boolean executeALLAuthenticators(HolderObj holderObj, User user) {
 		List<AuthenticatorInterface> authenticators = holderObj.getGenericRouteInterface().getAuthenticators();
 		for (AuthenticatorInterface authenticator : authenticators) {
 			boolean canAccess = false;
@@ -83,7 +83,6 @@ public class AuthenticatorImpl implements AuthenticatorInterface {
 				canAccess = false;
 			}
 			if (!canAccess) {
-
 				_logger.info(String.format("Request to access uri=%s, method=%s, user=%s, denied by=%s", holderObj.getRoutingUri(), holderObj.getGenericRouteInterface().getHttpMethod().toString(), user.getEmailAddress(), authenticator.getClass().getName()));
 				return false;
 			}

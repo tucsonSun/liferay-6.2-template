@@ -52,6 +52,11 @@ public class WeatherGET implements CommandInputInterface {
 	//
 	// abstract/interface methods
 	//
+	@Override
+	public Boolean useORAuthenticator() {
+		return false;
+	}
+	
 	public CommandOutput<WeatherModel> execute(RouteContextInterface context) {
 
 		WeatherModel abc = new WeatherModel();

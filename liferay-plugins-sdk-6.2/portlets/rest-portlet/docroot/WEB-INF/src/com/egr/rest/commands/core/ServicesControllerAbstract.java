@@ -77,7 +77,7 @@ public abstract class ServicesControllerAbstract {
 	 * @param request
 	 * @return CommandOutput
 	 */
-	protected CommandOutput process_REST_call_for_JSON_ROUTE(String json, String routingUri, HttpServletRequest request) {
+	protected CommandOutput<?> process_REST_call_for_JSON_ROUTE(String json, String routingUri, HttpServletRequest request) {
 		_logger.trace("Starting command execution handler");
 
 		if (_logRequests) {
@@ -90,7 +90,7 @@ public abstract class ServicesControllerAbstract {
 		RoutingInfo routingInfo = _genericRouterListContainerInterface.getRoutingInfo(routingUri, request.getMethod());
 
 		if (routingInfo == null || routingInfo.getGenericRouteInterface() == null || routingInfo.getGenericRouteInterface().getCommandName() == null) {
-			return new CommandOutput().setSucceeded(false).setMessage(CommandOutput.DEFAULT_ROUTE_NOT_FOUND);
+			return new CommandOutput<Object>().setSucceeded(false).setMessage(CommandOutput.DEFAULT_ROUTE_NOT_FOUND);
 		}
 
 		GenericRouteInterface genericRouteInterface = routingInfo.getGenericRouteInterface();
@@ -99,18 +99,18 @@ public abstract class ServicesControllerAbstract {
 
 		if (commandObject == null) {
 			_logger.error(String.format("Could not locate command %s for uri=%s", commandName, routingUri));
-			return new CommandOutput().setSucceeded(false).setMessage("Requested command could not be located");
+			return new CommandOutput<Object>().setSucceeded(false).setMessage("Requested command could not be located");
 		}
 
 		if (!(commandObject instanceof CommandInputInterface)) {
 			_logger.error(String.format("Named command %s for uri=%s is not a ICommand object", commandName, routingUri));
-			return new CommandOutput().setSucceeded(false).setMessage("Requested command could not be located");
+			return new CommandOutput<Object>().setSucceeded(false).setMessage("Requested command could not be located");
 
 		}
 
 		CommandInputInterface commandInputInterface = (CommandInputInterface) commandObject;
 		RouteContextLiferay context = new RouteContextLiferay(request, routingInfo.getPathParameters());
-		CommandOutput result = null;
+		CommandOutput<?> result = null;
 
 		try {
 			if (json != null && json.length() > 0) {
@@ -212,7 +212,7 @@ public abstract class ServicesControllerAbstract {
 	 * @param logRequests
 	 * @return
 	 */
-	protected String covert_CommandOutput_to_JSON(CommandOutput commandOutput) {
+	protected String covert_CommandOutput_to_JSON(CommandOutput<?> commandOutput) {
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.setDateFormat(new SimpleDateFormat(JSON_DATE_FORMAT));
 		StringWriter sw = new StringWriter();

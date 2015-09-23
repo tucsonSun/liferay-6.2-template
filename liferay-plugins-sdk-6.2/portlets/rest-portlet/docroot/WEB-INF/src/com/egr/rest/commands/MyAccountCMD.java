@@ -63,8 +63,13 @@ public class MyAccountCMD implements CommandInputInterface {
 	//
 	// abstract/interface methods
 	//
+	@Override
+	public Boolean useORAuthenticator() {
+		return false;
+	}
+	
 	@SuppressWarnings("unchecked")
-	public CommandOutput execute(RouteContextInterface context) {
+	public CommandOutput<List<WeatherModel>> execute(RouteContextInterface context) {
 
 		User user = context.getEntity(RouteContextInterface.USER);
 		Validate.notNull(user, "MyAccounts requires a logged in user");
