@@ -93,7 +93,7 @@ public class UserPermissionInfo {
 	}
 
 	public static UserPermissionInfo getUserPermissionInfo(HttpServletRequest request) {
-		UserPermissionInfo userPermissionInfo = (UserPermissionInfo) request.getAttribute(IPermission.USER_PERMISSION_PARAM_NAME);
+		UserPermissionInfo userPermissionInfo = (UserPermissionInfo) request.getAttribute(IPermissionConstants.USER_PERMISSION_PARAM_NAME);
 		try {
 			if (null == userPermissionInfo) {
 				userPermissionInfo = new UserPermissionInfo();
@@ -103,12 +103,12 @@ public class UserPermissionInfo {
 					userPermissionInfo.setCompanyId(user.getCompanyId());
 				}
 				HttpSession session = request.getSession();
-				String userType = (String) session.getAttribute(IPermission.USERTYPE_SESSION_KEY);
+				String userType = (String) session.getAttribute(IPermissionConstants.USERTYPE_SESSION_KEY);
 				if (userType == null) {
-					userType = IPermission.UNKNOWN_USER_TYPE;
+					userType = IPermissionConstants.UNKNOWN_USER_TYPE;
 				}
 				userPermissionInfo.setUserType(userType);
-				request.setAttribute(IPermission.USER_PERMISSION_PARAM_NAME, userPermissionInfo);
+				request.setAttribute(IPermissionConstants.USER_PERMISSION_PARAM_NAME, userPermissionInfo);
 			}
 		} catch (Exception e) {
 			_logger.error("Exception while getting the user permission", e);

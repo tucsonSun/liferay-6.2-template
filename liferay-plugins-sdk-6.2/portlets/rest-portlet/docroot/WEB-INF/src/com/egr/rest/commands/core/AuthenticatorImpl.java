@@ -53,7 +53,7 @@ public class AuthenticatorImpl implements AuthenticatorInterface {
 			if (user == null) {
 				return !holderObj.getGenericRouteInterface().isRouteAuthenticated();
 			} else {
-				Boolean useORAuthenticator = holderObj.getCommandInterface().useORAuthenticator();
+				Boolean useORAuthenticator = holderObj.getCommandInputInterface().useORAuthenticator();
 				if (useORAuthenticator)
 					return executeORAuthenticators(holderObj, user);
 				else

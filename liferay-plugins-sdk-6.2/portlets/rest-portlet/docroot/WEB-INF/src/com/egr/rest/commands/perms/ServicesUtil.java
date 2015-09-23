@@ -27,7 +27,7 @@ public class ServicesUtil {
 
 	public static UserType getUserType(HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		String userType = (String) session.getAttribute(IPermission.USERTYPE_SESSION_KEY);
+		String userType = (String) session.getAttribute(IPermissionConstants.USERTYPE_SESSION_KEY);
 		if (userType == null)
 			return UserType.UNKNOWN;
 		return UserType.valueOf(userType.toUpperCase());

@@ -49,7 +49,7 @@ public class HolderObj {
 		setRoutingUri(routingUri);
 		setCommandName(commandName);
 		setGenericRouteInterface(genericRouteInterface);
-		setCommandInterface(commandInputInterface);
+		setCommandInputInterface(commandInputInterface);
 		setRouteContextInterface(context);
 	}
 	
@@ -100,10 +100,10 @@ public class HolderObj {
 	public void setGenericRouteInterface(GenericRouteInterface genericRouteInterface) {
 		_genericRouteInterface = genericRouteInterface;
 	}
-	public CommandInputInterface getCommandInterface() {
+	public CommandInputInterface getCommandInputInterface() {
 		return _commandInputInterface;
 	}
-	public void setCommandInterface(CommandInputInterface commandInputInterface) {
+	public void setCommandInputInterface(CommandInputInterface commandInputInterface) {
 		_commandInputInterface = commandInputInterface;
 	}
 	public RouteContextInterface getRouteContextInterface() {
