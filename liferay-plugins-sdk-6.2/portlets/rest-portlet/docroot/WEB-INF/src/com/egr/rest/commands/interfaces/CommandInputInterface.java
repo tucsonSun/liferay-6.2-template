@@ -1,5 +1,5 @@
 /*
- * File Name: CommandInterface.java
+ * File Name: CommandInputInterface.java
  * 
  * Created by: Ernesto Rendon on Sep 19, 2015 8:58:10 AM.
  * 
@@ -13,17 +13,18 @@
  */
 package com.egr.rest.commands.interfaces;
 
-import com.egr.rest.commands.core.CommandResult;
+import com.egr.rest.commands.core.CommandOutput;
 
 
 /**
  * 
- * A instance of class type CommandInterface is used to ...
+ * A instance of class type CommandInputInterface is used to ...
  * 
  * @author Ernesto Rendon
  * @version 1.0
+ * @param <E>
  */
-public interface CommandInterface {
+public interface CommandInputInterface<E> {
 	
 	//
 	// JAVA API
@@ -44,7 +45,7 @@ public interface CommandInterface {
 	//
 	// abstract/interface methods
 	//
-	public CommandResult execute(RouteContextInterface context);
+	public CommandOutput<?> execute(RouteContextInterface context);
 	//
 	// accessor methods
 	//

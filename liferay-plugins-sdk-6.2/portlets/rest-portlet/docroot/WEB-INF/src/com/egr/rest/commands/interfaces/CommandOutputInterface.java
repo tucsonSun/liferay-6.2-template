@@ -1,5 +1,5 @@
 /*
- * File Name: CommandResultInterface.java 
+ * File Name: CommandOutputInterface.java 
  *
  * Created by: Ernesto Rendon on Sep 23, 2015 10:41:35 AM.
  *
@@ -14,16 +14,16 @@
  */
 package com.egr.rest.commands.interfaces;
 
-import com.egr.rest.commands.core.CommandResult;
+import com.egr.rest.commands.core.CommandOutput;
 
 /**
- * A instance of class type CommandResultInterface is used to ...
+ * A instance of class type CommandOutputInterface is used to ...
  * 
  * @author Ernesto Rendon
  * @version 1.0
  * @param <T>
  */
-public interface CommandResultInterface<T> {
+public interface CommandOutputInterface<T> {
 
 	public static final String DEFAULT_ROUTE_NOT_FOUND = "Sorry, your requested route could not be determined";
 	public static final String DEFAULT_ERROR_MESSAGE = "Whoops, your request caused an error while processing.";
@@ -57,16 +57,16 @@ public interface CommandResultInterface<T> {
 	// accessor methods
 	//
 	public boolean isSucceeded();
-	public CommandResult setSucceeded(Boolean succeeded);
+	public CommandOutput<T> setSucceeded(Boolean succeeded);
 	
 	public T getData();
-	public CommandResult setData(T data);
+	public CommandOutput<T> setData(T data);
 
 	public String getMessage();
-	public CommandResult setMessage(String message);
+	public CommandOutput<T> setMessage(String message);
 
 	public boolean isCached();
-	public CommandResult setCached(Boolean cached);
+	public CommandOutput<T> setCached(Boolean cached);
 
 	//
 	// inner classes
