@@ -1,5 +1,5 @@
 /*
- * File Name: ContextWebCommand.java
+ * File Name: RouteContextImpl.java
  * 
  * Created by: Ernesto Rendon on Sep 19, 2015 1:59:01 PM.
  * 
@@ -24,19 +24,19 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.egr.rest.commands.interfaces.ContextInterface;
+import com.egr.rest.commands.interfaces.RouteContextInterface;
 
 /**
  * 
- * A instance of class type ContextWebCommand is used to ...
+ * A instance of class type RouteContextImpl is used to ...
  * 
  * @author Ernesto Rendon
  * @version 1.0
  */
 @SuppressWarnings({ "serial", "rawtypes" })
-public class ContextWebCommand extends HashMap implements ContextInterface {
+public class RouteContextImpl extends HashMap implements RouteContextInterface {
 
-	private static Logger _logger = LoggerFactory.getLogger(ContextWebCommand.class);
+	private static Logger _logger = LoggerFactory.getLogger(RouteContextImpl.class);
 	private HttpServletRequest _request;
 	private HashSet _updates = new HashSet();
 	/**
@@ -46,7 +46,7 @@ public class ContextWebCommand extends HashMap implements ContextInterface {
 	 * @param pathParameters
 	 */
 	@SuppressWarnings("unchecked")
-	public ContextWebCommand(HttpServletRequest request, Map<String, String> pathParameters) {
+	public RouteContextImpl(HttpServletRequest request, Map<String, String> pathParameters) {
 		_request = request;
 		super.put("_request", request);
 		super.put("_session", request.getSession());
@@ -132,7 +132,7 @@ public class ContextWebCommand extends HashMap implements ContextInterface {
 	/**
 	 * 
 	 * Overrode in order to ...
-	 * @see com.egr.rest.commands.interfaces.ContextInterface#getEntity(java.lang.String)
+	 * @see com.egr.rest.commands.interfaces.RouteContextInterface#getEntity(java.lang.String)
 	 */
 	@SuppressWarnings("unchecked")
 	@Override

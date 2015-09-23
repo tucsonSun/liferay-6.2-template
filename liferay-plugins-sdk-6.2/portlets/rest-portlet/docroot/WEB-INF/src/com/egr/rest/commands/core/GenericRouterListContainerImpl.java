@@ -1,5 +1,5 @@
 /*
- * File Name: SimpleRouter.java
+ * File Name: GenericRouterListContainerImpl.java
  * 
  * Created by: Ernesto Rendon on Sep 20, 2015 3:30:58 PM.
  * 
@@ -21,21 +21,21 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Component;
 import org.springframework.util.AntPathMatcher;
 
-import com.egr.rest.commands.interfaces.RouteInterface;
-import com.egr.rest.commands.interfaces.RouterInterface;
+import com.egr.rest.commands.interfaces.GenericRouteInterface;
+import com.egr.rest.commands.interfaces.GenericRouterArrayInterface;
 
 /**
  * 
- * A instance of class type SimpleRouter is used to ...
+ * A instance of class type GenericRouterListContainerImpl is used to contain a list of GenericRouteImpl...
  * 
  * @author Ernesto Rendon
  * @version 1.0
  */
-@Component("simpleRouter")
-public class SimpleRouter implements RouterInterface {
+@Component("genericRouterListContainerImpl")
+public class GenericRouterListContainerImpl implements GenericRouterArrayInterface {
 
-	@Resource(name = "routes")
-	private List<BasicRestRoute> _restRouteList;
+	@Resource(name = "GenericRouteListId")
+	private List<GenericRouteImpl> _genericRouteImplList;
 
 	//
 	// JAVA API
@@ -51,19 +51,18 @@ public class SimpleRouter implements RouterInterface {
 	/**
 	 * 
 	 * Overrode in order to ...
-	 * @see com.egr.rest.commands.interfaces.RouterInterface#getRoutingInfo(java.lang.String, java.lang.String)
+	 * @see com.egr.rest.commands.interfaces.GenericRouterArrayInterface#getRoutingInfo(java.lang.String, java.lang.String)
 	 */
 	public RoutingInfo getRoutingInfo(String requestUri, String httpMethod) {
-
 		AntPathMatcher matcher = new AntPathMatcher();
 		Map<String, String> pathParams = null;
 
-		for (RouteInterface routeInterface : _restRouteList) {
-			String routeUri = routeInterface.getUri();
-			if (httpMethod.equals(routeInterface.getHttpMethod().toString()) && matcher.match(routeUri, requestUri)) {
+		for (GenericRouteInterface genericRouteInterface : _genericRouteImplList) {
+			String routeUri = genericRouteInterface.getUri();
+			if (httpMethod.equals(genericRouteInterface.getHttpMethod().toString()) && matcher.match(routeUri, requestUri)) {
 				pathParams = matcher.extractUriTemplateVariables(routeUri, requestUri);
 				RoutingInfo routingInfo = new RoutingInfo();
-				routingInfo.setRouteInterface(routeInterface);
+				routingInfo.setGenericRouteInterface(genericRouteInterface);
 				routingInfo.setPathParameters(pathParams);
 				return routingInfo;
 			}

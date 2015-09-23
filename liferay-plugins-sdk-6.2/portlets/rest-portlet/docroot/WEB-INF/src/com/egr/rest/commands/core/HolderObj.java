@@ -17,8 +17,8 @@ package com.egr.rest.commands.core;
 import javax.servlet.http.HttpServletRequest;
 
 import com.egr.rest.commands.interfaces.CommandInterface;
-import com.egr.rest.commands.interfaces.ContextInterface;
-import com.egr.rest.commands.interfaces.RouteInterface;
+import com.egr.rest.commands.interfaces.RouteContextInterface;
+import com.egr.rest.commands.interfaces.GenericRouteInterface;
 
 /**
  * A instance of class type HolderObj is used to ...
@@ -31,26 +31,26 @@ public class HolderObj {
 	protected HttpServletRequest _request;
 	protected String _routingUri;
 	protected String _commandName;
-	protected RouteInterface _routeInterface;
+	protected GenericRouteInterface _genericRouteInterface;
 	protected CommandInterface _commandInterface;
-	protected ContextInterface _contextInterface;
+	protected RouteContextInterface _routeContextInterface;
 	
 	/**
 	 * Constructor
 	 * @param request
 	 * @param routingUri
 	 * @param commandName
-	 * @param routeInterface
+	 * @param genericRouteInterface
 	 * @param commandInterface
 	 * @param context
 	 */
-	public HolderObj(HttpServletRequest request, String routingUri, String commandName, RouteInterface routeInterface, CommandInterface commandInterface, ContextInterface context) {
+	public HolderObj(HttpServletRequest request, String routingUri, String commandName, GenericRouteInterface genericRouteInterface, CommandInterface commandInterface, RouteContextInterface context) {
 		setRequest(request);
 		setRoutingUri(routingUri);
 		setCommandName(commandName);
-		setRouteInterface(routeInterface);
+		setGenericRouteInterface(genericRouteInterface);
 		setCommandInterface(commandInterface);
-		setContextInterface(context);
+		setRouteContextInterface(context);
 	}
 	
 	//
@@ -94,11 +94,11 @@ public class HolderObj {
 	public void setCommandName(String commandName) {
 		_commandName = commandName;
 	}
-	public RouteInterface getRouteInterface() {
-		return _routeInterface;
+	public GenericRouteInterface getGenericRouteInterface() {
+		return _genericRouteInterface;
 	}
-	public void setRouteInterface(RouteInterface routeInterface) {
-		_routeInterface = routeInterface;
+	public void setGenericRouteInterface(GenericRouteInterface genericRouteInterface) {
+		_genericRouteInterface = genericRouteInterface;
 	}
 	public CommandInterface getCommandInterface() {
 		return _commandInterface;
@@ -106,11 +106,11 @@ public class HolderObj {
 	public void setCommandInterface(CommandInterface commandInterface) {
 		_commandInterface = commandInterface;
 	}
-	public ContextInterface getContextInterface() {
-		return _contextInterface;
+	public RouteContextInterface getRouteContextInterface() {
+		return _routeContextInterface;
 	}
-	public void setContextInterface(ContextInterface contextInterface) {
-		_contextInterface = contextInterface;
+	public void setRouteContextInterface(RouteContextInterface routeContextInterface) {
+		_routeContextInterface = routeContextInterface;
 	}
 	//
 	// inner classes

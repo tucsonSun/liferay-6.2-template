@@ -31,8 +31,8 @@ import org.springframework.context.ApplicationContext;
 import com.egr.rest.commands.interfaces.AuthenticatorInterface;
 import com.egr.rest.commands.interfaces.CommandInterface;
 import com.egr.rest.commands.interfaces.CommandResult;
-import com.egr.rest.commands.interfaces.RouteInterface;
-import com.egr.rest.commands.interfaces.RouterInterface;
+import com.egr.rest.commands.interfaces.GenericRouteInterface;
+import com.egr.rest.commands.interfaces.GenericRouterArrayInterface;
 
 /**
  * A instance of class type ServicesControllerAbstract is used to ...
@@ -58,8 +58,8 @@ public abstract class ServicesControllerAbstract {
 	private AuthenticatorInterface _authenticatorInterface;
 	
 	@Autowired
-	@Qualifier("simpleRouter")
-	private RouterInterface _routerInterface;
+	@Qualifier("genericRouterListContainerImpl")
+	private GenericRouterArrayInterface _genericRouterListContainerInterface;
 	//
 	// JAVA API
 	//
@@ -72,11 +72,11 @@ public abstract class ServicesControllerAbstract {
 	// action methods
 	//
 	/**
-	 * Method is a helper that executes the command for GET/DELETE/PUT/POST
+	 * Method is a helper that executes the command for GET/DELETE/PUT/POST and returns a CommandResult object
 	 * @param json
 	 * @param routingUri
 	 * @param request
-	 * @return
+	 * @return CommandResult
 	 */
 	protected CommandResult process_REST_call_for_JSON_ROUTE(String json, String routingUri, HttpServletRequest request) {
 		_logger.trace("Starting command execution handler");
@@ -88,14 +88,14 @@ public abstract class ServicesControllerAbstract {
 			}
 		}
 
-		RoutingInfo routingInfo = _routerInterface.getRoutingInfo(routingUri, request.getMethod());
+		RoutingInfo routingInfo = _genericRouterListContainerInterface.getRoutingInfo(routingUri, request.getMethod());
 
-		if (routingInfo == null || routingInfo.getRouteInterface() == null || routingInfo.getRouteInterface().getCommandName() == null) {
+		if (routingInfo == null || routingInfo.getGenericRouteInterface() == null || routingInfo.getGenericRouteInterface().getCommandName() == null) {
 			return new CommandResult().setSucceeded(false).setMessage(CommandResult.DEFAULT_ROUTE_NOT_FOUND);
 		}
 
-		RouteInterface routeInterface = routingInfo.getRouteInterface();
-		String commandName = routeInterface.getCommandName();
+		GenericRouteInterface genericRouteInterface = routingInfo.getGenericRouteInterface();
+		String commandName = genericRouteInterface.getCommandName();
 		Object commandObject = _applicationContext.getBean(commandName);
 
 		if (commandObject == null) {
@@ -110,19 +110,19 @@ public abstract class ServicesControllerAbstract {
 		}
 
 		CommandInterface commandInterface = (CommandInterface) commandObject;
-		ContextLiferayCommand context = new ContextLiferayCommand(request, routingInfo.getPathParameters());
+		RouteContextLiferay context = new RouteContextLiferay(request, routingInfo.getPathParameters());
 		CommandResult result = null;
 
 		try {
 			if (json != null && json.length() > 0) {
-				Object input = convert_JSON_to_JavaObject(json, routeInterface);
-				String classFullPathName = routeInterface.getInputClass().getName();
+				Object input = convert_JSON_to_JavaObject(json, genericRouteInterface);
+				String classFullPathName = genericRouteInterface.getInputClass().getName();
 				context.put(classFullPathName, input);
 			}
 			// NOTE: authentication must occur after parsing of input because
 			// some authentication logic will be dependent on what is being
 			// created/updated
-			HolderObj ho = new HolderObj(request, routingUri, commandName, routeInterface, commandInterface, context);
+			HolderObj ho = new HolderObj(request, routingUri, commandName, genericRouteInterface, commandInterface, context);
 			boolean authenticated = _authenticatorInterface.authenticate(ho);
 
 			if (!authenticated) {
@@ -194,12 +194,12 @@ public abstract class ServicesControllerAbstract {
 	 * errors here as opposed nested errors inside of spring code.
 	 * NOTE: SimpleDateFormat is not thread safe so set a new one each time
 	 * @param json
-	 * @param routeInterface
+	 * @param genericRouteInterface
 	 * @return
 	 * @throws Exception
 	 */
-	protected Object convert_JSON_to_JavaObject(String json, RouteInterface routeInterface) throws Exception {
-		Class<?> clazz = routeInterface.getInputClass();
+	protected Object convert_JSON_to_JavaObject(String json, GenericRouteInterface genericRouteInterface) throws Exception {
+		Class<?> clazz = genericRouteInterface.getInputClass();
 		clazz = (clazz != null ? clazz : Object.class);
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.setDateFormat(new SimpleDateFormat(JSON_DATE_FORMAT));

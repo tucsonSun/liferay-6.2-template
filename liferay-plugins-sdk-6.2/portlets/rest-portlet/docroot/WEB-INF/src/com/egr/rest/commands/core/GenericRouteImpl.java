@@ -1,5 +1,5 @@
 /*
- * File Name: BasicRestRoute.java
+ * File Name: GenericRouteImpl.java
  * 
  * Created by: Ernesto Rendon on Sep 20, 2015 1:41:47 PM.
  * 
@@ -19,16 +19,16 @@ import java.util.List;
 import org.apache.commons.lang.Validate;
 
 import com.egr.rest.commands.interfaces.AuthenticatorInterface;
-import com.egr.rest.commands.interfaces.RouteInterface;
+import com.egr.rest.commands.interfaces.GenericRouteInterface;
 
 /**
  * 
- * A instance of class type BasicRestRoute is used to ...
+ * A instance of class type GenericRouteImpl is used to ...
  * 
  * @author Ernesto Rendon
  * @version 1.0
  */
-public class BasicRestRoute implements RouteInterface {
+public class GenericRouteImpl implements GenericRouteInterface {
 
 	private String _uri;
 	private HttpMethod _httpMethod;
@@ -41,7 +41,7 @@ public class BasicRestRoute implements RouteInterface {
 	 * 
 	 * Constructor
 	 */
-	public BasicRestRoute() {
+	public GenericRouteImpl() {
 		super();
 	}
 
@@ -52,7 +52,7 @@ public class BasicRestRoute implements RouteInterface {
 	 * @param httpMethod
 	 * @param commandName
 	 */
-	public BasicRestRoute(String uri, HttpMethod httpMethod, String commandName) {
+	public GenericRouteImpl(String uri, HttpMethod httpMethod, String commandName) {
 		Validate.notNull(uri, "URI cannot be null in route definition");
 		Validate.notNull(httpMethod, "HttpMethod cannot be null in route definition");
 		Validate.notNull(commandName, "Command name now allowed to be null in route definition");
@@ -70,7 +70,7 @@ public class BasicRestRoute implements RouteInterface {
 	 * @param commandName
 	 * @param inputClass
 	 */
-	public BasicRestRoute(String uri, HttpMethod httpMethod, String commandName, Class<?> inputClass) {
+	public GenericRouteImpl(String uri, HttpMethod httpMethod, String commandName, Class<?> inputClass) {
 		this(uri, httpMethod, commandName);
 		Validate.notNull(inputClass);
 		_inputClass = inputClass;

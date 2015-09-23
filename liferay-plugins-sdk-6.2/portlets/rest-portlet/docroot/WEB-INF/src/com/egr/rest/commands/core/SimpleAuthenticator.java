@@ -51,7 +51,7 @@ public class SimpleAuthenticator implements AuthenticatorInterface {
 		try {
 			user = PortalUtil.getUser(holderObj.getRequest());
 			if (user == null) {
-				return !holderObj.getRouteInterface().isRouteAuthenticated();
+				return !holderObj.getGenericRouteInterface().isRouteAuthenticated();
 			} else {
 				return AND_ALL_Authenticators(holderObj, user);
 			}
@@ -73,7 +73,7 @@ public class SimpleAuthenticator implements AuthenticatorInterface {
 	 * @return
 	 */
 	private boolean AND_ALL_Authenticators(HolderObj holderObj, User user) {
-		List<AuthenticatorInterface> authenticators = holderObj.getRouteInterface().getAuthenticators();
+		List<AuthenticatorInterface> authenticators = holderObj.getGenericRouteInterface().getAuthenticators();
 		for (AuthenticatorInterface authenticator : authenticators) {
 			boolean canAccess = false;
 			try {
@@ -84,7 +84,7 @@ public class SimpleAuthenticator implements AuthenticatorInterface {
 			}
 			if (!canAccess) {
 
-				_logger.info(String.format("Request to access uri=%s, method=%s, user=%s, denied by=%s", holderObj.getRoutingUri(), holderObj.getRouteInterface().getHttpMethod().toString(), user.getEmailAddress(), authenticator.getClass().getName()));
+				_logger.info(String.format("Request to access uri=%s, method=%s, user=%s, denied by=%s", holderObj.getRoutingUri(), holderObj.getGenericRouteInterface().getHttpMethod().toString(), user.getEmailAddress(), authenticator.getClass().getName()));
 				return false;
 			}
 		}

@@ -1,5 +1,5 @@
 /*
- * File Name: ContextLiferayCommand.java
+ * File Name: RouteContextLiferay.java
  * 
  * Created by: Ernesto Rendon on Sep 20, 2015 4:18:54 PM.
  * 
@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.egr.rest.commands.interfaces.ContextInterface;
+import com.egr.rest.commands.interfaces.RouteContextInterface;
 import com.liferay.portal.kernel.util.WebKeys;
 import com.liferay.portal.model.User;
 import com.liferay.portal.theme.ThemeDisplay;
@@ -28,15 +28,15 @@ import com.liferay.portal.util.PortalUtil;
 
 /**
  * 
- * A instance of class type ContextLiferayCommand is used to ...
+ * A instance of class type RouteContextLiferay is used to ...
  * 
  * @author Ernesto Rendon
  * @version 1.0
  */
 @SuppressWarnings("serial")
-public class ContextLiferayCommand extends ContextWebCommand {
+public class RouteContextLiferay extends RouteContextImpl {
 	
-   private static Logger _logger = LoggerFactory.getLogger(ContextLiferayCommand.class);
+   private static Logger _logger = LoggerFactory.getLogger(RouteContextLiferay.class);
 
    /**
     * 
@@ -44,7 +44,7 @@ public class ContextLiferayCommand extends ContextWebCommand {
     * @param request
     * @param pathParameters
     */
-   public ContextLiferayCommand(HttpServletRequest request, Map<String,String> pathParameters) {
+   public RouteContextLiferay(HttpServletRequest request, Map<String,String> pathParameters) {
 	   super(request,pathParameters);
 	   
 	   ThemeDisplay themeDisplay = (ThemeDisplay)request.getAttribute(WebKeys.THEME_DISPLAY);
@@ -59,9 +59,9 @@ public class ContextLiferayCommand extends ContextWebCommand {
 	       Long companyId = PortalUtil.getCompanyId(request);
 	       
 	       if (user != null) {
-	         super.put(ContextInterface.USER, user);
+	         super.put(RouteContextInterface.USER, user);
 	       }
-	       super.put(ContextInterface.COMPANY_ID, companyId);
+	       super.put(RouteContextInterface.COMPANY_ID, companyId);
 	      
 	   } catch (Exception e) {
 		   _logger.error("Constructor failed because \n"+e);
