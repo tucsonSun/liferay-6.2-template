@@ -1,5 +1,5 @@
 /*
- * File Name: ContextInterface.java
+ * File Name: RouteContextInterface.java
  * 
  * Created by: Ernesto Rendon on Sep 19, 2015 8:58:52 AM.
  * 
@@ -17,13 +17,13 @@ import java.util.Map;
 
 /**
  * 
- * A instance of class type ContextInterface is used to ...
+ * A instance of class type RouteContextInterface is used to ...
  * 
  * @author Ernesto Rendon
  * @version 1.0
  */
 @SuppressWarnings("rawtypes")	
-public interface ContextInterface extends Map {
+public interface RouteContextInterface extends Map {
 		
 	public static final String USER = "USER";
 	public static final String COMPANY_ID = "COMPANY_ID";

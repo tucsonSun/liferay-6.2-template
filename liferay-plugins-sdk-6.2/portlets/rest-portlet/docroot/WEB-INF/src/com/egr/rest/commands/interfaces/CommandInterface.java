@@ -42,7 +42,7 @@ public interface CommandInterface {
 	//
 	// abstract/interface methods
 	//
-	public CommandResult execute(ContextInterface context);
+	public CommandResult execute(RouteContextInterface context);
 	//
 	// accessor methods
 	//

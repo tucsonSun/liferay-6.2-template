@@ -1,5 +1,5 @@
 /*
- * File Name: RouteInterface.java
+ * File Name: GenericRouteInterface.java
  * 
  * Created by: Ernesto Rendon on Sep 19, 2015 1:44:45 PM.
  * 
@@ -17,12 +17,12 @@ import java.util.List;
 
 /**
  * 
- * A instance of class type RouteInterface is used to ...
+ * A instance of class type GenericRouteInterface is used to ...
  * 
  * @author Ernesto Rendon
  * @version 1.0
  */
-public interface RouteInterface {
+public interface GenericRouteInterface {
 
 	public enum HttpMethod { GET, DELETE, PUT, POST }
 

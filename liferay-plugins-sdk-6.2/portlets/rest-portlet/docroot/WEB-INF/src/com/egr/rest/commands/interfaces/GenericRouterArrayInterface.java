@@ -1,5 +1,5 @@
 /*
- * File Name: RouterInterface.java
+ * File Name: GenericRouterArrayInterface.java
  * 
  * Created by: Ernesto Rendon on Sep 19, 2015 1:45:15 PM.
  * 
@@ -17,12 +17,12 @@ import com.egr.rest.commands.core.RoutingInfo;
 
 /**
  * 
- * A instance of class type RouterInterface is used to ...
+ * A instance of class type GenericRouterArrayInterface is used to ...
  * 
  * @author Ernesto Rendon
  * @version 1.0
  */
-public interface RouterInterface {
+public interface GenericRouterArrayInterface {
 	//
 	// JAVA API
 	//
