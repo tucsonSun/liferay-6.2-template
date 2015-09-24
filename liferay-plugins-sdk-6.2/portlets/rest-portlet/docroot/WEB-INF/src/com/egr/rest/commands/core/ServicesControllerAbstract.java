@@ -109,38 +109,38 @@ public abstract class ServicesControllerAbstract {
 		}
 
 		CommandInputInterface commandInputInterface = (CommandInputInterface) commandObject;
-		RouteContextLiferay context = new RouteContextLiferay(request, routingInfo.getPathParameters());
+		RouteContextLiferay routeContext = new RouteContextLiferay(request, routingInfo.getPathParameters());
 		CommandOutput<?> result = null;
 
 		try {
 			if (json != null && json.length() > 0) {
 				Object input = convert_JSON_to_JavaObject(json, genericRouteInterface);
 				String classFullPathName = genericRouteInterface.getInputClass().getName();
-				context.put(classFullPathName, input);
+				routeContext.put(classFullPathName, input);
 			}
 			// NOTE: authentication must occur after parsing of input because
 			// some authentication logic will be dependent on what is being
 			// created/updated
-			HolderObj ho = new HolderObj(request, routingUri, commandName, genericRouteInterface, commandInputInterface, context);
+			HolderObj ho = new HolderObj(request, routingUri, commandName, genericRouteInterface, commandInputInterface, routeContext);
 			boolean authenticated = _authenticatorInterface.authenticate(ho);
 
 			if (!authenticated) {
 				_logger.error(String.format("Authentication fails for named command %s for uri=%s", commandName, routingUri));
-				return new CommandOutput().setSucceeded(false);
+				return new CommandOutput<Object>().setSucceeded(false);
 			}
-			result = commandInputInterface.execute(context);
+			result = commandInputInterface.execute(routeContext);
 		}
 		// assumption is that most of the IllegalArgumentExceptions are being thrown by
 		// validation logic and that the error messages would be useful to JS code
 		// running on the client so send that message on through ....
 		catch (IllegalArgumentException e) {
 			_logger.error(e.toString());
-			return new CommandOutput().setSucceeded(false).setMessage(e.getMessage());
+			return new CommandOutput<Object>().setSucceeded(false).setMessage(e.getMessage());
 		}
 		// .... but for all other exceptions send a generic error message
 		catch (Exception e) {
 			_logger.error(e.toString());
-			return new CommandOutput().setSucceeded(false);
+			return new CommandOutput<Object>().setSucceeded(false);
 		}
 
 		if (_logRequests) {
