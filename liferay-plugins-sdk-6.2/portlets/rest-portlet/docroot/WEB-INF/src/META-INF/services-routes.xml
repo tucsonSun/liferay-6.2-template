@@ -30,20 +30,19 @@
 		p:targetClass="java.lang.Class" p:targetMethod="forName" />
 						
 	<!-- ********************************************************************** -->
-	<!-- Permission classes  													-->
+	<!-- Authenticator classes  													-->
 	<!-- ********************************************************************** -->
 	<bean id="LiferayPerm" abstract="true"
 		class="com.egr.rest.commands.auth.HasLiferayPermission" />
 
+	 <bean id="IsOmniAdminUser" abstract="true" 
+	  	class="com.egr.rest.commands.auth.IsOmniAdminUser"/>   
 
 	<!-- ********************************************************************** -->
 	<!-- Model classes for input parameters on PUT/POSTs  						-->
 	<!-- ********************************************************************** -->
 	<bean id="Weather-REF" parent="classGen" 
-		p:arguments="com.egr.rest.commands.model.WeatherModel" />
-	        
-	 <bean id="IsOmniAdminUser" abstract="true" 
-	  	class="com.egr.rest.commands.auth.IsOmniAdminUser"/>       
+		p:arguments="com.egr.rest.commands.model.WeatherModel" />    
 	        
 
 	<!-- ********************************************************************** -->
