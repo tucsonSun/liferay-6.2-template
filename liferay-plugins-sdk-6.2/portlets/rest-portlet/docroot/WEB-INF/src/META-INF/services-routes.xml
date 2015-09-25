@@ -41,7 +41,7 @@
 	<!-- ********************************************************************** -->
 	<!-- Model classes for input parameters on PUT/POSTs  						-->
 	<!-- ********************************************************************** -->
-	<bean id="Weather-REF" parent="classGen" 
+	<bean id="WeatherModelId" parent="classGen" 
 		p:arguments="com.egr.rest.commands.model.WeatherModel" />    
 	        
 
@@ -60,11 +60,15 @@
 			p:isRouteAuthenticated="false" p:commandName="weatherGET">
 		</bean>	
 
+		<bean parent="GenericRouteImpl" p:uri="/weather/{countryName}" p:method="GET"
+			p:isRouteAuthenticated="false" p:commandName="weatherCitiesforCountryGET">
+		</bean>	
+
 		<!-- *********************** -->
 		<!-- AUTHENTICATED routes -->
 		<!-- *********************** -->		
 	  	<bean parent="GenericRouteImpl"  p:uri="/weather" p:method="POST" 
-		      p:isRouteAuthenticated="true" p:commandName="weatherPOST" p:inputClass-ref="Weather-REF">
+		      p:isRouteAuthenticated="true" p:commandName="weatherPOST" p:inputClass-ref="WeatherModelId">
 		      <property name="authenticators">
 		         <util:list value-type="com.egr.rest.commands.interfaces.AuthenticatorInterface">
 		           <bean parent="IsOmniAdminUser" />		         
