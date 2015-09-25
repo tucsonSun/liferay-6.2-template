@@ -72,18 +72,18 @@ public abstract class ServicesControllerAbstract {
 	//
 	/**
 	 * Method is a helper that executes the command for GET/DELETE/PUT/POST and returns a CommandOutput object
-	 * @param json
+	 * @param jsonInput
 	 * @param routingUri
 	 * @param request
 	 * @return CommandOutput
 	 */
-	protected CommandOutput<?> process_REST_call_for_JSON_ROUTE(String json, String routingUri, HttpServletRequest request) {
+	protected CommandOutput<?> process_REST_call_for_JSON_ROUTE(String jsonInput, String routingUri, HttpServletRequest request) {
 		_logger.trace("Starting command execution handler");
 
 		if (_logRequests) {
 			_logger.info(String.format("Processing request begins for %s uri=%s", request.getMethod(), routingUri));
-			if (json != null && json.length() > 0) {
-				_logger.info(cleanseJson(json));
+			if (jsonInput != null && jsonInput.length() > 0) {
+				_logger.info(stripPasswordsFromJson(jsonInput));
 			}
 		}
 
@@ -98,13 +98,13 @@ public abstract class ServicesControllerAbstract {
 		Object commandObject = _applicationContext.getBean(commandName);
 
 		if (commandObject == null) {
-			_logger.error(String.format("Could not locate command %s for uri=%s", commandName, routingUri));
-			return new CommandOutput<Object>().setSucceeded(false).setMessage("Requested command could not be located");
+			_logger.error(String.format("A error happend. CommandInput for '%s' and uri=%s not found.", commandName, routingUri));
+			return new CommandOutput<Object>().setSucceeded(false).setMessage(CommandOutput.DEFAULT_ROUTE_NOT_FOUND);
 		}
 
 		if (!(commandObject instanceof CommandInputInterface)) {
-			_logger.error(String.format("Named command %s for uri=%s is not a ICommand object", commandName, routingUri));
-			return new CommandOutput<Object>().setSucceeded(false).setMessage("Requested command could not be located");
+			_logger.error(String.format("A error happend. CommandInput named '%s' for uri=%s is not a instanceof CommandInputInterface", commandName, routingUri));
+			return new CommandOutput<Object>().setSucceeded(false).setMessage(CommandOutput.DEFAULT_ROUTE_NOT_FOUND);
 
 		}
 
@@ -113,20 +113,19 @@ public abstract class ServicesControllerAbstract {
 		CommandOutput<?> result = null;
 
 		try {
-			if (json != null && json.length() > 0) {
-				Object input = convert_JSON_to_JavaObject(json, genericRouteInterface);
+			if (jsonInput != null && jsonInput.length() > 0) {
+				Object input = convert_JSON_to_JavaBean(jsonInput, genericRouteInterface);
 				String classFullPathName = genericRouteInterface.getInputClass().getName();
 				routeContext.put(classFullPathName, input);
 			}
-			// NOTE: authentication must occur after parsing of input because
-			// some authentication logic will be dependent on what is being
-			// created/updated
+			// NOTE: the authentication occurs after parsing of input because
+			// some authentication logic will be dependent on what is being created/updated
 			HolderObj ho = new HolderObj(request, routingUri, commandName, genericRouteInterface, commandInputInterface, routeContext);
 			boolean authenticated = _authenticatorInterface.authenticate(ho);
 
 			if (!authenticated) {
 				_logger.error(String.format("Authentication fails for named command %s for uri=%s", commandName, routingUri));
-				return new CommandOutput<Object>().setSucceeded(false);
+				return new CommandOutput<Object>().setSucceeded(false).setMessage(CommandOutput.DEFAULT_NOT_AUTHORIZED_MESSAGE);
 			}
 			result = commandInputInterface.execute(routeContext);
 		}
@@ -181,7 +180,7 @@ public abstract class ServicesControllerAbstract {
 	 * @param json
 	 * @return
 	 */
-	protected static String cleanseJson(String json) {
+	protected static String stripPasswordsFromJson(String json) {
 		String value = json.replaceAll("\"password\":\"" + PASSWORD_REGEX + "\"", "\"password\":\"xxxxxx\"");
 		value = value.replaceAll("\"confirmPassword\":\"" + PASSWORD_REGEX + "\"", "\"confirmPassword\":\"xxxxxx\"");
 		return value;
@@ -197,7 +196,7 @@ public abstract class ServicesControllerAbstract {
 	 * @return
 	 * @throws Exception
 	 */
-	protected Object convert_JSON_to_JavaObject(String json, GenericRouteInterface genericRouteInterface) throws Exception {
+	protected Object convert_JSON_to_JavaBean(String json, GenericRouteInterface genericRouteInterface) throws Exception {
 		Class<?> clazz = genericRouteInterface.getInputClass();
 		clazz = (clazz != null ? clazz : Object.class);
 		ObjectMapper mapper = new ObjectMapper();
@@ -220,7 +219,7 @@ public abstract class ServicesControllerAbstract {
 			mapper.writeValue(sw, commandOutput);
 			String json = sw.toString();
 			if (_logRequests) {
-				_logger.info(String.format("The JSON object returned=%s", cleanseJson(json)));
+				_logger.info(String.format("The JSON object returned=%s", stripPasswordsFromJson(json)));
 			}
 			return json;
 		} catch (Exception e) {
