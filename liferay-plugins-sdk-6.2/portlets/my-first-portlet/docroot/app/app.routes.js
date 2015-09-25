@@ -8,13 +8,26 @@
     routeConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
 
     function routeConfig($stateProvider, $urlRouterProvider) {
-        $urlRouterProvider.otherwise("/home");
+        
+    	//
+    	// Define default page
+    	//
+    	$urlRouterProvider.otherwise("/");
 
+    	//
+    	// Define routes
+    	//
         $stateProvider
-            .state('home', {
-                url: '/home',
-                templateUrl: '/my-first-portlet/app/featureSets/home/home.html',
-                controller: 'HomeCtrlAs',
+			.state('/', {
+				url:'/home',
+				templateUrl: '/my-first-portlet/app/featureSets/home/home.html',
+				controller: 'HomeCtrlAs',
+				controllerAs: 'vm'
+			})
+            .state('/globalWeather', {
+                url: '/globalWeather',
+                templateUrl: '/my-first-portlet/app/featureSets/globalWeather/global-weather.html',
+                controller: 'GlobalWeatherCtrlAs',
                 controllerAs: 'vm'
             })
             .state('sell', {

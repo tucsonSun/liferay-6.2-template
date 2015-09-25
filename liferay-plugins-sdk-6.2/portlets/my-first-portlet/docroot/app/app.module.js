@@ -10,7 +10,8 @@
          * Feature Sets
          */
         'myFirstApp.leftMenuBarModule',
-        'myFirstApp.homeModule'
+        'myFirstApp.homeModule',
+        'myFirstApp.globalWeatherModule'
     ]);
 
 })();
