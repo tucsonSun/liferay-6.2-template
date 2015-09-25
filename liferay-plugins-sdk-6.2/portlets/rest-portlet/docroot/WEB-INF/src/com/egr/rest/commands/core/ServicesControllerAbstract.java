@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.codehaus.jackson.map.ObjectMapper;
+import org.json.XML;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +48,7 @@ public abstract class ServicesControllerAbstract {
 	private static final String JSON_DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss";
 	
 	@Value("${services.requests.logging:true}")
-	private boolean _logRequests;
+	private static boolean _logRequests;
 
 	@Autowired
 	private ApplicationContext _applicationContext;
@@ -81,7 +82,7 @@ public abstract class ServicesControllerAbstract {
 		_logger.trace("Starting command execution handler");
 
 		if (_logRequests) {
-			_logger.info(String.format("Processing request begins for %s uri=%s", request.getMethod(), routingUri));
+			_logger.info(String.format("Processing request begins for '%s' uri=%s", request.getMethod(), routingUri));
 			if (jsonInput != null && jsonInput.length() > 0) {
 				_logger.info(stripPasswordsFromJson(jsonInput));
 			}
@@ -123,7 +124,7 @@ public abstract class ServicesControllerAbstract {
 			boolean authenticated = _authenticatorInterface.authenticate(ho);
 
 			if (!authenticated) {
-				_logger.error(String.format("Authentication fails for named command %s for uri=%s", commandName, routingUri));
+				_logger.error(String.format("Authentication failed for named command '%s' for uri=%s", commandName, routingUri));
 				return new CommandOutput<Object>().setSucceeded(false).setMessage(CommandOutput.DEFAULT_NOT_AUTHORIZED_MESSAGE);
 			}
 			result = commandInputInterface.execute(routeContext);
@@ -186,6 +187,19 @@ public abstract class ServicesControllerAbstract {
 	}
 
 	/**
+	 * Method converts an XML string into JSON string
+	 * @param xmlString
+	 * @return
+	 */
+    public static String convert_XML_to_JSON(String xmlString) {
+    	int PRETTY_PRINT_INDENT_FACTOR = 4;
+    	org.json.JSONObject xmlJSONObj = null;
+        xmlJSONObj = XML.toJSONObject(xmlString);
+		String jsonPrettyPrintString = xmlJSONObj.toString(PRETTY_PRINT_INDENT_FACTOR);
+		System.out.println(jsonPrettyPrintString);
+        return xmlJSONObj.toString();
+    }
+	/**
 	 * Method converts JSON to Java Object. 
 	 * NOTE: Not using built-in spring converter because want ability to capture/trace any
 	 * errors here as opposed nested errors inside of spring code.
@@ -195,7 +209,7 @@ public abstract class ServicesControllerAbstract {
 	 * @return
 	 * @throws Exception
 	 */
-	protected Object convert_JSON_to_JavaBean(String json, GenericRouteInterface genericRouteInterface) throws Exception {
+    public static Object convert_JSON_to_JavaBean(String json, GenericRouteInterface genericRouteInterface) throws Exception {
 		Class<?> clazz = genericRouteInterface.getInputClass();
 		clazz = (clazz != null ? clazz : Object.class);
 		ObjectMapper mapper = new ObjectMapper();
@@ -210,7 +224,7 @@ public abstract class ServicesControllerAbstract {
 	 * @param logRequests
 	 * @return
 	 */
-	protected String covert_CommandOutput_to_JSON(CommandOutput<?> commandOutput) {
+    public static String covert_CommandOutput_to_JSON(CommandOutput<?> commandOutput) {
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.setDateFormat(new SimpleDateFormat(JSON_DATE_FORMAT));
 		StringWriter sw = new StringWriter();
@@ -222,7 +236,7 @@ public abstract class ServicesControllerAbstract {
 			}
 			return json;
 		} catch (Exception e) {
-			_logger.error(e.toString());
+			_logger.error(String.format("A error happend when converting  to json object. { 'success' : false, 'data' : null, 'message' : '%s' }", e.getMessage()));
 			return String.format("{ 'success' : false, 'data' : null, 'message' : '%s' }", e.getMessage());
 		}
 	}

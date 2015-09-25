@@ -17,8 +17,8 @@ package com.egr.rest.commands.core;
 import javax.servlet.http.HttpServletRequest;
 
 import com.egr.rest.commands.interfaces.CommandInputInterface;
-import com.egr.rest.commands.interfaces.RouteContextInterface;
 import com.egr.rest.commands.interfaces.GenericRouteInterface;
+import com.egr.rest.commands.interfaces.RouteContextInterface;
 
 /**
  * A instance of class type HolderObj is used to ...

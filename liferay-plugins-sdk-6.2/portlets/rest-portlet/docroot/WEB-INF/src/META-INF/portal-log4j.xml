@@ -3,8 +3,10 @@
 
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
 	
+	<!-- ********************************************************************** -->
+	<!-- General Logging		  												-->
+	<!-- ********************************************************************** -->
 	<appender name="EGR_SERVICES_ID" class="org.apache.log4j.rolling.RollingFileAppender">
-	
 		<rollingPolicy class="org.apache.log4j.rolling.TimeBasedRollingPolicy">
 			<param name="FileNamePattern" value="@liferay.home@/logs/egr_services@spi.id@.%d{yyyy-MM-dd}.log" />
 		</rollingPolicy>
@@ -14,9 +16,34 @@
 		</layout>
 	</appender>
 	
+	<!-- ********************************************************************** -->
+	<!-- Performance External Web Services Logging 								-->
+	<!-- ********************************************************************** -->
+	<appender name="EGR_SERVICES_PERFORMANCE_ID" class="org.apache.log4j.rolling.RollingFileAppender">
+		<rollingPolicy class="org.apache.log4j.rolling.TimeBasedRollingPolicy">
+			<param name="FileNamePattern" value="@liferay.home@/logs/egr_performance@spi.id@.%d{yyyy-MM-dd}.log" />
+		</rollingPolicy>
+
+		<layout class="org.apache.log4j.EnhancedPatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} \t[%t] \t%m%n" />
+		</layout>
+	</appender>	
+	
+	<!-- ********************************************************************** -->
+	<!-- General Package Logging  												-->
+	<!-- ********************************************************************** -->
 	<logger name="com.egr.rest">
 		<level value="INFO" />
 		<appender-ref ref="EGR_SERVICES_ID" />
+	</logger>
+
+
+	<!-- ********************************************************************** -->
+	<!-- Performance Package Logging  											-->
+	<!-- ********************************************************************** -->
+	<logger name="com.egr.external.ws.performance">
+		<level value="DEBUG" />
+		<appender-ref ref="EGR_SERVICES_PERFORMANCE_ID" />
 	</logger>
 
 </log4j:configuration>

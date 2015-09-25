@@ -27,7 +27,7 @@ public interface CommandOutputInterface<T> {
 
 	public static final String DEFAULT_ROUTE_NOT_FOUND = "Sorry, your requested route could not be determined";
 	public static final String DEFAULT_ERROR_MESSAGE = "Whoops, your request caused an error while processing.";
-	public static final String DEFAULT_AUTHERROR_MESSAGE = "Sorry, your request is not authorized.";
+	public static final String DEFAULT_NOT_AUTHORIZED_MESSAGE = "Sorry, your request is not authorized.";
 	public static final String DEFAULT_SUCCESS = "Yippie, your request succeeded.";
 	//
 	// JAVA API

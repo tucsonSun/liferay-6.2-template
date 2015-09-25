@@ -26,4 +26,7 @@
 
 	<!-- Import the services routes configuration file -->    	
 	<import resource="classpath*:META-INF/services-routes.xml" />
+	
+	<!-- Import external web services -->  
+	<import resource="classpath*:META-INF/services-external-webServices.xml" />	
 </beans>

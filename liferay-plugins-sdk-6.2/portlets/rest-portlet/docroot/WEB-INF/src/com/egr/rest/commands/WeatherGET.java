@@ -14,11 +14,15 @@
  */
 package com.egr.rest.commands;
 
+import javax.annotation.Resource;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+import com.egr.external.ws.globalweather.GlobalWeatherSoap;
 import com.egr.rest.commands.core.CommandOutput;
+import com.egr.rest.commands.core.ServicesControllerAbstract;
 import com.egr.rest.commands.interfaces.CommandInputInterface;
 import com.egr.rest.commands.interfaces.RouteContextInterface;
 import com.egr.rest.commands.model.WeatherModel;
@@ -31,6 +35,8 @@ import com.egr.rest.commands.model.WeatherModel;
  */
 @Component("weatherGET")
 public class WeatherGET implements CommandInputInterface {
+	@Resource
+	GlobalWeatherSoap _globalWeatherSoap;
 	
 	private static final Logger _logger = LoggerFactory.getLogger(WeatherGET.class);
 	//
@@ -59,10 +65,18 @@ public class WeatherGET implements CommandInputInterface {
 	
 	public CommandOutput<WeatherModel> execute(RouteContextInterface context) {
 
-		WeatherModel abc = new WeatherModel();
-		abc.setStatus("this is the GET");
+		String list = _globalWeatherSoap.getCitiesByCountry("United States");
+		_logger.info("cities= "+list);
 		
-		return new CommandOutput<WeatherModel>().setSucceeded(true).setData(abc);
+		String jsonResult = ServicesControllerAbstract.convert_XML_to_JSON(list);
+		_logger.info(jsonResult);
+		
+		String abc = _globalWeatherSoap.getWeather("Phoenix", "United States");
+		
+		WeatherModel weatherModel = new WeatherModel();
+		weatherModel.setStatus("this is the GET");
+		
+		return new CommandOutput<WeatherModel>().setSucceeded(true).setData(weatherModel);
 //
 //		} catch (Exception e) {
 //			_logger.error(ServicesUtil.exceptionToString(e));
