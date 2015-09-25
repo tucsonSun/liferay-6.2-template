@@ -3,11 +3,11 @@
 
     angular
         .module('myFirstApp.services')
-        .factory('landingSrv', landingSrv);
+        .factory('homeService', homeService);
 
-    landingSrv.$inject = ['myFirstBaseService'];
+    homeService.$inject = ['myFirstBaseService'];
 
-    function landingSrv(myFirstBaseService) {
+    function homeService(myFirstBaseService) {
         return {
         	getWeatherPromsie: function() {
         		return myFirstBaseService.weather.get().$promise;

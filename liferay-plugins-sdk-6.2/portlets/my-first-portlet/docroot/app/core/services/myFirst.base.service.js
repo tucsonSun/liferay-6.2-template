@@ -11,7 +11,8 @@
 
 		return {			
 			myAccount: $resource('/delegate/services/api/myaccount', {}, serviceConfigObject),
-			weather: $resource('/delegate/services/api/weather', {}, serviceConfigObject)
+			weather: $resource('/delegate/services/api/weather', {}, serviceConfigObject),
+			weatherCitiesForCountry: $resource('/delegate/services/api/weather/:countryName', {}, serviceConfigObject)
 		};
 	}
 
