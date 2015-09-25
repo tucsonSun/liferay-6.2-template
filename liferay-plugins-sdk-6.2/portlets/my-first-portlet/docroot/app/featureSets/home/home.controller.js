@@ -5,23 +5,23 @@
 		.module('myFirstApp.homeModule')
 		.controller('HomeCtrlAs', HomeCtrlAs);
 
-	HomeCtrlAs.$inject = ['landingSrv'];
+	HomeCtrlAs.$inject = ['homeService'];
 
-	function HomeCtrlAs(landingSrv) {
+	function HomeCtrlAs(homeService) {
 		var vm = this;
 		vm.resultData = null;
 	
 		vm.myAccountAction = function() {
-			vm.resultData = landingSrv.getMyAccount(vm);
+			vm.resultData = homeService.getMyAccount(vm);
 		};
 		
 		vm.getWeatherAction = function() {
-			vm.resultData = landingSrv.getWeather(vm);
+			vm.resultData = homeService.getWeather(vm);
 		};
 		
 		vm.saveWeatherAction = function() {
 			vm.weatherModel = {status:"This is PUT angular", some:"angular something here"}; 
-			vm.resultData = landingSrv.saveWeather(vm);
+			vm.resultData = homeService.saveWeather(vm);
 		};
 		
 	}//end of Ctrl	

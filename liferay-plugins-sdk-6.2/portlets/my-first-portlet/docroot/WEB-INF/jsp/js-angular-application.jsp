@@ -26,11 +26,15 @@
 <script src="/my-first-portlet/app/core/services/services.module.js"></script>
 <script src="/my-first-portlet/app/core/services/underscore.service.js"></script>
 
+<!-- featureSets services files -->
 <script src="/my-first-portlet/app/core/services/myFirst.base.service.js"></script>
-<script src="/my-first-portlet/app/core/services/landing.service.js"></script>
+<script src="/my-first-portlet/app/core/services/home.service.js"></script>
+<script src="/my-first-portlet/app/core/services/globalWeather.service.js"></script>
 
 <!-- featureSets files -->
 <script src="/my-first-portlet/app/featureSets/leftMenuBar/leftMenuBar.module.js"></script>
 <script src="/my-first-portlet/app/featureSets/leftMenuBar/leftMenuBar.controller.js"></script>
 <script src="/my-first-portlet/app/featureSets/home/home.module.js"></script>
 <script src="/my-first-portlet/app/featureSets/home/home.controller.js"></script>
+<script src="/my-first-portlet/app/featureSets/globalWeather/global-weather.module.js"></script>
+<script src="/my-first-portlet/app/featureSets/globalWeather/global-weather.controller.js"></script>
