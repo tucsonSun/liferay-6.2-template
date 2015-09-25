@@ -103,9 +103,8 @@ public abstract class ServicesControllerAbstract {
 		}
 
 		if (!(commandObject instanceof CommandInputInterface)) {
-			_logger.error(String.format("A error happend. CommandInput named '%s' for uri=%s is not a instanceof CommandInputInterface", commandName, routingUri));
+			_logger.error(String.format("A error happend. CommandInput for '%s' for uri=%s is not a instanceof CommandInputInterface", commandName, routingUri));
 			return new CommandOutput<Object>().setSucceeded(false).setMessage(CommandOutput.DEFAULT_ROUTE_NOT_FOUND);
-
 		}
 
 		CommandInputInterface commandInputInterface = (CommandInputInterface) commandObject;
