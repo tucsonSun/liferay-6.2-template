@@ -25,7 +25,6 @@ import com.egr.rest.commands.core.CommandOutput;
 import com.egr.rest.commands.core.ServicesControllerAbstract;
 import com.egr.rest.commands.interfaces.CommandInputInterface;
 import com.egr.rest.commands.interfaces.RouteContextInterface;
-import com.egr.rest.commands.model.WeatherModel;
 
 /**
  * A instance of class type WeatherCMD is used to ...
@@ -33,12 +32,12 @@ import com.egr.rest.commands.model.WeatherModel;
  * @author Ernesto Rendon
  * @version 1.0
  */
-@Component("weatherGET")
-public class WeatherGET implements CommandInputInterface {
+@Component("weatherCitiesforCountryGET")
+public class WeatherCitiesforCountryGET implements CommandInputInterface {
 	@Resource
 	GlobalWeatherSoap _globalWeatherSoap;
 
-	private static final Logger _logger = LoggerFactory.getLogger(WeatherGET.class);
+	private static final Logger _logger = LoggerFactory.getLogger(WeatherCitiesforCountryGET.class);
 
 	//
 	// JAVA API
@@ -66,17 +65,17 @@ public class WeatherGET implements CommandInputInterface {
 
 	public CommandOutput<String> execute(RouteContextInterface context) {
 		try {
-			String list = _globalWeatherSoap.getCitiesByCountry("United States");
-			_logger.info("cities= " + list);
-
-			String jsonResult = ServicesControllerAbstract.convert_XML_to_JSON(list);
-
-			WeatherModel weatherModel = new WeatherModel();
-			weatherModel.setStatus("this is the GET");
-
+			String countryName = context.getEntity("countryName");
+			if (countryName == null || countryName.length() == 0) {
+				_logger.error("countryName is not allowed to be null");
+				return new CommandOutput<String>().setSucceeded(false);
+			}
+		
+			String citiesForCountryResult = _globalWeatherSoap.getCitiesByCountry(countryName);
+			String jsonResult = ServicesControllerAbstract.convert_XML_to_JSON(citiesForCountryResult);
 			return new CommandOutput<String>().setSucceeded(true).setData(jsonResult);
 		} catch (Exception e) {
-			_logger.error("WeatherGET failed because... "+e);
+			_logger.error(this.getClass().getSimpleName()+" failed because... "+e);
 			return new CommandOutput<String>().setSucceeded(false);
 		}
 	}
