@@ -142,12 +142,6 @@
 	            	$scope.alerts.push($scope.flashMessage);
 	            }
             };
-            
-//            // Call Message Processing Actions 
-//            $scope.preProcessMessageAction();
-//            $scope.preProcessMessagesAction();
-//            $scope.preProcessFlashMessageAction();
-//            $scope.addToMsgList();
 		}
     }
 })();

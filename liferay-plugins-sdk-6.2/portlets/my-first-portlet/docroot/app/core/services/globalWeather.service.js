@@ -21,7 +21,8 @@
             	this.getWeatherCitiesForCountryPromsie(vm.countryName).then(function(response) {
                     if (response.succeeded) {
                     	vm.weatherCitiesForCountryResponse = response;
-                    	vm.citiesForCountry = response.data;
+                    	var data = response.data;
+                    	vm.citiesForCountry = data.NewDataSet.Table;
                         vm.postLoadDataAction();
                         vm.contentLoaded = true;
                     } else {
