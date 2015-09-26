@@ -3,6 +3,9 @@
 <script src="/my-first-portlet/app/core/directives/messagePanel.directive.js"></script>
 <script src="/my-first-portlet/app/core/directives/loader.directive.js"></script>
 
+<!-- directives CSS -->
+<link rel="stylesheet" href="/my-first-portlet/css/directives.css" />
+
 <!-- application files -->
 <script src="/my-first-portlet/app/app.module.js"></script>
 <script src="/my-first-portlet/app/app.routes.js"></script>

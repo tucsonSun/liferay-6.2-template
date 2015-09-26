@@ -31,7 +31,7 @@
 		<!-- NAVIGATION -->
 		<div data-ng-include src="'/my-first-portlet/app/featureSets/leftMenuBar/leftMenuBar.html'"></div> 
 		<!-- MAIN CONTENT -->
-		<div layout="column" flex id="content">
+		<div layout="column" flex id="portal-content">
 			 <!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
 			<md-content layout="column" flex class="md-padding" ui-view>inject content here...</md-content>
 		</div>
