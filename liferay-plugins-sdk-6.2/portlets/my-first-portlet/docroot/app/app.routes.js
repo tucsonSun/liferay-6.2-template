@@ -12,13 +12,13 @@
     	//
     	// Define default page
     	//
-    	$urlRouterProvider.otherwise("/");
+    	$urlRouterProvider.otherwise("/home");
 
     	//
     	// Define routes
     	//
         $stateProvider
-			.state('/', {
+			.state('home', {
 				url:'/home',
 				templateUrl: '/my-first-portlet/app/featureSets/home/home.html',
 				controller: 'HomeCtrlAs',

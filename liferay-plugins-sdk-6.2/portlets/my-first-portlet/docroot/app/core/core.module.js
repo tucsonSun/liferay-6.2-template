@@ -19,6 +19,7 @@
          * 3rd Party modules
          */
         'ui.bootstrap',
-        'ui.router'
+        'ui.router',
+        'smart-table'
     ]);
 })();
