@@ -52,7 +52,10 @@ public class ServicesController extends ServicesControllerAbstract {
 		CommandOutput<?> commandOutput = process_REST_call_for_JSON_ROUTE(null, stripUriPrefix(request.getRequestURI()), request);
 		//TODO: FIX Caching is not implemented
 		if (!commandOutput.isCached()) {
-			return covert_CommandOutput_to_JSON(commandOutput);
+			if (commandOutput.isXMLResult())
+				return covert_XMLString_to_JSON(commandOutput);
+			else
+				return covert_JavaBean_to_JSON(commandOutput);
 		} else {
 			// NOTE: cached results should be a string
 			return commandOutput.getData().toString();
@@ -72,7 +75,10 @@ public class ServicesController extends ServicesControllerAbstract {
 		_logger.trace("Starting POST or PUT request handler");
 		appendCacheHEADERStoResponse(response);
 		CommandOutput<?> commandOutput = process_REST_call_for_JSON_ROUTE(json, stripUriPrefix(request.getRequestURI()), request);
-		return covert_CommandOutput_to_JSON(commandOutput);
+		if (commandOutput.isXMLResult())
+			return covert_XMLString_to_JSON(commandOutput);
+		else
+			return covert_JavaBean_to_JSON(commandOutput);
 	}
 
 

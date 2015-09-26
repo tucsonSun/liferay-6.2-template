@@ -25,6 +25,7 @@ import com.egr.rest.commands.interfaces.CommandOutputInterface;
  */
 public class CommandOutput<T> implements CommandOutputInterface<T> {
 
+	private Boolean _isXMLResult = false;
 	private Boolean _succeeded = true;
 	private T _data = null;
 	private String _message = "";
@@ -92,6 +93,15 @@ public class CommandOutput<T> implements CommandOutputInterface<T> {
 
 	public CommandOutput<T> setCached(Boolean cached) {
 		_cached = cached;
+		return this;
+	}
+
+	public Boolean isXMLResult() {
+		return _isXMLResult;
+	}
+
+	public CommandOutput<T> setIsXMLResult(Boolean isXMLResult) {
+		_isXMLResult = isXMLResult;
 		return this;
 	}
 }

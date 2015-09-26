@@ -48,7 +48,7 @@ public abstract class ServicesControllerAbstract {
 	private static final String JSON_DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss";
 	
 	@Value("${services.requests.logging:true}")
-	private static boolean _logRequests;
+	private static boolean _logRequests=true;
 
 	@Autowired
 	private ApplicationContext _applicationContext;
@@ -60,6 +60,11 @@ public abstract class ServicesControllerAbstract {
 	@Autowired
 	@Qualifier("genericRouterListContainerImpl")
 	private GenericRouterListInterface _genericRouterListContainerInterface;
+	
+	private RoutingInfo _routingInfo;
+	private GenericRouteInterface _genericRouteInterface;
+	private CommandInputInterface _commandInputInterface;
+	
 	//
 	// JAVA API
 	//
@@ -88,46 +93,38 @@ public abstract class ServicesControllerAbstract {
 			}
 		}
 
-		RoutingInfo routingInfo = _genericRouterListContainerInterface.getRoutingInfo(routingUri, request.getMethod());
-
-		if (routingInfo == null || routingInfo.getGenericRouteInterface() == null || routingInfo.getGenericRouteInterface().getCommandName() == null) {
+		setRoutingInfo(_genericRouterListContainerInterface.getRoutingInfo(routingUri, request.getMethod()));
+		setGenericRouteInterface(getRoutingInfo().getGenericRouteInterface());
+		setCommandInputInterface(getCommandInputObject());
+		
+		if (getRoutingInfo() == null || getGenericRouteInterface() == null || getGenericRouteInterface().getCommandName() == null) {
 			return new CommandOutput<Object>().setSucceeded(false).setMessage(CommandOutput.DEFAULT_ROUTE_NOT_FOUND);
 		}
 
-		GenericRouteInterface genericRouteInterface = routingInfo.getGenericRouteInterface();
-		String commandName = genericRouteInterface.getCommandName();
-		Object commandObject = _applicationContext.getBean(commandName);
-
-		if (commandObject == null) {
-			_logger.error(String.format("A error happend. CommandInput for '%s' and uri=%s not found.", commandName, routingUri));
+		if (getCommandInputInterface() == null) {
+			_logger.error(String.format("A error happend. CommandInput for '%s' and uri=%s not found.", getGenericRouteInterface().getCommandName(), routingUri));
 			return new CommandOutput<Object>().setSucceeded(false).setMessage(CommandOutput.DEFAULT_ROUTE_NOT_FOUND);
 		}
 
-		if (!(commandObject instanceof CommandInputInterface)) {
-			_logger.error(String.format("A error happend. CommandInput for '%s' for uri=%s is not a instanceof CommandInputInterface", commandName, routingUri));
-			return new CommandOutput<Object>().setSucceeded(false).setMessage(CommandOutput.DEFAULT_ROUTE_NOT_FOUND);
-		}
-
-		CommandInputInterface commandInputInterface = (CommandInputInterface) commandObject;
-		RouteContextLiferay routeContext = new RouteContextLiferay(request, routingInfo.getPathParameters());
+		RouteContextLiferay routeContext = new RouteContextLiferay(request, getRoutingInfo().getPathParameters());
 		CommandOutput<?> result = null;
 
 		try {
 			if (jsonInput != null && jsonInput.length() > 0) {
-				Object input = convert_JSON_to_JavaBean(jsonInput, genericRouteInterface);
-				String classFullPathName = genericRouteInterface.getInputClass().getName();
+				Object input = convert_JSON_to_JavaBean(jsonInput, getGenericRouteInterface());
+				String classFullPathName = getGenericRouteInterface().getInputClass().getName();
 				routeContext.put(classFullPathName, input);
 			}
 			// NOTE: the authentication occurs after parsing of input because
 			// some authentication logic will be dependent on what is being created/updated
-			HolderObj ho = new HolderObj(request, routingUri, commandName, genericRouteInterface, commandInputInterface, routeContext);
+			HolderObj ho = new HolderObj(request, routingUri, getGenericRouteInterface(), getCommandInputInterface(), routeContext);
 			boolean authenticated = _authenticatorInterface.authenticate(ho);
 
 			if (!authenticated) {
-				_logger.error(String.format("Authentication failed for named command '%s' for uri=%s", commandName, routingUri));
+				_logger.error(String.format("Authentication failed for named command '%s' for uri=%s", getGenericRouteInterface().getCommandName(), routingUri));
 				return new CommandOutput<Object>().setSucceeded(false).setMessage(CommandOutput.DEFAULT_NOT_AUTHORIZED_MESSAGE);
 			}
-			result = commandInputInterface.execute(routeContext);
+			result = getCommandInputInterface().execute(routeContext);
 		}
 		// assumption is that most of the IllegalArgumentExceptions are being thrown by
 		// validation logic and that the error messages would be useful to JS code
@@ -151,6 +148,23 @@ public abstract class ServicesControllerAbstract {
 	//
 	// misc.
 	//
+	/**
+	 * Method will fetch the CommandInputInterface
+	 * @param routingInfo
+	 * @return
+	 */
+	public CommandInputInterface getCommandInputObject() {
+		try {
+			String commandName = getGenericRouteInterface().getCommandName();
+			CommandInputInterface commandObject = (CommandInputInterface) _applicationContext.getBean(commandName);
+			return commandObject;
+		}
+		catch (Exception e) {
+			_logger.error(e.toString());
+			return null;
+		}
+	}
+	
 	/**
 	 * Method adds cache buster headers to response
 	 * @param response
@@ -191,14 +205,14 @@ public abstract class ServicesControllerAbstract {
 	 * @param xmlString
 	 * @return
 	 */
-    public static String convert_XML_to_JSON(String xmlString) {
-    	int PRETTY_PRINT_INDENT_FACTOR = 4;
+    public static String convert_XMLString_to_JSONString(String xmlString) {
     	org.json.JSONObject xmlJSONObj = null;
         xmlJSONObj = XML.toJSONObject(xmlString);
-		String jsonPrettyPrintString = xmlJSONObj.toString(PRETTY_PRINT_INDENT_FACTOR);
-		System.out.println(jsonPrettyPrintString);
-        return xmlJSONObj.toString();
+        String result = xmlJSONObj.toString();
+        _logger.info("Convert XMLString-to-JSONString="+result);
+        return result;
     }
+ 
 	/**
 	 * Method converts JSON to Java Object. 
 	 * NOTE: Not using built-in spring converter because want ability to capture/trace any
@@ -224,7 +238,7 @@ public abstract class ServicesControllerAbstract {
 	 * @param logRequests
 	 * @return
 	 */
-    public static String covert_CommandOutput_to_JSON(CommandOutput<?> commandOutput) {
+    public static String covert_JavaBean_to_JSON(CommandOutput<?> commandOutput) {
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.setDateFormat(new SimpleDateFormat(JSON_DATE_FORMAT));
 		StringWriter sw = new StringWriter();
@@ -240,7 +254,31 @@ public abstract class ServicesControllerAbstract {
 			return String.format("{ 'success' : false, 'data' : null, 'message' : '%s' }", e.getMessage());
 		}
 	}
-
+    /**
+     * Method handles SOAP responses that were returned in XML
+     * @param commandOutput
+     * @return
+     */
+    public static String covert_XMLString_to_JSON(CommandOutput<?> commandOutput) { 
+    	String xmlDataString = (String) commandOutput.getData();
+    	String xmlInJsonFormat = convert_XMLString_to_JSONString(xmlDataString);
+    	commandOutput.setData(null);
+		ObjectMapper mapper = new ObjectMapper();
+		mapper.setDateFormat(new SimpleDateFormat(JSON_DATE_FORMAT));
+		StringWriter sw = new StringWriter();
+		try {
+			mapper.writeValue(sw, commandOutput);
+			String json = sw.toString();
+			json = json.replace("\"data\":null", "\"data\":"+xmlInJsonFormat+"");
+			if (_logRequests) {
+				_logger.info(String.format("The JSON object returned=%s", stripPasswordsFromJson(json)));
+			}
+			return json;
+		} catch (Exception e) {
+			_logger.error(String.format("A error happend when converting  to json object. { 'success' : false, 'data' : null, 'message' : '%s' }", e.getMessage()));
+			return String.format("{ 'success' : false, 'data' : null, 'message' : '%s' }", e.getMessage());
+		}
+    }
 	//
 	// abstract/interface methods
 	//
@@ -248,7 +286,30 @@ public abstract class ServicesControllerAbstract {
 	//
 	// accessor methods
 	//
-
+	public GenericRouterListInterface getGenericRouterListContainerInterface() {
+		return _genericRouterListContainerInterface;
+	}
+	public void setGenericRouterListContainerInterface(GenericRouterListInterface genericRouterListContainerInterface) {
+		_genericRouterListContainerInterface = genericRouterListContainerInterface;
+	}
+	public RoutingInfo getRoutingInfo() {
+		return _routingInfo;
+	}
+	public void setRoutingInfo(RoutingInfo routingInfo) {
+		_routingInfo = routingInfo;
+	}
+	public GenericRouteInterface getGenericRouteInterface() {
+		return _genericRouteInterface;
+	}
+	public void setGenericRouteInterface(GenericRouteInterface genericRouteInterface) {
+		_genericRouteInterface = genericRouteInterface;
+	}
+	public CommandInputInterface getCommandInputInterface() {
+		return _commandInputInterface;
+	}
+	public void setCommandInputInterface(CommandInputInterface commandInputInterface) {
+		_commandInputInterface = commandInputInterface;
+	}
 	//
 	// inner classes
 	//

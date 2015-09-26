@@ -30,7 +30,6 @@ public class HolderObj {
 	
 	protected HttpServletRequest _request;
 	protected String _routingUri;
-	protected String _commandName;
 	protected GenericRouteInterface _genericRouteInterface;
 	protected CommandInputInterface _commandInputInterface;
 	protected RouteContextInterface _routeContextInterface;
@@ -44,10 +43,9 @@ public class HolderObj {
 	 * @param commandInputInterface
 	 * @param context
 	 */
-	public HolderObj(HttpServletRequest request, String routingUri, String commandName, GenericRouteInterface genericRouteInterface, CommandInputInterface commandInputInterface, RouteContextInterface context) {
+	public HolderObj(HttpServletRequest request, String routingUri, GenericRouteInterface genericRouteInterface, CommandInputInterface commandInputInterface, RouteContextInterface context) {
 		setRequest(request);
 		setRoutingUri(routingUri);
-		setCommandName(commandName);
 		setGenericRouteInterface(genericRouteInterface);
 		setCommandInputInterface(commandInputInterface);
 		setRouteContextInterface(context);
@@ -87,12 +85,6 @@ public class HolderObj {
 	}
 	public void setRoutingUri(String routingUri) {
 		_routingUri = routingUri;
-	}
-	public String getCommandName() {
-		return _commandName;
-	}
-	public void setCommandName(String commandName) {
-		_commandName = commandName;
 	}
 	public GenericRouteInterface getGenericRouteInterface() {
 		return _genericRouteInterface;

@@ -67,6 +67,12 @@ public interface CommandOutputInterface<T> {
 
 	public boolean isCached();
 	public CommandOutput<T> setCached(Boolean cached);
+	
+	/**
+	 * Method used to indicate that the SOAP response was returned as XML instead of JavaBean
+	 */
+	public Boolean isXMLResult();
+	public CommandOutput<T> setIsXMLResult(Boolean isXMLResult);
 
 	//
 	// inner classes
