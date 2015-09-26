@@ -10,5 +10,8 @@
 
 <!-- 3rd party libraries -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.0/ui-bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.1/toastr.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+<script src="/my-first-portlet/js/3rd-party-lib/underscore/1.7.0/underscore.js"></script>
+<script src="/my-first-portlet/js/3rd-party-lib/toastr/2.1.0/toastr.min.js"></script>
+<script src="/my-first-portlet/js/3rd-party-lib/smart-table/2.1.3/smart-table.min.js"></script>
+
+
