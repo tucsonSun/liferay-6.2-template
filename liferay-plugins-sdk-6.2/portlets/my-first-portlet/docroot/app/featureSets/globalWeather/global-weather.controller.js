@@ -24,10 +24,18 @@
          * Method called post 
          */
 		vm.postLoadDataAction = function() {
-			console.log(vm.citiesForCountry);
+			//console.log(vm.citiesForCountry);
+			vm.rowCollection = vm.citiesForCountry; 
 		};
 		
 		
+	    //copy the references (you could clone ie angular.copy but then have to go through a dirty checking for the matches)
+	    vm.displayedCollection = [].concat(vm.rowCollection);
+	    
+	    vm.getWeatherForCity = function(row) {
+	    	var city = row.City;
+			console.log("vm.getWeatherForCity function called for city ....  "+city);
+		};
 		
 	}//end of Ctrl	
 })();
