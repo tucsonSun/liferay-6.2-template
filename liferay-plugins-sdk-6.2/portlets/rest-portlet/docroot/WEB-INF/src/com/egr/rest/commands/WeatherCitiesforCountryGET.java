@@ -22,7 +22,6 @@ import org.springframework.stereotype.Component;
 
 import com.egr.external.ws.globalweather.GlobalWeatherSoap;
 import com.egr.rest.commands.core.CommandOutput;
-import com.egr.rest.commands.core.ServicesControllerAbstract;
 import com.egr.rest.commands.interfaces.CommandInputInterface;
 import com.egr.rest.commands.interfaces.RouteContextInterface;
 
@@ -71,9 +70,8 @@ public class WeatherCitiesforCountryGET implements CommandInputInterface {
 				return new CommandOutput<String>().setSucceeded(false);
 			}
 		
-			String citiesForCountryResult = _globalWeatherSoap.getCitiesByCountry(countryName);
-			String jsonResult = ServicesControllerAbstract.convert_XML_to_JSON(citiesForCountryResult);
-			return new CommandOutput<String>().setSucceeded(true).setData(jsonResult);
+			String resultXMLStr = _globalWeatherSoap.getCitiesByCountry(countryName);			
+			return new CommandOutput<String>().setSucceeded(true).setData(resultXMLStr).setIsXMLResult(true);
 		} catch (Exception e) {
 			_logger.error(this.getClass().getSimpleName()+" failed because... "+e);
 			return new CommandOutput<String>().setSucceeded(false);

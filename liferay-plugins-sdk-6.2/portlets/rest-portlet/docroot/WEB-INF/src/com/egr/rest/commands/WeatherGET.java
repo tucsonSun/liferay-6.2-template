@@ -22,7 +22,6 @@ import org.springframework.stereotype.Component;
 
 import com.egr.external.ws.globalweather.GlobalWeatherSoap;
 import com.egr.rest.commands.core.CommandOutput;
-import com.egr.rest.commands.core.ServicesControllerAbstract;
 import com.egr.rest.commands.interfaces.CommandInputInterface;
 import com.egr.rest.commands.interfaces.RouteContextInterface;
 import com.egr.rest.commands.model.WeatherModel;
@@ -66,15 +65,11 @@ public class WeatherGET implements CommandInputInterface {
 
 	public CommandOutput<String> execute(RouteContextInterface context) {
 		try {
-			String list = _globalWeatherSoap.getCitiesByCountry("United States");
-			_logger.info("cities= " + list);
-
-			String jsonResult = ServicesControllerAbstract.convert_XML_to_JSON(list);
+			String resultXMLStr = _globalWeatherSoap.getCitiesByCountry("United States");
 
 			WeatherModel weatherModel = new WeatherModel();
 			weatherModel.setStatus("this is the GET");
-
-			return new CommandOutput<String>().setSucceeded(true).setData(jsonResult);
+			return new CommandOutput<String>().setSucceeded(true).setData(resultXMLStr).setIsXMLResult(true);
 		} catch (Exception e) {
 			_logger.error("WeatherGET failed because... "+e);
 			return new CommandOutput<String>().setSucceeded(false);
