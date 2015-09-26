@@ -1,6 +1,13 @@
+	<md-toolbar layout="row">
+		<div class="md-toolbar-tools">
+			<h1>Weather</h1>
+		</div>
+	</md-toolbar>
+
 <div class="view-container" ng-init="vm.loadDataAction()">
 
 	<div egr-loader is-loaded="false"></div>
+	<div egr-loader is-loaded="vm.contentLoaded"></div>
 	<!-- <div egr-loader is-loaded="vm.contentLoaded"></div> -->
 
 	<h3 class="text-right">Weather Cities for {{vm.countryName}}</h3>
