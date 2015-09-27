@@ -1,49 +1,46 @@
-	<md-toolbar layout="row">
-		<div class="md-toolbar-tools">
-			<h1>Weather</h1>
-		</div>
-	</md-toolbar>
-
+<md-toolbar layout="row">
+    <div class="md-toolbar-tools">
+        <h1>Weather</h1>
+    </div>
+</md-toolbar>
 <div class="view-container" ng-init="vm.loadDataAction()">
-
-	<div egr-loader is-loaded="false"></div>
-	<div egr-loader is-loaded="vm.contentLoaded"></div>
-	<!-- <div egr-loader is-loaded="vm.contentLoaded"></div> -->
-
-	<h3 class="text-right">Weather Cities for {{vm.countryName}}</h3>
-	
-	<br />
-
-	<div class="table-container">
-		<table st-table="vm.rowCollection" class="table table-striped">
-			<thead>
-				<tr>
-					<th st-sort="Country">Country</th>
-					<th st-sort="City">City</th>
-					<th>Weather</th>
-				</tr>
-				<tr>
-					<th colspan="2"><input st-search="" placeholder="global search..." class="input-sm form-control" type="search" /></th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr ng-repeat="row in vm.rowCollection">
-					<td>{{row.Country | uppercase}}</td>
-					<td>{{row.City}}</td>
-					<td>
-						<button type="button" ng-click="vm.getWeatherForCity(row)" class="btn btn-sm btn-success" value="Get Temp...">
-							<i class="glyphicon glyphicon-eye-open"></i>
-						</button>
-					</td>
-				</tr>
-			</tbody>
-				<tfoot>
-				<tr>
-					<td colspan="2" class="text-center">
-						<div  st-pagination="" st-items-by-page="5" st-pagination=""></div>
-					</td>
-				</tr>
-				</tfoot>
-		</table>
-	</div>
+    <div egr-loader ng-hide="vm.contentLoaded"></div>
+    <div ng-cloak class="ng-cloak ng-hide" ng-show="vm.contentLoaded">
+        <h3 class="text-right">Weather Cities for {{vm.countryName}}</h3>
+        <br />
+        <div class="table-container">
+            <table st-table="vm.rowCollection" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th st-sort="Country">Country</th>
+                        <th st-sort="City">City</th>
+                        <th>Weather</th>
+                    </tr>
+                    <tr>
+                        <th colspan="2">
+                            <input st-search="" placeholder="global search..." class="input-sm form-control" type="search" />
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="row in vm.rowCollection">
+                        <td>{{row.Country | uppercase}}</td>
+                        <td>{{row.City}}</td>
+                        <td>
+                            <button type="button" ng-click="vm.getWeatherForCity(row)" class="btn btn-sm btn-success" value="Get Temp...">
+                                <i class="glyphicon glyphicon-eye-open"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="2" class="text-center">
+                            <div st-pagination="" st-items-by-page="5" st-pagination=""></div>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
 </div>

@@ -10,6 +10,7 @@
 	function GlobalWeatherCtrlAs(globalWeatherService) {
 		var vm = this;
 		vm.resultData = null;
+		vm.contentLoaded = false;
 	
         /**
          * Method will use the location service to get agencyCodes then do a callback to locationsCallbackAction
