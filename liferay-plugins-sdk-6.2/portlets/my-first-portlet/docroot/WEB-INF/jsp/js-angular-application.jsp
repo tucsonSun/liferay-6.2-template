@@ -6,6 +6,10 @@
 <!-- directives CSS -->
 <link rel="stylesheet" href="/my-first-portlet/css/directives.css" />
 
+<!-- model objects -->
+<script src="/my-first-portlet/app/core/modelObjects/modelObjects.module.js"></script>
+<script src="/my-first-portlet/app/core/modelObjects/MessageObj.js"></script>
+
 <!-- application files -->
 <script src="/my-first-portlet/app/app.module.js"></script>
 <script src="/my-first-portlet/app/app.routes.js"></script>
@@ -41,3 +45,4 @@
 <script src="/my-first-portlet/app/featureSets/home/home.controller.js"></script>
 <script src="/my-first-portlet/app/featureSets/globalWeather/global-weather.module.js"></script>
 <script src="/my-first-portlet/app/featureSets/globalWeather/global-weather.controller.js"></script>
+<script src="/my-first-portlet/app/featureSets/globalWeather/city-weather.controller.js"></script>

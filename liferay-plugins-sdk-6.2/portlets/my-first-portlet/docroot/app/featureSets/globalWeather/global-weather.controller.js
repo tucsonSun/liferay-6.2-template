@@ -5,9 +5,9 @@
 		.module('myFirstApp.globalWeatherModule')
 		.controller('GlobalWeatherCtrlAs', GlobalWeatherCtrlAs);
 
-	GlobalWeatherCtrlAs.$inject = ['$scope','globalWeatherService'];
+	GlobalWeatherCtrlAs.$inject = ['$scope', '$location','globalWeatherService'];
 
-	function GlobalWeatherCtrlAs($scope, globalWeatherService) {
+	function GlobalWeatherCtrlAs($scope, $location, globalWeatherService) {
 		var vm = this;
 		vm.resultData = null;
 		vm.contentLoaded = false;
@@ -34,8 +34,9 @@
 		
 	    
 	    vm.getWeatherForCity = function(row) {
-	    	var city = row.City;
-			console.log("vm.getWeatherForCity function called for city ....  "+city);
+	    	vm.countryName = row.Country;
+	    	vm.cityName = row.City;
+			$location.path('/globalWeather/'+vm.countryName+"/"+vm.cityName);
 		};
 		
 	}//end of Ctrl	

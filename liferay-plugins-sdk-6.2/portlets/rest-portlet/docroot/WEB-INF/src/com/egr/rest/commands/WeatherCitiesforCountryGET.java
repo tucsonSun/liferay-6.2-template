@@ -69,7 +69,9 @@ public class WeatherCitiesforCountryGET implements CommandInputInterface {
 				_logger.error("countryName is not allowed to be null");
 				return new CommandOutput<String>().setSucceeded(false);
 			}
-		
+			
+			countryName = java.net.URLDecoder.decode(countryName, "UTF-8");
+			_logger.info(String.format("Calling SOAP with parm '%s'", countryName));
 			String resultXMLStr = _globalWeatherSoap.getCitiesByCountry(countryName);			
 			return new CommandOutput<String>().setSucceeded(true).setData(resultXMLStr).setIsXMLResult(true);
 		} catch (Exception e) {

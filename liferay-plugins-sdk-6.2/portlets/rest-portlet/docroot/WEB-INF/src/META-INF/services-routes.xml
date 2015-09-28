@@ -63,6 +63,10 @@
 		<bean parent="GenericRouteImpl" p:uri="/weather/{countryName}" p:method="GET"
 			p:isRouteAuthenticated="false" p:commandName="weatherCitiesforCountryGET">
 		</bean>	
+		
+		<bean parent="GenericRouteImpl" p:uri="/weather/{countryName}/{cityName}" p:method="GET"
+			p:isRouteAuthenticated="false" p:commandName="weatherforCityGET">
+		</bean>	
 
 		<!-- *********************** -->
 		<!-- AUTHENTICATED routes -->
