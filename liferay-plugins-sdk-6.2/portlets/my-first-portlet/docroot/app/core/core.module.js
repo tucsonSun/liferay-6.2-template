@@ -15,6 +15,7 @@
         'blocks.router',
         'myFirstApp.services',
         'myFirstApp.directives',
+        'myFirstApp.modelObjects',
         /*
          * 3rd Party modules
          */

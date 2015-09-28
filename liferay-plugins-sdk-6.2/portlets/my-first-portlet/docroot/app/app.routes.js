@@ -30,6 +30,12 @@
                 controller: 'GlobalWeatherCtrlAs',
                 controllerAs: 'vm'
             })
+            .state('/globalWeather/:countryName/:cityName', {
+                url: '/globalWeather/:countryName/:cityName',
+                templateUrl: '/my-first-portlet/app/featureSets/globalWeather/city-weather.html',
+                controller: 'CityWeatherCtrlAs',
+                controllerAs: 'vm'
+            })
             .state('sell', {
                 url: '/sell',
                 templateUrl: '/my-first-portlet/app/featureSets/sell.html',
