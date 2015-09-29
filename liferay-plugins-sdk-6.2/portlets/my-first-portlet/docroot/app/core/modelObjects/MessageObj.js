@@ -14,6 +14,12 @@ MODEL.MessageObj = (function() {
 	 * @param msg
 	 **/
 	function MessageObj(type, msg) {
+		if (!type || type.length === 0)
+			throw new Error("type is now allowed to be null/empty.");
+		if (!msg || msg.length === 0)
+			throw new Error("msg is now allowed to be null/empty.");
+		
+		
 		this.type = type;
 		this.title = capitalizeFirstLetter(this.type);
 		this.msg = msg;
@@ -63,6 +69,9 @@ MODEL.MessageObj = (function() {
 			this.msg = null;
 		},
 
+		hasMsg : function() {
+			return this.getMsg() && this.getMsg().length > 0;
+		},
 		
 		/**
 		 * Stringify the MessageObj object.
