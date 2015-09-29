@@ -6,6 +6,8 @@
 <div class="view-container" ng-init="vm.loadDataAction()">
     <div egr-loader ng-hide="vm.contentLoaded"></div>
     <div ng-cloak class="ng-cloak ng-hide" ng-show="vm.contentLoaded">
+    	<!-- message panel -->
+        <div message-panel message="vm.message" messages="vm.messages" next-message="vm.nextMessage"></div>
         <h3 class="text-right">Weather for {{vm.cityName}}</h3>
         <br />
         <pre>
@@ -13,9 +15,11 @@
         </pre>
         <br />
         <pre>
-        {{vm.message}}
+        {{vm.messageToString}}
         </pre>
         <br />
-        <md-button ng-href="#/globalWeather" class="text-right">Back</md-button>
+        <div class="text-right">
+        	<md-button ng-href="#/globalWeather">Back</md-button>
+        </div>
     </div>
 </div>
