@@ -5,14 +5,15 @@
 		.module('myFirstApp.globalWeatherModule')
 		.controller('GlobalWeatherCtrlAs', GlobalWeatherCtrlAs);
 
-	GlobalWeatherCtrlAs.$inject = ['$scope', '$location','globalWeatherService'];
+	GlobalWeatherCtrlAs.$inject = ['$scope', '$location','globalWeatherService', 'nextMessageService'];
 
-	function GlobalWeatherCtrlAs($scope, $location, globalWeatherService) {
+	function GlobalWeatherCtrlAs($scope, $location, globalWeatherService, nextMessageService) {
 		var vm = this;
 		vm.resultData = null;
 		vm.contentLoaded = false;
 		$scope.rowCollection=[];
 		$scope.displayed = [];
+		vm.nextMessageService = nextMessageService;
 	
         /**
          * Method will use the location service to get agencyCodes then do a callback to locationsCallbackAction
@@ -29,6 +30,8 @@
 		vm.postLoadDataAction = function() {
 			//console.log(vm.citiesForCountry);
 			$scope.rowCollection = vm.citiesForCountry; 
+		
+			nextMessageService.set(new MODEL.MessageObj('success', 'Flashhhh message here ....... An email has been sent to .'));
 		};
 		
 		

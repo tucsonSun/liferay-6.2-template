@@ -5,14 +5,15 @@
 		.module('myFirstApp.globalWeatherModule')
 		.controller('CityWeatherCtrlAs', CityWeatherCtrlAs);
 
-	CityWeatherCtrlAs.$inject = ['$stateParams','globalWeatherService'];
+	CityWeatherCtrlAs.$inject = ['$stateParams','globalWeatherService', 'nextMessageService'];
 
-	function CityWeatherCtrlAs($stateParams, globalWeatherService) {
+	function CityWeatherCtrlAs($stateParams, globalWeatherService, nextMessageService) {
 		var vm = this;
 		vm.resultData = null;
 		vm.contentLoaded = false;
 		vm.countryName = $stateParams.countryName;
 		vm.cityName = $stateParams.cityName;
+		vm.nextMessageService = nextMessageService;
 	
         /**
          * Method will use the location service to get agencyCodes then do a callback to locationsCallbackAction
@@ -28,16 +29,15 @@
 			var isCityDataEmpty = jQuery.isEmptyObject(vm.cityWeather); // true
 			if (isCityDataEmpty) {
 				
-				var messageObj = new MODEL.MessageObj('warning', 'The city '+vm.cityName+' does not have weather information at this time.');
+				var messageObj = new MODEL.MessageObj('warning', 'The location '+vm.cityName+' does not have weather information at this time.');
+				vm.message = messageObj;
 				
-				vm.messageObj = messageObj;
-				vm.message = messageObj.toString();
-				
-//				vm.message = {
-//                    type: 'warning',
-//                    title: 'Warning',
-//                    msg: 'The city '+vm.cityName+' does not have any weather information at this time.'
-//                };
+				var messageObj1 = new MODEL.MessageObj('danger', 'Hoooooooooo '+vm.cityName+' fffffffff.');
+				var messageObj2 = new MODEL.MessageObj('success', 'Baaaaaaaaaaa '+vm.cityName+' vvvvvvvvvvvvv.');
+				var messageObj3 = new MODEL.MessageObj('warning', 'zzzzzzzzzzz '+vm.cityName+' vvvvvvvvvvvvv.');
+				var messageObj4 = new MODEL.MessageObj('info', 'xxxxxxxxxxx '+vm.cityName+' vvvvvvvvvvvvv.');
+				var messageObj5 = new MODEL.MessageObj('error', 'yyyyyyyyy '+vm.cityName+' vvvvvvvvvvvvv.');
+				vm.messages = [messageObj1, messageObj2, messageObj3, messageObj4, messageObj5];
 			}
 		};
 		
