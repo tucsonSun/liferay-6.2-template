@@ -1,11 +1,3 @@
-<!-- directives -->
-<script src="/my-first-portlet/app/core/directives/directives.module.js"></script>
-<script src="/my-first-portlet/app/core/directives/messagePanel.directive.js"></script>
-<script src="/my-first-portlet/app/core/directives/loader.directive.js"></script>
-
-<!-- directives CSS -->
-<link rel="stylesheet" href="/my-first-portlet/css/directives.css" />
-
 <!-- model objects -->
 <script src="/my-first-portlet/app/core/modelObjects/modelObjects.module.js"></script>
 <script src="/my-first-portlet/app/core/modelObjects/MessageObj.js"></script>
@@ -32,6 +24,15 @@
 <!-- services files -->
 <script src="/my-first-portlet/app/core/services/services.module.js"></script>
 <script src="/my-first-portlet/app/core/services/underscore.service.js"></script>
+<script src="/my-first-portlet/app/core/services/nextMessage.service.js"></script>
+
+<!-- directives files -->
+<script src="/my-first-portlet/app/core/directives/directives.module.js"></script>
+<script src="/my-first-portlet/app/core/directives/messagePanel.directive.js"></script>
+<script src="/my-first-portlet/app/core/directives/loader.directive.js"></script>
+
+<!-- directives CSS -->
+<link rel="stylesheet" href="/my-first-portlet/css/directives.css" />
 
 <!-- featureSets services files -->
 <script src="/my-first-portlet/app/core/services/myFirst.base.service.js"></script>
