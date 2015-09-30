@@ -17,8 +17,10 @@
     angular
         .module('myFirstApp.directives', ['ui.bootstrap'])
         .directive('messagePanel', messagePanel);
+    
+    messagePanel.$inject = ['$rootScope', 'nextMessageService'];
 
-    function messagePanel() {
+    function messagePanel($rootScope, nextMessageService) {
         var directive = {
             restrict: 'AE',
 			"scope" : {
@@ -72,7 +74,6 @@
                     scope.alerts.push(scope.nextMessage);
         		}
         	});
-        	
         }
     }
 })();
