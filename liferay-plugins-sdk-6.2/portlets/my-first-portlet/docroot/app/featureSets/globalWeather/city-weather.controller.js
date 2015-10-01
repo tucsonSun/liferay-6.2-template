@@ -13,7 +13,6 @@
 		vm.contentLoaded = false;
 		vm.countryName = $stateParams.countryName;
 		vm.cityName = $stateParams.cityName;
-		vm.nextMessageService = nextMessageService;
 	
         /**
          * Method will use the location service to get agencyCodes then do a callback to locationsCallbackAction
@@ -28,9 +27,7 @@
 		vm.postLoadDataAction = function() {
 			var isCityDataEmpty = jQuery.isEmptyObject(vm.cityWeather); // true
 			if (isCityDataEmpty) {
-				
-				var messageObj = new MODEL.MessageObj('warning', 'The location '+vm.cityName+' does not have weather information at this time.');
-				vm.message = messageObj;
+				vm.messageObj = new MODEL.MessageObj('warning', 'The location '+vm.cityName+' does not have weather information at this time.');
 				
 				var messageObj1 = new MODEL.MessageObj('danger', 'Hoooooooooo '+vm.cityName+' fffffffff.');
 				var messageObj2 = new MODEL.MessageObj('success', 'Baaaaaaaaaaa '+vm.cityName+' vvvvvvvvvvvvv.');

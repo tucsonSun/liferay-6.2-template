@@ -13,7 +13,6 @@
 		vm.contentLoaded = false;
 		$scope.rowCollection=[];
 		$scope.displayed = [];
-		vm.nextMessageService = nextMessageService;
 	
         /**
          * Method will use the location service to get agencyCodes then do a callback to locationsCallbackAction

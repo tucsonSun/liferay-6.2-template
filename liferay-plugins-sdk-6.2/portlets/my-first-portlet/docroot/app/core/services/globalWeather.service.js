@@ -29,15 +29,12 @@
                         vm.postLoadDataAction();
                         vm.contentLoaded = true;
                     } else {
-                        vm.message = response.message;
+                        vm.messageObj = new MODEL.MessageObj('error', response.msg);
                         vm.contentLoaded = true;
                     }
                 })
                 .catch(function(error){
-                    vm.message = {
-                        type: 'error',
-                        msg: 'There was a problem processing your request.'
-                    };
+                    vm.messageObj = new MODEL.MessageObj('error', 'There was a problem processing your request.');
                     vm.contentLoaded = true;
                 });
             },
@@ -55,15 +52,12 @@
                         vm.postLoadDataAction();
                         vm.contentLoaded = true;
                     } else {
-                        vm.message = response.message;
+                    	vm.messageObj = new MODEL.MessageObj('error', response.msg);
                         vm.contentLoaded = true;
                     }
                 })
                 .catch(function(error){
-                    vm.message = {
-                        type: 'error',
-                        msg: 'There was a problem processing your request.'
-                    };
+                    vm.messageObj = new MODEL.MessageObj('error', 'There was a problem processing your request.');
                     vm.contentLoaded = true;
                 });
             }

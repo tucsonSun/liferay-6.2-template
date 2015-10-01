@@ -3,11 +3,11 @@
  * 
  * Sample messages
  *             scope.alerts = [
- *             		{ type: 'danger', msg: 'Oh snap! Change a few things up and try submitting again.' },
- *              	{ type: 'success', title: "Success!", msg: 'Well done! You successfully read this important alert message.' },
- *            		{ type: 'warning', msg: 'Another alert!' },
- *              	{ type: 'info', msg: 'do you have any ideas, why ?' },
- *              	{ type: 'error', msg: 'this an error message....' }
+ *                  { type: 'danger', msg: 'Oh snap! It's all bad.' },
+ *                  { type: 'success', title: "Success!", msg: 'You did well.' },
+ *                  { type: 'warning', msg: 'A genearl alert!' },
+ *                  { type: 'info', msg: 'a blue message' },
+ *                  { type: 'error', msg: 'No no! something bad happened' }
  *              ];
  * 
  */
@@ -17,63 +17,63 @@
     angular
         .module('myFirstApp.directives', ['ui.bootstrap'])
         .directive('messagePanel', messagePanel);
-    
-    messagePanel.$inject = ['$rootScope', 'nextMessageService'];
 
-    function messagePanel($rootScope, nextMessageService) {
+    messagePanel.$inject = ['nextMessageService'];
+
+    function messagePanel(nextMessageService) {
         var directive = {
             restrict: 'AE',
-			"scope" : {
-	            "message": "=",
-	            "messages": "=",
-	            "nextMessage":"="
-			},
-	        template: '<div id="messagePanelId" class="clear messagePanel">'+
-			        	'<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="close($index)">'+
-			        		'<strong ng-if="alert.title">{{alert.title}}:&nbsp;&nbsp;</strong>{{alert.msg}}'+
-			        	'</alert>'+
-			          '</div>',
-			replace : true, //element to which the directive declared should be replaced with template
-			link: link
+            "scope": {
+                "messageObj": "=",
+                "messages": "=",
+                "nextMessage": "="
+            },
+            template: '<div id="messagePanelId" class="clear messagePanel">' +
+                '<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="close($index)">' +
+                '<strong ng-if="alert.title">{{alert.title}}:&nbsp;&nbsp;</strong>{{alert.msg}}' +
+                '</alert>' +
+                '</div>',
+            replace: true, //element to which the directive declared should be replaced with template
+            link: link
         };
 
         return directive;
 
         function link(scope, element, attrs) {
-			// initialize
+            // initialize
             scope.alerts = [];
-        	
-        	/**
+
+            /**
              * Method to close a message row
              */
-        	scope.close = function(index) {
-            	scope.alerts.splice(index, 1);
-        	};
-        	
-        	
-        	scope.$watch('message', function(newValue, oldValue){
-        		if (scope.message && scope.message.hasMsg()) {
+            scope.close = function(index) {
+                scope.alerts.splice(index, 1);
+            };
+
+
+            scope.$watch('messageObj', function(newValue, oldValue) {
+                if (scope.messageObj && scope.messageObj.hasMsg()) {
                     // Push into alerts array
-                    scope.alerts.push(scope.message);
-        		}
-        	});
-        	
-        	scope.$watch('messages', function(newValue, oldValue){
-        		if (scope.message && scope.messages.length > 0) {
-        			for (var i = 0; i < scope.messages.length; i++) {
-						var msgTemp = scope.messages[i];
-						// Push into alerts array
-						scope.alerts.push(msgTemp);
-					}
-        		}
-        	});
-        	
-        	scope.$watch('nextMessage', function(newValue, oldValue){
-        		if (scope.nextMessage && scope.nextMessage.hasMsg()) {
+                    scope.alerts.push(scope.messageObj);
+                }
+            });
+
+            scope.$watch('messages', function(newValue, oldValue) {
+                if (scope.messages && scope.messages.length > 0) {
+                    for (var i = 0; i < scope.messages.length; i++) {
+                        var msgObj = scope.messages[i];
+                        // Push into alerts array
+                        scope.alerts.push(msgObj);
+                    }
+                }
+            });
+
+            scope.$watch('nextMessageService.get()', function(newValue, oldValue) {
+                if (nextMessageService.get() && nextMessageService.hasMsg()) {
                     // Push into alerts array
-                    scope.alerts.push(scope.nextMessage);
-        		}
-        	});
+                    scope.alerts.push(nextMessageService.get());
+                }
+            });
         }
     }
 })();
