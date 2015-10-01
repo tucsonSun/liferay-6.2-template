@@ -62,8 +62,8 @@ public interface CommandOutputInterface<T> {
 	public T getData();
 	public CommandOutput<T> setData(T data);
 
-	public String getMessage();
-	public CommandOutput<T> setMessage(String message);
+	public String getMsg();
+	public CommandOutput<T> setMsg(String message);
 
 	public boolean isCached();
 	public CommandOutput<T> setCached(Boolean cached);

@@ -98,12 +98,12 @@ public abstract class ServicesControllerAbstract {
 		setCommandInputInterface(getCommandInputObject());
 		
 		if (getRoutingInfo() == null || getGenericRouteInterface() == null || getGenericRouteInterface().getCommandName() == null) {
-			return new CommandOutput<Object>().setSucceeded(false).setMessage(CommandOutput.DEFAULT_ROUTE_NOT_FOUND);
+			return new CommandOutput<Object>().setSucceeded(false).setMsg(CommandOutput.DEFAULT_ROUTE_NOT_FOUND);
 		}
 
 		if (getCommandInputInterface() == null) {
 			_logger.error(String.format("A error happend. CommandInput for '%s' and uri=%s not found.", getGenericRouteInterface().getCommandName(), routingUri));
-			return new CommandOutput<Object>().setSucceeded(false).setMessage(CommandOutput.DEFAULT_ROUTE_NOT_FOUND);
+			return new CommandOutput<Object>().setSucceeded(false).setMsg(CommandOutput.DEFAULT_ROUTE_NOT_FOUND);
 		}
 
 		RouteContextLiferay routeContext = new RouteContextLiferay(request, getRoutingInfo().getPathParameters());
@@ -122,7 +122,7 @@ public abstract class ServicesControllerAbstract {
 
 			if (!authenticated) {
 				_logger.error(String.format("Authentication failed for named command '%s' for uri=%s", getGenericRouteInterface().getCommandName(), routingUri));
-				return new CommandOutput<Object>().setSucceeded(false).setMessage(CommandOutput.DEFAULT_NOT_AUTHORIZED_MESSAGE);
+				return new CommandOutput<Object>().setSucceeded(false).setMsg(CommandOutput.DEFAULT_NOT_AUTHORIZED_MESSAGE);
 			}
 			result = getCommandInputInterface().execute(routeContext);
 		}
@@ -131,7 +131,7 @@ public abstract class ServicesControllerAbstract {
 		// running on the client so send that message on through ....
 		catch (IllegalArgumentException e) {
 			_logger.error(e.toString());
-			return new CommandOutput<Object>().setSucceeded(false).setMessage(e.getMessage());
+			return new CommandOutput<Object>().setSucceeded(false).setMsg(e.getMessage());
 		}
 		// .... but for all other exceptions send a generic error message
 		catch (Exception e) {

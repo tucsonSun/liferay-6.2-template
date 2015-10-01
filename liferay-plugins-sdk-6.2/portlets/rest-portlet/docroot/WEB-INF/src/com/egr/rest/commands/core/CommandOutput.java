@@ -28,7 +28,7 @@ public class CommandOutput<T> implements CommandOutputInterface<T> {
 	private Boolean _isXMLResult = false;
 	private Boolean _succeeded = true;
 	private T _data = null;
-	private String _message = "";
+	private String _msg = "";
 	private Boolean _cached = false;
 
 	//
@@ -62,9 +62,9 @@ public class CommandOutput<T> implements CommandOutputInterface<T> {
 		_succeeded = succeeded;
 
 		if (succeeded == null || !_succeeded)
-			setMessage(CommandOutputInterface.DEFAULT_ERROR_MESSAGE);
+			setMsg(CommandOutputInterface.DEFAULT_ERROR_MESSAGE);
 		else if (_succeeded)
-			setMessage(CommandOutputInterface.DEFAULT_SUCCESS);
+			setMsg(CommandOutputInterface.DEFAULT_SUCCESS);
 
 		return this;
 	}
@@ -78,12 +78,12 @@ public class CommandOutput<T> implements CommandOutputInterface<T> {
 		return this;
 	}
 
-	public String getMessage() {
-		return _message;
+	public String getMsg() {
+		return _msg;
 	}
 
-	public CommandOutput<T> setMessage(String message) {
-		_message = message;
+	public CommandOutput<T> setMsg(String message) {
+		_msg = message;
 		return this;
 	}
 
