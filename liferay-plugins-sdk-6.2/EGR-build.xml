@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE project>
+
+<!-- ***************************************************************************** -->
+<!-- EGR Custom targets for Liferay -->
+<!-- ***************************************************************************** -->
+<project name="EGR-build.xml" basedir="." xmlns:antelope="antlib:ise.antelope.tasks">
+
+
+	
+
+	<!-- *********************************************************************** -->
+	<!-- EGR-Custom target. Define task to clean tomcat cached folders plus logs -->
+	<!-- *********************************************************************** -->		
+	<target name="EGR.eclipse-clear-cache" description="EGR target for cleaning tomcat cached data plus it removes logs">
+		<delete dir="${app.server.tomcat.dir}/temp" verbose="true" />
+		<delete dir="${app.server.tomcat.dir}/work" verbose="true" />
+		<delete includeemptydirs="false" verbose="true">
+			<fileset dir="${app.server.tomcat.dir}/logs" includes="**/*"/>
+		</delete>
+		<delete includeemptydirs="false" verbose="true">
+			<fileset dir="${app.server.tomcat.dir}/../logs" includes="**/*"/>
+		</delete>
+		<delete dir="${app.server.tomcat.deploy.dir}/my-first-portlet" verbose="true" />
+		<delete dir="${app.server.tomcat.deploy.dir}/rest-portlet" verbose="true" />
+		<!--delete the theme -->
+		<!-- <delete dir="${app.server.tomcat.deploy.dir}/shock-baww-theme" verbose="true" /> -->
+	</target>
+
+</project>

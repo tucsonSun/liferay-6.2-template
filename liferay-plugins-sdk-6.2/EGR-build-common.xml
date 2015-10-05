@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE project>
+
+<!-- ***************************************************************************** -->
+<!-- EGR Custom targets for Liferay -->
+<!-- ***************************************************************************** -->
+<project name="EGR-build-common.xml" basedir="." xmlns:antelope="antlib:ise.antelope.tasks">
+
+	
+	<!-- *********************************************************************** -->
+	<!-- EGR-Custom target. Define task to compile srcDir used by shared-Frameworks	 -->
+	<!-- *********************************************************************** -->
+	<target name="EGR.compile-java" description="target will compile srcDir for shared-Frameworks">
+		<echo message="Copy java from '${javac.srcdir}' -- to -- '${javac.destdir}'" />
+		<copy todir="${javac.destdir}">
+			<fileset dir="${javac.srcdir}" excludes="**/*.java" />
+		</copy>
+
+		<javac
+			classpathref="${javac.classpathref}"
+			compiler="${javac.compiler}"
+			debug="${javac.debug}"
+			deprecation="${javac.deprecation}"
+			destdir="${javac.destdir}"
+			encoding="${javac.encoding}"
+			includeAntRuntime="false"
+			nowarn="${javac.nowarn}"
+			srcdir="${javac.srcdir}"
+		/>
+	</target>
+
+</project>
