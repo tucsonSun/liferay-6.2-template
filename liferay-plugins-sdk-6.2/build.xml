@@ -3,7 +3,9 @@
 
 <project name="plugins" basedir="." default="all" xmlns:antelope="antlib:ise.antelope.tasks">
 	<import file="build-common.xml" />
-
+	<!-- EGR Customization -->
+	<import file="EGR-build.xml" />
+	
 	<target name="all">
 		<antcall target="clean" />
 		<antcall target="deploy" />
