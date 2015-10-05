@@ -44,7 +44,7 @@
 		</copy>
 
 		<echo message="compiling java files from src and place in classes folder..." />
-		<antcall target="compile-java">
+		<antcall target="EGR.compile-java">
 			<param name="javac.classpathref" value="new.plugin.classpath" />
 			<param name="javac.destdir" value="classes" />
 			<param name="javac.srcdir" value="src" />
