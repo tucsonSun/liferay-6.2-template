@@ -48,7 +48,7 @@
                     if (response.succeeded) {
                     	vm.weatherCitiesForCountryResponse = response;
                     	var data = response.data;
-                    	vm.cityWeather = data;
+                    	vm.cityWeather = data.CurrentWeather;
                         vm.postLoadDataAction();
                         vm.contentLoaded = true;
                     } else {
