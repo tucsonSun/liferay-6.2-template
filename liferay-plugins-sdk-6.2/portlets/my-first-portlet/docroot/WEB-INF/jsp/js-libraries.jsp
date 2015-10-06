@@ -6,8 +6,8 @@
 
 <!-- 3rd party libraries -->
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
-<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/angular_material/0.10.0/angular-material.min.css">
-<script src="//ajax.googleapis.com/ajax/libs/angular_material/0.10.0/angular-material.min.js"></script>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.10.0/angular-material.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.10.0/angular-material.min.js"></script>
 
 <script src="/my-first-portlet/js/3rd-party-lib/ui-router/0.2.15/angular-ui-router.min.js"></script>
 <script src="/my-first-portlet/js/3rd-party-lib/ui-bootstrap/0.13.4/ui-bootstrap-tpls-0.13.4.min.js"></script>
