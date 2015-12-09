@@ -15,7 +15,7 @@
     'use strict';
 
     angular
-        .module('myFirstApp.directives', ['ui.bootstrap'])
+        .module('myFirstApp.directives')
         .directive('messagePanel', messagePanel);
 
     messagePanel.$inject = ['nextMessageService'];
