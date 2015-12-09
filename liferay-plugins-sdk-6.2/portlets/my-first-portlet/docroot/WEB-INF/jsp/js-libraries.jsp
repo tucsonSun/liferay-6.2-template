@@ -1,18 +1,23 @@
-<!-- application core libraries -->
-<script src="/my-first-portlet/js/app-core-lib/angular/1.3.12/angular.min.js"></script>
-<script src="/my-first-portlet/js/app-core-lib/angular-animate/1.3.12/angular-animate.min.js"></script>
-<script src="/my-first-portlet/js/app-core-lib/angular-resource/1.3.12/angular-resource.min.js"></script>
-<script src="/my-first-portlet/js/app-core-lib/angular-aria/1.3.12/angular-aria.min.js"></script>
+<!-- 3rd Party CSS -->
+<link rel="stylesheet" href="/my-first-portlet/js/bower_components/angular-bootstrap/ui-bootstrap-csp.css">
+<link rel="stylesheet" href="/my-first-portlet/js/bower_components/angular-material/angular-material.min.css">
+<link rel="stylesheet" href="/my-first-portlet/js/bower_components/angular-material/angular-material.layouts.min.css">
+<link rel="stylesheet" href="/my-first-portlet/js/bower_components/toastr/toastr.min.css">
 
-<!-- 3rd party libraries -->
-<link rel="stylesheet" href="//fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
-<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.10.0/angular-material.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.10.0/angular-material.min.js"></script>
+<!-- 3rd Party libraries -->
+<script src="/my-first-portlet/js/bower_components/angular/angular.min.js"></script>
+<script src="/my-first-portlet/js/bower_components/angular-animate/angular-animate.min.js"></script>
+<script src="/my-first-portlet/js/bower_components/angular-aria/angular-aria.min.js"></script>
 
-<script src="/my-first-portlet/js/3rd-party-lib/ui-router/0.2.15/angular-ui-router.min.js"></script>
-<script src="/my-first-portlet/js/3rd-party-lib/ui-bootstrap/0.13.4/ui-bootstrap-tpls-0.13.4.min.js"></script>
-<script src="/my-first-portlet/js/3rd-party-lib/underscore/1.7.0/underscore.js"></script>
-<script src="/my-first-portlet/js/3rd-party-lib/toastr/2.1.0/toastr.min.js"></script>
-<script src="/my-first-portlet/js/3rd-party-lib/smart-table/2.1.3/smart-table.min.js"></script>
+<script src="/my-first-portlet/js/bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+<script src="/my-first-portlet/js/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+<script src="/my-first-portlet/js/bower_components/angular-material/angular-material.min.js"></script>
+
+<script src="/my-first-portlet/js/bower_components/angular-resource/angular-resource.min.js"></script>
+<script src="/my-first-portlet/js/bower_components/angular-smart-table/dist/smart-table.min.js"></script>
+<script src="/my-first-portlet/js/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="/my-first-portlet/js/bower_components/toastr/toastr.min.js"></script>
+<script src="/my-first-portlet/js/bower_components/underscore/underscore-min.js"></script>
+
 
 
