@@ -26,7 +26,7 @@
 	<!-- ********************************************************************** -->
 	<!-- Bean External Web SOAP Services										-->
 	<!-- ********************************************************************** -->
-	<bean id="globalWeatherSoap"
+	<bean id="globalWeatherSoapId"
 		class="org.springframework.remoting.jaxws.JaxWsPortProxyFactoryBean">
 		<property name="lookupServiceOnStartup" value="false" />
 		<property name="serviceName" value="GlobalWeather" />

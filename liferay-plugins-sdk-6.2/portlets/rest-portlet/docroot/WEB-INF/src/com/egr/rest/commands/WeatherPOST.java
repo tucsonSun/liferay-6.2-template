@@ -14,10 +14,13 @@
  */
 package com.egr.rest.commands;
 
+import javax.annotation.Resource;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+import com.egr.external.ws.globalweather.GlobalWeatherSoap;
 import com.egr.rest.commands.core.CommandOutput;
 import com.egr.rest.commands.interfaces.CommandInputInterface;
 import com.egr.rest.commands.interfaces.RouteContextInterface;
@@ -32,6 +35,9 @@ import com.liferay.portal.model.User;
  */
 @Component("weatherPOST")
 public class WeatherPOST implements CommandInputInterface {
+	
+	@Resource(name="globalWeatherSoapId")
+	GlobalWeatherSoap _globalWeatherSoap;
 	
 	private static final Logger _logger = LoggerFactory.getLogger(WeatherPOST.class);
 	//

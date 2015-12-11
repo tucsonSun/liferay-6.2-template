@@ -33,7 +33,8 @@ import com.egr.rest.commands.interfaces.RouteContextInterface;
  */
 @Component("weatherforCityGET")
 public class WeatherforCityGET implements CommandInputInterface {
-	@Resource
+	
+	@Resource(name="globalWeatherSoapId")
 	GlobalWeatherSoap _globalWeatherSoap;
 
 	private static final Logger _logger = LoggerFactory.getLogger(WeatherforCityGET.class);

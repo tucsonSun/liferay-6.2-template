@@ -34,7 +34,8 @@ import com.egr.rest.commands.model.WeatherModel;
  */
 @Component("weatherGET")
 public class WeatherGET implements CommandInputInterface {
-	@Resource
+	
+	@Resource(name="globalWeatherSoapId")
 	GlobalWeatherSoap _globalWeatherSoap;
 
 	private static final Logger _logger = LoggerFactory.getLogger(WeatherGET.class);
