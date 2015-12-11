@@ -11,7 +11,7 @@
 	</condition>
 
 	<!-- Windows path -->
-	<property name="jdk.windows.home" value="C:/Program Files/Java/jdk1.7.0_45" />
+	<property name="jdk.windows.home" value="C:/Program Files/Java/jdk1.7.0_67" />
 	<!-- Linux path -->
 	<property name="jdk.linux.home" value="/usr/lib/jvm/java-7-openjdk-amd64" />
 
