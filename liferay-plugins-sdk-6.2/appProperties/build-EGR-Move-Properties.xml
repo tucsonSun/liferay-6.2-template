@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE project>
-<project name="EGR-Move-PropertiesFiles" default="help">
+<project name="EGR-Move-SDK-Properties-Files" default="help">
 
 	<property environment="env" />
 
@@ -43,17 +43,17 @@
 		<property name="cmd2" value="copy *.properties ${sdk.dir}" />
 		
 		<echo message="run command='${cmd1}'" />
-		<exec dir="${sdk.dir}" executable="cmd" >
+		<exec dir="${sdk.dir}" executable="cmd" failonerror="true">
 			<arg line="/c '${cmd1}'"/>
 		</exec>
 		
 		<echo message="run command='${cmd2}'" />
-		<exec dir="." executable="cmd" >
+		<exec dir="." executable="cmd" failonerror="true">
 			<arg line="/c '${cmd2}'"/>
 		</exec>
 		
 		<echo message="run command='${cmd1}'" />
-		<exec dir="${sdk.dir}" executable="cmd" >
+		<exec dir="${sdk.dir}" executable="cmd" failonerror="true">
 			<arg line="/c '${cmd1}'"/>
 		</exec>
 	</target>
@@ -65,15 +65,28 @@
 		<property name="sdk.dir" value="${app.server.parent.dir}"/>
 		
 		<echo message="the sdk.dir path='${sdk.dir}'" />
-		<property name="cmd1" value="ls -al ${sdk.dir}/*properties*; cp *.properties ${sdk.dir}; ls -al ${sdk.dir}/*properties*" />
-	
+		<property name="cmd1" value="ls -al ${sdk.dir}/*properties*;" />
+		<property name="cmd2" value="cp *.properties ${sdk.dir}/;" />
 				
 		<echo message="run command='${cmd1}'" />
-		<exec dir="${sdk.dir}" executable="cmd" >
-			<arg line="/c '${cmd1}'"/>
+		<exec dir="${sdk.dir}" executable="/bin/sh" failonerror="true">
+			<arg value="-c" />
+			<arg value="${cmd1}"/>
 		</exec>
 		
+		
+		<echo message="run command='${cmd2}'" />
+		<exec dir="." executable="/bin/sh" failonerror="true">
+			<arg value="-c" />
+			<arg value="${cmd2}"/>
+		</exec>
 
+		<echo message="run command='${cmd1}'" />
+		<exec dir="${sdk.dir}" executable="/bin/sh" failonerror="true" outputproperty="cmd3.result">
+			<arg value="-c" />
+			<arg value="${cmd1}"/>
+		</exec>
+		<echo message="${cmd3.result}" />
 	</target>
 	
 
