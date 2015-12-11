@@ -56,7 +56,7 @@ ivy.xml.MD5
 # Portlets
 #
 #/portlets/*/docroot/WEB-INF/lib*
-/portlets/*/docroot/js/bower_components/*
+/portlets/*/docroot/js-libraries/bower_components/*
 /portlets/*/docroot/WEB-INF/classes
 /portlets/*/.project
 /portlets/*/.classpath
