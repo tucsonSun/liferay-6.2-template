@@ -41,6 +41,6 @@
 <!-- Angular Libraries -->
 <jsp:include page="js-libraries.jsp"/>
 <!-- Angular Application -->
-<jsp:include page="js-angular-application.jsp"/>
+<jsp:include page="js-app.jsp"/>
 <!-- Permissions UserInfo Object -->
 <jsp:include page="js-userInfo.jsp"/>
