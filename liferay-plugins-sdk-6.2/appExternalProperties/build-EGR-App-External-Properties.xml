@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<!DOCTYPE project>
+<project name="EGR-Application-External-Properties" default="help">
+
+	<property environment="env" />
+	<property name="path.to.windows.liferay.properites" value="../build.ErnestoRendon-Win8.properties"/>
+	<property name="path.to.linux.liferay.properites" value="../build.ErnestoGarciaRendon-Ubuntu.properties"/>
+
+	<condition property="isWindows">
+		<os family="windows" />
+	</condition>
+
+	<condition property="isUnix">
+		<os family="unix" />
+	</condition>
+
+	<target name="help">
+		<echo message="Helper target. This is intented to move app properties to the liferay SDK path." />
+	</target>
+
+	<target name="setWindowsPaths" if="isWindows">
+		<echo message="Ant detected that OS isWindows= ${isWindows}" />
+		<antcall target="windowsMoveTarget" />
+	</target>
+
+	<target name="setUnixPaths" if="isUnix">
+		<echo message="Ant detected that OS isLinux= ${isUnix}" />
+		<antcall target="unixMoveTarget" />
+	</target>
+	
+	<!-- ********************** -->
+	<!-- Main Target used to move properites that we want exposed to the liferay-sdk-path -->
+	<!-- ********************** -->
+	<target name="move-external-app-properties-to-sdk-path" description="target will move properties to liferay SDK path">
+		
+		<antcall target="setWindowsPaths"></antcall>
+		<antcall target="setUnixPaths"></antcall>
+		<echo message="Complete........" />
+	</target>
+
+	<target name="windowsMoveTarget">	
+		<property  file="${path.to.windows.liferay.properites}" />	
+		<property name="tomcatPath" value="${app.server.tomcat.dir}" />
+		<property name="sdk.dir" value="${app.server.parent.dir}"/>
+		<property name="cmd1" value="dir *.properties*" />
+		<property name="cmd2" value="copy *.properties ${sdk.dir}" />
+		
+		
+		<echo message="path.to.windows.liferay.properites='${path.to.windows.liferay.properites}'" />
+		<echo message="run command='${cmd1}'" />
+		<exec dir="${sdk.dir}" executable="cmd" failonerror="true">
+			<arg line="/c '${cmd1}'"/>
+		</exec>
+		
+		<echo message="run command='${cmd2}'" />
+		<exec dir="." executable="cmd" failonerror="true">
+			<arg line="/c '${cmd2}'"/>
+		</exec>
+		
+		<echo message="run command='${cmd1}'" />
+		<exec dir="${sdk.dir}" executable="cmd" failonerror="true">
+			<arg line="/c '${cmd1}'"/>
+		</exec>
+	</target>
+
+	
+	<target name="unixMoveTarget">	
+		<property  file="${path.to.linux.liferay.properites}" />	
+		<property name="tomcatPath" value="${app.server.tomcat.dir}" />
+		<property name="sdk.dir" value="${app.server.parent.dir}"/>
+		<property name="cmd1" value="ls -al ${sdk.dir}/*properties*;" />
+		<property name="cmd2" value="cp *.properties ${sdk.dir}/;" />
+				
+		
+		<echo message="path.to.linux.liferay.properites='${path.to.linux.liferay.properites}'" />
+		<echo message="run command='${cmd1}'" />
+		<exec dir="${sdk.dir}" executable="/bin/sh" failonerror="true">
+			<arg value="-c" />
+			<arg value="${cmd1}"/>
+		</exec>
+		
+		
+		<echo message="run command='${cmd2}'" />
+		<exec dir="." executable="/bin/sh" failonerror="true">
+			<arg value="-c" />
+			<arg value="${cmd2}"/>
+		</exec>
+
+		<echo message="run command='${cmd1}'" />
+		<exec dir="${sdk.dir}" executable="/bin/sh" failonerror="true" outputproperty="cmd3.result">
+			<arg value="-c" />
+			<arg value="${cmd1}"/>
+		</exec>
+		<echo message="${cmd3.result}" />
+	</target>
+	
+
+</project>
