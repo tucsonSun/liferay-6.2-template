@@ -3,7 +3,9 @@
 <project name="EGR-Application-External-Properties" default="help">
 
 	<property environment="env" />
+	<!-- Windows path -->
 	<property name="path.to.windows.liferay.properites" value="../build.ErnestoRendon-Win8.properties"/>
+	<!-- Linux path -->
 	<property name="path.to.linux.liferay.properites" value="../build.ErnestoGarciaRendon-Ubuntu.properties"/>
 
 	<condition property="isWindows">

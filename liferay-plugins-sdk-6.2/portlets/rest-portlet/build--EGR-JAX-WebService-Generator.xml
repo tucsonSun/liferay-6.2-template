@@ -21,12 +21,13 @@
 
 	<property name="wsdl" value="http://www.webservicex.com/globalweather.asmx?wsdl" />
 	<property name="package" value="com.egr.external.ws.globalweather" />
+	
 	<property name="src" value="docroot/WEB-INF/src" />
 	<property name="classes" value="docroot/WEB-INF/classes" />
-	<property name="javac.srcdir" value="./docroot/WEB-INF/src/com/egr/external/ws/globalweather" />
+	<property name="javac.srcdir" value="docroot/WEB-INF/src/com/egr/external/ws/globalweather" />
 	<property name="javac.destdir" value="webService_dist" />
 	<property name="jar.srcdir" value="${javac.destdir}" />
-	<property name="jarName.and.path" value="docroot/WEB-INF/lib/webServices-weather.jar" />
+	<property name="jarName.and.path" value="docroot/WEB-INF/lib/bundled-API-webServices-globalWeather.jar" />
 
 
 	<target name="help">
