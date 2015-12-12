@@ -45,7 +45,9 @@
 		<property name="jdk.home" value="${jdk.linux.home}" />
 	</target>
 
+	<!-- ********************** -->
 	<!-- Main Target used to generate the Java WebServcies Classes -->
+	<!-- ********************** -->
 	<target name="deploy-webService" description="target will generate Java classes from a specifed WSDL using JAX-WS" depends="setWindowsPaths, setUnixPaths">		
 		<antcall target="create-webService-java-package"></antcall>
 		<antcall target="compile-webService-java"></antcall>
