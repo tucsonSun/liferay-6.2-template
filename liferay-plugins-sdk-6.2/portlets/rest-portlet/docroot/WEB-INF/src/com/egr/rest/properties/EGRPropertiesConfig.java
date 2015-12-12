@@ -47,7 +47,7 @@ public class EGRPropertiesConfig implements IPropertiesConstants {
 		File f = new File(pathToProperties);
 		if (!f.exists()) {
 			_logger.info("***************************************************************************************************");
-			_logger.info("*		Failure in loading properties file '"+PROPFILE__LIFERAY_TOMCAT+"' from path="+pathToProperties);
+			_logger.info("*	FAILURE in loading properties file '"+PROPFILE__LIFERAY_TOMCAT+"' from path="+pathToProperties);
 			_logger.info("***************************************************************************************************");
 			throw new IllegalArgumentException("Properties file not found for '"+PROPFILE__LIFERAY_TOMCAT+"' in path="+pathToProperties);
 		}
@@ -57,7 +57,7 @@ public class EGRPropertiesConfig implements IPropertiesConstants {
 		ppc.setLocations(resources);	
 		
 		_logger.info("***************************************************************************************************");
-		_logger.info("*		Success in loading properties file '"+PROPFILE__LIFERAY_TOMCAT+"' from path="+pathToProperties);
+		_logger.info("*	SUCESS in loading properties file '"+PROPFILE__LIFERAY_TOMCAT+"' from path="+pathToProperties);
 		_logger.info("***************************************************************************************************");
 		return ppc;
 	}
