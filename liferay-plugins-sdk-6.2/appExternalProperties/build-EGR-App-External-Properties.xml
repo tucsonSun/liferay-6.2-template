@@ -32,7 +32,6 @@
 	<!-- Main Target used to move properites that we want exposed to the liferay-sdk-path -->
 	<!-- ********************** -->
 	<target name="move-external-app-properties-to-sdk-path" description="target will move properties to liferay SDK path">
-		
 		<antcall target="setWindowsPaths"></antcall>
 		<antcall target="setUnixPaths"></antcall>
 		<echo message="Complete........" />
