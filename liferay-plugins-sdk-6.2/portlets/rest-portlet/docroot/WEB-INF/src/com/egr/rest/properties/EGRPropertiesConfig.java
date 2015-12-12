@@ -38,21 +38,28 @@ public class EGRPropertiesConfig implements IPropertiesConstants {
 	
 	private static Logger _logger = LoggerFactory.getLogger(EGRPropertiesConfig.class);
 	
-	@Bean(name="egrLiferayPropertiesId")
+	@Bean(name="egrPropertiesId")
 	public PropertyPlaceholderConfigurer egrLiferayProperties() {
 		String pathToProperties = PropsUtil.get(PROPFILE__LIFERAY_TOMCAT);
 		if (pathToProperties == null) {
 			throw new IllegalArgumentException("pathToProperties not found in portal-ext.properties");
 		}
-		File f = new File(pathToProperties);
-		if (!f.exists()) {
+		File file = new File(pathToProperties);
+		if (!file.exists()) {
 			_logger.info("***************************************************************************************************");
 			_logger.info("*	FAILURE in loading properties file '"+PROPFILE__LIFERAY_TOMCAT+"' from path="+pathToProperties);
+			_logger.info("*	NOTE: remember to run the ANT task 'move-external-app-properties-to-sdk-path' it can be found in folder 'appExternalProperties' ");
 			_logger.info("***************************************************************************************************");
-			throw new IllegalArgumentException("Properties file not found for '"+PROPFILE__LIFERAY_TOMCAT+"' in path="+pathToProperties);
+			
+			//
+			// Because this external properties file is important stop the server
+			//
+			System.exit(0);
+			
+			//throw new IllegalArgumentException("Properties file not found for '"+PROPFILE__LIFERAY_TOMCAT+"' in path="+pathToProperties);
 		}
 		PropertyPlaceholderConfigurer ppc = new PropertyPlaceholderConfigurer();
-		FileSystemResource fsr = new FileSystemResource(f);
+		FileSystemResource fsr = new FileSystemResource(file);
 		Resource[] resources = new FileSystemResource[] {fsr};
 		ppc.setLocations(resources);	
 		
