@@ -38,7 +38,7 @@ public class EGRPropertiesConfig implements IPropertiesConstants {
 	
 	private static Logger _logger = LoggerFactory.getLogger(EGRPropertiesConfig.class);
 	
-	@Bean(name="egrLiferayProperties")
+	@Bean(name="egrLiferayPropertiesId")
 	public PropertyPlaceholderConfigurer egrLiferayProperties() {
 		String pathToProperties = PropsUtil.get(PROPFILE__LIFERAY_TOMCAT);
 		if (pathToProperties == null) {
@@ -46,14 +46,19 @@ public class EGRPropertiesConfig implements IPropertiesConstants {
 		}
 		File f = new File(pathToProperties);
 		if (!f.exists()) {
-			throw new IllegalArgumentException("File not found for '"+PROPFILE__LIFERAY_TOMCAT+"' in path="+pathToProperties);
+			_logger.info("***************************************************************************************************");
+			_logger.info("*		Failure in loading properties file '"+PROPFILE__LIFERAY_TOMCAT+"' from path="+pathToProperties);
+			_logger.info("***************************************************************************************************");
+			throw new IllegalArgumentException("Properties file not found for '"+PROPFILE__LIFERAY_TOMCAT+"' in path="+pathToProperties);
 		}
 		PropertyPlaceholderConfigurer ppc = new PropertyPlaceholderConfigurer();
 		FileSystemResource fsr = new FileSystemResource(f);
 		Resource[] resources = new FileSystemResource[] {fsr};
-		ppc.setLocations(resources);
+		ppc.setLocations(resources);	
 		
-		_logger.info("loading properties file '"+PROPFILE__LIFERAY_TOMCAT+"'");
+		_logger.info("***************************************************************************************************");
+		_logger.info("*		Success in loading properties file '"+PROPFILE__LIFERAY_TOMCAT+"' from path="+pathToProperties);
+		_logger.info("***************************************************************************************************");
 		return ppc;
 	}
 
