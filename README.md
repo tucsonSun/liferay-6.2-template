@@ -1,6 +1,6 @@
 project1
 ========
 
-A good starting point for a liferay project
+This a Liferay JEE example template. It can be used as a good starting point for a liferay project
 
 
