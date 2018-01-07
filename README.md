@@ -3,43 +3,13 @@
 This a Liferay JEE example template. It can be used as a good starting point for a liferay project
 
 -----------------------------------------------------------
-# Liferay Portal
-
-[Liferay
-Portal](http://www.liferay.com/community/liferay-projects/liferay-portal) is an
-open source enterprise web platform for building business solutions that deliver
-immediate results and long-term value. Liferay Portal started out as a personal
-development project in 2000 and was open sourced in 2001.
-
-To get started, check out the project's community homepage at
-[http://liferay.org](http://liferay.org)!
 
 ## Quick Start
+- Install Git
+- Install Eclipse
+- Install Java 8+
+- Install Node
 
-To get up and running quickly, *download* a [pre-built Liferay
-release](http://liferay.com/downloads) and follow the [Quick
-Start](http://liferay.com/quick-start) instructions. For more detailed
-installation instructions, please refer to the [system administrator
-guide](https://dev.liferay.com/discover/deployment) on the [Liferay Developer
-Network](https://dev.liferay.com).
-
-If you wish to *build* core Liferay or its plugins, read the [CONTRIBUTING
-guide](https://github.com/liferay/liferay-portal/blob/master/CONTRIBUTING.markdown).
-It includes details on using the repositories and building the software.
-
-
-## The Liferay Development Team
-
-Liferay is produced by the worldwide Liferay engineering team, and involves many
-hours of development, testing, writing documentation, and working with the wider
-Liferay community of customers, partners, and open source developers. We are
-glad you have chosen Liferay, and hope that it meets or exceeds your
-expectations!
-
-In addition to Liferay's engineering staff, a special thanks goes to the many
-open source developers who volunteere their time and energy to help with the
-release, whether it was bugfixing, idea generation, documentation, translations,
-or other contribution that helped to improve this release.
 
 ## Liferay Portal Community Edition License
 
